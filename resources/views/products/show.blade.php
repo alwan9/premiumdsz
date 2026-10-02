@@ -211,18 +211,17 @@
                             </div>
                         @endif
 
-                        <!-- Software & Tools yang Digunakan -->
+                        <!-- Bisa Pilih Software -->
                         @if ($produk->software->isNotEmpty())
                             <div class="p-4 rounded-xl bg-white border border-slate-200 space-y-2.5">
                                 <div class="flex items-center justify-between text-slate-700">
                                     <div class="flex items-center space-x-1.5 text-brand-700">
                                         <iconify-icon icon="lucide:monitor" class="text-xs"></iconify-icon>
-                                        <span class="text-xs font-bold uppercase tracking-wider">Software yang
-                                            Digunakan</span>
+                                        <span class="text-xs font-bold uppercase tracking-wider">Bisa Pilih Software</span>
                                     </div>
                                     <span
                                         class="text-[10px] font-semibold text-slate-400">{{ $produk->software->count() }}
-                                        Tools</span>
+                                        Pilihan</span>
                                 </div>
                                 <div class="flex flex-wrap gap-2 pt-0.5">
                                     @foreach ($produk->software as $soft)

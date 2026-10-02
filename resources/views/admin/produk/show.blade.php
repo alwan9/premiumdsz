@@ -73,10 +73,10 @@
                 </div>
             </div>
 
-            <!-- Software & Tools Used -->
+            <!-- Bisa Pilih Software -->
             @if ($produk->software->isNotEmpty())
                 <div class="space-y-2">
-                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Software & Tools yang Digunakan</h3>
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Bisa Pilih Software</h3>
                     <div class="flex flex-wrap gap-2.5">
                         @foreach ($produk->software as $soft)
                             <div class="flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200">

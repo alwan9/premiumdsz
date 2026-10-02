@@ -260,7 +260,7 @@
                             </div>
                             <div class="flex items-center justify-between py-1.5">
                                 <span class="text-slate-400">Format Output</span>
-                                <span class="font-semibold text-slate-800">AI / SVG / PDF / PNG 300 DPI</span>
+                                <span class="font-semibold text-slate-800">Disesuaikan / SVG / PDF / PNG 300 DPI</span>
                             </div>
                         </div>
 

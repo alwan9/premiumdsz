@@ -178,104 +178,6 @@
                         </div>
                     </div>
 
-                    <!-- Rekomendasi Produk Relevan (Horizontal Auto-Scroll 6-Kolom) -->
-                    @if ($relatedProducts->isNotEmpty())
-                        <div data-aos="fade-up" data-aos-delay="150"
-                            class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 space-y-4 shadow-sm relative overflow-hidden">
-                            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-                                <div>
-                                    <span class="text-[10px] font-bold uppercase tracking-wider text-brand-600">Rekomendasi Terkait</span>
-                                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 font-heading">
-                                        Karya & Produk Serupa di Kategori {{ $produk->kategori->Nama_kategori ?? 'Ini' }}
-                                    </h3>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <button type="button" onclick="scrollRelated('left')"
-                                        class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-brand-600 hover:text-white text-slate-600 flex items-center justify-center transition-all text-sm shadow-sm"
-                                        title="Geser Kiri">
-                                        <iconify-icon icon="lucide:chevron-left"></iconify-icon>
-                                    </button>
-                                    <button type="button" onclick="scrollRelated('right')"
-                                        class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-brand-600 hover:text-white text-slate-600 flex items-center justify-center transition-all text-sm shadow-sm"
-                                        title="Geser Kanan">
-                                        <iconify-icon icon="lucide:chevron-right"></iconify-icon>
-                                    </button>
-                                    <a href="{{ route('marketplace.index', ['kategori' => $produk->Id_kategori]) }}"
-                                        class="text-xs font-bold text-brand-600 hover:text-brand-800 ml-1.5 flex items-center space-x-0.5">
-                                        <span>Lihat Semua</span>
-                                        <iconify-icon icon="lucide:chevron-right" class="text-xs"></iconify-icon>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <!-- Horizontal Scrolling Track (Auto scroll + 6 Columns) -->
-                            <div id="relatedScrollTrack"
-                                class="flex space-x-3 sm:space-x-4 overflow-x-auto scroll-smooth scrollbar-none py-1 select-none"
-                                style="scrollbar-width: none; -ms-overflow-style: none;">
-                                @foreach ($relatedProducts as $rel)
-                                    <div
-                                        class="flex-none w-[150px] sm:w-[170px] md:w-[185px] lg:w-[calc((100%-5*14px)/6)] min-w-[140px] rounded-2xl border border-slate-200/80 bg-white overflow-hidden hover:border-brand-400 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                                        <div>
-                                            <!-- Thumbnail Image -->
-                                            <div class="h-28 sm:h-32 bg-slate-100 relative overflow-hidden cursor-pointer"
-                                                onclick="window.location.href='{{ route('products.show', $rel->Id_produk) }}'">
-                                                <img src="{{ $rel->image_url }}" alt="{{ $rel->Nama_produk }}"
-                                                    loading="lazy"
-                                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                                <div
-                                                    class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent">
-                                                </div>
-
-                                                <div class="absolute top-2 left-2 z-10">
-                                                    <span
-                                                        class="px-1.5 py-0.5 rounded-md bg-slate-900/80 backdrop-blur-md text-white text-[8px] font-bold uppercase tracking-wider border border-white/10">
-                                                        {{ $rel->kategori->Nama_kategori ?? 'Desain' }}
-                                                    </span>
-                                                </div>
-
-                                                <div
-                                                    class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-[9px] text-white/90 z-10">
-                                                    <span
-                                                        class="text-amber-400 font-bold flex items-center space-x-0.5 drop-shadow">
-                                                        <iconify-icon icon="material-symbols:star-rounded"
-                                                            class="text-amber-400 text-xs"></iconify-icon>
-                                                        <span>{{ number_format($rel->average_rating, 1) }}</span>
-                                                    </span>
-                                                </div>
-                                            </div>
-
-                                            <!-- Content -->
-                                            <div class="p-2.5 space-y-0.5">
-                                                <h4
-                                                    class="text-xs font-bold text-slate-900 line-clamp-1 group-hover:text-brand-600 transition-colors">
-                                                    <a href="{{ route('products.show', $rel->Id_produk) }}">
-                                                        {{ $rel->Nama_produk }}
-                                                    </a>
-                                                </h4>
-                                                <p class="text-[10px] text-slate-500 line-clamp-1 leading-relaxed">
-                                                    {{ $rel->Des_produk }}
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <!-- Actions -->
-                                        <div class="p-2.5 pt-0 flex items-center space-x-1.5">
-                                            <a href="{{ route('products.show', $rel->Id_produk) }}"
-                                                class="flex-1 py-1 text-center text-[10px] font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors">
-                                                Detail
-                                            </a>
-                                            <a href="{{ $rel->whatsapp_link }}" target="_blank"
-                                                class="flex-1 inline-flex items-center justify-center space-x-0.5 py-1 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg shadow-sm transition-all">
-                                                <iconify-icon icon="simple-icons:whatsapp" class="text-[10px]"></iconify-icon>
-                                                <span>Pesan</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endif
-
                 </div>
 
                 <!-- Right Column: Order Action & Service Package Box -->
@@ -355,6 +257,101 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Rekomendasi Jasa & Karya Relevan (Berada di Bawah Pemesanan Langsung - Full Width 6 Kolom) -->
+            @if ($relatedProducts->isNotEmpty())
+                <div data-aos="fade-up" data-aos-delay="150"
+                    class="mt-10 bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 space-y-5 shadow-sm relative overflow-hidden">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                        <div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-brand-600">Rekomendasi Terkait</span>
+                            <h3 class="text-sm sm:text-base font-bold text-slate-900 font-heading">
+                                Karya & Jasa Serupa di Kategori {{ $produk->kategori->Nama_kategori ?? 'Ini' }}
+                            </h3>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" onclick="scrollRelated('left')"
+                                class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-slate-100 hover:bg-brand-600 hover:text-white text-slate-600 flex items-center justify-center transition-all text-sm shadow-sm"
+                                title="Geser Kiri">
+                                <iconify-icon icon="lucide:chevron-left"></iconify-icon>
+                            </button>
+                            <button type="button" onclick="scrollRelated('right')"
+                                class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-slate-100 hover:bg-brand-600 hover:text-white text-slate-600 flex items-center justify-center transition-all text-sm shadow-sm"
+                                title="Geser Kanan">
+                                <iconify-icon icon="lucide:chevron-right"></iconify-icon>
+                            </button>
+                            <a href="{{ route('marketplace.index', ['kategori' => $produk->Id_kategori]) }}"
+                                class="text-xs font-bold text-brand-600 hover:text-brand-800 ml-2 flex items-center space-x-0.5">
+                                <span>Lihat Semua</span>
+                                <iconify-icon icon="lucide:chevron-right" class="text-xs"></iconify-icon>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Horizontal Scrolling Track (Auto scroll + 6 Columns) -->
+                    <div id="relatedScrollTrack"
+                        class="flex space-x-3 sm:space-x-4 overflow-x-auto scroll-smooth scrollbar-none py-1 select-none"
+                        style="scrollbar-width: none; -ms-overflow-style: none;">
+                        @foreach ($relatedProducts as $rel)
+                            <div
+                                class="flex-none w-[160px] sm:w-[180px] md:w-[200px] lg:w-[calc((100%-5*16px)/6)] min-w-[150px] rounded-2xl border border-slate-200/80 bg-white overflow-hidden hover:border-brand-400 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                                <a href="{{ route('products.show', $rel->Id_produk) }}" class="block group">
+                                    <!-- Thumbnail Image (Click leads to product/service) -->
+                                    <div class="h-32 sm:h-36 bg-slate-100 relative overflow-hidden cursor-pointer">
+                                        <img src="{{ $rel->image_url }}" alt="{{ $rel->Nama_produk }}"
+                                            loading="lazy"
+                                            class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500">
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent">
+                                        </div>
+
+                                        <div class="absolute top-2 left-2 z-10">
+                                            <span
+                                                class="px-2 py-0.5 rounded-md bg-slate-900/80 backdrop-blur-md text-white text-[9px] font-bold uppercase tracking-wider border border-white/10">
+                                                {{ $rel->kategori->Nama_kategori ?? 'Desain' }}
+                                            </span>
+                                        </div>
+
+                                        <div
+                                            class="absolute bottom-2 left-2 right-2 flex items-center justify-between text-[10px] text-white/90 z-10">
+                                            <span
+                                                class="text-amber-400 font-bold flex items-center space-x-0.5 drop-shadow">
+                                                <iconify-icon icon="material-symbols:star-rounded"
+                                                    class="text-amber-400 text-xs"></iconify-icon>
+                                                <span>{{ number_format($rel->average_rating, 1) }}</span>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Content (Click text leads directly to product/service) -->
+                                    <div class="p-3 space-y-1">
+                                        <h4
+                                            class="text-xs sm:text-sm font-bold text-slate-900 line-clamp-1 group-hover:text-brand-600 transition-colors">
+                                            {{ $rel->Nama_produk }}
+                                        </h4>
+                                        <p class="text-[11px] text-slate-500 line-clamp-2 leading-relaxed">
+                                            {{ $rel->Des_produk }}
+                                        </p>
+                                    </div>
+                                </a>
+
+                                <!-- Actions -->
+                                <div class="p-3 pt-0 flex items-center space-x-1.5">
+                                    <a href="{{ route('products.show', $rel->Id_produk) }}"
+                                        class="flex-1 py-1.5 text-center text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors">
+                                        Detail
+                                    </a>
+                                    <a href="{{ $rel->whatsapp_link }}" target="_blank"
+                                        class="flex-1 inline-flex items-center justify-center space-x-1 py-1.5 text-center text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-xl shadow-sm transition-all">
+                                        <iconify-icon icon="simple-icons:whatsapp" class="text-xs"></iconify-icon>
+                                        <span>Pesan</span>
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 

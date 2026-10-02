@@ -44,6 +44,27 @@ class MarketplaceController extends Controller
         $produks = $query->paginate(9)->withQueryString();
         $totalSemuaProduk = ProdukDigital::count();
 
+        if ($request->ajax()) {
+            $html = view('marketplace._grid', compact(
+                'setting',
+                'kategoris',
+                'produks',
+                'selectedKategori',
+                'search',
+                'sort',
+                'totalSemuaProduk'
+            ))->render();
+
+            return response()->json([
+                'status' => 'success',
+                'html' => $html,
+                'total' => $produks->total(),
+                'selectedKategori' => $selectedKategori,
+                'search' => $search,
+                'sort' => $sort,
+            ]);
+        }
+
         return view('marketplace.index', compact(
             'setting',
             'kategoris',

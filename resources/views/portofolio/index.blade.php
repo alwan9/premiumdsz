@@ -47,30 +47,26 @@
                     korporat, dan kreator di seluruh Indonesia.
                 </p>
 
-                <!-- Search Bar -->
+                <!-- Search Bar (Live jQuery AJAX Search) -->
                 <div data-aos="fade-up" data-aos-delay="200" class="pt-4 max-w-xl mx-auto">
-                    <form action="{{ route('portofolio.index') }}" method="GET" class="relative flex items-center">
-                        @if ($selectedKategori && $selectedKategori !== 'all')
-                            <input type="hidden" name="kategori" value="{{ $selectedKategori }}">
-                        @endif
+                    <form id="portfolioSearchForm" action="{{ route('portofolio.index') }}" method="GET" class="relative flex items-center" onsubmit="return false;">
+                        <input type="hidden" name="kategori" id="selectedCategoryInput" value="{{ $selectedKategori ?? '' }}">
                         <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
                             <iconify-icon icon="lucide:search" class="text-lg"></iconify-icon>
                         </div>
-                        <input type="text" name="search" value="{{ $search }}"
+                        <input type="text" name="search" id="portfolioSearchInput" value="{{ $search }}"
                             placeholder="Cari karya desain (contoh: Logo, Box, Jersey, UI, Menu)..."
-                            class="w-full pl-11 pr-28 py-3.5 bg-white/95 backdrop-blur-md text-slate-900 placeholder-slate-400 rounded-2xl text-xs sm:text-sm font-medium border border-white/20 shadow-xl focus:outline-none focus:ring-2 focus:ring-brand-400 transition-all">
+                            autocomplete="off"
+                            class="w-full pl-11 pr-24 py-3.5 bg-white/95 backdrop-blur-md text-slate-900 placeholder-slate-400 rounded-2xl text-xs sm:text-sm font-medium border border-white/20 shadow-xl focus:outline-none focus:ring-2 focus:ring-brand-400 transition-all">
                         <div class="absolute right-1.5 flex items-center space-x-1">
-                            @if ($search)
-                                <a href="{{ route('portofolio.index', ['kategori' => $selectedKategori]) }}"
-                                    class="p-2 text-slate-400 hover:text-slate-600 rounded-xl hover:bg-slate-100 transition-colors"
-                                    title="Reset Pencarian">
-                                    <iconify-icon icon="lucide:x" class="text-base"></iconify-icon>
-                                </a>
-                            @endif
-                            <button type="submit"
-                                class="px-4 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-xs font-bold transition-colors shadow-sm">
-                                Cari
+                            <button type="button" id="portfolioSearchClearBtn" onclick="clearPortfolioSearch()"
+                                class="p-2 text-slate-400 hover:text-slate-600 rounded-xl hover:bg-slate-100 transition-colors {{ $search ? '' : 'hidden' }}"
+                                title="Reset Pencarian">
+                                <iconify-icon icon="lucide:x" class="text-base"></iconify-icon>
                             </button>
+                            <div id="portfolioSearchSpinner" class="hidden px-2 text-brand-600 animate-spin">
+                                <iconify-icon icon="lucide:loader-2" class="text-lg"></iconify-icon>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -83,101 +79,40 @@
     <!-- Simple Representative Category Filter Bar -->
     <section class="sticky top-20 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs py-3">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-start md:justify-center space-x-1.5 sm:space-x-2 overflow-x-auto no-scrollbar py-0.5 text-xs sm:text-sm font-semibold">
+            <div id="portfolioCategoryPills" class="flex items-center justify-start md:justify-center space-x-1.5 sm:space-x-2 overflow-x-auto no-scrollbar py-0.5 text-xs sm:text-sm font-semibold">
                 <!-- All Categories -->
-                <a href="{{ route('portofolio.index', ['search' => $search]) }}"
-                    class="shrink-0 px-4 py-2 rounded-full transition-all duration-200 {{ empty($selectedKategori) || $selectedKategori === 'all' ? 'bg-slate-900 text-white shadow-sm font-bold' : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900' }}">
+                <button type="button" onclick="selectPortfolioCategory('')"
+                    data-kategori=""
+                    class="category-pill shrink-0 px-4 py-2 rounded-full transition-all duration-200 cursor-pointer {{ empty($selectedKategori) || $selectedKategori === 'all' ? 'bg-slate-900 text-white shadow-sm font-bold' : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900' }}">
                     Semua
-                </a>
+                </button>
 
                 @foreach ($kategoriCounts as $katName => $count)
-                    <a href="{{ route('portofolio.index', ['kategori' => $katName, 'search' => $search]) }}"
-                        class="shrink-0 px-4 py-2 rounded-full transition-all duration-200 {{ $selectedKategori === $katName ? 'bg-slate-900 text-white shadow-sm font-bold' : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900' }}">
+                    <button type="button" onclick="selectPortfolioCategory('{{ $katName }}')"
+                        data-kategori="{{ $katName }}"
+                        class="category-pill shrink-0 px-4 py-2 rounded-full transition-all duration-200 cursor-pointer {{ $selectedKategori === $katName ? 'bg-slate-900 text-white shadow-sm font-bold' : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900' }}">
                         {{ $katName }}
-                    </a>
+                    </button>
                 @endforeach
             </div>
         </div>
     </section>
 
-    <!-- Main Portfolio Grid Section -->
+    <!-- Main Portfolio Grid Section (Dynamically Loaded via jQuery) -->
     <section class="py-14 bg-white min-h-[500px]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            <!-- Search / Filter State Header -->
-            @if ($search || ($selectedKategori && $selectedKategori !== 'all'))
-                <div
-                    class="mb-8 p-4 rounded-2xl bg-slate-50 border border-slate-200/80 shadow-xs flex flex-wrap items-center justify-between gap-3">
-                    <div class="flex items-center space-x-2 text-xs sm:text-sm text-slate-700">
-                        <iconify-icon icon="lucide:filter" class="text-brand-600 text-lg"></iconify-icon>
-                        <span>
-                            Hasil filter:
-                            @if ($selectedKategori && $selectedKategori !== 'all')
-                                <strong class="text-brand-700">Kategori "{{ $selectedKategori }}"</strong>
-                            @endif
-                            @if ($search)
-                                <span class="text-slate-400">|</span> Kata kunci: <strong
-                                    class="text-brand-700">"{{ $search }}"</strong>
-                            @endif
-                            <span class="text-slate-500">({{ $portofolios->total() }} hasil ditemukan)</span>
-                        </span>
-                    </div>
-                    <a href="{{ route('portofolio.index') }}"
-                        class="text-xs font-bold text-rose-600 hover:text-rose-700 flex items-center space-x-1">
-                        <iconify-icon icon="lucide:rotate-ccw"></iconify-icon>
-                        <span>Reset Filter</span>
-                    </a>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <!-- Loading Overlay -->
+            <div id="portfolioLoadingOverlay" class="absolute inset-0 bg-white/70 backdrop-blur-[1px] z-30 flex items-center justify-center hidden rounded-2xl">
+                <div class="flex items-center space-x-2 px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-semibold shadow-xl">
+                    <iconify-icon icon="lucide:loader-2" class="text-base animate-spin text-brand-400"></iconify-icon>
+                    <span>Memuat karya...</span>
                 </div>
-            @endif
+            </div>
 
-            @if ($portofolios->count() > 0)
-                <!-- Pure Image Grid (5 Columns, Original Natural Aspect Ratio, Frameless, Hover Scale 1.15 & Zoom) -->
-                <div class="columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-3 sm:gap-4 [column-fill:_balance] py-2">
-                    @foreach ($portofolios as $index => $item)
-                        <div data-aos="fade-up" data-aos-delay="{{ ($index % 5) * 35 }}"
-                            class="break-inside-avoid mb-3 sm:mb-4 group relative rounded-2xl overflow-hidden bg-slate-900 cursor-zoom-in shadow-xs hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-200 ease-out"
-                            onclick="openPortfolioZoom({{ $index }})">
-
-                            <img src="{{ $item->image_url }}" alt="{{ $item->nama }}" loading="lazy"
-                                class="w-full h-auto block transition-all duration-200 ease-out group-hover:brightness-90">
-
-                            <!-- Subtle Darkening & Zoom Overlay Icon -->
-                            <div
-                                class="absolute inset-0 bg-slate-950/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center pointer-events-none">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-white/95 backdrop-blur-sm text-slate-900 flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-200">
-                                    <iconify-icon icon="lucide:zoom-in" class="text-lg text-brand-600"></iconify-icon>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-
-                <!-- Pagination -->
-                <div class="mt-12 flex items-center justify-center">
-                    {{ $portofolios->links() }}
-                </div>
-            @else
-                <!-- Empty State -->
-                <div data-aos="fade-up" class="max-w-md mx-auto text-center py-16 px-4 space-y-4">
-                    <div
-                        class="w-16 h-16 rounded-3xl bg-brand-50 text-brand-600 mx-auto flex items-center justify-center text-3xl">
-                        <iconify-icon icon="lucide:image-off"></iconify-icon>
-                    </div>
-                    <div class="space-y-1">
-                        <h3 class="text-base font-bold text-slate-900">Tidak ada karya yang cocok</h3>
-                        <p class="text-xs text-slate-500">
-                            Coba ubah kata kunci pencarian atau pilih kategori lain.
-                        </p>
-                    </div>
-                    <a href="{{ route('portofolio.index') }}"
-                        class="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-brand-600 text-white text-xs font-bold hover:bg-brand-700 transition-colors shadow-sm">
-                        <iconify-icon icon="lucide:refresh-cw"></iconify-icon>
-                        <span>Tampilkan Semua Portofolio</span>
-                    </a>
-                </div>
-            @endif
-
+            <!-- Grid Container for Partial Rendering -->
+            <div id="portfolioGridContainer" class="transition-opacity duration-200">
+                @include('portofolio._grid')
+            </div>
         </div>
     </section>
 
@@ -302,11 +237,185 @@
 
     </div>
 
-    <!-- JavaScript for Seamless Lightbox and Interactive Zoom -->
+    <!-- JavaScript for Seamless Lightbox, Interactive Zoom & jQuery AJAX Live Search -->
     <script>
-        const portfolioItems = @json($portofolios->items());
+        let portfolioItems = @json($portofolios->items());
         let currentZoomIndex = 0;
         let currentScale = 1;
+        let searchDebounceTimer = null;
+        let activePortfolioAjax = null;
+
+        // --- jQuery AJAX Live Search & Filter Functions ---
+        function getPortfolioFilters() {
+            return {
+                search: $('#portfolioSearchInput').val().trim(),
+                kategori: $('#selectedCategoryInput').val().trim()
+            };
+        }
+
+        function fetchPortfolioAjax(customTarget) {
+            let requestUrl = "{{ route('portofolio.index') }}";
+            let requestData = getPortfolioFilters();
+
+            if (typeof customTarget === 'string') {
+                requestUrl = customTarget;
+                requestData = {}; // URL already contains query parameters
+            } else if (typeof customTarget === 'object' && customTarget !== null) {
+                requestData = Object.assign({}, requestData, customTarget);
+            }
+
+            // Abort previous in-flight AJAX request
+            if (activePortfolioAjax && activePortfolioAjax.readyState !== 4) {
+                activePortfolioAjax.abort();
+            }
+
+            $('#portfolioSearchSpinner').removeClass('hidden');
+            $('#portfolioLoadingOverlay').removeClass('hidden');
+            $('#portfolioGridContainer').addClass('opacity-60 pointer-events-none');
+
+            activePortfolioAjax = $.ajax({
+                url: requestUrl,
+                type: 'GET',
+                data: requestData,
+                dataType: 'json',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                success: function(response) {
+                    if (response && response.status === 'success') {
+                        // Update Grid HTML
+                        $('#portfolioGridContainer').html(response.html);
+
+                        // Sync portfolioItems for Lightbox
+                        portfolioItems = response.items || [];
+
+                        // Sync category input & active styles
+                        if (response.selectedKategori !== undefined) {
+                            $('#selectedCategoryInput').val(response.selectedKategori || '');
+                            updateCategoryPillUI(response.selectedKategori || '');
+                        }
+
+                        // Sync search input
+                        if (response.search !== undefined) {
+                            if ($('#portfolioSearchInput').val() !== response.search) {
+                                $('#portfolioSearchInput').val(response.search);
+                            }
+                            if (response.search && response.search.length > 0) {
+                                $('#portfolioSearchClearBtn').removeClass('hidden');
+                            } else {
+                                $('#portfolioSearchClearBtn').addClass('hidden');
+                            }
+                        }
+
+                        // Update browser URL without reload
+                        let params = new URLSearchParams();
+                        let currentKategori = $('#selectedCategoryInput').val();
+                        let currentSearch = $('#portfolioSearchInput').val().trim();
+                        if (currentKategori) params.set('kategori', currentKategori);
+                        if (currentSearch) params.set('search', currentSearch);
+                        let newQuery = params.toString();
+                        let newUrl = "{{ route('portofolio.index') }}" + (newQuery ? '?' + newQuery : '');
+                        window.history.pushState({ path: newUrl }, '', newUrl);
+
+                        // Refresh AOS animations if available
+                        if (window.AOS) {
+                            AOS.refreshHard();
+                        }
+                    }
+                },
+                error: function(xhr, status, error) {
+                    if (status !== 'abort') {
+                        console.error('Portfolio AJAX search error:', error);
+                    }
+                },
+                complete: function() {
+                    $('#portfolioSearchSpinner').addClass('hidden');
+                    $('#portfolioLoadingOverlay').addClass('hidden');
+                    $('#portfolioGridContainer').removeClass('opacity-60 pointer-events-none');
+                }
+            });
+        }
+
+        function updateCategoryPillUI(activeKategori) {
+            $('.category-pill').each(function() {
+                let kat = $(this).attr('data-kategori') || '';
+                if ((!activeKategori && kat === '') || activeKategori === kat) {
+                    $(this).removeClass('bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900')
+                           .addClass('bg-slate-900 text-white shadow-sm font-bold');
+                } else {
+                    $(this).removeClass('bg-slate-900 text-white shadow-sm font-bold')
+                           .addClass('bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900');
+                }
+            });
+        }
+
+        function selectPortfolioCategory(kategori) {
+            $('#selectedCategoryInput').val(kategori);
+            updateCategoryPillUI(kategori);
+            fetchPortfolioAjax();
+        }
+
+        function clearPortfolioSearch() {
+            $('#portfolioSearchInput').val('');
+            $('#portfolioSearchClearBtn').addClass('hidden');
+            fetchPortfolioAjax();
+        }
+
+        function resetPortfolioFilters() {
+            $('#portfolioSearchInput').val('');
+            $('#selectedCategoryInput').val('');
+            $('#portfolioSearchClearBtn').addClass('hidden');
+            updateCategoryPillUI('');
+            fetchPortfolioAjax({ search: '', kategori: '' });
+        }
+
+        // DOM Ready: Event Listeners for jQuery Live Search
+        $(document).ready(function() {
+            // Live Search Input with Debounce (300ms)
+            $('#portfolioSearchInput').on('input keyup', function(e) {
+                let val = $(this).val().trim();
+                if (val.length > 0) {
+                    $('#portfolioSearchClearBtn').removeClass('hidden');
+                } else {
+                    $('#portfolioSearchClearBtn').addClass('hidden');
+                }
+
+                clearTimeout(searchDebounceTimer);
+                searchDebounceTimer = setTimeout(function() {
+                    fetchPortfolioAjax();
+                }, 300);
+            });
+
+            // Prevent form submit reload
+            $('#portfolioSearchForm').on('submit', function(e) {
+                e.preventDefault();
+                clearTimeout(searchDebounceTimer);
+                fetchPortfolioAjax();
+            });
+
+            // Intercept Pagination Clicks (No reload)
+            $(document).on('click', '.portfolio-pagination a', function(e) {
+                e.preventDefault();
+                let targetUrl = $(this).attr('href');
+                if (targetUrl) {
+                    fetchPortfolioAjax(targetUrl);
+                    $('html, body').animate({
+                        scrollTop: $('#portfolioGridContainer').offset().top - 120
+                    }, 300);
+                }
+            });
+
+            // Browser Back/Forward navigation support
+            window.addEventListener('popstate', function() {
+                let urlParams = new URLSearchParams(window.location.search);
+                let urlSearch = urlParams.get('search') || '';
+                let urlKategori = urlParams.get('kategori') || '';
+                $('#portfolioSearchInput').val(urlSearch);
+                $('#selectedCategoryInput').val(urlKategori);
+                updateCategoryPillUI(urlKategori);
+                fetchPortfolioAjax();
+            });
+        });
 
         function openPortfolioZoom(index) {
             currentZoomIndex = index;

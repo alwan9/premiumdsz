@@ -31,21 +31,32 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Search and Filter Bar -->
             <div data-aos="fade-up" class="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-6 mb-10 shadow-sm">
-                <form action="{{ route('marketplace.index') }}" method="GET"
-                    class="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center">
-                    <!-- Search Input -->
+                <form id="marketplaceFilterForm" action="{{ route('marketplace.index') }}" method="GET"
+                    class="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center" onsubmit="return false;">
+                    <!-- Search Input (jQuery Live Search) -->
                     <div class="sm:col-span-6 relative">
                         <iconify-icon icon="lucide:search"
                             class="absolute left-4 top-3 text-slate-400 text-sm"></iconify-icon>
-                        <input type="text" name="q" value="{{ request('q') }}"
+                        <input type="text" name="q" id="marketplaceSearchInput" value="{{ $search }}"
                             placeholder="Cari nama desain atau kata kunci..."
-                            class="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                            autocomplete="off"
+                            class="w-full pl-10 pr-20 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                        <div class="absolute right-2 top-2 flex items-center space-x-1">
+                            <button type="button" id="marketplaceClearBtn" onclick="clearMarketplaceSearch()"
+                                class="p-1 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 transition-colors {{ $search ? '' : 'hidden' }}"
+                                title="Hapus pencarian">
+                                <iconify-icon icon="lucide:x" class="text-sm"></iconify-icon>
+                            </button>
+                            <div id="marketplaceSearchSpinner" class="hidden text-brand-600 animate-spin">
+                                <iconify-icon icon="lucide:loader-2" class="text-base"></iconify-icon>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Category Filter Dropdown (Mobile/Quick) -->
                     <div class="sm:col-span-3">
-                        <select name="kategori"
-                            class="w-full px-3 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                        <select name="kategori" id="marketplaceCategorySelect"
+                            class="w-full px-3 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500 cursor-pointer">
                             <option value="all">Semua Kategori ({{ $totalSemuaProduk }})</option>
                             @foreach ($kategoris as $k)
                                 <option value="{{ $k->Id_kategori }}"
@@ -57,22 +68,13 @@
                     </div>
 
                     <!-- Sorting -->
-                    <div class="sm:col-span-2">
-                        <select name="sort"
-                            class="w-full px-3 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500">
-                            <option value="latest" {{ request('sort') === 'latest' ? 'selected' : '' }}>Terbaru</option>
-                            <option value="oldest" {{ request('sort') === 'oldest' ? 'selected' : '' }}>Terlama</option>
-                            <option value="stock_high" {{ request('sort') === 'stock_high' ? 'selected' : '' }}>Stok
-                                Terbanyak</option>
+                    <div class="sm:col-span-3">
+                        <select name="sort" id="marketplaceSortSelect"
+                            class="w-full px-3 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500 cursor-pointer">
+                            <option value="latest" {{ $sort === 'latest' ? 'selected' : '' }}>Urutkan: Terbaru</option>
+                            <option value="oldest" {{ $sort === 'oldest' ? 'selected' : '' }}>Urutkan: Terlama</option>
+                            <option value="stock_high" {{ $sort === 'stock_high' ? 'selected' : '' }}>Urutkan: Stok Terbanyak</option>
                         </select>
-                    </div>
-
-                    <!-- Submit Button -->
-                    <div class="sm:col-span-1">
-                        <button type="submit"
-                            class="w-full py-2.5 bg-brand-gradient hover:brightness-110 text-white rounded-xl text-xs font-bold shadow-sm shadow-brand-700/20 transition-all">
-                            Filter
-                        </button>
                     </div>
                 </form>
             </div>
@@ -82,18 +84,20 @@
                 <aside data-aos="fade-right" data-aos-delay="100" class="hidden lg:block lg:col-span-3 space-y-6">
                     <div class="bg-white border border-slate-200 rounded-2xl p-5 space-y-3">
                         <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Kategori Desain</h3>
-                        <div class="space-y-1">
-                            <a href="{{ route('marketplace.index') }}"
-                                class="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold {{ !$selectedKategori || $selectedKategori === 'all' ? 'bg-brand-50 text-brand-700' : 'text-slate-600 hover:bg-slate-50' }}">
+                        <div id="marketplaceSidebarCategories" class="space-y-1">
+                            <button type="button" onclick="selectMarketplaceCategory('all')"
+                                data-kategori="all"
+                                class="marketplace-sidebar-btn w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer transition-all {{ !$selectedKategori || $selectedKategori === 'all' ? 'bg-brand-50 text-brand-700 font-bold' : 'text-slate-600 hover:bg-slate-50' }}">
                                 <span>Semua Kategori</span>
                                 <span class="text-[10px] text-slate-400">{{ $totalSemuaProduk }}</span>
-                            </a>
+                            </button>
                             @foreach ($kategoris as $k)
-                                <a href="{{ route('marketplace.index', ['kategori' => $k->Id_kategori]) }}"
-                                    class="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold {{ $selectedKategori == $k->Id_kategori ? 'bg-brand-50 text-brand-700 font-bold' : 'text-slate-600 hover:bg-slate-50' }}">
+                                <button type="button" onclick="selectMarketplaceCategory('{{ $k->Id_kategori }}')"
+                                    data-kategori="{{ $k->Id_kategori }}"
+                                    class="marketplace-sidebar-btn w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer transition-all {{ $selectedKategori == $k->Id_kategori ? 'bg-brand-50 text-brand-700 font-bold' : 'text-slate-600 hover:bg-slate-50' }}">
                                     <span>{{ $k->Nama_kategori }}</span>
                                     <span class="text-[10px] text-slate-400">{{ $k->produk_digital_count }}</span>
-                                </a>
+                                </button>
                             @endforeach
                         </div>
                     </div>
@@ -145,111 +149,214 @@
                     </div>
                 </aside>
 
-                <!-- Product Catalog Grid -->
-                <div class="lg:col-span-9">
-                    <!-- Filter Status Indicator -->
-                    <div data-aos="fade-up" class="flex items-center justify-between mb-6">
-                        <p class="text-xs text-slate-500">
-                            Menampilkan <span class="font-bold text-slate-800">{{ $produks->total() }}</span> produk/jasa
-                            desain
-                        </p>
-                        @if ($selectedKategori || request('q'))
-                            <a href="{{ route('marketplace.index') }}"
-                                class="text-xs font-bold text-brand-600 hover:text-brand-800">
-                                Reset Filter & Pencarian
-                            </a>
-                        @endif
+                <!-- Product Catalog Grid (Loaded via jQuery AJAX) -->
+                <div class="lg:col-span-9 relative">
+                    <!-- Loading Overlay -->
+                    <div id="marketplaceLoadingOverlay" class="absolute inset-0 bg-white/70 backdrop-blur-[1px] z-30 flex items-center justify-center hidden rounded-2xl">
+                        <div class="flex items-center space-x-2 px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-semibold shadow-xl">
+                            <iconify-icon icon="lucide:loader-2" class="text-base animate-spin text-brand-400"></iconify-icon>
+                            <span>Memuat produk...</span>
+                        </div>
                     </div>
 
-                    @if ($produks->isEmpty())
-                        <div data-aos="fade-up"
-                            class="text-center py-16 bg-slate-50 rounded-2xl border border-slate-200 p-8">
-                            <div
-                                class="w-12 h-12 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center text-xl mx-auto mb-3">
-                                <iconify-icon icon="lucide:folder-open" class="text-2xl"></iconify-icon>
-                            </div>
-                            <h4 class="text-sm font-bold text-slate-800">Tidak ada produk ditemukan</h4>
-                            <p class="text-xs text-slate-500 mt-1">Coba sesuaikan kata kunci pencarian atau pilih kategori
-                                lainnya.</p>
-                            <a href="{{ route('marketplace.index') }}"
-                                class="inline-block mt-4 px-4 py-2 rounded-xl bg-brand-600 text-white text-xs font-bold">
-                                Tampilkan Semua Produk
-                            </a>
-                        </div>
-                    @else
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
-                            @foreach ($produks as $prod)
-                                <div data-aos="fade-up" data-aos-delay="{{ ($loop->index % 4) * 80 }}"
-                                    class="relative rounded-2xl border border-slate-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-200 ease-out flex flex-col justify-between group">
-                                    <div>
-                                        <!-- Card Image & Overlay -->
-                                        <div class="h-44 bg-slate-900 relative overflow-hidden">
-                                            <img src="{{ $prod->image_url }}" alt="{{ $prod->Nama_produk }}"
-                                                class="w-full h-full object-cover transition-all duration-200 ease-out group-hover:brightness-90">
-                                            <div
-                                                class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/20">
-                                            </div>
-                                            <!-- Subtle darkening overlay on hover -->
-                                            <div
-                                                class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-200 pointer-events-none">
-                                            </div>
-
-                                            <div class="absolute top-2.5 left-2.5 z-10">
-                                                <span
-                                                    class="px-2 py-0.5 rounded-lg bg-slate-900/80 backdrop-blur-md text-white text-[9px] font-bold uppercase tracking-wider border border-white/10">
-                                                    {{ $prod->kategori->Nama_kategori ?? 'Desain' }}
-                                                </span>
-                                            </div>
-
-                                            <div
-                                                class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-[10px] text-white/90 z-10">
-                                                <span
-                                                    class="text-amber-400 font-bold flex items-center space-x-1 drop-shadow">
-                                                    <iconify-icon icon="material-symbols:star-rounded"
-                                                        class="text-amber-400 text-sm"></iconify-icon>
-                                                    <span>{{ number_format($prod->average_rating, 1) }}</span>
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        <!-- Card Info -->
-                                        <div class="p-4 group-hover:bg-slate-50 transition-colors duration-200">
-                                            <h3
-                                                class="text-xs sm:text-sm font-bold text-slate-900 line-clamp-1 group-hover:text-brand-600 transition-colors">
-                                                <a href="{{ route('products.show', $prod->Id_produk) }}">
-                                                    {{ $prod->Nama_produk }}
-                                                </a>
-                                            </h3>
-                                            <p class="text-[11px] text-slate-500 mt-1 line-clamp-2 leading-relaxed">
-                                                {{ $prod->Des_produk }}
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <!-- Action Buttons -->
-                                    <div class="p-4 pt-0 flex items-center space-x-2 group-hover:bg-slate-50 transition-colors duration-200">
-                                        <a href="{{ route('products.show', $prod->Id_produk) }}"
-                                            class="flex-1 py-1.5 text-center text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors">
-                                            Detail
-                                        </a>
-                                        <a href="{{ $prod->whatsapp_link }}" target="_blank"
-                                            class="flex-1 inline-flex items-center justify-center space-x-1 py-1.5 text-center text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-xl shadow-sm transition-all">
-                                            <iconify-icon icon="simple-icons:whatsapp" class="text-xs"></iconify-icon>
-                                            <span>Pesan</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-
-                        <!-- Pagination -->
-                        <div data-aos="fade-up" class="mt-10">
-                            {{ $produks->links() }}
-                        </div>
-                    @endif
+                    <div id="marketplaceGridContainer" class="transition-opacity duration-200">
+                        @include('marketplace._grid')
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- jQuery AJAX Live Search & Filter Script -->
+    <script>
+        let marketplaceSearchDebounce = null;
+        let activeMarketplaceAjax = null;
+
+        function getMarketplaceFilters() {
+            return {
+                q: $('#marketplaceSearchInput').val().trim(),
+                kategori: $('#marketplaceCategorySelect').val(),
+                sort: $('#marketplaceSortSelect').val()
+            };
+        }
+
+        function fetchMarketplaceAjax(customTarget) {
+            let requestUrl = "{{ route('marketplace.index') }}";
+            let requestData = getMarketplaceFilters();
+
+            if (typeof customTarget === 'string') {
+                requestUrl = customTarget;
+                requestData = {};
+            } else if (typeof customTarget === 'object' && customTarget !== null) {
+                requestData = Object.assign({}, requestData, customTarget);
+            }
+
+            if (activeMarketplaceAjax && activeMarketplaceAjax.readyState !== 4) {
+                activeMarketplaceAjax.abort();
+            }
+
+            $('#marketplaceSearchSpinner').removeClass('hidden');
+            $('#marketplaceLoadingOverlay').removeClass('hidden');
+            $('#marketplaceGridContainer').addClass('opacity-60 pointer-events-none');
+
+            activeMarketplaceAjax = $.ajax({
+                url: requestUrl,
+                type: 'GET',
+                data: requestData,
+                dataType: 'json',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                success: function(response) {
+                    if (response && response.status === 'success') {
+                        $('#marketplaceGridContainer').html(response.html);
+
+                        // Sync inputs
+                        if (response.selectedKategori !== undefined) {
+                            let katVal = response.selectedKategori || 'all';
+                            $('#marketplaceCategorySelect').val(katVal);
+                            updateMarketplaceSidebarUI(katVal);
+                        }
+
+                        if (response.sort !== undefined) {
+                            $('#marketplaceSortSelect').val(response.sort || 'latest');
+                        }
+
+                        if (response.search !== undefined) {
+                            if ($('#marketplaceSearchInput').val() !== response.search) {
+                                $('#marketplaceSearchInput').val(response.search);
+                            }
+                            if (response.search && response.search.length > 0) {
+                                $('#marketplaceClearBtn').removeClass('hidden');
+                            } else {
+                                $('#marketplaceClearBtn').addClass('hidden');
+                            }
+                        }
+
+                        // Update browser URL
+                        let params = new URLSearchParams();
+                        let currentQ = $('#marketplaceSearchInput').val().trim();
+                        let currentKat = $('#marketplaceCategorySelect').val();
+                        let currentSort = $('#marketplaceSortSelect').val();
+
+                        if (currentQ) params.set('q', currentQ);
+                        if (currentKat && currentKat !== 'all') params.set('kategori', currentKat);
+                        if (currentSort && currentSort !== 'latest') params.set('sort', currentSort);
+
+                        let newQuery = params.toString();
+                        let newUrl = "{{ route('marketplace.index') }}" + (newQuery ? '?' + newQuery : '');
+                        window.history.pushState({ path: newUrl }, '', newUrl);
+
+                        if (window.AOS) {
+                            AOS.refreshHard();
+                        }
+                    }
+                },
+                error: function(xhr, status, error) {
+                    if (status !== 'abort') {
+                        console.error('Marketplace AJAX search error:', error);
+                    }
+                },
+                complete: function() {
+                    $('#marketplaceSearchSpinner').addClass('hidden');
+                    $('#marketplaceLoadingOverlay').addClass('hidden');
+                    $('#marketplaceGridContainer').removeClass('opacity-60 pointer-events-none');
+                }
+            });
+        }
+
+        function updateMarketplaceSidebarUI(activeKat) {
+            $('.marketplace-sidebar-btn').each(function() {
+                let kat = $(this).attr('data-kategori') || 'all';
+                if ((activeKat === 'all' || !activeKat) && kat === 'all') {
+                    $(this).removeClass('text-slate-600 hover:bg-slate-50 font-normal')
+                           .addClass('bg-brand-50 text-brand-700 font-bold');
+                } else if (activeKat === kat) {
+                    $(this).removeClass('text-slate-600 hover:bg-slate-50 font-normal')
+                           .addClass('bg-brand-50 text-brand-700 font-bold');
+                } else {
+                    $(this).removeClass('bg-brand-50 text-brand-700 font-bold')
+                           .addClass('text-slate-600 hover:bg-slate-50');
+                }
+            });
+        }
+
+        function selectMarketplaceCategory(katId) {
+            $('#marketplaceCategorySelect').val(katId);
+            updateMarketplaceSidebarUI(katId);
+            fetchMarketplaceAjax();
+        }
+
+        function clearMarketplaceSearch() {
+            $('#marketplaceSearchInput').val('');
+            $('#marketplaceClearBtn').addClass('hidden');
+            fetchMarketplaceAjax();
+        }
+
+        function resetMarketplaceFilters() {
+            $('#marketplaceSearchInput').val('');
+            $('#marketplaceCategorySelect').val('all');
+            $('#marketplaceSortSelect').val('latest');
+            $('#marketplaceClearBtn').addClass('hidden');
+            updateMarketplaceSidebarUI('all');
+            fetchMarketplaceAjax({ q: '', kategori: 'all', sort: 'latest' });
+        }
+
+        $(document).ready(function() {
+            // Live Search with Debounce (300ms)
+            $('#marketplaceSearchInput').on('input keyup', function() {
+                let val = $(this).val().trim();
+                if (val.length > 0) {
+                    $('#marketplaceClearBtn').removeClass('hidden');
+                } else {
+                    $('#marketplaceClearBtn').addClass('hidden');
+                }
+
+                clearTimeout(marketplaceSearchDebounce);
+                marketplaceSearchDebounce = setTimeout(function() {
+                    fetchMarketplaceAjax();
+                }, 300);
+            });
+
+            // Form Submit Prevent
+            $('#marketplaceFilterForm').on('submit', function(e) {
+                e.preventDefault();
+                clearTimeout(marketplaceSearchDebounce);
+                fetchMarketplaceAjax();
+            });
+
+            // Category & Sort Dropdown change
+            $('#marketplaceCategorySelect, #marketplaceSortSelect').on('change', function() {
+                let currentKat = $('#marketplaceCategorySelect').val();
+                updateMarketplaceSidebarUI(currentKat);
+                fetchMarketplaceAjax();
+            });
+
+            // Pagination Link Intercept
+            $(document).on('click', '.marketplace-pagination a', function(e) {
+                e.preventDefault();
+                let targetUrl = $(this).attr('href');
+                if (targetUrl) {
+                    fetchMarketplaceAjax(targetUrl);
+                    $('html, body').animate({
+                        scrollTop: $('#marketplaceGridContainer').offset().top - 120
+                    }, 300);
+                }
+            });
+
+            // Browser Back/Forward navigation support
+            window.addEventListener('popstate', function() {
+                let urlParams = new URLSearchParams(window.location.search);
+                let urlQ = urlParams.get('q') || '';
+                let urlKat = urlParams.get('kategori') || 'all';
+                let urlSort = urlParams.get('sort') || 'latest';
+
+                $('#marketplaceSearchInput').val(urlQ);
+                $('#marketplaceCategorySelect').val(urlKat);
+                $('#marketplaceSortSelect').val(urlSort);
+                updateMarketplaceSidebarUI(urlKat);
+                fetchMarketplaceAjax();
+            });
+        });
+    </script>
 @endsection

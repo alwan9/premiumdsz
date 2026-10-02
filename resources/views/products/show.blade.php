@@ -258,13 +258,9 @@
                                 <span class="text-slate-400">Status Layanan</span>
                                 <span class="font-semibold text-emerald-600">Tersedia & Siap Order</span>
                             </div>
-                            <div class="flex items-center justify-between py-1.5 border-b border-slate-200/60">
+                            <div class="flex items-center justify-between py-1.5">
                                 <span class="text-slate-400">Format Output</span>
                                 <span class="font-semibold text-slate-800">AI / SVG / PDF / PNG 300 DPI</span>
-                            </div>
-                            <div class="flex items-center justify-between py-1.5">
-                                <span class="text-slate-400">Metode Pemesanan</span>
-                                <span class="font-semibold text-slate-800">Direct Chat WhatsApp</span>
                             </div>
                         </div>
 

@@ -12,24 +12,22 @@ class ProductController extends Controller
         $produk = ProdukDigital::with(['kategori', 'layanan', 'software'])->findOrFail($id);
         $setting = Setting::first();
 
-        $relatedProducts = ProdukDigital::with(['kategori', 'software'])
+        $relevantProducts = ProdukDigital::with(['kategori', 'software'])
             ->where('Id_kategori', $produk->Id_kategori)
             ->where('Id_produk', '!=', $produk->Id_produk)
             ->latest('Id_produk')
             ->take(12)
             ->get();
 
-        // If less than 12 items in same category, supplement with latest products
-        if ($relatedProducts->count() < 12) {
-            $supplement = ProdukDigital::with('kategori')
-                ->where('Id_produk', '!=', $produk->Id_produk)
-                ->whereNotIn('Id_produk', $relatedProducts->pluck('Id_produk'))
-                ->latest('Id_produk')
-                ->take(12 - $relatedProducts->count())
-                ->get();
-            $relatedProducts = $relatedProducts->merge($supplement);
-        }
+        $latestProducts = ProdukDigital::with(['kategori', 'software'])
+            ->where('Id_produk', '!=', $produk->Id_produk)
+            ->latest('Id_produk')
+            ->take(12)
+            ->get();
 
-        return view('products.show', compact('produk', 'setting', 'relatedProducts'));
+        // Keep $relatedProducts as alias to $relevantProducts for fallback compatibility
+        $relatedProducts = $relevantProducts;
+
+        return view('products.show', compact('produk', 'setting', 'relatedProducts', 'relevantProducts', 'latestProducts'));
     }
 }

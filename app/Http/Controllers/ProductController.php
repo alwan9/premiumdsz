@@ -9,10 +9,10 @@ class ProductController extends Controller
 {
     public function show($id)
     {
-        $produk = ProdukDigital::with(['kategori', 'layanan'])->findOrFail($id);
+        $produk = ProdukDigital::with(['kategori', 'layanan', 'software'])->findOrFail($id);
         $setting = Setting::first();
 
-        $relatedProducts = ProdukDigital::with('kategori')
+        $relatedProducts = ProdukDigital::with(['kategori', 'software'])
             ->where('Id_kategori', $produk->Id_kategori)
             ->where('Id_produk', '!=', $produk->Id_produk)
             ->latest('Id_produk')

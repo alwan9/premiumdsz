@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class ProdukDigital extends Model
 {
@@ -42,6 +43,11 @@ class ProdukDigital extends Model
     public function layanan(): BelongsTo
     {
         return $this->belongsTo(Layanan::class, 'Id_layanan', 'Id_Layanan');
+    }
+
+    public function software(): BelongsToMany
+    {
+        return $this->belongsToMany(Software::class, 'produk_software', 'Id_produk', 'Id_software');
     }
 
     public function getWhatsappLinkAttribute(): string

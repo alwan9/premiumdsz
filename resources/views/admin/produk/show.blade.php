@@ -73,6 +73,23 @@
                 </div>
             </div>
 
+            <!-- Software & Tools Used -->
+            @if ($produk->software->isNotEmpty())
+                <div class="space-y-2">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Software & Tools yang Digunakan</h3>
+                    <div class="flex flex-wrap gap-2.5">
+                        @foreach ($produk->software as $soft)
+                            <div class="flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200">
+                                <div class="w-5 h-5 rounded-md bg-white border border-slate-200 p-0.5 flex items-center justify-center shrink-0 overflow-hidden">
+                                    <img src="{{ $soft->logo_full_url }}" alt="{{ $soft->Nama_software }}" class="max-w-full max-h-full object-contain">
+                                </div>
+                                <span class="text-xs font-bold text-slate-800">{{ $soft->Nama_software }}</span>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+
             <!-- Description -->
             <div class="space-y-2">
                 <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Deskripsi Karya / Portofolio</h3>

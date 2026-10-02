@@ -206,6 +206,29 @@
                             </div>
                         @endif
 
+                        <!-- Software & Tools yang Digunakan -->
+                        @if ($produk->software->isNotEmpty())
+                            <div class="p-4 rounded-xl bg-white border border-slate-200 space-y-2.5">
+                                <div class="flex items-center justify-between text-slate-700">
+                                    <div class="flex items-center space-x-1.5 text-brand-700">
+                                        <iconify-icon icon="lucide:monitor" class="text-xs"></iconify-icon>
+                                        <span class="text-xs font-bold uppercase tracking-wider">Software yang Digunakan</span>
+                                    </div>
+                                    <span class="text-[10px] font-semibold text-slate-400">{{ $produk->software->count() }} Tools</span>
+                                </div>
+                                <div class="flex flex-wrap gap-2 pt-0.5">
+                                    @foreach ($produk->software as $soft)
+                                        <div class="inline-flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200/80 shadow-2xs hover:border-brand-400 hover:bg-brand-50/50 transition-colors" title="{{ $soft->Nama_software }}">
+                                            <div class="w-4 h-4 rounded bg-white p-0.5 flex items-center justify-center shrink-0 overflow-hidden">
+                                                <img src="{{ $soft->logo_full_url }}" alt="{{ $soft->Nama_software }}" class="max-w-full max-h-full object-contain">
+                                            </div>
+                                            <span class="text-[11px] font-bold text-slate-800">{{ $soft->Nama_software }}</span>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
+
                         <!-- Key Specifications -->
                         <div class="space-y-2 text-xs text-slate-600">
                             <div class="flex items-center justify-between py-1.5 border-b border-slate-200/60">

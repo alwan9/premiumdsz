@@ -68,6 +68,28 @@
                 </div>
             </div>
 
+            <!-- Software & Tools yang Digunakan -->
+            <div class="space-y-2">
+                <label class="text-xs font-bold text-slate-700">Software & Tools Aplikasi yang Digunakan</label>
+                <p class="text-[11px] text-slate-500">Pilih satu atau beberapa software yang digunakan untuk membuat produk ini</p>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 pt-1">
+                    @php
+                        $selectedSoftwareIds = old('software_ids', $produk->software->pluck('Id_software')->toArray());
+                    @endphp
+                    @foreach ($softwares as $soft)
+                        <label class="relative flex items-center space-x-2.5 p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-white hover:border-brand-400 cursor-pointer transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/60 has-[:checked]:ring-2 has-[:checked]:ring-brand-500/20 group">
+                            <input type="checkbox" name="software_ids[]" value="{{ $soft->Id_software }}"
+                                {{ in_array($soft->Id_software, $selectedSoftwareIds) ? 'checked' : '' }}
+                                class="rounded text-brand-600 focus:ring-brand-500">
+                            <div class="w-6 h-6 rounded-md bg-white border border-slate-200 p-0.5 flex items-center justify-center shrink-0 overflow-hidden">
+                                <img src="{{ $soft->logo_full_url }}" alt="{{ $soft->Nama_software }}" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <span class="text-xs font-bold text-slate-700 truncate group-hover:text-brand-600 transition-colors">{{ $soft->Nama_software }}</span>
+                        </label>
+                    @endforeach
+                </div>
+            </div>
+
             <!-- Deskripsi -->
             <div class="space-y-1.5">
                 <label class="text-xs font-bold text-slate-700">Deskripsi Produk / Portofolio</label>

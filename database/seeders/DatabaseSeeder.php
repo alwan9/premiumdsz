@@ -362,5 +362,8 @@ class DatabaseSeeder extends Seeder
 
         // 6. Portofolio
         $this->call(PortofolioSeeder::class);
+
+        // 7. Software & Tools Mapping
+        $this->call(SoftwareSeeder::class);
     }
 }

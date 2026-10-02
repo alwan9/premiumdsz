@@ -105,6 +105,11 @@
                         <span>Paket Layanan & Harga</span>
                     </a>
 
+                    <a href="{{ route('admin.software.index') }}" class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl {{ request()->routeIs('admin.software.*') ? 'bg-brand-gradient text-white shadow-sm' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }} transition-colors">
+                        <iconify-icon icon="lucide:monitor" class="w-4 text-sm text-center"></iconify-icon>
+                        <span>Software & Tools</span>
+                    </a>
+
                     <a href="{{ route('admin.testimoni.index') }}" class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl {{ request()->routeIs('admin.testimoni.*') ? 'bg-brand-gradient text-white shadow-sm' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }} transition-colors">
                         <iconify-icon icon="lucide:star" class="w-4 text-sm text-center"></iconify-icon>
                         <span>Ulasan & Testimoni</span>

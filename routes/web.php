@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\LayananController;
 use App\Http\Controllers\Admin\ProdukController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\SoftwareController;
 use App\Http\Controllers\Admin\TestimoniController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
@@ -44,6 +45,9 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
 
     // CRUD Layanan
     Route::resource('layanan', LayananController::class);
+
+    // CRUD Software
+    Route::resource('software', SoftwareController::class);
 
     // CRUD Testimoni
     Route::resource('testimoni', TestimoniController::class);

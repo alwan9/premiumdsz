@@ -33,20 +33,20 @@
                     </div>
 
                     <!-- Direct WhatsApp Card -->
-                    <div data-aos="zoom-in" data-aos-delay="100" class="p-6 rounded-2xl bg-emerald-50 border border-emerald-100 space-y-3">
+                    <div data-aos="zoom-in" data-aos-delay="100" class="p-6 rounded-2xl bg-brand-50 border border-brand-100 space-y-3">
                         <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-xl">
+                            <div class="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center text-xl shadow-md shadow-brand-700/20">
                                 <iconify-icon icon="simple-icons:whatsapp"></iconify-icon>
                             </div>
                             <div>
                                 <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider">WhatsApp Studio (Rekomendasi)</h3>
-                                <p class="text-sm font-extrabold text-emerald-700 font-mono">0851-6817-4679</p>
+                                <p class="text-sm font-extrabold text-brand-700 font-mono">0851-6817-4679</p>
                             </div>
                         </div>
                         <p class="text-xs text-slate-600 leading-relaxed">
                             Respon langsung dari desainer pada jam operasional kerja.
                         </p>
-                        <a href="https://api.whatsapp.com/send/?phone=6285168174679&text={{ urlencode('Halo Premium Design, saya ingin konsultasi kebutuhan desain.') }}" target="_blank" class="inline-flex items-center space-x-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-colors">
+                        <a href="https://api.whatsapp.com/send/?phone=6285168174679&text={{ urlencode('Halo Premium Design, saya ingin konsultasi kebutuhan desain.') }}" target="_blank" class="inline-flex items-center space-x-2 px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-xs font-bold transition-colors shadow-sm">
                             <span>Mulai Chat WhatsApp</span>
                             <iconify-icon icon="lucide:external-link" class="text-xs"></iconify-icon>
                         </a>
@@ -66,7 +66,7 @@
                             <iconify-icon icon="lucide:clock" class="text-brand-600 text-lg mt-0.5"></iconify-icon>
                             <div>
                                 <p class="font-bold text-slate-800">Jam Operasional</p>
-                                <p class="text-slate-500 mt-0.5">Senin - Sabtu: 09.00 - 18.00 WIB (Minggu Libur)</p>
+                                <p class="text-slate-500 mt-0.5 font-medium">Setiap Hari: 09.00 - 23.00 WIB</p>
                             </div>
                         </div>
                     </div>

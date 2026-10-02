@@ -166,6 +166,20 @@
             mask-repeat: no-repeat;
             -webkit-mask-repeat: no-repeat;
         }
+
+        /* Global Image & Asset Protection */
+        img, picture, svg, .protected-asset, [data-protected="image"] {
+            -webkit-user-drag: none !important;
+            -khtml-user-drag: none !important;
+            -moz-user-drag: none !important;
+            -o-user-drag: none !important;
+            user-drag: none !important;
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            -webkit-touch-callout: none !important;
+        }
     </style>
     <!-- AOS (Animate On Scroll) CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -183,7 +197,8 @@
                     Jasa Desain Grafis & Marketplace Resmi
                 </span>
                 <span class="hidden sm:inline text-white/40">|</span>
-                <span class="hidden sm:inline text-brand-100">Pengerjaan Tepat Waktu & File Master Lengkap Siap Cetak</span>
+                <span class="hidden sm:inline text-brand-100">Pengerjaan Tepat Waktu & File Master Lengkap Siap
+                    Cetak</span>
             </div>
             <div class="flex items-center space-x-4 text-brand-100">
                 <a href="https://www.instagram.com/premiumdsz/" target="_blank"
@@ -212,7 +227,7 @@
                 </a>
                 <a href="https://api.whatsapp.com/send/?phone=6285168174679&text={{ urlencode('Halo Premium Design, saya ingin konsultasi proyek desain.') }}"
                     target="_blank"
-                    class="hover:text-white transition-colors flex items-center space-x-1 font-semibold text-emerald-300">
+                    class="hover:text-white transition-colors flex items-center space-x-1 font-semibold text-brand-100">
                     <iconify-icon icon="simple-icons:whatsapp" class="text-sm"></iconify-icon>
                     <span class="hidden sm:inline">WhatsApp: 0851-6817-4679</span>
                 </a>
@@ -239,11 +254,15 @@
                         class="px-3.5 py-2 text-sm font-semibold {{ request()->routeIs('home') ? 'text-brand-600 font-bold' : 'text-slate-600 hover:text-brand-600' }} transition-colors">
                         Home
                     </a>
+                    <a href="{{ route('portofolio.index') }}"
+                        class="px-3.5 py-2 text-sm font-semibold flex items-center space-x-1.5 {{ request()->routeIs('portofolio.*') || request()->routeIs('portfolio.*') ? 'text-brand-600 font-bold' : 'text-slate-600 hover:text-brand-600' }} transition-colors">
+                        <span>Portofolio</span>
+
+                    </a>
                     <a href="{{ route('marketplace.index') }}"
                         class="px-3.5 py-2 text-sm font-semibold flex items-center space-x-1.5 {{ request()->routeIs('marketplace.*') || request()->routeIs('products.*') ? 'text-brand-600 font-bold' : 'text-slate-600 hover:text-brand-600' }} transition-colors">
                         <span>Jasa Desain</span>
-                        <span
-                            class="px-1.5 py-0.5 rounded-md bg-brand-100 text-brand-700 text-[10px] font-bold">Katalog</span>
+
                     </a>
                     <a href="{{ route('about') }}"
                         class="px-3.5 py-2 text-sm font-semibold {{ request()->routeIs('about') ? 'text-brand-600 font-bold' : 'text-slate-600 hover:text-brand-600' }} transition-colors">
@@ -287,6 +306,10 @@
             <a href="{{ route('home') }}"
                 class="block px-4 py-2.5 rounded-xl text-sm font-semibold {{ request()->routeIs('home') ? 'bg-brand-50 text-brand-600' : 'text-slate-700 hover:bg-slate-50' }}">
                 Home
+            </a>
+            <a href="{{ route('portofolio.index') }}"
+                class="block px-4 py-2.5 rounded-xl text-sm font-semibold {{ request()->routeIs('portofolio.*') || request()->routeIs('portfolio.*') ? 'bg-brand-50 text-brand-600 font-bold' : 'text-slate-700 hover:bg-slate-50' }}">
+                Galeri Portofolio
             </a>
             <a href="{{ route('marketplace.index') }}"
                 class="block px-4 py-2.5 rounded-xl text-sm font-semibold {{ request()->routeIs('marketplace.*') ? 'bg-brand-50 text-brand-600' : 'text-slate-700 hover:bg-slate-50' }}">
@@ -373,6 +396,10 @@
                     <h4 class="text-white font-semibold text-xs uppercase tracking-wider mb-4">Navigasi Utama</h4>
                     <ul class="space-y-2.5 text-xs text-slate-400">
                         <li><a href="{{ route('home') }}" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="{{ route('portofolio.index') }}"
+                                class="hover:text-white transition-colors flex items-center space-x-1.5"><span
+                                    class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span><span>Portofolio
+                                    Desain</span></a></li>
                         <li><a href="{{ route('marketplace.index') }}"
                                 class="hover:text-white transition-colors">Marketplace Desain</a></li>
                         <li><a href="{{ route('about') }}" class="hover:text-white transition-colors">About Us</a>
@@ -414,10 +441,14 @@
                 <!-- Layanan Cepat -->
                 <div>
                     <h4 class="text-white font-semibold text-xs uppercase tracking-wider mb-4">Pusat Layanan</h4>
-                    <p class="text-xs text-slate-400 mb-3">Siap mendiskusikan kebutuhan desain Anda?</p>
+                    <p class="text-xs text-slate-400 mb-2">Siap mendiskusikan kebutuhan desain Anda?</p>
+                    <p class="text-[11px] text-brand-200 mb-3 flex items-center space-x-1.5">
+                        <iconify-icon icon="lucide:clock" class="text-brand-300"></iconify-icon>
+                        <span>Buka Setiap Hari: 09.00 - 23.00 WIB</span>
+                    </p>
                     <a href="https://api.whatsapp.com/send/?phone=6285168174679&text={{ urlencode('Halo Premium Design, saya ingin konsultasi kebutuhan desain.') }}"
                         target="_blank"
-                        class="inline-flex items-center justify-center space-x-2 w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold transition-colors">
+                        class="inline-flex items-center justify-center space-x-2 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs font-semibold shadow-md shadow-brand-700/30 transition-colors">
                         <iconify-icon icon="simple-icons:whatsapp" class="text-sm"></iconify-icon>
                         <span>WhatsApp: 0851-6817-4679</span>
                     </a>
@@ -469,6 +500,196 @@
         window.addEventListener('load', function() {
             AOS.refresh();
         });
+    </script>
+
+    <!-- Auto Scroll to Top Floating Button -->
+    <button id="scrollToTopBtn" type="button" onclick="scrollToTop()"
+        aria-label="Kembali ke Atas"
+        class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-2xl bg-brand-600 hover:bg-brand-500 text-white shadow-xl shadow-brand-700/30 border border-white/20 flex items-center justify-center transition-all duration-300 opacity-0 pointer-events-none translate-y-6 hover:scale-110 active:scale-95 group"
+        title="Scroll ke Atas">
+        <iconify-icon icon="lucide:arrow-up" class="text-xl group-hover:-translate-y-0.5 transition-transform duration-200"></iconify-icon>
+    </button>
+
+    <!-- Scroll to Top Script -->
+    <script>
+        const scrollBtn = document.getElementById('scrollToTopBtn');
+
+        function toggleScrollBtn() {
+            if (!scrollBtn) return;
+            if (window.scrollY > 300) {
+                scrollBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-6');
+                scrollBtn.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+            } else {
+                scrollBtn.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+                scrollBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-6');
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        window.addEventListener('scroll', toggleScrollBtn, { passive: true });
+    </script>
+
+    <!-- Asset Protection DevTools Warning Modal -->
+    <div id="asset-protection-modal" class="fixed inset-0 z-[9999] hidden bg-slate-950/80 backdrop-blur-sm items-center justify-center p-4 transition-all duration-300 opacity-0 pointer-events-none">
+        <div class="relative max-w-md w-full bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200 text-center space-y-4 transform scale-95 transition-all duration-300">
+            <div class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-500 border border-amber-200 flex items-center justify-center mx-auto text-2xl shadow-inner">
+                <iconify-icon icon="lucide:shield-alert"></iconify-icon>
+            </div>
+            <div class="space-y-2">
+                <h3 class="text-base sm:text-lg font-bold font-heading text-slate-900">
+                    ⚠️ Peringatan Perlindungan Aset
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Aset dan gambar pada website ini dilindungi.<br>
+                    Anda tidak memiliki hak untuk menyalin, mengubah, mengambil, atau menggunakan aset tanpa izin pemilik.
+                </p>
+            </div>
+            <div class="pt-2">
+                <button type="button" onclick="closeAssetWarning()"
+                    class="w-full py-3 px-4 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold transition-all shadow-md shadow-brand-600/20 active:scale-95">
+                    Saya Mengerti & Lanjutkan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Protection Toast Notification -->
+    <div id="image-protection-toast" class="fixed bottom-20 left-1/2 -translate-x-1/2 z-[9998] hidden bg-slate-900/90 backdrop-blur-md text-white px-4 py-2.5 rounded-2xl text-xs font-semibold shadow-2xl border border-white/10 items-center space-x-2 transition-all duration-300 opacity-0 pointer-events-none">
+        <iconify-icon icon="lucide:shield-ban" class="text-amber-400 text-base"></iconify-icon>
+        <span>Aset gambar dilindungi hak cipta</span>
+    </div>
+
+    <!-- Global Image Asset Protection & DevTools Detection Script -->
+    <script>
+        // 1. Console Warning Message
+        console.log(
+            "%c⚠️ PERINGATAN\n%cSeluruh aset dan gambar pada website ini dilindungi.\nDilarang menyalin, mengambil, memodifikasi, atau menggunakan aset tanpa izin pemilik.",
+            "color: #ef4444; font-size: 18px; font-weight: 800; line-height: 1.5;",
+            "color: #334155; font-size: 13px; font-weight: 500; line-height: 1.6;"
+        );
+
+        // 2. Global Right-Click Prevention on All Images
+        document.addEventListener('contextmenu', function(e) {
+            const target = e.target;
+            const isImage = target.tagName === 'IMG' || 
+                            target.closest('img') || 
+                            target.classList.contains('protected-asset') || 
+                            target.closest('.protected-asset') ||
+                            (target.style.backgroundImage && target.style.backgroundImage !== 'none');
+
+            if (isImage) {
+                e.preventDefault();
+                showImageToast();
+                return false;
+            }
+        }, { capture: true });
+
+        // 3. Global Drag & Drop Prevention on All Images
+        document.addEventListener('dragstart', function(e) {
+            const target = e.target;
+            const isImage = target.tagName === 'IMG' || 
+                            target.closest('img') || 
+                            target.classList.contains('protected-asset') || 
+                            target.closest('.protected-asset');
+
+            if (isImage) {
+                e.preventDefault();
+                return false;
+            }
+        }, { capture: true });
+
+        // 4. Keyboard Shortcuts Prevention for Inspect & Save
+        document.addEventListener('keydown', function(e) {
+            // F12 or Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C / Ctrl+U
+            if (
+                e.key === 'F12' || 
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) ||
+                (e.ctrlKey && (e.key === 'u' || e.key === 'U'))
+            ) {
+                e.preventDefault();
+                showDevToolsWarning();
+                return false;
+            }
+            // Ctrl+S (Save page)
+            if (e.ctrlKey && (e.key === 's' || e.key === 'S')) {
+                e.preventDefault();
+                showImageToast();
+                return false;
+            }
+        });
+
+        // 5. Toast Notification
+        let toastTimeout = null;
+        function showImageToast() {
+            const toast = document.getElementById('image-protection-toast');
+            if (!toast) return;
+
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.remove('opacity-0', 'pointer-events-none');
+                toast.classList.add('opacity-100', 'flex');
+            }, 10);
+
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                    toast.classList.remove('flex');
+                }, 300);
+            }, 2200);
+        }
+
+        // 6. DevTools Detection & Warning Modal
+        let devToolsWarningShown = false;
+        function showDevToolsWarning() {
+            if (devToolsWarningShown) return;
+            devToolsWarningShown = true;
+
+            const modal = document.getElementById('asset-protection-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0', 'pointer-events-none');
+                    modal.classList.add('opacity-100', 'pointer-events-auto');
+                }, 10);
+            }
+        }
+
+        function closeAssetWarning() {
+            const modal = document.getElementById('asset-protection-modal');
+            if (modal) {
+                modal.classList.remove('opacity-100', 'pointer-events-auto');
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                }, 300);
+            }
+        }
+
+        // Check for DevTools window resizing indicator
+        function checkDevToolsOpen() {
+            const threshold = 160;
+            const isOpened = (window.outerWidth - window.innerWidth > threshold) || 
+                             (window.outerHeight - window.innerHeight > threshold);
+
+            if (isOpened && !devToolsWarningShown && !sessionStorage.getItem('dt_warned')) {
+                sessionStorage.setItem('dt_warned', '1');
+                showDevToolsWarning();
+            }
+        }
+
+        window.addEventListener('resize', checkDevToolsOpen, { passive: true });
+        setTimeout(checkDevToolsOpen, 1000);
     </script>
 
 </body>

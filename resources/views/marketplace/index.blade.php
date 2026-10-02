@@ -138,7 +138,7 @@
                         </p>
                         <a href="https://api.whatsapp.com/send/?phone=6285168174679&text={{ urlencode('Halo Premium Design, saya butuh penawaran custom project desain.') }}"
                             target="_blank"
-                            class="inline-flex items-center justify-center space-x-1.5 w-full py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white text-xs font-bold shadow-md transition-all">
+                            class="inline-flex items-center justify-center space-x-1.5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold shadow-md shadow-brand-700/30 transition-all">
                             <iconify-icon icon="simple-icons:whatsapp" class="text-sm"></iconify-icon>
                             <span>Chat Desainer</span>
                         </a>
@@ -229,7 +229,7 @@
                                             Detail
                                         </a>
                                         <a href="{{ $prod->whatsapp_link }}" target="_blank"
-                                            class="flex-1 inline-flex items-center justify-center space-x-1 py-1.5 text-center text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl shadow-sm transition-all">
+                                            class="flex-1 inline-flex items-center justify-center space-x-1 py-1.5 text-center text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-xl shadow-sm transition-all">
                                             <iconify-icon icon="simple-icons:whatsapp" class="text-xs"></iconify-icon>
                                             <span>Pesan</span>
                                         </a>

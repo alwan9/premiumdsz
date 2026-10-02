@@ -78,7 +78,7 @@
 
                         <!-- CTA Order via WhatsApp -->
                         <div class="mt-8 pt-4">
-                            <a href="https://api.whatsapp.com/send/?phone=6285168174679&text={{ urlencode('Halo Premium Design, saya ingin konsultasi dan memesan: ' . $layanan->Nama_layanan) }}" target="_blank" class="w-full inline-flex items-center justify-center space-x-2 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-md shadow-emerald-600/20 transition-all">
+                            <a href="https://api.whatsapp.com/send/?phone=6285168174679&text={{ urlencode('Halo Premium Design, saya ingin konsultasi dan memesan: ' . $layanan->Nama_layanan) }}" target="_blank" class="w-full inline-flex items-center justify-center space-x-2 py-3.5 rounded-2xl bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold shadow-md shadow-brand-700/20 transition-all">
                                 <iconify-icon icon="simple-icons:whatsapp" class="text-sm"></iconify-icon>
                                 <span>Pesan Paket via WhatsApp</span>
                             </a>
@@ -96,7 +96,7 @@
                     </p>
                 </div>
                 <a href="https://api.whatsapp.com/send/?phone=6285168174679&text={{ urlencode('Halo Premium Design, saya ingin mengajukan penawaran custom project desain.') }}" target="_blank" class="shrink-0 inline-flex items-center space-x-2 px-6 py-3.5 rounded-2xl bg-white text-brand-700 hover:bg-brand-50 text-xs font-bold uppercase tracking-wider transition-all shadow-lg">
-                    <iconify-icon icon="simple-icons:whatsapp" class="text-emerald-600 text-base"></iconify-icon>
+                    <iconify-icon icon="simple-icons:whatsapp" class="text-brand-600 text-base"></iconify-icon>
                     <span>Diskusikan Custom Project</span>
                 </a>
             </div>

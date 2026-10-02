@@ -31,16 +31,21 @@
                 <!-- Action Buttons -->
                 <div data-aos="fade-up" data-aos-delay="300"
                     class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
-                    <a href="{{ route('marketplace.index') }}"
+                    <a href="{{ route('portofolio.index') }}"
                         class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-7 py-3.5 rounded-xl bg-brand-gradient hover:brightness-110 text-white text-xs font-bold uppercase tracking-wider shadow-md shadow-brand-700/20 transition-all">
-                        <span>Buka Katalog Marketplace</span>
+                        <iconify-icon icon="lucide:image" class="text-sm"></iconify-icon>
+                        <span>Galeri Portofolio</span>
+                    </a>
+                    <a href="{{ route('marketplace.index') }}"
+                        class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-7 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold uppercase tracking-wider transition-all">
+                        <span>Katalog Jasa</span>
                         <iconify-icon icon="lucide:arrow-right" class="text-xs"></iconify-icon>
                     </a>
                     <a href="https://api.whatsapp.com/send/?phone=6285168174679&text={{ urlencode('Halo Premium Design, saya ingin konsultasi kebutuhan desain.') }}"
                         target="_blank"
                         class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-7 py-3.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold uppercase tracking-wider transition-all">
-                        <iconify-icon icon="simple-icons:whatsapp" class="text-emerald-600 text-base"></iconify-icon>
-                        <span>Konsultasi WhatsApp</span>
+                        <iconify-icon icon="simple-icons:whatsapp" class="text-brand-600 text-base"></iconify-icon>
+                        <span>WhatsApp</span>
                     </a>
                 </div>
 
@@ -256,7 +261,7 @@
                                 Detail
                             </a>
                             <a href="{{ $prod->whatsapp_link }}" target="_blank"
-                                class="flex-1 inline-flex items-center justify-center space-x-1.5 py-2 text-center text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl shadow-sm transition-all">
+                                class="flex-1 inline-flex items-center justify-center space-x-1.5 py-2 text-center text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-xl shadow-sm transition-all">
                                 <iconify-icon icon="simple-icons:whatsapp" class="text-sm"></iconify-icon>
                                 <span>Pesan</span>
                             </a>
@@ -512,7 +517,7 @@
             <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <a href="https://api.whatsapp.com/send/?phone=6285168174679&text={{ urlencode('Halo Premium Design, saya ingin konsultasi kebutuhan desain.') }}"
                     target="_blank"
-                    class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-8 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md">
+                    class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-8 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-brand-700/30">
                     <iconify-icon icon="simple-icons:whatsapp" class="text-base"></iconify-icon>
                     <span>Hubungi via WhatsApp</span>
                 </a>

@@ -358,5 +358,8 @@ class DatabaseSeeder extends Seeder
                 'Foto_url' => $rev['Foto_url'],
             ]);
         }
+
+        // 6. Portofolio
+        $this->call(PortofolioSeeder::class);
     }
 }

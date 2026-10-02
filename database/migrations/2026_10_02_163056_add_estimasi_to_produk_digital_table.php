@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('produk_digital', function (Blueprint $table) {
-            $table->string('Estimasi', 100)->default('1-2 Hari')->nullable()->after('Stok_produk');
-        });
+        if (! Schema::hasColumn('produk_digital', 'Estimasi')) {
+            Schema::table('produk_digital', function (Blueprint $table) {
+                $table->string('Estimasi', 100)->default('1-2 Hari')->nullable()->after('Stok_produk');
+            });
+        }
     }
 
     /**
@@ -21,8 +23,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('produk_digital', function (Blueprint $table) {
-            $table->dropColumn('Estimasi');
-        });
+        if (Schema::hasColumn('produk_digital', 'Estimasi')) {
+            Schema::table('produk_digital', function (Blueprint $table) {
+                $table->dropColumn('Estimasi');
+            });
+        }
     }
 };

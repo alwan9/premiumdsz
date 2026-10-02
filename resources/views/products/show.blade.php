@@ -160,18 +160,23 @@
                             class="w-full p-5 sm:p-6 flex items-center justify-between text-left hover:bg-slate-50/80 transition-colors focus:outline-none">
                             <div class="flex items-center space-x-2.5">
                                 <span class="w-2.5 h-2.5 rounded-full bg-brand-600"></span>
-                                <h3 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-800 font-heading">
+                                <h3
+                                    class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-800 font-heading">
                                     Deskripsi & Ruang Lingkup Karya
                                 </h3>
                             </div>
                             <div class="flex items-center space-x-2">
-                                <span id="descToggleStatus" class="text-[11px] font-semibold text-slate-400 hidden sm:inline-block">Tutup</span>
-                                <div class="w-8 h-8 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 transition-colors">
-                                    <iconify-icon id="descChevronIcon" icon="lucide:chevron-up" class="text-base transition-transform duration-300"></iconify-icon>
+                                <span id="descToggleStatus"
+                                    class="text-[11px] font-semibold text-slate-400 hidden sm:inline-block">Tutup</span>
+                                <div
+                                    class="w-8 h-8 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 transition-colors">
+                                    <iconify-icon id="descChevronIcon" icon="lucide:chevron-up"
+                                        class="text-base transition-transform duration-300"></iconify-icon>
                                 </div>
                             </div>
                         </button>
-                        <div id="productDescriptionContent" class="px-5 sm:px-6 pb-6 pt-1 border-t border-slate-100 transition-all duration-300">
+                        <div id="productDescriptionContent"
+                            class="px-5 sm:px-6 pb-6 pt-1 border-t border-slate-100 transition-all duration-300">
                             <p class="text-xs sm:text-sm text-slate-700 leading-relaxed whitespace-pre-line">
                                 {{ $produk->Des_produk ?? 'Paket pengerjaan desain grafis profesional siap disesuaikan dengan identitas dan kebutuhan usaha Anda.' }}
                             </p>
@@ -212,17 +217,24 @@
                                 <div class="flex items-center justify-between text-slate-700">
                                     <div class="flex items-center space-x-1.5 text-brand-700">
                                         <iconify-icon icon="lucide:monitor" class="text-xs"></iconify-icon>
-                                        <span class="text-xs font-bold uppercase tracking-wider">Software yang Digunakan</span>
+                                        <span class="text-xs font-bold uppercase tracking-wider">Software yang
+                                            Digunakan</span>
                                     </div>
-                                    <span class="text-[10px] font-semibold text-slate-400">{{ $produk->software->count() }} Tools</span>
+                                    <span
+                                        class="text-[10px] font-semibold text-slate-400">{{ $produk->software->count() }}
+                                        Tools</span>
                                 </div>
                                 <div class="flex flex-wrap gap-2 pt-0.5">
                                     @foreach ($produk->software as $soft)
-                                        <div class="inline-flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200/80 shadow-2xs hover:border-brand-400 hover:bg-brand-50/50 transition-colors" title="{{ $soft->Nama_software }}">
-                                            <div class="w-4 h-4 rounded bg-white p-0.5 flex items-center justify-center shrink-0 overflow-hidden">
-                                                <img src="{{ $soft->logo_full_url }}" alt="{{ $soft->Nama_software }}" class="max-w-full max-h-full object-contain">
+                                        <div class="inline-flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200/80 shadow-2xs hover:border-brand-400 hover:bg-brand-50/50 transition-colors"
+                                            title="{{ $soft->Nama_software }}">
+                                            <div
+                                                class="w-4 h-4 rounded bg-white p-0.5 flex items-center justify-center shrink-0 overflow-hidden">
+                                                <img src="{{ $soft->logo_full_url }}" alt="{{ $soft->Nama_software }}"
+                                                    class="max-w-full max-h-full object-contain">
                                             </div>
-                                            <span class="text-[11px] font-bold text-slate-800">{{ $soft->Nama_software }}</span>
+                                            <span
+                                                class="text-[11px] font-bold text-slate-800">{{ $soft->Nama_software }}</span>
                                         </div>
                                     @endforeach
                                 </div>
@@ -294,7 +306,8 @@
                     class="mt-10 bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 space-y-5 shadow-sm relative overflow-hidden">
                     <div class="flex items-center justify-between border-b border-slate-100 pb-4">
                         <div>
-                            <span class="text-[10px] font-bold uppercase tracking-wider text-brand-600">Rekomendasi Terkait</span>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-brand-600">Rekomendasi
+                                Terkait</span>
                             <h3 class="text-sm sm:text-base font-bold text-slate-900 font-heading">
                                 Karya & Jasa Serupa di Kategori {{ $produk->kategori->Nama_kategori ?? 'Ini' }}
                             </h3>
@@ -328,8 +341,7 @@
                                 <a href="{{ route('products.show', $rel->Id_produk) }}" class="block group">
                                     <!-- Thumbnail Image (Click leads to product/service) -->
                                     <div class="h-32 sm:h-36 bg-slate-900 relative overflow-hidden cursor-pointer">
-                                        <img src="{{ $rel->image_url }}" alt="{{ $rel->Nama_produk }}"
-                                            loading="lazy"
+                                        <img src="{{ $rel->image_url }}" alt="{{ $rel->Nama_produk }}" loading="lazy"
                                             class="w-full h-full object-cover transition-transform duration-200 ease-out group-hover:brightness-90">
                                         <div
                                             class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent">
@@ -370,7 +382,8 @@
                                 </a>
 
                                 <!-- Actions -->
-                                <div class="p-3 pt-0 flex items-center space-x-1.5 group-hover:bg-slate-50 transition-colors duration-200">
+                                <div
+                                    class="p-3 pt-0 flex items-center space-x-1.5 group-hover:bg-slate-50 transition-colors duration-200">
                                     <a href="{{ route('products.show', $rel->Id_produk) }}"
                                         class="flex-1 py-1.5 text-center text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors">
                                         Detail
@@ -559,6 +572,7 @@
 
         // Description Collapsible Accordion Logic (Default: Terbuka)
         let isDescriptionOpen = true;
+
         function toggleProductDescription() {
             isDescriptionOpen = !isDescriptionOpen;
             const content = document.getElementById('productDescriptionContent');
@@ -592,15 +606,27 @@
             if (direction === 'right') {
                 const maxScroll = track.scrollWidth - track.clientWidth;
                 if (track.scrollLeft >= maxScroll - 15) {
-                    track.scrollTo({ left: 0, behavior: 'smooth' });
+                    track.scrollTo({
+                        left: 0,
+                        behavior: 'smooth'
+                    });
                 } else {
-                    track.scrollBy({ left: scrollStep, behavior: 'smooth' });
+                    track.scrollBy({
+                        left: scrollStep,
+                        behavior: 'smooth'
+                    });
                 }
             } else {
                 if (track.scrollLeft <= 15) {
-                    track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+                    track.scrollTo({
+                        left: track.scrollWidth,
+                        behavior: 'smooth'
+                    });
                 } else {
-                    track.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+                    track.scrollBy({
+                        left: -scrollStep,
+                        behavior: 'smooth'
+                    });
                 }
             }
         }

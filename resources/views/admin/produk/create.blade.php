@@ -48,12 +48,17 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <!-- No WhatsApp -->
                 <div class="space-y-1.5">
                     <label class="text-xs font-bold text-slate-700">Nomor WhatsApp Direct Order</label>
                     <input type="text" name="No_wa" value="{{ old('No_wa', '085168174679') }}" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="085168174679">
-                    <p class="text-[10px] text-slate-400">Nomor WA admin yang akan menerima pesan instan pesanan</p>
+                </div>
+
+                <!-- Estimasi Pengerjaan -->
+                <div class="space-y-1.5">
+                    <label class="text-xs font-bold text-slate-700">Estimasi Pengerjaan</label>
+                    <input type="text" name="Estimasi" value="{{ old('Estimasi', '1-2 Hari') }}" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="Contoh: 1-2 Hari">
                 </div>
 
                 <!-- Stok -->

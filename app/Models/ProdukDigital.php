@@ -24,6 +24,7 @@ class ProdukDigital extends Model
         'Nama_produk',
         'No_wa',
         'Stok_produk',
+        'Estimasi',
         'Des_produk',
     ];
 

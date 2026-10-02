@@ -214,6 +214,13 @@
                                     class="font-semibold text-slate-800">{{ $produk->kategori->Nama_kategori ?? '-' }}</span>
                             </div>
                             <div class="flex items-center justify-between py-1.5 border-b border-slate-200/60">
+                                <span class="text-slate-400">Estimasi Pengerjaan</span>
+                                <span class="font-semibold text-brand-700 flex items-center space-x-1">
+                                    <iconify-icon icon="lucide:clock" class="text-xs text-brand-600"></iconify-icon>
+                                    <span>{{ $produk->Estimasi ?? '1-2 Hari' }}</span>
+                                </span>
+                            </div>
+                            <div class="flex items-center justify-between py-1.5 border-b border-slate-200/60">
                                 <span class="text-slate-400">Status Layanan</span>
                                 <span class="font-semibold text-emerald-600">Tersedia & Siap Order</span>
                             </div>

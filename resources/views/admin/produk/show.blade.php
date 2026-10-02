@@ -46,7 +46,15 @@
             </div>
 
             <!-- Detail Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 space-y-2">
+                    <span class="font-bold text-slate-400 uppercase tracking-wider">Estimasi Pengerjaan</span>
+                    <p class="text-sm font-bold text-brand-700 flex items-center space-x-1.5">
+                        <iconify-icon icon="lucide:clock" class="text-base text-brand-600"></iconify-icon>
+                        <span>{{ $produk->Estimasi ?? '1-2 Hari' }}</span>
+                    </p>
+                </div>
+
                 <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 space-y-2">
                     <span class="font-bold text-slate-400 uppercase tracking-wider">Nomor WhatsApp Direct Order</span>
                     <p class="text-sm font-bold text-emerald-700 font-mono">{{ $produk->No_wa ?? '085168174679' }}</p>

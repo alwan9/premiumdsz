@@ -57,6 +57,7 @@
                         <th class="py-3 px-4">Nama Produk</th>
                         <th class="py-3 px-4">Kategori</th>
                         <th class="py-3 px-4">Paket Layanan</th>
+                        <th class="py-3 px-4">Estimasi</th>
                         <th class="py-3 px-4">No. WhatsApp</th>
                         <th class="py-3 px-4">Stok Item</th>
                         <th class="py-3 px-4 text-right">Aksi</th>
@@ -80,6 +81,12 @@
                                 </span>
                             </td>
                             <td class="py-3 px-4 text-slate-600">{{ $prod->layanan->Nama_layanan ?? '-' }}</td>
+                            <td class="py-3 px-4">
+                                <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-slate-100 text-slate-700 inline-flex items-center space-x-1">
+                                    <iconify-icon icon="lucide:clock" class="text-xs text-brand-600"></iconify-icon>
+                                    <span>{{ $prod->Estimasi ?? '1-2 Hari' }}</span>
+                                </span>
+                            </td>
                             <td class="py-3 px-4 font-mono text-emerald-700 font-semibold">{{ $prod->No_wa ?? '085168174679' }}</td>
                             <td class="py-3 px-4">
                                 <span class="px-2 py-0.5 rounded-full font-bold {{ $prod->Stok_produk > 0 ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800' }}">

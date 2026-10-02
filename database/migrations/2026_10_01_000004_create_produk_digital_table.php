@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('Nama_produk');
             $table->string('No_wa', 30)->nullable();
             $table->integer('Stok_produk')->default(0);
+            $table->string('Estimasi', 100)->default('1-2 Hari')->nullable();
             $table->text('Des_produk')->nullable();
             $table->timestamp('Created_at')->nullable();
             $table->timestamp('Update_at')->nullable();

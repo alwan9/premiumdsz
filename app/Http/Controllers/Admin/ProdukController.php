@@ -48,6 +48,7 @@ class ProdukController extends Controller
             'Id_layanan' => 'nullable|exists:layanan,Id_Layanan',
             'No_wa' => 'nullable|string|max:30',
             'Stok_produk' => 'required|integer|min:0',
+            'Estimasi' => 'nullable|string|max:100',
             'Des_produk' => 'nullable|string',
         ]);
 
@@ -82,6 +83,7 @@ class ProdukController extends Controller
             'Id_layanan' => 'nullable|exists:layanan,Id_Layanan',
             'No_wa' => 'nullable|string|max:30',
             'Stok_produk' => 'required|integer|min:0',
+            'Estimasi' => 'nullable|string|max:100',
             'Des_produk' => 'nullable|string',
         ]);
 

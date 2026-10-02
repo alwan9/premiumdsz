@@ -278,6 +278,7 @@ class DatabaseSeeder extends Seeder
                 'Nama_produk' => $p['Nama_produk'],
                 'No_wa' => $p['No_wa'],
                 'Stok_produk' => $p['Stok_produk'],
+                'Estimasi' => $p['Estimasi'] ?? '1-2 Hari',
                 'Des_produk' => $p['Des_produk'],
             ]);
             $createdProducts[] = $created;

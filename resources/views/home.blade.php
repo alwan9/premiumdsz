@@ -213,14 +213,18 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 @foreach ($produks->take(8) as $prod)
                     <div data-aos="fade-up" data-aos-delay="{{ ($loop->index % 4) * 100 }}"
-                        class="relative rounded-2xl border border-slate-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl hover:scale-[1.15] hover:z-20 transition-transform duration-200 ease-out flex flex-col justify-between group">
+                        class="relative rounded-2xl border border-slate-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-200 ease-out flex flex-col justify-between group">
                         <div>
                             <!-- Product Thumbnail Image & Badge Overlay -->
-                            <div class="h-48 bg-slate-100 relative overflow-hidden">
+                            <div class="h-48 bg-slate-900 relative overflow-hidden">
                                 <img src="{{ $prod->image_url }}" alt="{{ $prod->Nama_produk }}"
-                                    class="w-full h-full object-cover">
+                                    class="w-full h-full object-cover transition-all duration-200 ease-out group-hover:brightness-90">
                                 <div
                                     class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/20">
+                                </div>
+                                <!-- Subtle darkening overlay on hover -->
+                                <div
+                                    class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-200 pointer-events-none">
                                 </div>
 
                                 <div class="absolute top-3 left-3 z-10">
@@ -241,7 +245,7 @@
                             </div>
 
                             <!-- Content Info -->
-                            <div class="p-5">
+                            <div class="p-5 group-hover:bg-slate-50 transition-colors duration-200">
                                 <h3
                                     class="text-xs sm:text-sm font-bold text-slate-900 line-clamp-1 group-hover:text-brand-600 transition-colors">
                                     <a href="{{ route('products.show', $prod->Id_produk) }}">
@@ -255,7 +259,7 @@
                         </div>
 
                         <!-- Card Actions -->
-                        <div class="p-5 pt-0 flex items-center space-x-2">
+                        <div class="p-5 pt-0 flex items-center space-x-2 group-hover:bg-slate-50 transition-colors duration-200">
                             <a href="{{ route('products.show', $prod->Id_produk) }}"
                                 class="flex-1 py-2 text-center text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors">
                                 Detail

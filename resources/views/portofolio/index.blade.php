@@ -131,21 +131,21 @@
             @endif
 
             @if ($portofolios->count() > 0)
-                <!-- Pure Image Grid (5 Columns, Original Natural Aspect Ratio, Frameless, Hover Scale & Zoom) -->
-                <div class="columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-3 sm:gap-4 [column-fill:_balance]">
+                <!-- Pure Image Grid (5 Columns, Original Natural Aspect Ratio, Frameless, Hover Scale 1.15 & Zoom) -->
+                <div class="columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-3 sm:gap-4 [column-fill:_balance] py-2">
                     @foreach ($portofolios as $index => $item)
                         <div data-aos="fade-up" data-aos-delay="{{ ($index % 5) * 35 }}"
-                            class="break-inside-avoid mb-3 sm:mb-4 group relative rounded-2xl overflow-hidden bg-slate-100 cursor-zoom-in shadow-xs hover:shadow-2xl transition-all duration-300"
+                            class="break-inside-avoid mb-3 sm:mb-4 group relative rounded-2xl overflow-hidden bg-slate-900 cursor-zoom-in shadow-xs hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-200 ease-out"
                             onclick="openPortfolioZoom({{ $index }})">
 
                             <img src="{{ $item->image_url }}" alt="{{ $item->nama }}" loading="lazy"
-                                class="w-full h-auto block group-hover:scale-108 transition-transform duration-500 ease-out">
+                                class="w-full h-auto block transition-all duration-200 ease-out group-hover:brightness-90">
 
-                            <!-- Subtle Hover Glow / Zoom Overlay Icon -->
+                            <!-- Subtle Darkening & Zoom Overlay Icon -->
                             <div
-                                class="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                                class="absolute inset-0 bg-slate-950/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center pointer-events-none">
                                 <div
-                                    class="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm text-slate-900 flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                    class="w-10 h-10 rounded-full bg-white/95 backdrop-blur-sm text-slate-900 flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-200">
                                     <iconify-icon icon="lucide:zoom-in" class="text-lg text-brand-600"></iconify-icon>
                                 </div>
                             </div>

@@ -290,19 +290,23 @@
 
                     <!-- Horizontal Scrolling Track (Auto scroll + 6 Columns) -->
                     <div id="relatedScrollTrack"
-                        class="flex space-x-3 sm:space-x-4 overflow-x-auto scroll-smooth scrollbar-none py-1 select-none"
+                        class="flex space-x-3 sm:space-x-4 overflow-x-auto scroll-smooth scrollbar-none py-3 px-2 select-none"
                         style="scrollbar-width: none; -ms-overflow-style: none;">
                         @foreach ($relatedProducts as $rel)
                             <div
-                                class="flex-none w-[160px] sm:w-[180px] md:w-[200px] lg:w-[calc((100%-5*16px)/6)] min-w-[150px] rounded-2xl border border-slate-200/80 bg-white overflow-hidden hover:border-brand-400 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                                class="flex-none w-[160px] sm:w-[180px] md:w-[200px] lg:w-[calc((100%-5*16px)/6)] min-w-[150px] rounded-2xl border border-slate-200/80 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-200 ease-out flex flex-col justify-between group">
                                 <a href="{{ route('products.show', $rel->Id_produk) }}" class="block group">
                                     <!-- Thumbnail Image (Click leads to product/service) -->
-                                    <div class="h-32 sm:h-36 bg-slate-100 relative overflow-hidden cursor-pointer">
+                                    <div class="h-32 sm:h-36 bg-slate-900 relative overflow-hidden cursor-pointer">
                                         <img src="{{ $rel->image_url }}" alt="{{ $rel->Nama_produk }}"
                                             loading="lazy"
-                                            class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500">
+                                            class="w-full h-full object-cover transition-transform duration-200 ease-out group-hover:brightness-90">
                                         <div
-                                            class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent">
+                                            class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent">
+                                        </div>
+                                        <!-- Darkening overlay on hover -->
+                                        <div
+                                            class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-200 pointer-events-none">
                                         </div>
 
                                         <div class="absolute top-2 left-2 z-10">
@@ -324,7 +328,7 @@
                                     </div>
 
                                     <!-- Content (Click text leads directly to product/service) -->
-                                    <div class="p-3 space-y-1">
+                                    <div class="p-3 space-y-1 group-hover:bg-slate-50 transition-colors duration-200">
                                         <h4
                                             class="text-xs sm:text-sm font-bold text-slate-900 line-clamp-1 group-hover:text-brand-600 transition-colors">
                                             {{ $rel->Nama_produk }}
@@ -336,7 +340,7 @@
                                 </a>
 
                                 <!-- Actions -->
-                                <div class="p-3 pt-0 flex items-center space-x-1.5">
+                                <div class="p-3 pt-0 flex items-center space-x-1.5 group-hover:bg-slate-50 transition-colors duration-200">
                                     <a href="{{ route('products.show', $rel->Id_produk) }}"
                                         class="flex-1 py-1.5 text-center text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors">
                                         Detail

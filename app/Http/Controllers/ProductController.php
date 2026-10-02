@@ -16,16 +16,16 @@ class ProductController extends Controller
             ->where('Id_kategori', $produk->Id_kategori)
             ->where('Id_produk', '!=', $produk->Id_produk)
             ->latest('Id_produk')
-            ->take(4)
+            ->take(12)
             ->get();
 
-        // If less than 4 items in same category, supplement with latest products
-        if ($relatedProducts->count() < 4) {
+        // If less than 12 items in same category, supplement with latest products
+        if ($relatedProducts->count() < 12) {
             $supplement = ProdukDigital::with('kategori')
                 ->where('Id_produk', '!=', $produk->Id_produk)
                 ->whereNotIn('Id_produk', $relatedProducts->pluck('Id_produk'))
                 ->latest('Id_produk')
-                ->take(4 - $relatedProducts->count())
+                ->take(12 - $relatedProducts->count())
                 ->get();
             $relatedProducts = $relatedProducts->merge($supplement);
         }

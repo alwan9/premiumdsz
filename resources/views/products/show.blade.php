@@ -153,43 +153,71 @@
                         @endif
                     </div>
 
-                    <!-- Description Box -->
+                    <!-- Description Box (Collapsible, Default: Terbuka) -->
                     <div data-aos="fade-up" data-aos-delay="100"
-                        class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 space-y-3">
-                        <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400">Deskripsi & Ruang Lingkup
-                            Karya</h3>
-                        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed whitespace-pre-line">
-                            {{ $produk->Des_produk ?? 'Paket pengerjaan desain grafis profesional siap disesuaikan dengan identitas dan kebutuhan usaha Anda.' }}
-                        </p>
+                        class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm transition-all">
+                        <button type="button" onclick="toggleProductDescription()"
+                            class="w-full p-5 sm:p-6 flex items-center justify-between text-left hover:bg-slate-50/80 transition-colors focus:outline-none">
+                            <div class="flex items-center space-x-2.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-brand-600"></span>
+                                <h3 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-800 font-heading">
+                                    Deskripsi & Ruang Lingkup Karya
+                                </h3>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span id="descToggleStatus" class="text-[11px] font-semibold text-slate-400 hidden sm:inline-block">Tutup</span>
+                                <div class="w-8 h-8 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 transition-colors">
+                                    <iconify-icon id="descChevronIcon" icon="lucide:chevron-up" class="text-base transition-transform duration-300"></iconify-icon>
+                                </div>
+                            </div>
+                        </button>
+                        <div id="productDescriptionContent" class="px-5 sm:px-6 pb-6 pt-1 border-t border-slate-100 transition-all duration-300">
+                            <p class="text-xs sm:text-sm text-slate-700 leading-relaxed whitespace-pre-line">
+                                {{ $produk->Des_produk ?? 'Paket pengerjaan desain grafis profesional siap disesuaikan dengan identitas dan kebutuhan usaha Anda.' }}
+                            </p>
+                        </div>
                     </div>
 
-                    <!-- Rekomendasi Produk Relevan (Tepat Setelah Deskripsi) -->
+                    <!-- Rekomendasi Produk Relevan (Horizontal Auto-Scroll 6-Kolom) -->
                     @if ($relatedProducts->isNotEmpty())
                         <div data-aos="fade-up" data-aos-delay="150"
-                            class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 space-y-5">
+                            class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 space-y-4 shadow-sm relative overflow-hidden">
                             <div class="flex items-center justify-between border-b border-slate-100 pb-3">
                                 <div>
-                                    <span class="text-[10px] font-bold uppercase tracking-wider text-brand-600">Rekomendasi
-                                        Terkait</span>
-                                    <h3 class="text-sm sm:text-base font-bold text-slate-900 font-heading">
+                                    <span class="text-[10px] font-bold uppercase tracking-wider text-brand-600">Rekomendasi Terkait</span>
+                                    <h3 class="text-xs sm:text-sm font-bold text-slate-900 font-heading">
                                         Karya & Produk Serupa di Kategori {{ $produk->kategori->Nama_kategori ?? 'Ini' }}
                                     </h3>
                                 </div>
-                                <a href="{{ route('marketplace.index', ['kategori' => $produk->Id_kategori]) }}"
-                                    class="text-xs font-bold text-brand-600 hover:text-brand-800 flex items-center space-x-1">
-                                    <span>Lihat Semua</span>
-                                    <iconify-icon icon="lucide:chevron-right" class="text-xs"></iconify-icon>
-                                </a>
+                                <div class="flex items-center space-x-2">
+                                    <button type="button" onclick="scrollRelated('left')"
+                                        class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-brand-600 hover:text-white text-slate-600 flex items-center justify-center transition-all text-sm shadow-sm"
+                                        title="Geser Kiri">
+                                        <iconify-icon icon="lucide:chevron-left"></iconify-icon>
+                                    </button>
+                                    <button type="button" onclick="scrollRelated('right')"
+                                        class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-brand-600 hover:text-white text-slate-600 flex items-center justify-center transition-all text-sm shadow-sm"
+                                        title="Geser Kanan">
+                                        <iconify-icon icon="lucide:chevron-right"></iconify-icon>
+                                    </button>
+                                    <a href="{{ route('marketplace.index', ['kategori' => $produk->Id_kategori]) }}"
+                                        class="text-xs font-bold text-brand-600 hover:text-brand-800 ml-1.5 flex items-center space-x-0.5">
+                                        <span>Lihat Semua</span>
+                                        <iconify-icon icon="lucide:chevron-right" class="text-xs"></iconify-icon>
+                                    </a>
+                                </div>
                             </div>
 
-                            <!-- Grid Kartu Rekomendasi Produk -->
-                            <div class="grid grid-cols-1 sm:grid-cols-6 gap-4">
+                            <!-- Horizontal Scrolling Track (Auto scroll + 6 Columns) -->
+                            <div id="relatedScrollTrack"
+                                class="flex space-x-3 sm:space-x-4 overflow-x-auto scroll-smooth scrollbar-none py-1 select-none"
+                                style="scrollbar-width: none; -ms-overflow-style: none;">
                                 @foreach ($relatedProducts as $rel)
                                     <div
-                                        class="relative rounded-2xl border border-slate-200/80 bg-white overflow-hidden hover:border-brand-400 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                                        class="flex-none w-[150px] sm:w-[170px] md:w-[185px] lg:w-[calc((100%-5*14px)/6)] min-w-[140px] rounded-2xl border border-slate-200/80 bg-white overflow-hidden hover:border-brand-400 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
                                         <div>
                                             <!-- Thumbnail Image -->
-                                            <div class="h-36 bg-slate-100 relative overflow-hidden cursor-pointer"
+                                            <div class="h-28 sm:h-32 bg-slate-100 relative overflow-hidden cursor-pointer"
                                                 onclick="window.location.href='{{ route('products.show', $rel->Id_produk) }}'">
                                                 <img src="{{ $rel->image_url }}" alt="{{ $rel->Nama_produk }}"
                                                     loading="lazy"
@@ -198,47 +226,47 @@
                                                     class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent">
                                                 </div>
 
-                                                <div class="absolute top-2.5 left-2.5 z-10">
+                                                <div class="absolute top-2 left-2 z-10">
                                                     <span
-                                                        class="px-2 py-0.5 rounded-lg bg-slate-900/80 backdrop-blur-md text-white text-[9px] font-bold uppercase tracking-wider border border-white/10">
+                                                        class="px-1.5 py-0.5 rounded-md bg-slate-900/80 backdrop-blur-md text-white text-[8px] font-bold uppercase tracking-wider border border-white/10">
                                                         {{ $rel->kategori->Nama_kategori ?? 'Desain' }}
                                                     </span>
                                                 </div>
 
                                                 <div
-                                                    class="absolute bottom-2 left-2.5 right-2.5 flex items-center justify-between text-[10px] text-white/90 z-10">
+                                                    class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-[9px] text-white/90 z-10">
                                                     <span
-                                                        class="text-amber-400 font-bold flex items-center space-x-1 drop-shadow">
+                                                        class="text-amber-400 font-bold flex items-center space-x-0.5 drop-shadow">
                                                         <iconify-icon icon="material-symbols:star-rounded"
-                                                            class="text-amber-400 text-sm"></iconify-icon>
+                                                            class="text-amber-400 text-xs"></iconify-icon>
                                                         <span>{{ number_format($rel->average_rating, 1) }}</span>
                                                     </span>
                                                 </div>
                                             </div>
 
                                             <!-- Content -->
-                                            <div class="p-3.5 space-y-1">
+                                            <div class="p-2.5 space-y-0.5">
                                                 <h4
-                                                    class="text-xs sm:text-sm font-bold text-slate-900 line-clamp-1 group-hover:text-brand-600 transition-colors">
+                                                    class="text-xs font-bold text-slate-900 line-clamp-1 group-hover:text-brand-600 transition-colors">
                                                     <a href="{{ route('products.show', $rel->Id_produk) }}">
                                                         {{ $rel->Nama_produk }}
                                                     </a>
                                                 </h4>
-                                                <p class="text-[11px] text-slate-500 mt-1 line-clamp-2 leading-relaxed">
+                                                <p class="text-[10px] text-slate-500 line-clamp-1 leading-relaxed">
                                                     {{ $rel->Des_produk }}
                                                 </p>
                                             </div>
                                         </div>
 
                                         <!-- Actions -->
-                                        <div class="p-3.5 pt-0 flex items-center space-x-2">
+                                        <div class="p-2.5 pt-0 flex items-center space-x-1.5">
                                             <a href="{{ route('products.show', $rel->Id_produk) }}"
-                                                class="flex-1 py-1.5 text-center text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors">
+                                                class="flex-1 py-1 text-center text-[10px] font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors">
                                                 Detail
                                             </a>
                                             <a href="{{ $rel->whatsapp_link }}" target="_blank"
-                                                class="flex-1 inline-flex items-center justify-center space-x-1 py-1.5 text-center text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-xl shadow-sm transition-all">
-                                                <iconify-icon icon="simple-icons:whatsapp" class="text-xs"></iconify-icon>
+                                                class="flex-1 inline-flex items-center justify-center space-x-0.5 py-1 text-center text-[10px] font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg shadow-sm transition-all">
+                                                <iconify-icon icon="simple-icons:whatsapp" class="text-[10px]"></iconify-icon>
                                                 <span>Pesan</span>
                                             </a>
                                         </div>
@@ -498,6 +526,70 @@
             }
         }
 
+        // Description Collapsible Accordion Logic (Default: Terbuka)
+        let isDescriptionOpen = true;
+        function toggleProductDescription() {
+            isDescriptionOpen = !isDescriptionOpen;
+            const content = document.getElementById('productDescriptionContent');
+            const chevron = document.getElementById('descChevronIcon');
+            const statusText = document.getElementById('descToggleStatus');
+
+            if (content) {
+                if (isDescriptionOpen) {
+                    content.classList.remove('hidden');
+                    if (chevron) chevron.style.transform = 'rotate(0deg)';
+                    if (statusText) statusText.textContent = 'Tutup';
+                } else {
+                    content.classList.add('hidden');
+                    if (chevron) chevron.style.transform = 'rotate(180deg)';
+                    if (statusText) statusText.textContent = 'Buka';
+                }
+            }
+        }
+
+        // Related Products Auto-Scroll & Scroll Controls (Right-to-Left / Left-to-Right)
+        let relatedAutoTimer = null;
+        const relatedInterval = 3500; // 3.5s interval
+
+        function scrollRelated(direction) {
+            const track = document.getElementById('relatedScrollTrack');
+            if (!track) return;
+            const firstCard = track.querySelector('div');
+            const cardWidth = firstCard ? firstCard.offsetWidth + 14 : 200;
+            const scrollStep = cardWidth * 2; // Geser 2 kolom per click/tick
+
+            if (direction === 'right') {
+                const maxScroll = track.scrollWidth - track.clientWidth;
+                if (track.scrollLeft >= maxScroll - 15) {
+                    track.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    track.scrollBy({ left: scrollStep, behavior: 'smooth' });
+                }
+            } else {
+                if (track.scrollLeft <= 15) {
+                    track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+                } else {
+                    track.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+                }
+            }
+        }
+
+        function startRelatedAutoScroll() {
+            stopRelatedAutoScroll();
+            const track = document.getElementById('relatedScrollTrack');
+            if (!track) return;
+            relatedAutoTimer = setInterval(() => {
+                scrollRelated('right');
+            }, relatedInterval);
+        }
+
+        function stopRelatedAutoScroll() {
+            if (relatedAutoTimer) {
+                clearInterval(relatedAutoTimer);
+                relatedAutoTimer = null;
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('productSliderContainer');
             if (container) {
@@ -511,6 +603,46 @@
                     setTimeout(startProductAutoSlide, 2500);
                 }, {
                     passive: true
+                });
+            }
+
+            const relatedTrack = document.getElementById('relatedScrollTrack');
+            if (relatedTrack) {
+                startRelatedAutoScroll();
+                relatedTrack.addEventListener('mouseenter', stopRelatedAutoScroll);
+                relatedTrack.addEventListener('mouseleave', startRelatedAutoScroll);
+                relatedTrack.addEventListener('touchstart', stopRelatedAutoScroll, {
+                    passive: true
+                });
+                relatedTrack.addEventListener('touchend', () => {
+                    setTimeout(startRelatedAutoScroll, 3000);
+                }, {
+                    passive: true
+                });
+
+                // Mouse drag scroll support
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+                relatedTrack.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    stopRelatedAutoScroll();
+                    startX = e.pageX - relatedTrack.offsetLeft;
+                    scrollLeft = relatedTrack.scrollLeft;
+                });
+                relatedTrack.addEventListener('mouseleave', () => {
+                    isDown = false;
+                });
+                relatedTrack.addEventListener('mouseup', () => {
+                    isDown = false;
+                    setTimeout(startRelatedAutoScroll, 2500);
+                });
+                relatedTrack.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - relatedTrack.offsetLeft;
+                    const walk = (x - startX) * 1.5;
+                    relatedTrack.scrollLeft = scrollLeft - walk;
                 });
             }
         });

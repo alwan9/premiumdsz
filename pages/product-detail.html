@@ -539,9 +539,13 @@
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/app-pages.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                initProductDetailPage('../');
+            });
+        } else {
             initProductDetailPage('../');
-        });
+        }
     </script>
 </body>
 

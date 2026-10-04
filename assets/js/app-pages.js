@@ -547,13 +547,12 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
                     <iconify-icon icon="lucide:rotate-ccw"></iconify-icon>
                     <span>Reset Filter & Pencarian</span>
                 </button>
-            ` : ''}
         </div>
     `;
 
     if (items.length === 0) {
         container.innerHTML = headerHtml + `
-            <div data-aos="fade-up" class="text-center py-16 bg-zinc-50 rounded-2xl border border-zinc-200 p-8">
+            <div class="text-center py-16 bg-zinc-50 rounded-2xl border border-zinc-200 p-8">
                 <div class="w-12 h-12 rounded-full bg-zinc-200 text-zinc-400 flex items-center justify-center text-xl mx-auto mb-3">
                     <iconify-icon icon="lucide:folder-open" class="text-2xl"></iconify-icon>
                 </div>
@@ -573,15 +572,14 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
         const detailUrl = baseAssetPrefix ? `product-detail.html?id=${prod.Id_produk}` : `pages/product-detail.html?id=${prod.Id_produk}`;
         const imgUrl = baseAssetPrefix + prod.image_url;
         gridHtml += `
-            <div data-aos="fade-up" data-aos-delay="${(index % 4) * 80}"
-                class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
+            <div class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                 <div>
                     <a href="${detailUrl}" class="block">
                         <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden cursor-pointer">
                             <img src="${imgUrl}" alt="${prod.Nama_produk}" loading="lazy"
-                                class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:brightness-90">
+                                class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:scale-105 group-hover:brightness-95">
                             <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-black/20"></div>
-                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 ease-in-out pointer-events-none"></div>
+                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 ease-in-out pointer-events-none"></div>
 
                             <div class="absolute top-2.5 left-2.5 z-10">
                                 <span class="px-2 py-0.5 rounded-lg bg-zinc-900/80 backdrop-blur-md text-white text-[9px] font-bold uppercase tracking-wider border border-white/10">
@@ -612,11 +610,11 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
 
                 <div class="p-4 pt-0 flex items-center space-x-2 group-hover:bg-zinc-50 transition-colors duration-300 ease-in-out">
                     <a href="${detailUrl}"
-                        class="flex-1 py-1.5 text-center text-xs font-bold text-zinc-700 bg-zinc-100 hover:bg-zinc-200 rounded-xl transition-colors">
+                        class="flex-1 py-2 text-center text-xs font-bold text-zinc-700 bg-zinc-100 hover:bg-zinc-200 rounded-xl transition-colors">
                         Detail
                     </a>
                     <a href="${prod.whatsapp_link}" target="_blank"
-                        class="flex-1 inline-flex items-center justify-center space-x-1 py-1.5 text-center text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-xl shadow-sm transition-all">
+                        class="flex-1 inline-flex items-center justify-center space-x-1 py-2 text-center text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-xl shadow-sm transition-all">
                         <iconify-icon icon="simple-icons:whatsapp" class="text-xs"></iconify-icon>
                         <span>Pesan</span>
                     </a>
@@ -628,6 +626,10 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
 
     container.innerHTML = headerHtml + gridHtml;
     initImageSkeletons();
+    if (window.AOS) {
+        try { AOS.refresh(); } catch(e) {}
+    }
+}
 }
 
 // ==========================================

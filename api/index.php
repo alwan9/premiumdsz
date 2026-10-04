@@ -26,13 +26,22 @@ foreach ($dirs as $dir) {
     }
 }
 
+// Set environment variables for serverless compatibility
+putenv('VIEW_COMPILED_PATH=/tmp/storage/framework/views');
+putenv('SESSION_DRIVER=cookie');
+putenv('CACHE_STORE=array');
+putenv('CACHE_DRIVER=array');
+putenv('LOG_CHANNEL=stderr');
+
 try {
     require __DIR__ . '/../public/index.php';
 } catch (\Throwable $e) {
     http_response_code(500);
-    echo "<h1>Server Error</h1>";
+    echo "<div style='font-family:sans-serif;padding:24px;max-width:800px;margin:auto;'>";
+    echo "<h2 style='color:#dc2626;'>Laravel Initialization Error</h2>";
     echo "<p><strong>Message:</strong> " . htmlspecialchars($e->getMessage()) . "</p>";
     echo "<p><strong>File:</strong> " . htmlspecialchars($e->getFile()) . " on line " . $e->getLine() . "</p>";
-    echo "<pre>" . htmlspecialchars($e->getTraceAsString()) . "</pre>";
+    echo "<pre style='background:#f4f4f5;padding:16px;border-radius:8px;font-size:12px;overflow-x:auto;'>" . htmlspecialchars($e->getTraceAsString()) . "</pre>";
+    echo "</div>";
 }
 

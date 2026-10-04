@@ -46,17 +46,17 @@
 @section('content')
 
     <!-- Breadcrumb Header -->
-    <div class="bg-slate-50 py-5 border-b border-slate-200/80 overflow-hidden">
+    <div class="bg-zinc-50 py-5 border-b border-zinc-200/80 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <nav data-aos="fade-down" class="flex text-xs space-x-2 text-slate-500">
+            <nav data-aos="fade-down" class="flex text-xs space-x-2 text-zinc-500">
                 <a href="{{ route('home') }}" class="hover:text-brand-600 transition-colors">Home</a>
-                <span class="text-slate-300">/</span>
+                <span class="text-zinc-300">/</span>
                 <a href="{{ route('marketplace.index') }}" class="hover:text-brand-600 transition-colors">Marketplace</a>
-                <span class="text-slate-300">/</span>
+                <span class="text-zinc-300">/</span>
                 <a href="{{ route('marketplace.index', ['kategori' => $produk->Id_kategori]) }}"
                     class="hover:text-brand-600 transition-colors">{{ $produk->kategori->Nama_kategori ?? 'Kategori' }}</a>
-                <span class="text-slate-300">/</span>
-                <span class="text-slate-900 font-semibold truncate max-w-xs">{{ $produk->Nama_produk }}</span>
+                <span class="text-zinc-300">/</span>
+                <span class="text-zinc-900 font-semibold truncate max-w-xs">{{ $produk->Nama_produk }}</span>
             </nav>
         </div>
     </div>
@@ -69,10 +69,10 @@
                 <div class="lg:col-span-7 space-y-6">
                     <!-- Preview Showcase Card with Crystal Clear Auto-Slider -->
                     <div data-aos="fade-up"
-                        class="rounded-2xl bg-white border border-slate-200 overflow-hidden shadow-sm p-3 sm:p-4 space-y-3"
+                        class="rounded-2xl bg-white border border-zinc-200 overflow-hidden shadow-sm p-3 sm:p-4 space-y-3"
                         id="productSliderContainer">
                         <!-- Main Image View (Jelas, Terang, Format 3:4 Portrait Cover) -->
-                        <div class="relative bg-slate-100 rounded-xl aspect-[3/4] max-h-[640px] w-full overflow-hidden flex items-center justify-center group cursor-pointer border border-slate-200/60"
+                        <div class="relative bg-zinc-100 rounded-xl aspect-[3/4] max-h-[640px] w-full overflow-hidden flex items-center justify-center group cursor-pointer border border-zinc-200/60"
                             onclick="openProductLightbox()" title="Klik untuk memperbesar tampilan desain">
                             <!-- Main Image Slider -->
                             <img id="main-product-image" src="{{ $produk->gallery_urls[0] ?? $produk->image_url }}"
@@ -89,7 +89,7 @@
 
                             <div class="absolute top-3 right-3 z-10 flex items-center space-x-2">
                                 <button type="button" onclick="event.stopPropagation(); openProductLightbox();"
-                                    class="p-2 rounded-lg bg-white/90 hover:bg-white text-slate-800 backdrop-blur-md border border-slate-200/80 transition-colors shadow-md"
+                                    class="p-2 rounded-lg bg-white/90 hover:bg-white text-zinc-800 backdrop-blur-md border border-zinc-200/80 transition-colors shadow-md"
                                     title="Perbesar Tampilan">
                                     <iconify-icon icon="lucide:maximize-2" class="text-sm"></iconify-icon>
                                 </button>
@@ -99,12 +99,12 @@
                             @if (count($produk->gallery_urls) > 1)
                                 <button type="button" id="sliderPrevBtn"
                                     onclick="event.stopPropagation(); prevProductSlide();"
-                                    class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/90 hover:bg-white text-slate-800 backdrop-blur-md border border-slate-200/80 flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 shadow-lg">
+                                    class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/90 hover:bg-white text-zinc-800 backdrop-blur-md border border-zinc-200/80 flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 shadow-lg">
                                     <iconify-icon icon="lucide:chevron-left" class="text-base"></iconify-icon>
                                 </button>
                                 <button type="button" id="sliderNextBtn"
                                     onclick="event.stopPropagation(); nextProductSlide();"
-                                    class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/90 hover:bg-white text-slate-800 backdrop-blur-md border border-slate-200/80 flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 shadow-lg">
+                                    class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/90 hover:bg-white text-zinc-800 backdrop-blur-md border border-zinc-200/80 flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 shadow-lg">
                                     <iconify-icon icon="lucide:chevron-right" class="text-base"></iconify-icon>
                                 </button>
                             @endif
@@ -113,11 +113,11 @@
                             <div
                                 class="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none z-10">
                                 <span id="slideCounterBadge"
-                                    class="text-[11px] font-bold text-slate-800 bg-white/90 px-2.5 py-1 rounded-lg backdrop-blur-sm border border-slate-200/80 shadow-sm">
+                                    class="text-[11px] font-bold text-zinc-800 bg-white/90 px-2.5 py-1 rounded-lg backdrop-blur-sm border border-zinc-200/80 shadow-sm">
                                     1 / {{ count($produk->gallery_urls) }}
                                 </span>
                                 <span
-                                    class="text-emerald-600 text-[11px] font-bold bg-white/90 px-2.5 py-1 rounded-lg backdrop-blur-sm border border-slate-200/80 shadow-sm flex items-center space-x-1">
+                                    class="text-emerald-600 text-[11px] font-bold bg-white/90 px-2.5 py-1 rounded-lg backdrop-blur-sm border border-zinc-200/80 shadow-sm flex items-center space-x-1">
                                     <iconify-icon icon="lucide:sparkles" class="text-xs"></iconify-icon>
                                     <span>High-Res Master</span>
                                 </span>
@@ -128,13 +128,13 @@
                         @if (count($produk->gallery_urls) > 1)
                             <div class="space-y-2 pt-1">
                                 <div class="flex items-center justify-between">
-                                    <p class="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-zinc-400">
                                         Pratinjau Variasi & Karya (Auto Slide)
                                     </p>
                                     <div class="flex items-center space-x-1" id="sliderDotsContainer">
                                         @foreach ($produk->gallery_urls as $idx => $gUrl)
                                             <button type="button" onclick="setProductSlide({{ $idx }})"
-                                                class="slider-dot w-2 h-2 rounded-full transition-all {{ $idx === 0 ? 'bg-brand-600 w-5' : 'bg-slate-300 hover:bg-slate-400' }}"
+                                                class="slider-dot w-2 h-2 rounded-full transition-all {{ $idx === 0 ? 'bg-brand-600 w-5' : 'bg-zinc-300 hover:bg-zinc-400' }}"
                                                 title="Slide {{ $idx + 1 }}"></button>
                                         @endforeach
                                     </div>
@@ -142,7 +142,7 @@
                                 <div class="grid grid-cols-4 sm:grid-cols-6 gap-2">
                                     @foreach ($produk->gallery_urls as $idx => $gUrl)
                                         <button type="button" onclick="setProductSlide({{ $idx }})"
-                                            class="gallery-thumb-btn aspect-square rounded-xl overflow-hidden border-2 transition-all group {{ $idx === 0 ? 'border-brand-600 ring-2 ring-brand-500/20 shadow-sm' : 'border-slate-200 hover:border-brand-400 opacity-70 hover:opacity-100' }}"
+                                            class="gallery-thumb-btn aspect-square rounded-xl overflow-hidden border-2 transition-all group {{ $idx === 0 ? 'border-brand-600 ring-2 ring-brand-500/20 shadow-sm' : 'border-zinc-200 hover:border-brand-400 opacity-70 hover:opacity-100' }}"
                                             data-index="{{ $idx }}">
                                             <img src="{{ $gUrl }}" alt="Preview {{ $idx + 1 }}"
                                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
@@ -155,29 +155,29 @@
 
                     <!-- Description Box (Collapsible, Default: Terbuka) -->
                     <div data-aos="fade-up" data-aos-delay="100"
-                        class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm transition-all">
+                        class="bg-white rounded-2xl border border-zinc-200 overflow-hidden shadow-sm transition-all">
                         <button type="button" onclick="toggleProductDescription()"
-                            class="w-full p-5 sm:p-6 flex items-center justify-between text-left hover:bg-slate-50/80 transition-colors focus:outline-none">
+                            class="w-full p-5 sm:p-6 flex items-center justify-between text-left hover:bg-zinc-50/80 transition-colors focus:outline-none">
                             <div class="flex items-center space-x-2.5">
                                 <span class="w-2.5 h-2.5 rounded-full bg-brand-600"></span>
                                 <h3
-                                    class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-800 font-heading">
+                                    class="text-xs sm:text-sm font-bold uppercase tracking-wider text-zinc-800 font-heading">
                                     Deskripsi & Ruang Lingkup Karya
                                 </h3>
                             </div>
                             <div class="flex items-center space-x-2">
                                 <span id="descToggleStatus"
-                                    class="text-[11px] font-semibold text-slate-400 hidden sm:inline-block">Tutup</span>
+                                    class="text-[11px] font-semibold text-zinc-400 hidden sm:inline-block">Tutup</span>
                                 <div
-                                    class="w-8 h-8 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 transition-colors">
+                                    class="w-8 h-8 rounded-xl bg-zinc-100 flex items-center justify-center text-zinc-600 hover:bg-zinc-200 transition-colors">
                                     <iconify-icon id="descChevronIcon" icon="lucide:chevron-up"
                                         class="text-base transition-transform duration-300"></iconify-icon>
                                 </div>
                             </div>
                         </button>
                         <div id="productDescriptionContent"
-                            class="px-5 sm:px-6 pb-6 pt-1 border-t border-slate-100 transition-all duration-300">
-                            <p class="text-xs sm:text-sm text-slate-700 leading-relaxed whitespace-pre-line">
+                            class="px-5 sm:px-6 pb-6 pt-1 border-t border-zinc-100 transition-all duration-300">
+                            <p class="text-xs sm:text-sm text-zinc-700 leading-relaxed whitespace-pre-line">
                                 {{ $produk->Des_produk ?? 'Paket pengerjaan desain grafis profesional siap disesuaikan dengan identitas dan kebutuhan usaha Anda.' }}
                             </p>
                         </div>
@@ -188,24 +188,24 @@
                 <!-- Right Column: Order Action & Service Package Box -->
                 <div data-aos="fade-left" data-aos-delay="100" class="lg:col-span-5 space-y-6">
                     <div
-                        class="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-200 space-y-6 sticky top-28 shadow-sm">
+                        class="bg-zinc-50 rounded-2xl p-6 sm:p-8 border border-zinc-200 space-y-6 sticky top-28 shadow-sm">
                         <div>
                             <span class="text-[10px] font-bold uppercase tracking-wider text-brand-600">Pemesanan
                                 Langsung</span>
-                            <h1 class="text-xl sm:text-2xl font-bold text-slate-900 mt-1 font-heading">
+                            <h1 class="text-xl sm:text-2xl font-bold text-zinc-900 mt-1 font-heading">
                                 {{ $produk->Nama_produk }}
                             </h1>
                         </div>
 
                         <!-- Linked Service Package Benefits from DB -->
                         @if ($produk->layanan)
-                            <div class="p-4 rounded-xl bg-white border border-slate-200 space-y-2.5">
+                            <div class="p-4 rounded-xl bg-white border border-zinc-200 space-y-2.5">
                                 <div class="flex items-center space-x-2 text-brand-700">
                                     <iconify-icon icon="lucide:gem" class="text-xs"></iconify-icon>
                                     <span class="text-xs font-bold uppercase tracking-wider">Paket:
                                         {{ $produk->layanan->Nama_layanan }}</span>
                                 </div>
-                                <div class="text-xs text-slate-700 whitespace-pre-line leading-relaxed">
+                                <div class="text-xs text-zinc-700 whitespace-pre-line leading-relaxed">
                                     {{ $produk->layanan->Benefit }}
                                 </div>
                             </div>
@@ -213,19 +213,19 @@
 
                         <!-- Bisa Pilih Software -->
                         @if ($produk->software->isNotEmpty())
-                            <div class="p-4 rounded-xl bg-white border border-slate-200 space-y-2.5">
-                                <div class="flex items-center justify-between text-slate-700">
+                            <div class="p-4 rounded-xl bg-white border border-zinc-200 space-y-2.5">
+                                <div class="flex items-center justify-between text-zinc-700">
                                     <div class="flex items-center space-x-1.5 text-brand-700">
                                         <iconify-icon icon="lucide:monitor" class="text-xs"></iconify-icon>
                                         <span class="text-xs font-bold uppercase tracking-wider">Bisa Pilih Software</span>
                                     </div>
                                     <span
-                                        class="text-[10px] font-semibold text-slate-400">{{ $produk->software->count() }}
+                                        class="text-[10px] font-semibold text-zinc-400">{{ $produk->software->count() }}
                                         Pilihan</span>
                                 </div>
                                 <div class="flex flex-wrap gap-2 pt-0.5">
                                     @foreach ($produk->software as $soft)
-                                        <div class="inline-flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200/80 shadow-2xs hover:border-brand-400 hover:bg-brand-50/50 transition-colors"
+                                        <div class="inline-flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-zinc-50 border border-zinc-200/80 shadow-2xs hover:border-brand-400 hover:bg-brand-50/50 transition-colors"
                                             title="{{ $soft->Nama_software }}">
                                             <div
                                                 class="w-4 h-4 rounded bg-white p-0.5 flex items-center justify-center shrink-0 overflow-hidden">
@@ -233,7 +233,7 @@
                                                     class="max-w-full max-h-full object-contain">
                                             </div>
                                             <span
-                                                class="text-[11px] font-bold text-slate-800">{{ $soft->Nama_software }}</span>
+                                                class="text-[11px] font-bold text-zinc-800">{{ $soft->Nama_software }}</span>
                                         </div>
                                     @endforeach
                                 </div>
@@ -241,26 +241,26 @@
                         @endif
 
                         <!-- Key Specifications -->
-                        <div class="space-y-2 text-xs text-slate-600">
-                            <div class="flex items-center justify-between py-1.5 border-b border-slate-200/60">
-                                <span class="text-slate-400">Kategori</span>
+                        <div class="space-y-2 text-xs text-zinc-600">
+                            <div class="flex items-center justify-between py-1.5 border-b border-zinc-200/60">
+                                <span class="text-zinc-400">Kategori</span>
                                 <span
-                                    class="font-semibold text-slate-800">{{ $produk->kategori->Nama_kategori ?? '-' }}</span>
+                                    class="font-semibold text-zinc-800">{{ $produk->kategori->Nama_kategori ?? '-' }}</span>
                             </div>
-                            <div class="flex items-center justify-between py-1.5 border-b border-slate-200/60">
-                                <span class="text-slate-400">Estimasi Pengerjaan</span>
+                            <div class="flex items-center justify-between py-1.5 border-b border-zinc-200/60">
+                                <span class="text-zinc-400">Estimasi Pengerjaan</span>
                                 <span class="font-semibold text-brand-700 flex items-center space-x-1">
                                     <iconify-icon icon="lucide:clock" class="text-xs text-brand-600"></iconify-icon>
                                     <span>{{ $produk->Estimasi ?? '1-2 Hari' }}</span>
                                 </span>
                             </div>
-                            <div class="flex items-center justify-between py-1.5 border-b border-slate-200/60">
-                                <span class="text-slate-400">Status Layanan</span>
+                            <div class="flex items-center justify-between py-1.5 border-b border-zinc-200/60">
+                                <span class="text-zinc-400">Status Layanan</span>
                                 <span class="font-semibold text-emerald-600">Tersedia & Siap Order</span>
                             </div>
                             <div class="flex items-center justify-between py-1.5">
-                                <span class="text-slate-400">Format Output</span>
-                                <span class="font-semibold text-slate-800">Disesuaikan / SVG / PDF / PNG 300 DPI</span>
+                                <span class="text-zinc-400">Format Output</span>
+                                <span class="font-semibold text-zinc-800">Disesuaikan / SVG / PDF / PNG 300 DPI</span>
                             </div>
                         </div>
 
@@ -287,7 +287,7 @@
                                 </a>
                             </div>
 
-                            <p class="text-[10px] text-center text-slate-400 mt-1.5">
+                            <p class="text-[10px] text-center text-zinc-400 mt-1.5">
                                 Pembayaran aman via WhatsApp, Shopee, atau Fiverr.
                             </p>
                         </div>
@@ -298,11 +298,11 @@
             <!-- Rekomendasi Jasa & Karya Relevan / Terbaru (Berada di Bawah Pemesanan Langsung - Full Width 6 Kolom) -->
             @if ($relevantProducts->isNotEmpty() || $latestProducts->isNotEmpty())
                 <div data-aos="fade-up" data-aos-delay="150"
-                    class="mt-10 bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 space-y-5 shadow-sm relative overflow-hidden">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                    class="mt-10 bg-white rounded-2xl p-6 sm:p-8 border border-zinc-200 space-y-5 shadow-sm relative overflow-hidden">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-zinc-100 pb-4">
                         <div>
                             <span class="text-[10px] font-bold uppercase tracking-wider text-brand-600">Rekomendasi Terkait</span>
-                            <h3 id="relatedSectionTitle" class="text-sm sm:text-base font-bold text-slate-900 font-heading">
+                            <h3 id="relatedSectionTitle" class="text-sm sm:text-base font-bold text-zinc-900 font-heading">
                                 Karya & Jasa Serupa di Kategori {{ $produk->kategori->Nama_kategori ?? 'Ini' }}
                             </h3>
                         </div>
@@ -310,14 +310,14 @@
                         <!-- 2 Kategori Filter Tabs & Controls -->
                         <div class="flex items-center flex-wrap gap-2.5">
                             <!-- Category Filter Tabs (Paling Relevan / Terbaru) -->
-                            <div class="inline-flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200/70">
+                            <div class="inline-flex items-center bg-zinc-100 p-1 rounded-xl border border-zinc-200/70">
                                 <button type="button" id="tabRelevantBtn" onclick="switchRelatedTab('relevant')"
                                     class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 bg-brand-600 text-white shadow-sm">
                                     <iconify-icon icon="lucide:sparkles" class="text-xs"></iconify-icon>
                                     <span>Paling Relevan</span>
                                 </button>
                                 <button type="button" id="tabLatestBtn" onclick="switchRelatedTab('latest')"
-                                    class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 text-slate-600 hover:text-slate-900">
+                                    class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 text-zinc-600 hover:text-zinc-900">
                                     <iconify-icon icon="lucide:clock" class="text-xs"></iconify-icon>
                                     <span>Terbaru</span>
                                 </button>
@@ -326,12 +326,12 @@
                             <!-- Carousel Nav Buttons -->
                             <div class="flex items-center space-x-1.5">
                                 <button type="button" onclick="scrollRelated('left')"
-                                    class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-slate-100 hover:bg-brand-600 hover:text-white text-slate-600 flex items-center justify-center transition-all text-sm shadow-sm"
+                                    class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-zinc-100 hover:bg-brand-600 hover:text-white text-zinc-600 flex items-center justify-center transition-all text-sm shadow-sm"
                                     title="Geser Kiri">
                                     <iconify-icon icon="lucide:chevron-left"></iconify-icon>
                                 </button>
                                 <button type="button" onclick="scrollRelated('right')"
-                                    class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-slate-100 hover:bg-brand-600 hover:text-white text-slate-600 flex items-center justify-center transition-all text-sm shadow-sm"
+                                    class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-zinc-100 hover:bg-brand-600 hover:text-white text-zinc-600 flex items-center justify-center transition-all text-sm shadow-sm"
                                     title="Geser Kanan">
                                     <iconify-icon icon="lucide:chevron-right"></iconify-icon>
                                 </button>
@@ -351,14 +351,14 @@
                         style="scrollbar-width: none; -ms-overflow-style: none;">
                         @forelse ($relevantProducts as $rel)
                             <div
-                                class="flex-none w-[160px] sm:w-[180px] md:w-[200px] lg:w-[calc((100%-5*16px)/6)] min-w-[150px] rounded-2xl border border-slate-200/80 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-200 ease-out flex flex-col justify-between group">
+                                class="flex-none w-[160px] sm:w-[180px] md:w-[200px] lg:w-[calc((100%-5*16px)/6)] min-w-[150px] rounded-2xl border border-zinc-200/80 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-200 ease-out flex flex-col justify-between group">
                                 <a href="{{ route('products.show', $rel->Id_produk) }}" class="block group">
-                                    <!-- Thumbnail Image (Click leads to product/service) -->
-                                    <div class="h-32 sm:h-36 bg-slate-900 relative overflow-hidden cursor-pointer">
+                                    <!-- Thumbnail Image (Aspect Ratio 1:1) -->
+                                    <div class="aspect-square bg-zinc-900 relative overflow-hidden cursor-pointer">
                                         <img src="{{ $rel->image_url }}" alt="{{ $rel->Nama_produk }}" loading="lazy"
                                             class="w-full h-full object-cover transition-transform duration-200 ease-out group-hover:brightness-90">
                                         <div
-                                            class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent">
+                                            class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent">
                                         </div>
                                         <!-- Darkening overlay on hover -->
                                         <div
@@ -367,7 +367,7 @@
 
                                         <div class="absolute top-2 left-2 z-10">
                                             <span
-                                                class="px-2 py-0.5 rounded-md bg-slate-900/80 backdrop-blur-md text-white text-[9px] font-bold uppercase tracking-wider border border-white/10">
+                                                class="px-2 py-0.5 rounded-md bg-zinc-900/80 backdrop-blur-md text-white text-[9px] font-bold uppercase tracking-wider border border-white/10">
                                                 {{ $rel->kategori->Nama_kategori ?? 'Desain' }}
                                             </span>
                                         </div>
@@ -384,12 +384,12 @@
                                     </div>
 
                                     <!-- Content (Click text leads directly to product/service) -->
-                                    <div class="p-3 space-y-1 group-hover:bg-slate-50 transition-colors duration-200">
+                                    <div class="p-3 space-y-1 group-hover:bg-zinc-50 transition-colors duration-200">
                                         <h4
-                                            class="text-xs sm:text-sm font-bold text-slate-900 line-clamp-1 group-hover:text-brand-600 transition-colors">
+                                            class="text-xs sm:text-sm font-bold text-zinc-900 line-clamp-1 group-hover:text-brand-600 transition-colors">
                                             {{ $rel->Nama_produk }}
                                         </h4>
-                                        <p class="text-[11px] text-slate-500 line-clamp-2 leading-relaxed">
+                                        <p class="text-[11px] text-zinc-500 line-clamp-2 leading-relaxed">
                                             {{ $rel->Des_produk }}
                                         </p>
                                     </div>
@@ -397,9 +397,9 @@
 
                                 <!-- Actions -->
                                 <div
-                                    class="p-3 pt-0 flex items-center space-x-1.5 group-hover:bg-slate-50 transition-colors duration-200">
+                                    class="p-3 pt-0 flex items-center space-x-1.5 group-hover:bg-zinc-50 transition-colors duration-200">
                                     <a href="{{ route('products.show', $rel->Id_produk) }}"
-                                        class="flex-1 py-1.5 text-center text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors">
+                                        class="flex-1 py-1.5 text-center text-xs font-bold text-zinc-700 bg-zinc-100 hover:bg-zinc-200 rounded-xl transition-colors">
                                         Detail
                                     </a>
                                     <a href="{{ $rel->whatsapp_link }}" target="_blank"
@@ -410,7 +410,7 @@
                                 </div>
                             </div>
                         @empty
-                            <div class="w-full py-8 text-center text-slate-400 text-xs">
+                            <div class="w-full py-8 text-center text-zinc-400 text-xs">
                                 Belum ada karya serupa lainnya di kategori ini.
                             </div>
                         @endforelse
@@ -422,14 +422,14 @@
                         style="scrollbar-width: none; -ms-overflow-style: none;">
                         @forelse ($latestProducts as $rel)
                             <div
-                                class="flex-none w-[160px] sm:w-[180px] md:w-[200px] lg:w-[calc((100%-5*16px)/6)] min-w-[150px] rounded-2xl border border-slate-200/80 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-200 ease-out flex flex-col justify-between group">
+                                class="flex-none w-[160px] sm:w-[180px] md:w-[200px] lg:w-[calc((100%-5*16px)/6)] min-w-[150px] rounded-2xl border border-zinc-200/80 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-200 ease-out flex flex-col justify-between group">
                                 <a href="{{ route('products.show', $rel->Id_produk) }}" class="block group">
                                     <!-- Thumbnail Image (Click leads to product/service) -->
-                                    <div class="h-32 sm:h-36 bg-slate-900 relative overflow-hidden cursor-pointer">
+                                    <div class="h-32 sm:h-36 bg-zinc-900 relative overflow-hidden cursor-pointer">
                                         <img src="{{ $rel->image_url }}" alt="{{ $rel->Nama_produk }}" loading="lazy"
                                             class="w-full h-full object-cover transition-transform duration-200 ease-out group-hover:brightness-90">
                                         <div
-                                            class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent">
+                                            class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent">
                                         </div>
                                         <!-- Darkening overlay on hover -->
                                         <div
@@ -438,7 +438,7 @@
 
                                         <div class="absolute top-2 left-2 z-10">
                                             <span
-                                                class="px-2 py-0.5 rounded-md bg-slate-900/80 backdrop-blur-md text-white text-[9px] font-bold uppercase tracking-wider border border-white/10">
+                                                class="px-2 py-0.5 rounded-md bg-zinc-900/80 backdrop-blur-md text-white text-[9px] font-bold uppercase tracking-wider border border-white/10">
                                                 {{ $rel->kategori->Nama_kategori ?? 'Desain' }}
                                             </span>
                                         </div>
@@ -455,12 +455,12 @@
                                     </div>
 
                                     <!-- Content (Click text leads directly to product/service) -->
-                                    <div class="p-3 space-y-1 group-hover:bg-slate-50 transition-colors duration-200">
+                                    <div class="p-3 space-y-1 group-hover:bg-zinc-50 transition-colors duration-200">
                                         <h4
-                                            class="text-xs sm:text-sm font-bold text-slate-900 line-clamp-1 group-hover:text-brand-600 transition-colors">
+                                            class="text-xs sm:text-sm font-bold text-zinc-900 line-clamp-1 group-hover:text-brand-600 transition-colors">
                                             {{ $rel->Nama_produk }}
                                         </h4>
-                                        <p class="text-[11px] text-slate-500 line-clamp-2 leading-relaxed">
+                                        <p class="text-[11px] text-zinc-500 line-clamp-2 leading-relaxed">
                                             {{ $rel->Des_produk }}
                                         </p>
                                     </div>
@@ -468,9 +468,9 @@
 
                                 <!-- Actions -->
                                 <div
-                                    class="p-3 pt-0 flex items-center space-x-1.5 group-hover:bg-slate-50 transition-colors duration-200">
+                                    class="p-3 pt-0 flex items-center space-x-1.5 group-hover:bg-zinc-50 transition-colors duration-200">
                                     <a href="{{ route('products.show', $rel->Id_produk) }}"
-                                        class="flex-1 py-1.5 text-center text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors">
+                                        class="flex-1 py-1.5 text-center text-xs font-bold text-zinc-700 bg-zinc-100 hover:bg-zinc-200 rounded-xl transition-colors">
                                         Detail
                                     </a>
                                     <a href="{{ $rel->whatsapp_link }}" target="_blank"
@@ -481,7 +481,7 @@
                                 </div>
                             </div>
                         @empty
-                            <div class="w-full py-8 text-center text-slate-400 text-xs">
+                            <div class="w-full py-8 text-center text-zinc-400 text-xs">
                                 Belum ada karya terbaru lainnya.
                             </div>
                         @endforelse
@@ -576,7 +576,7 @@
                         'gallery-thumb-btn aspect-square rounded-xl overflow-hidden border-2 border-brand-600 ring-2 ring-brand-500/20 shadow-sm transition-all group opacity-100';
                 } else {
                     btn.className =
-                        'gallery-thumb-btn aspect-square rounded-xl overflow-hidden border-2 border-slate-200 hover:border-brand-400 opacity-70 hover:opacity-100 transition-all group';
+                        'gallery-thumb-btn aspect-square rounded-xl overflow-hidden border-2 border-zinc-200 hover:border-brand-400 opacity-70 hover:opacity-100 transition-all group';
                 }
             });
 
@@ -586,7 +586,7 @@
                     dot.className = 'slider-dot w-5 h-2 rounded-full bg-brand-600 transition-all';
                 } else {
                     dot.className =
-                        'slider-dot w-2 h-2 rounded-full bg-slate-300 hover:bg-slate-400 transition-all';
+                        'slider-dot w-2 h-2 rounded-full bg-zinc-300 hover:bg-zinc-400 transition-all';
                 }
             });
 
@@ -704,7 +704,7 @@
                     btnRelevant.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 bg-brand-600 text-white shadow-sm';
                 }
                 if (btnLatest) {
-                    btnLatest.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 text-slate-600 hover:text-slate-900';
+                    btnLatest.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 text-zinc-600 hover:text-zinc-900';
                 }
                 if (title) {
                     title.textContent = `Karya & Jasa Serupa di Kategori ${categoryName}`;
@@ -717,7 +717,7 @@
                 if (latestTrack) latestTrack.classList.remove('hidden');
 
                 if (btnRelevant) {
-                    btnRelevant.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 text-slate-600 hover:text-slate-900';
+                    btnRelevant.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 text-zinc-600 hover:text-zinc-900';
                 }
                 if (btnLatest) {
                     btnLatest.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 bg-brand-600 text-white shadow-sm';

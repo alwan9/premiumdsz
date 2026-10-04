@@ -15,13 +15,13 @@ class ProductController extends Controller
         $relevantProducts = ProdukDigital::with(['kategori', 'software'])
             ->where('Id_kategori', $produk->Id_kategori)
             ->where('Id_produk', '!=', $produk->Id_produk)
-            ->latest('Id_produk')
+            ->inRandomOrder()
             ->take(12)
             ->get();
 
         $latestProducts = ProdukDigital::with(['kategori', 'software'])
             ->where('Id_produk', '!=', $produk->Id_produk)
-            ->latest('Id_produk')
+            ->inRandomOrder()
             ->take(12)
             ->get();
 

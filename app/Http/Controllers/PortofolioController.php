@@ -63,8 +63,12 @@ class PortofolioController extends Controller
 
         $totalCount = Portofolio::count();
 
-        // Paginate results (100 items per page)
-        $portofolios = $query->latest('id')->paginate(100)->withQueryString();
+        // Paginate results - acak saat refresh jika tidak sedang mencari
+        if (! empty($search) || (! empty($selectedKategori) && $selectedKategori !== 'all')) {
+            $portofolios = $query->latest('id')->paginate(100)->withQueryString();
+        } else {
+            $portofolios = $query->inRandomOrder()->paginate(100)->withQueryString();
+        }
 
         if ($request->ajax()) {
             $html = view('portofolio._grid', compact(

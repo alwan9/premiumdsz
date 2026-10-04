@@ -1,8 +1,8 @@
 <!-- Search / Filter State Header -->
 @if ($search || ($selectedKategori && $selectedKategori !== 'all'))
     <div
-        class="mb-8 p-4 rounded-2xl bg-slate-50 border border-slate-200/80 shadow-xs flex flex-wrap items-center justify-between gap-3">
-        <div class="flex items-center space-x-2 text-xs sm:text-sm text-slate-700">
+        class="mb-8 p-4 rounded-2xl bg-zinc-50 border border-zinc-200/80 shadow-xs flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center space-x-2 text-xs sm:text-sm text-zinc-700">
             <iconify-icon icon="lucide:filter" class="text-brand-600 text-lg"></iconify-icon>
             <span>
                 Hasil filter:
@@ -10,10 +10,10 @@
                     <strong class="text-brand-700">Kategori "{{ $selectedKategori }}"</strong>
                 @endif
                 @if ($search)
-                    <span class="text-slate-400">|</span> Kata kunci: <strong
+                    <span class="text-zinc-400">|</span> Kata kunci: <strong
                         class="text-brand-700">"{{ $search }}"</strong>
                 @endif
-                <span class="text-slate-500">({{ $portofolios->total() }} hasil ditemukan)</span>
+                <span class="text-zinc-500">({{ $portofolios->total() }} hasil ditemukan)</span>
             </span>
         </div>
         <button type="button" onclick="resetPortfolioFilters()"
@@ -29,7 +29,7 @@
     <div class="columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-3 sm:gap-4 [column-fill:_balance] py-2">
         @foreach ($portofolios as $index => $item)
             <div data-aos="fade-up" data-aos-delay="{{ ($index % 5) * 35 }}"
-                class="break-inside-avoid mb-3 sm:mb-4 group relative rounded-2xl overflow-hidden bg-slate-900 cursor-zoom-in shadow-xs hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-200 ease-out"
+                class="break-inside-avoid mb-3 sm:mb-4 group relative rounded-2xl overflow-hidden bg-zinc-900 cursor-zoom-in shadow-xs hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-200 ease-out"
                 onclick="openPortfolioZoom({{ $index }})">
 
                 <img src="{{ $item->image_url }}" alt="{{ $item->nama }}" loading="lazy"
@@ -37,9 +37,9 @@
 
                 <!-- Subtle Darkening & Zoom Overlay Icon -->
                 <div
-                    class="absolute inset-0 bg-slate-950/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center pointer-events-none">
+                    class="absolute inset-0 bg-zinc-950/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center pointer-events-none">
                     <div
-                        class="w-10 h-10 rounded-full bg-white/95 backdrop-blur-sm text-slate-900 flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-200">
+                        class="w-10 h-10 rounded-full bg-white/95 backdrop-blur-sm text-zinc-900 flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-200">
                         <iconify-icon icon="lucide:zoom-in" class="text-lg text-brand-600"></iconify-icon>
                     </div>
                 </div>
@@ -59,8 +59,8 @@
             <iconify-icon icon="lucide:image-off"></iconify-icon>
         </div>
         <div class="space-y-1">
-            <h3 class="text-base font-bold text-slate-900">Tidak ada karya yang cocok</h3>
-            <p class="text-xs text-slate-500">
+            <h3 class="text-base font-bold text-zinc-900">Tidak ada karya yang cocok</h3>
+            <p class="text-xs text-zinc-500">
                 Coba ubah kata kunci pencarian atau pilih kategori lain.
             </p>
         </div>

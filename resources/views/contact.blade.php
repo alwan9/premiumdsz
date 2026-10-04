@@ -6,12 +6,12 @@
 @section('content')
 
     <!-- Header Banner -->
-    <div class="bg-gradient-to-b from-brand-50/60 via-slate-50/40 to-white py-14 sm:py-16 border-b border-slate-100 overflow-hidden">
+    <div class="bg-gradient-to-b from-brand-50/60 via-zinc-50/40 to-white py-14 sm:py-16 border-b border-zinc-100 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div data-aos="fade-down" class="max-w-2xl space-y-2">
                 <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Kontak & Konsultasi</span>
-                <h1 class="text-2xl sm:text-4xl font-extrabold font-heading text-slate-900">Hubungi Premium Design</h1>
-                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                <h1 class="text-2xl sm:text-4xl font-extrabold font-heading text-zinc-900">Hubungi Premium Design</h1>
+                <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed">
                     Kami siap melayani pertanyaan, konsultasi brief desain, dan penawaran kerja sama proyek.
                 </p>
             </div>
@@ -26,8 +26,8 @@
                 <div data-aos="fade-right" class="lg:col-span-5 space-y-6">
                     <div>
                         <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Saluran Resmi</span>
-                        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mt-1 font-heading">Informasi Kontak Studio</h2>
-                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                        <h2 class="text-xl sm:text-2xl font-bold text-zinc-900 mt-1 font-heading">Informasi Kontak Studio</h2>
+                        <p class="text-xs text-zinc-500 mt-1 leading-relaxed">
                             Pilih saluran komunikasi yang paling nyaman bagi Anda. Kami menyarankan WhatsApp untuk respon tercepat.
                         </p>
                     </div>
@@ -39,11 +39,11 @@
                                 <iconify-icon icon="simple-icons:whatsapp"></iconify-icon>
                             </div>
                             <div>
-                                <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider">WhatsApp Studio (Rekomendasi)</h3>
+                                <h3 class="text-xs font-bold text-zinc-900 uppercase tracking-wider">WhatsApp Studio (Rekomendasi)</h3>
                                 <p class="text-sm font-extrabold text-brand-700 font-mono">0851-6817-4679</p>
                             </div>
                         </div>
-                        <p class="text-xs text-slate-600 leading-relaxed">
+                        <p class="text-xs text-zinc-600 leading-relaxed">
                             Respon langsung dari desainer pada jam operasional kerja.
                         </p>
                         <a href="https://api.whatsapp.com/send/?phone=6285168174679&text={{ urlencode('Halo Premium Design, saya ingin konsultasi kebutuhan desain.') }}" target="_blank" class="inline-flex items-center space-x-2 px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-xs font-bold transition-colors shadow-sm">
@@ -53,20 +53,20 @@
                     </div>
 
                     <!-- Email & Operational Hours -->
-                    <div data-aos="fade-up" data-aos-delay="150" class="space-y-4 text-xs text-slate-600">
-                        <div class="p-4 rounded-xl border border-slate-200 flex items-start space-x-3">
+                    <div data-aos="fade-up" data-aos-delay="150" class="space-y-4 text-xs text-zinc-600">
+                        <div class="p-4 rounded-xl border border-zinc-200 flex items-start space-x-3">
                             <iconify-icon icon="lucide:mail" class="text-brand-600 text-lg mt-0.5"></iconify-icon>
                             <div>
-                                <p class="font-bold text-slate-800">Email Resmi</p>
+                                <p class="font-bold text-zinc-800">Email Resmi</p>
                                 <a href="mailto:designzpremium@gmail.com" class="text-brand-600 font-semibold hover:underline mt-0.5 block">designzpremium@gmail.com</a>
                             </div>
                         </div>
 
-                        <div class="p-4 rounded-xl border border-slate-200 flex items-start space-x-3">
+                        <div class="p-4 rounded-xl border border-zinc-200 flex items-start space-x-3">
                             <iconify-icon icon="lucide:clock" class="text-brand-600 text-lg mt-0.5"></iconify-icon>
                             <div>
-                                <p class="font-bold text-slate-800">Jam Operasional</p>
-                                <p class="text-slate-500 mt-0.5 font-medium">Setiap Hari: 09.00 - 23.00 WIB</p>
+                                <p class="font-bold text-zinc-800">Jam Operasional</p>
+                                <p class="text-zinc-500 mt-0.5 font-medium">Setiap Hari: 09.00 - 23.00 WIB</p>
                             </div>
                         </div>
                     </div>
@@ -101,11 +101,11 @@
 
                 <!-- Right: Quick Project Inquiry Form -->
                 <div data-aos="fade-left" data-aos-delay="100" class="lg:col-span-7">
-                    <div class="p-8 sm:p-10 rounded-2xl bg-slate-50 border border-slate-200 space-y-6 shadow-sm">
+                    <div class="p-8 sm:p-10 rounded-2xl bg-zinc-50 border border-zinc-200 space-y-6 shadow-sm">
                         <div>
                             <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Formulir Pesan</span>
-                            <h3 class="text-xl font-bold text-slate-900 mt-1 font-heading">Kirimkan Rencana Proyek Desain</h3>
-                            <p class="text-xs text-slate-500 mt-1">
+                            <h3 class="text-xl font-bold text-zinc-900 mt-1 font-heading">Kirimkan Rencana Proyek Desain</h3>
+                            <p class="text-xs text-zinc-500 mt-1">
                                 Isi rincian awal berikut, sistem kami akan langsung menyusun pesan otomatis ke WhatsApp desainer kami.
                             </p>
                         </div>
@@ -115,18 +115,18 @@
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div class="space-y-1.5">
-                                    <label class="text-xs font-bold text-slate-700">Nama Lengkap <span class="text-rose-500">*</span></label>
-                                    <input type="text" name="nama" required class="w-full px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="Nama Anda">
+                                    <label class="text-xs font-bold text-zinc-700">Nama Lengkap <span class="text-rose-500">*</span></label>
+                                    <input type="text" name="nama" required class="w-full px-4 py-2.5 bg-white border border-zinc-200 rounded-xl text-xs text-zinc-800 focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="Nama Anda">
                                 </div>
                                 <div class="space-y-1.5">
-                                    <label class="text-xs font-bold text-slate-700">Alamat Email <span class="text-rose-500">*</span></label>
-                                    <input type="email" name="email" required class="w-full px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="nama@email.com">
+                                    <label class="text-xs font-bold text-zinc-700">Alamat Email <span class="text-rose-500">*</span></label>
+                                    <input type="email" name="email" required class="w-full px-4 py-2.5 bg-white border border-zinc-200 rounded-xl text-xs text-zinc-800 focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="nama@email.com">
                                 </div>
                             </div>
 
                             <div class="space-y-1.5">
-                                <label class="text-xs font-bold text-slate-700">Kebutuhan Jasa Desain <span class="text-rose-500">*</span></label>
-                                <select name="layanan" required class="w-full px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                                <label class="text-xs font-bold text-zinc-700">Kebutuhan Jasa Desain <span class="text-rose-500">*</span></label>
+                                <select name="layanan" required class="w-full px-4 py-2.5 bg-white border border-zinc-200 rounded-xl text-xs text-zinc-800 focus:outline-none focus:ring-2 focus:ring-brand-500">
                                     <option value="Logo & Brand Identity">Logo & Brand Identity</option>
                                     <option value="Desain Kemasan & Packaging">Desain Kemasan & Packaging</option>
                                     <option value="Materi Promosi, Banner & Poster">Materi Promosi, Banner & Poster</option>
@@ -139,8 +139,8 @@
                             </div>
 
                             <div class="space-y-1.5">
-                                <label class="text-xs font-bold text-slate-700">Ceritakan Singkat Rencana Proyek <span class="text-rose-500">*</span></label>
-                                <textarea name="pesan" rows="4" required class="w-full px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="Jelaskan jenis usaha, target waktu penyelesaian, atau referensi gaya desain yang diinginkan..."></textarea>
+                                <label class="text-xs font-bold text-zinc-700">Ceritakan Singkat Rencana Proyek <span class="text-rose-500">*</span></label>
+                                <textarea name="pesan" rows="4" required class="w-full px-4 py-2.5 bg-white border border-zinc-200 rounded-xl text-xs text-zinc-800 focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="Jelaskan jenis usaha, target waktu penyelesaian, atau referensi gaya desain yang diinginkan..."></textarea>
                             </div>
 
                             <div class="pt-2">

@@ -12,13 +12,13 @@
 
     <!-- Header Banner -->
     <div
-        class="bg-gradient-to-b from-brand-50/60 via-slate-50/40 to-white py-12 sm:py-16 border-b border-slate-100 overflow-hidden">
+        class="bg-gradient-to-b from-brand-50/60 via-zinc-50/40 to-white py-12 sm:py-16 border-b border-zinc-100 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div data-aos="fade-down" class="max-w-3xl space-y-2">
                 <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Katalog Desain & Jasa</span>
-                <h1 class="text-2xl sm:text-4xl font-extrabold font-heading text-slate-900">Marketplace Karya & Layanan
+                <h1 class="text-2xl sm:text-4xl font-extrabold font-heading text-zinc-900">Marketplace Karya & Layanan
                     Desain</h1>
-                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed">
                     Pilih kategori desain yang Anda butuhkan, lihat rincian spesifikasi, dan lakukan pemesanan cepat
                     langsung ke WhatsApp tim desainer kami.
                 </p>
@@ -30,20 +30,20 @@
     <div class="py-12 bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Search and Filter Bar -->
-            <div data-aos="fade-up" class="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-6 mb-10 shadow-sm">
+            <div data-aos="fade-up" class="bg-zinc-50 border border-zinc-200 rounded-2xl p-4 sm:p-6 mb-10 shadow-sm">
                 <form id="marketplaceFilterForm" action="{{ route('marketplace.index') }}" method="GET"
                     class="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center" onsubmit="return false;">
                     <!-- Search Input (jQuery Live Search) -->
                     <div class="sm:col-span-6 relative">
                         <iconify-icon icon="lucide:search"
-                            class="absolute left-4 top-3 text-slate-400 text-sm"></iconify-icon>
+                            class="absolute left-4 top-3 text-zinc-400 text-sm"></iconify-icon>
                         <input type="text" name="q" id="marketplaceSearchInput" value="{{ $search }}"
                             placeholder="Cari nama desain atau kata kunci..."
                             autocomplete="off"
-                            class="w-full pl-10 pr-20 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                            class="w-full pl-10 pr-20 py-2.5 bg-white border border-zinc-200 rounded-xl text-xs text-zinc-800 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-brand-500">
                         <div class="absolute right-2 top-2 flex items-center space-x-1">
                             <button type="button" id="marketplaceClearBtn" onclick="clearMarketplaceSearch()"
-                                class="p-1 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 transition-colors {{ $search ? '' : 'hidden' }}"
+                                class="p-1 text-zinc-400 hover:text-zinc-600 rounded-lg hover:bg-zinc-100 transition-colors {{ $search ? '' : 'hidden' }}"
                                 title="Hapus pencarian">
                                 <iconify-icon icon="lucide:x" class="text-sm"></iconify-icon>
                             </button>
@@ -56,7 +56,7 @@
                     <!-- Category Filter Dropdown (Mobile/Quick) -->
                     <div class="sm:col-span-3">
                         <select name="kategori" id="marketplaceCategorySelect"
-                            class="w-full px-3 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500 cursor-pointer">
+                            class="w-full px-3 py-2.5 bg-white border border-zinc-200 rounded-xl text-xs text-zinc-700 focus:outline-none focus:ring-2 focus:ring-brand-500 cursor-pointer">
                             <option value="all">Semua Kategori ({{ $totalSemuaProduk }})</option>
                             @foreach ($kategoris as $k)
                                 <option value="{{ $k->Id_kategori }}"
@@ -70,7 +70,7 @@
                     <!-- Sorting -->
                     <div class="sm:col-span-3">
                         <select name="sort" id="marketplaceSortSelect"
-                            class="w-full px-3 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500 cursor-pointer">
+                            class="w-full px-3 py-2.5 bg-white border border-zinc-200 rounded-xl text-xs text-zinc-700 focus:outline-none focus:ring-2 focus:ring-brand-500 cursor-pointer">
                             <option value="latest" {{ $sort === 'latest' ? 'selected' : '' }}>Urutkan: Terbaru</option>
                             <option value="oldest" {{ $sort === 'oldest' ? 'selected' : '' }}>Urutkan: Terlama</option>
                             <option value="stock_high" {{ $sort === 'stock_high' ? 'selected' : '' }}>Urutkan: Stok Terbanyak</option>
@@ -82,29 +82,35 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
                 <!-- Sidebar Category List (Desktop) -->
                 <aside data-aos="fade-right" data-aos-delay="100" class="hidden lg:block lg:col-span-3 space-y-6">
-                    <div class="bg-white border border-slate-200 rounded-2xl p-5 space-y-3">
-                        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Kategori Desain</h3>
+                    <div class="bg-white border border-zinc-200 rounded-2xl p-5 space-y-3">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-zinc-400">Kategori Desain</h3>
                         <div id="marketplaceSidebarCategories" class="space-y-1">
                             <button type="button" onclick="selectMarketplaceCategory('all')"
                                 data-kategori="all"
-                                class="marketplace-sidebar-btn w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer transition-all {{ !$selectedKategori || $selectedKategori === 'all' ? 'bg-brand-50 text-brand-700 font-bold' : 'text-slate-600 hover:bg-slate-50' }}">
-                                <span>Semua Kategori</span>
-                                <span class="text-[10px] text-slate-400">{{ $totalSemuaProduk }}</span>
+                                class="marketplace-sidebar-btn w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer transition-all {{ !$selectedKategori || $selectedKategori === 'all' ? 'bg-brand-50 text-brand-700 font-bold' : 'text-zinc-600 hover:bg-zinc-50' }}">
+                                <span class="flex items-center space-x-2">
+                                    <iconify-icon icon="lucide:layout-grid" class="text-xs"></iconify-icon>
+                                    <span>Semua Kategori</span>
+                                </span>
+                                <span class="text-[10px] text-zinc-400">{{ $totalSemuaProduk }}</span>
                             </button>
                             @foreach ($kategoris as $k)
                                 <button type="button" onclick="selectMarketplaceCategory('{{ $k->Id_kategori }}')"
                                     data-kategori="{{ $k->Id_kategori }}"
-                                    class="marketplace-sidebar-btn w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer transition-all {{ $selectedKategori == $k->Id_kategori ? 'bg-brand-50 text-brand-700 font-bold' : 'text-slate-600 hover:bg-slate-50' }}">
-                                    <span>{{ $k->Nama_kategori }}</span>
-                                    <span class="text-[10px] text-slate-400">{{ $k->produk_digital_count }}</span>
+                                    class="marketplace-sidebar-btn w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer transition-all {{ $selectedKategori == $k->Id_kategori ? 'bg-brand-50 text-brand-700 font-bold' : 'text-zinc-600 hover:bg-zinc-50' }}">
+                                    <span class="flex items-center space-x-2">
+                                        <iconify-icon icon="{{ $k->icon_name }}" class="text-xs"></iconify-icon>
+                                        <span>{{ $k->Nama_kategori }}</span>
+                                    </span>
+                                    <span class="text-[10px] text-zinc-400">{{ $k->produk_digital_count }}</span>
                                 </button>
                             @endforeach
                         </div>
                     </div>
 
                     <!-- Official Channels in Marketplace -->
-                    <div class="p-5 rounded-2xl bg-white border border-slate-200 space-y-3">
-                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Order via Marketplace</h4>
+                    <div class="p-5 rounded-2xl bg-white border border-zinc-200 space-y-3">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-zinc-400">Order via Marketplace</h4>
                         <div class="space-y-2">
                             <a href="https://shopee.co.id/premium_dz" target="_blank"
                                 class="flex items-center justify-between p-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 text-xs font-bold transition-colors">
@@ -124,12 +130,12 @@
                                 <iconify-icon icon="lucide:external-link" class="text-xs text-emerald-600"></iconify-icon>
                             </a>
                             <a href="https://lynk.id/premiumdsz" target="_blank"
-                                class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-bold transition-colors">
+                                class="flex items-center justify-between p-2.5 rounded-xl bg-zinc-50 hover:bg-zinc-100 text-zinc-700 text-xs font-bold transition-colors">
                                 <span class="flex items-center space-x-2">
                                     <iconify-icon icon="lucide:link-2" class="text-brand-600 text-xs"></iconify-icon>
                                     <span>Lynk.id Portofolio</span>
                                 </span>
-                                <iconify-icon icon="lucide:external-link" class="text-xs text-slate-400"></iconify-icon>
+                                <iconify-icon icon="lucide:external-link" class="text-xs text-zinc-400"></iconify-icon>
                             </a>
                         </div>
                     </div>
@@ -153,7 +159,7 @@
                 <div class="lg:col-span-9 relative">
                     <!-- Loading Overlay -->
                     <div id="marketplaceLoadingOverlay" class="absolute inset-0 bg-white/70 backdrop-blur-[1px] z-30 flex items-center justify-center hidden rounded-2xl">
-                        <div class="flex items-center space-x-2 px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-semibold shadow-xl">
+                        <div class="flex items-center space-x-2 px-4 py-2 rounded-xl bg-zinc-900 text-white text-xs font-semibold shadow-xl">
                             <iconify-icon icon="lucide:loader-2" class="text-base animate-spin text-brand-400"></iconify-icon>
                             <span>Memuat produk...</span>
                         </div>
@@ -269,14 +275,14 @@
             $('.marketplace-sidebar-btn').each(function() {
                 let kat = $(this).attr('data-kategori') || 'all';
                 if ((activeKat === 'all' || !activeKat) && kat === 'all') {
-                    $(this).removeClass('text-slate-600 hover:bg-slate-50 font-normal')
+                    $(this).removeClass('text-zinc-600 hover:bg-zinc-50 font-normal')
                            .addClass('bg-brand-50 text-brand-700 font-bold');
                 } else if (activeKat === kat) {
-                    $(this).removeClass('text-slate-600 hover:bg-slate-50 font-normal')
+                    $(this).removeClass('text-zinc-600 hover:bg-zinc-50 font-normal')
                            .addClass('bg-brand-50 text-brand-700 font-bold');
                 } else {
                     $(this).removeClass('bg-brand-50 text-brand-700 font-bold')
-                           .addClass('text-slate-600 hover:bg-slate-50');
+                           .addClass('text-zinc-600 hover:bg-zinc-50');
                 }
             });
         }

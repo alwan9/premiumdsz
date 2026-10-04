@@ -30,7 +30,7 @@ class Testimoni extends Model
     public function getImageUrlAttribute(): string
     {
         if (empty($this->Foto_url)) {
-            return asset('assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0000_6cbaeec1-2b90-4301-bbf6-20f37fc48781Artboard 1.jpg');
+            return asset('assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0000_6cbaeec1-2b90-4301-bbf6-20f37fc48781Artboard_1.jpg');
         }
 
         if (str_starts_with($this->Foto_url, 'http://') || str_starts_with($this->Foto_url, 'https://')) {

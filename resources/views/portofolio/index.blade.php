@@ -20,7 +20,7 @@
 @section('content')
 
     <!-- Hero Showcase Section -->
-    <section class="relative bg-slate-900 text-white overflow-hidden py-16 sm:py-24 border-b border-slate-800">
+    <section class="relative bg-zinc-900 text-white overflow-hidden py-16 sm:py-24 border-b border-zinc-800">
         <!-- Glow Decorative Background -->
         <div class="absolute inset-0 bg-brand-gradient opacity-90"></div>
         <div class="absolute inset-0 hero-grid-pattern opacity-15"></div>
@@ -49,18 +49,19 @@
 
                 <!-- Search Bar (Live jQuery AJAX Search) -->
                 <div data-aos="fade-up" data-aos-delay="200" class="pt-4 max-w-xl mx-auto">
-                    <form id="portfolioSearchForm" action="{{ route('portofolio.index') }}" method="GET" class="relative flex items-center" onsubmit="return false;">
-                        <input type="hidden" name="kategori" id="selectedCategoryInput" value="{{ $selectedKategori ?? '' }}">
-                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
+                    <form id="portfolioSearchForm" action="{{ route('portofolio.index') }}" method="GET"
+                        class="relative flex items-center" onsubmit="return false;">
+                        <input type="hidden" name="kategori" id="selectedCategoryInput"
+                            value="{{ $selectedKategori ?? '' }}">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-zinc-400">
                             <iconify-icon icon="lucide:search" class="text-lg"></iconify-icon>
                         </div>
                         <input type="text" name="search" id="portfolioSearchInput" value="{{ $search }}"
-                            placeholder="Cari karya desain (contoh: Logo, Box, Jersey, UI, Menu)..."
-                            autocomplete="off"
-                            class="w-full pl-11 pr-24 py-3.5 bg-white/95 backdrop-blur-md text-slate-900 placeholder-slate-400 rounded-2xl text-xs sm:text-sm font-medium border border-white/20 shadow-xl focus:outline-none focus:ring-2 focus:ring-brand-400 transition-all">
+                            placeholder="Cari karya desain (contoh: Logo, Box, Jersey, UI, Menu)..." autocomplete="off"
+                            class="w-full pl-11 pr-24 py-3.5 bg-white/95 backdrop-blur-md text-zinc-900 placeholder-zinc-400 rounded-2xl text-xs sm:text-sm font-medium border border-white/20 shadow-xl focus:outline-none focus:ring-2 focus:ring-brand-400 transition-all">
                         <div class="absolute right-1.5 flex items-center space-x-1">
                             <button type="button" id="portfolioSearchClearBtn" onclick="clearPortfolioSearch()"
-                                class="p-2 text-slate-400 hover:text-slate-600 rounded-xl hover:bg-slate-100 transition-colors {{ $search ? '' : 'hidden' }}"
+                                class="p-2 text-zinc-400 hover:text-zinc-600 rounded-xl hover:bg-zinc-100 transition-colors {{ $search ? '' : 'hidden' }}"
                                 title="Reset Pencarian">
                                 <iconify-icon icon="lucide:x" class="text-base"></iconify-icon>
                             </button>
@@ -77,20 +78,20 @@
     </section>
 
     <!-- Simple Representative Category Filter Bar -->
-    <section class="sticky top-20 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs py-3">
+    <section class="sticky top-20 z-40 bg-white/95 backdrop-blur-md border-b border-zinc-200/80 shadow-xs py-3">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div id="portfolioCategoryPills" class="flex items-center justify-start md:justify-center space-x-1.5 sm:space-x-2 overflow-x-auto no-scrollbar py-0.5 text-xs sm:text-sm font-semibold">
+            <div id="portfolioCategoryPills"
+                class="flex items-center justify-start md:justify-center space-x-1.5 sm:space-x-2 overflow-x-auto no-scrollbar py-0.5 text-xs sm:text-sm font-semibold">
                 <!-- All Categories -->
-                <button type="button" onclick="selectPortfolioCategory('')"
-                    data-kategori=""
-                    class="category-pill shrink-0 px-4 py-2 rounded-full transition-all duration-200 cursor-pointer {{ empty($selectedKategori) || $selectedKategori === 'all' ? 'bg-slate-900 text-white shadow-sm font-bold' : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900' }}">
+                <button type="button" onclick="selectPortfolioCategory('')" data-kategori=""
+                    class="category-pill shrink-0 px-4 py-2 rounded-full transition-all duration-200 cursor-pointer {{ empty($selectedKategori) || $selectedKategori === 'all' ? 'bg-zinc-900 text-white shadow-sm font-bold' : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-900' }}">
                     Semua
                 </button>
 
                 @foreach ($kategoriCounts as $katName => $count)
                     <button type="button" onclick="selectPortfolioCategory('{{ $katName }}')"
                         data-kategori="{{ $katName }}"
-                        class="category-pill shrink-0 px-4 py-2 rounded-full transition-all duration-200 cursor-pointer {{ $selectedKategori === $katName ? 'bg-slate-900 text-white shadow-sm font-bold' : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900' }}">
+                        class="category-pill shrink-0 px-4 py-2 rounded-full transition-all duration-200 cursor-pointer {{ $selectedKategori === $katName ? 'bg-zinc-900 text-white shadow-sm font-bold' : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-900' }}">
                         {{ $katName }}
                     </button>
                 @endforeach
@@ -102,8 +103,10 @@
     <section class="py-14 bg-white min-h-[500px]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <!-- Loading Overlay -->
-            <div id="portfolioLoadingOverlay" class="absolute inset-0 bg-white/70 backdrop-blur-[1px] z-30 flex items-center justify-center hidden rounded-2xl">
-                <div class="flex items-center space-x-2 px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-semibold shadow-xl">
+            <div id="portfolioLoadingOverlay"
+                class="absolute inset-0 bg-white/70 backdrop-blur-[1px] z-30 flex items-center justify-center hidden rounded-2xl">
+                <div
+                    class="flex items-center space-x-2 px-4 py-2 rounded-xl bg-zinc-900 text-white text-xs font-semibold shadow-xl">
                     <iconify-icon icon="lucide:loader-2" class="text-base animate-spin text-brand-400"></iconify-icon>
                     <span>Memuat karya...</span>
                 </div>
@@ -117,7 +120,7 @@
     </section>
 
     <!-- Creative CTA Section -->
-    <section class="py-16 bg-white border-t border-slate-200">
+    <section class="py-16 bg-white border-t border-zinc-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div data-aos="fade-up"
                 class="relative rounded-3xl bg-brand-gradient text-white p-8 sm:p-12 overflow-hidden shadow-2xl shadow-brand-700/20">
@@ -131,11 +134,7 @@
 
                 <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                     <div class="lg:col-span-8 space-y-4">
-                        <span
-                            class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-white/15 text-[11px] font-bold tracking-wider uppercase text-brand-100">
-                            <iconify-icon icon="lucide:sparkles" class="text-amber-300"></iconify-icon>
-                            <span>Solusi Desain Kustom</span>
-                        </span>
+
                         <h2 class="text-2xl sm:text-4xl font-extrabold font-heading text-white leading-tight">
                             Punya Konsep Desain Sendiri untuk Brand Anda?
                         </h2>
@@ -167,7 +166,7 @@
 
     <!-- Ultra-Clean Fullscreen Zoom Lightbox Modal -->
     <div id="portfolio-zoom-modal"
-        class="fixed inset-0 z-50 hidden bg-slate-950/95 backdrop-blur-xl flex flex-col items-center justify-center transition-all duration-300 opacity-0">
+        class="fixed inset-0 z-50 hidden bg-zinc-950/95 backdrop-blur-xl flex flex-col items-center justify-center transition-all duration-300 opacity-0">
 
         <!-- Top Toolbar Controls -->
         <div class="absolute top-0 inset-x-0 p-4 sm:p-6 flex items-center justify-between z-20 pointer-events-none">
@@ -229,7 +228,7 @@
         <!-- Bottom Zoom Hint -->
         <div class="absolute bottom-4 inset-x-0 flex items-center justify-center pointer-events-none z-20">
             <div
-                class="px-4 py-1.5 rounded-full bg-slate-900/80 backdrop-blur-md border border-white/10 text-slate-300 text-[11px] flex items-center space-x-2">
+                class="px-4 py-1.5 rounded-full bg-zinc-900/80 backdrop-blur-md border border-white/10 text-zinc-300 text-[11px] flex items-center space-x-2">
                 <iconify-icon icon="lucide:mouse-pointer-click" class="text-brand-400"></iconify-icon>
                 <span>Klik gambar untuk zoom in / zoom out (atau gunakan tombol di atas)</span>
             </div>
@@ -315,7 +314,9 @@
                         if (currentSearch) params.set('search', currentSearch);
                         let newQuery = params.toString();
                         let newUrl = "{{ route('portofolio.index') }}" + (newQuery ? '?' + newQuery : '');
-                        window.history.pushState({ path: newUrl }, '', newUrl);
+                        window.history.pushState({
+                            path: newUrl
+                        }, '', newUrl);
 
                         // Refresh AOS animations if available
                         if (window.AOS) {
@@ -340,11 +341,11 @@
             $('.category-pill').each(function() {
                 let kat = $(this).attr('data-kategori') || '';
                 if ((!activeKategori && kat === '') || activeKategori === kat) {
-                    $(this).removeClass('bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900')
-                           .addClass('bg-slate-900 text-white shadow-sm font-bold');
+                    $(this).removeClass('bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-900')
+                        .addClass('bg-zinc-900 text-white shadow-sm font-bold');
                 } else {
-                    $(this).removeClass('bg-slate-900 text-white shadow-sm font-bold')
-                           .addClass('bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900');
+                    $(this).removeClass('bg-zinc-900 text-white shadow-sm font-bold')
+                        .addClass('bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-900');
                 }
             });
         }
@@ -366,7 +367,10 @@
             $('#selectedCategoryInput').val('');
             $('#portfolioSearchClearBtn').addClass('hidden');
             updateCategoryPillUI('');
-            fetchPortfolioAjax({ search: '', kategori: '' });
+            fetchPortfolioAjax({
+                search: '',
+                kategori: ''
+            });
         }
 
         // DOM Ready: Event Listeners for jQuery Live Search

@@ -31,14 +31,16 @@ class MarketplaceController extends Controller
             });
         }
 
-        // Pengurutan (Sorting)
-        $sort = $request->query('sort', 'latest');
+        // Pengurutan (Sorting) - Default diacak tiap refresh
+        $sort = $request->query('sort', 'random');
         if ($sort === 'oldest') {
             $query->oldest('Id_produk');
+        } elseif ($sort === 'latest') {
+            $query->latest('Id_produk');
         } elseif ($sort === 'stock_high') {
             $query->orderByDesc('Stok_produk');
         } else {
-            $query->latest('Id_produk');
+            $query->inRandomOrder();
         }
 
         $produks = $query->paginate(9)->withQueryString();

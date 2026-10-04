@@ -30,10 +30,16 @@ class ProdukDigital extends Model
     ];
 
     protected $appends = [
+        'custom_id',
         'image_url',
         'average_rating',
         'whatsapp_link',
     ];
+
+    public function getCustomIdAttribute(): string
+    {
+        return 'JS-'.str_pad((string) $this->Id_produk, 4, '0', STR_PAD_LEFT);
+    }
 
     public function kategori(): BelongsTo
     {
@@ -75,6 +81,8 @@ class ProdukDigital extends Model
     {
         return [
             'kemasan' => [
+                'jasapouch_(1).jpg',
+                'jasapouch_(2).jpg',
                 'kemasan1.jpg',
                 'kemasan2.jpg',
                 'kemasan3.jpg',
@@ -87,6 +95,9 @@ class ProdukDigital extends Model
             'banner' => [
                 'bannerumkm1.jpg',
                 'bannerumkm2.jpg',
+                'xbanner_(1).jpg',
+                'xbanner_(3).jpg',
+                'xbanner_(4).jpg',
                 'promo/bannerwhatsappartboard1copy2.jpg',
                 'promo/bannerwhatsappartboard1copy3.jpg',
                 'promo/bannerwhatsappartboard1copy4.jpg',
@@ -94,6 +105,31 @@ class ProdukDigital extends Model
                 'promo/bannerwhatsappartboard1copy6.jpg',
                 'booth1.jpg',
                 'booth2.jpg',
+            ],
+            'logo' => [
+                'jasalogo_(1).jpg',
+                'jasalogo_(2).jpg',
+                'repairlogo_(1).jpg',
+                'repairlogo_(2).jpg',
+            ],
+            'jersey' => [
+                'jasajersey_(1).jpg',
+                'jasajersey_(2).jpg',
+                'jasajersey_(3).jpg',
+            ],
+            'uiux' => [
+                'webuiux_(1).jpg',
+                'webuiux_(2).jpg',
+                'webuiux_(3).jpg',
+                'webuiux_(4).jpg',
+                'mobileuiux_(1).jpg',
+                'mobileuiux_(2).jpg',
+            ],
+            'poster_flyer' => [
+                'jasaflyer_(1).jpg',
+                'jasaflyer_(2).jpg',
+                'portofolio_Artboard_1_copy_11.jpg',
+                'portofolio_Artboard_1_copy_9.jpg',
             ],
             'label' => [
                 'labelumkm1.jpg',
@@ -104,12 +140,12 @@ class ProdukDigital extends Model
                 'jasacv2.jpg',
                 'jasacv3.jpg',
                 'jasacv4.jpg',
-                'jasappt1.jpg',
-                'jasappt2.jpg',
-                'jasappt3.jpg',
-                'jasappt4.jpg',
+                'jasapowerpoint_(1).jpg',
+                'jasapowerpoint_(2).jpg',
+                'jasapowerpoint_(3).jpg',
+                'jasapowerpoint_(4).jpg',
             ],
-            'design' => [
+            'foto_ai' => [
                 'repairfoto1.jpg',
                 'repairfoto2.jpg',
                 'editfotonormaltostudio.jpg',
@@ -136,7 +172,7 @@ class ProdukDigital extends Model
 
         // 2. PPT Presentasi
         if (str_contains($name, 'ppt') || str_contains($name, 'powerpoint') || str_contains($name, 'presentasi')) {
-            return asset('assets/jasappt1.jpg');
+            return asset('assets/jasapowerpoint_(1).jpg');
         }
 
         // 3. Kemasan Box / Packing
@@ -146,7 +182,7 @@ class ProdukDigital extends Model
 
         // 4. Kemasan Plastik / Pouch / Snack
         if (str_contains($name, 'pouch') || str_contains($name, 'snack') || (str_contains($name, 'kemasan') && ! str_contains($name, 'box'))) {
-            return asset('assets/kemasan2.jpg');
+            return asset('assets/jasapouch_(1).jpg');
         }
 
         // 5. Booth Jualan UMKM
@@ -171,7 +207,7 @@ class ProdukDigital extends Model
 
         // 9. Jersey & Apparel
         if (str_contains($name, 'jersey') || str_contains($name, 'kaos') || str_contains($catName, 'jersey')) {
-            return asset('assets/repairfoto2.jpg');
+            return asset('assets/jasajersey_(1).jpg');
         }
 
         // 10. Redesain AI & Repair
@@ -184,24 +220,29 @@ class ProdukDigital extends Model
             return asset('assets/editfotonormaltostudio1.jpg');
         }
 
-        // 12. Poster Infografis Digital
-        if (str_contains($name, 'poster') || str_contains($name, 'infografis') || str_contains($catName, 'poster')) {
-            return asset('assets/editfotonormaltostudio3.jpg');
+        // 12. Poster & Flyer Infografis Digital
+        if (str_contains($name, 'poster') || str_contains($name, 'flyer') || str_contains($name, 'infografis') || str_contains($catName, 'poster')) {
+            return asset('assets/jasaflyer_(1).jpg');
         }
 
-        // 13. UI/UX Mobile App / Website
-        if (str_contains($name, 'ui') || str_contains($name, 'ux') || str_contains($name, 'figma') || str_contains($name, 'app') || str_contains($name, 'website')) {
-            return asset('assets/editfotonormaltostudio2.jpg');
+        // 13. UI/UX Mobile App
+        if (str_contains($name, 'mobile app') || str_contains($name, 'aplikasi mobile') || (str_contains($name, 'mobile') && str_contains($name, 'ui'))) {
+            return asset('assets/mobileuiux_(1).jpg');
         }
 
-        // 14. Logo Racing
+        // 14. UI/UX Website Custom Figma
+        if (str_contains($name, 'website') || str_contains($name, 'web') || str_contains($name, 'figma') || str_contains($name, 'ui') || str_contains($name, 'ux') || str_contains($catName, 'ui/ux')) {
+            return asset('assets/webuiux_(1).jpg');
+        }
+
+        // 15. Logo Racing
         if (str_contains($name, 'racing')) {
-            return asset('assets/editfotonormaltostudio4.jpg');
+            return asset('assets/repairlogo_(1).jpg');
         }
 
-        // 15. Logo & Brand Umum
+        // 16. Logo & Brand Umum
         if (str_contains($name, 'logo') || str_contains($catName, 'logo')) {
-            return asset('assets/editfotonormaltostudio.jpg');
+            return asset('assets/jasalogo_(1).jpg');
         }
 
         return asset('assets/kemasan1.jpg');
@@ -221,33 +262,35 @@ class ProdukDigital extends Model
         if (str_contains($name, 'cv') || str_contains($name, 'curriculum vitae')) {
             $matchedFiles = ['jasacv1.jpg', 'jasacv2.jpg', 'jasacv3.jpg', 'jasacv4.jpg'];
         } elseif (str_contains($name, 'ppt') || str_contains($name, 'powerpoint') || str_contains($name, 'presentasi')) {
-            $matchedFiles = ['jasappt1.jpg', 'jasappt2.jpg', 'jasappt3.jpg', 'jasappt4.jpg'];
+            $matchedFiles = ['jasapowerpoint_(1).jpg', 'jasapowerpoint_(2).jpg', 'jasapowerpoint_(3).jpg', 'jasapowerpoint_(4).jpg'];
         } elseif (str_contains($name, 'box') || str_contains($name, 'packing')) {
             $matchedFiles = ['box1.jpg', 'box2.jpg', 'box3.jpg', 'kemasan1.jpg'];
         } elseif (str_contains($name, 'pouch') || str_contains($name, 'snack') || (str_contains($name, 'kemasan') && ! str_contains($name, 'box'))) {
-            $matchedFiles = ['kemasan2.jpg', 'kemasan1.jpg', 'kemasan3.jpg', 'kemasan4.jpg', 'kemasan5.jpg'];
+            $matchedFiles = ['jasapouch_(1).jpg', 'jasapouch_(2).jpg', 'kemasan2.jpg', 'kemasan1.jpg', 'kemasan3.jpg', 'kemasan4.jpg', 'kemasan5.jpg'];
         } elseif (str_contains($name, 'booth') || str_contains($name, 'gerobak')) {
             $matchedFiles = ['booth1.jpg', 'booth2.jpg', 'bannerumkm1.jpg'];
         } elseif (str_contains($name, 'wisuda')) {
-            $matchedFiles = ['bannerumkm2.jpg', 'promo/bannerwhatsappartboard1copy2.jpg', 'promo/bannerwhatsappartboard1copy3.jpg', 'bannerumkm1.jpg'];
+            $matchedFiles = ['bannerumkm2.jpg', 'xbanner_(1).jpg', 'promo/bannerwhatsappartboard1copy2.jpg', 'promo/bannerwhatsappartboard1copy3.jpg', 'bannerumkm1.jpg'];
         } elseif (str_contains($name, 'banner') || str_contains($name, 'spanduk')) {
-            $matchedFiles = ['bannerumkm1.jpg', 'promo/bannerwhatsappartboard1copy4.jpg', 'promo/bannerwhatsappartboard1copy5.jpg', 'promo/bannerwhatsappartboard1copy6.jpg'];
+            $matchedFiles = ['bannerumkm1.jpg', 'xbanner_(3).jpg', 'xbanner_(4).jpg', 'promo/bannerwhatsappartboard1copy4.jpg', 'promo/bannerwhatsappartboard1copy5.jpg', 'promo/bannerwhatsappartboard1copy6.jpg'];
         } elseif (str_contains($name, 'label') || str_contains($name, 'stiker')) {
             $matchedFiles = ['labelumkm1.jpg', 'labelumkm2.jpg'];
         } elseif (str_contains($name, 'jersey') || str_contains($name, 'kaos')) {
-            $matchedFiles = ['repairfoto2.jpg', 'repairfoto1.jpg'];
+            $matchedFiles = ['jasajersey_(1).jpg', 'jasajersey_(2).jpg', 'jasajersey_(3).jpg'];
         } elseif (str_contains($name, 'redesain') || str_contains($name, 'ai') || str_contains($name, 'repair')) {
             $matchedFiles = ['repairfoto1.jpg', 'repairfoto2.jpg', 'editfotonormaltostudio.jpg'];
         } elseif (str_contains($name, 'studio') || str_contains($name, 'editing foto')) {
-            $matchedFiles = ['editfotonormaltostudio1.jpg', 'editfotonormaltostudio2.jpg', 'editfotonormaltostudio3.jpg'];
+            $matchedFiles = ['editfotonormaltostudio1.jpg', 'editfotonormaltostudio2.jpg', 'editfotonormaltostudio3.jpg', 'editfotonormaltostudio4.jpg'];
         } elseif (str_contains($name, 'racing')) {
-            $matchedFiles = ['editfotonormaltostudio4.jpg', 'editfotonormaltostudio.jpg'];
-        } elseif (str_contains($name, 'ui') || str_contains($name, 'ux') || str_contains($name, 'figma') || str_contains($name, 'website') || str_contains($name, 'app')) {
-            $matchedFiles = ['editfotonormaltostudio2.jpg', 'editfotonormaltostudio3.jpg', 'editfotonormaltostudio.jpg'];
-        } elseif (str_contains($name, 'poster') || str_contains($name, 'infografis')) {
-            $matchedFiles = ['editfotonormaltostudio3.jpg', 'editfotonormaltostudio2.jpg', 'editfotonormaltostudio.jpg'];
+            $matchedFiles = ['repairlogo_(1).jpg', 'repairlogo_(2).jpg', 'jasalogo_(2).jpg'];
+        } elseif (str_contains($name, 'mobile app') || str_contains($name, 'aplikasi mobile') || (str_contains($name, 'mobile') && str_contains($name, 'ui'))) {
+            $matchedFiles = ['mobileuiux_(1).jpg', 'mobileuiux_(2).jpg', 'webuiux_(1).jpg'];
+        } elseif (str_contains($name, 'website') || str_contains($name, 'web') || str_contains($name, 'figma') || str_contains($name, 'ui') || str_contains($name, 'ux')) {
+            $matchedFiles = ['webuiux_(1).jpg', 'webuiux_(2).jpg', 'webuiux_(3).jpg', 'webuiux_(4).jpg'];
+        } elseif (str_contains($name, 'poster') || str_contains($name, 'flyer') || str_contains($name, 'infografis')) {
+            $matchedFiles = ['jasaflyer_(1).jpg', 'jasaflyer_(2).jpg', 'portofolio_Artboard_1_copy_11.jpg', 'portofolio_Artboard_1_copy_9.jpg'];
         } elseif (str_contains($name, 'logo')) {
-            $matchedFiles = ['editfotonormaltostudio.jpg', 'editfotonormaltostudio4.jpg'];
+            $matchedFiles = ['jasalogo_(1).jpg', 'jasalogo_(2).jpg', 'repairlogo_(1).jpg', 'repairlogo_(2).jpg'];
         } else {
             $matchedFiles = ['kemasan1.jpg', 'kemasan2.jpg', 'box1.jpg'];
         }

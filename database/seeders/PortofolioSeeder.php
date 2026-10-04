@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\Portofolio;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
 
 class PortofolioSeeder extends Seeder
 {
@@ -14,290 +13,1059 @@ class PortofolioSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Curated List of Premier Portfolio Items
-        $curatedItems = [
-            // Logo & Branding
-            [
-                'nama' => 'Mascot & Logo Branding - Kopi Ah Wordmark',
-                'kategori' => 'Logo & Branding',
-                'url' => 'assets/portofolio/a-bold-stacked-wordmark-logo-for-kopi-ah_6wWdF_z6TmiXXtJgjdqD-Q_Lzy1X5Z8TviWACE17xJsHw.png',
-                'deskripsi' => 'Identitas visual dan tipografi modern untuk brand coffee shop kekinian.',
-            ],
-            [
-                'nama' => 'Brand Identity - Salfox Sports Club',
-                'kategori' => 'Logo & Branding',
-                'url' => 'assets/portofolio/a-bold-and-energetic-sports-logo-for-sal_k8l4za1RQLCYMajZt59Ctw_VfD6S1W-QYm2DH5e9J2Qnw.png',
-                'deskripsi' => 'Desain logo maskot dinamis & energetik untuk klub olahraga dan komunitas esport.',
-            ],
-            [
-                'nama' => 'Logo Kuliner UMKM - Siomay Amoy',
-                'kategori' => 'Logo & Branding',
-                'url' => 'assets/portofolio/a-colorful-modern-logo-for-siomay-amoy-f_2QiXhE0iQB6zuokYyMDYEA_hRhBEwqsSbWv1Gpv0xnazg.png',
-                'deskripsi' => 'Logo maskot kuliner tradisional berkarakter ramah dengan perpaduan warna atraktif.',
-            ],
-            [
-                'nama' => 'Mascot Branding - Nasi Tempong Pedas',
-                'kategori' => 'Logo & Branding',
-                'url' => 'assets/portofolio/a-cute-chibi-style-mascot-for-nasi-tempo_VnrrriQKSYykmSaXAE2-1Q_Ko0V0wB8R1uNTAvswVOIeQ.png',
-                'deskripsi' => 'Karakter maskot chibi lucu dan eye-catching untuk produk makanan cepat saji pedas.',
-            ],
-            [
-                'nama' => 'Gaming & Esports Logo - Enryo Futuristic',
-                'kategori' => 'Logo & Branding',
-                'url' => 'assets/portofolio/a-futuristic-gaming-brand-logo-for-enryo_IA1KIBfNTJOvIwiNVCqibA_CQpJNT6aRVCCdyBbiYU48Q.png',
-                'deskripsi' => 'Logo futuristik bertema cyber gaming dengan garis tajam dan efek neon glow.',
-            ],
-            [
-                'nama' => 'Circular Badge Logo - Kangen Donat',
-                'kategori' => 'Logo & Branding',
-                'url' => 'assets/portofolio/circular-badge-logo-for-kangen-donat-wit_0nTLl0CaRgaJbI5V2NPznA_3WegRkwNQVqvH6ovIoXeAA.png',
-                'deskripsi' => 'Desain badge vintage modern untuk toko bakery dan donat artisan.',
-            ],
-            [
-                'nama' => 'Custom Emblem Logo - Seblak Instan Mama',
-                'kategori' => 'Logo & Branding',
-                'url' => 'assets/portofolio/modern-cute-logo-for-seblak-instan-mama-_3Fw1NHixQxKmrlyZg0amsQ_4DjwYvMHRhSKYiuVTnK85A.png',
-                'deskripsi' => 'Logo kemasan makanan instan UMKM yang modern, menarik, dan mudah diingat konsumen.',
-            ],
+        // Clean table to avoid orphaned or deleted file references
+        Portofolio::truncate();
 
-            // Packaging & Kemasan
+        $items = [
             [
-                'nama' => 'Packaging Box Eksklusif - Abdul Creative Studio',
-                'kategori' => 'Packaging & Kemasan',
-                'url' => 'assets/portofolio/DC 3359_mhdabdul31_Box.png',
-                'deskripsi' => 'Desain boks kemasan retail elegan dengan panduan garis potong dan mockup 3D siap cetak.',
+                'nama' => 'Asset 7@11x',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/Asset_7@11x.png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
             ],
             [
-                'nama' => 'Kotak Kemasan Produk - Yudhi Pratama Fotografer',
-                'kategori' => 'Packaging & Kemasan',
-                'url' => 'assets/portofolio/DC_4519_yudhipratamafotografer_Box.png',
-                'deskripsi' => 'Desain premium hardcover gift box untuk merchandise dan paket foto studio.',
-            ],
-            [
-                'nama' => 'Kemasan Retail Box - Pronov Store',
-                'kategori' => 'Packaging & Kemasan',
-                'url' => 'assets/portofolio/DC_5255_PRONOV_STORE_Box (2).png',
-                'deskripsi' => 'Konsep kemasan produk modern dengan typography tegas dan layout informatif.',
-            ],
-            [
-                'nama' => 'Stiker & Label Botol - Gung Dewi Label',
-                'kategori' => 'Packaging & Kemasan',
-                'url' => 'assets/portofolio/DC_5231_gungdewi182_LabelArtboard-1.png',
-                'deskripsi' => 'Desain stiker toples makanan dan botol minuman dengan komposisi warna kontras.',
-            ],
-            [
-                'nama' => 'Label Kosmetik & Skincare - Ellias Abo',
-                'kategori' => 'Packaging & Kemasan',
-                'url' => 'assets/portofolio/RV_32_Ellias Abo_Label.png',
-                'deskripsi' => 'Label botol skincare estetik dengan sertifikasi izin edar dan barcode rapi.',
-            ],
-
-            // UI/UX & Website
-            [
-                'nama' => 'SaaS Dashboard UI/UX - MacBook Pro Mockup',
+                'nama' => 'UI/UX Interface Design - MacBook Pro 16 9',
                 'kategori' => 'UI/UX & Web',
-                'url' => 'assets/portofolio/MacBook Pro 16_ - 1 (1).png',
-                'deskripsi' => 'Desain web interface analitik SaaS dengan layout modern dan visual dashboard data.',
+                'url' => 'assets/portofolio/MacBook_Pro_16_-_9.png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori UI/UX & Web oleh tim Premium Designz.',
             ],
             [
-                'nama' => 'E-Commerce Platform Web Portal UI',
-                'kategori' => 'UI/UX & Web',
-                'url' => 'assets/portofolio/MacBook Pro 16_ - 2 (4).png',
-                'deskripsi' => 'User experience portal marketplace dengan navigasi intuitif dan conversion rate tinggi.',
-            ],
-            [
-                'nama' => 'Creative Agency Landing Page Figma',
-                'kategori' => 'UI/UX & Web',
-                'url' => 'assets/portofolio/MacBook Pro 16_ - 6.png',
-                'deskripsi' => 'Desain responsif landing page studio kreatif dengan tata letak visual modern.',
-            ],
-            [
-                'nama' => 'Smart System Dashboard - TPST Digital Web',
-                'kategori' => 'UI/UX & Web',
-                'url' => 'assets/portofolio/tpst1 (1).png',
-                'deskripsi' => 'Sistem monitoring IoT dan pengolahan limbah perkotaan berbasis web interface interaktif.',
-            ],
-            [
-                'nama' => 'Mobile Application UI/UX - TPST Mobile App',
-                'kategori' => 'UI/UX & Web',
-                'url' => 'assets/portofolio/tpst_mobile1.png',
-                'deskripsi' => 'Desain aplikasi mobile Android & iOS dengan flow pemesanan dan tracking penjemputan sampah.',
-            ],
-
-            // Banner & Spanduk
-            [
-                'nama' => 'Banner Promosi UMKM - Verlita Ratnasari',
-                'kategori' => 'Banner & Spanduk',
-                'url' => 'assets/portofolio/DC 3372_Verlita Ratnasari_desain_Banner.png',
-                'deskripsi' => 'Spanduk promosi outdoor dengan resolusi tinggi siap cetak ukuran 3x1 meter.',
-            ],
-            [
-                'nama' => 'Banner Stand Restoran - Salad Cuyy Fresh',
-                'kategori' => 'Banner & Spanduk',
-                'url' => 'assets/portofolio/DC_5273_saladcuyy_Banner.png',
-                'deskripsi' => 'Banner x-banner display makanan sehat dengan ilustrasi menu yang menggugah selera.',
-            ],
-            [
-                'nama' => 'Spanduk Toko & Usaha - DR Nila Banner',
-                'kategori' => 'Banner & Spanduk',
-                'url' => 'assets/portofolio/DR_2570_Nilas_Banner.png',
-                'deskripsi' => 'Banner depan toko dengan penataan tipografi jelas dan nomor kontak jelas.',
-            ],
-
-            // Poster & Menu / Flyer
-            [
-                'nama' => 'Daftar Menu Restoran & Cafe - Obylare',
-                'kategori' => 'Poster & Flyer',
-                'url' => 'assets/portofolio/DC_3422_obylare_MenuArtboard-1.png',
-                'deskripsi' => 'Desain buku menu lipat 2 dengan grid foto makanan estetik dan harga terstruktur.',
-            ],
-            [
-                'nama' => 'Poster Menu Makanan - Soeg Cafe',
-                'kategori' => 'Poster & Flyer',
-                'url' => 'assets/portofolio/DC_3219_Soeg_Poster Menu2.png',
-                'deskripsi' => 'Poster dinding menu andalan cafe dengan visual appetizing dan kontras warna hangat.',
-            ],
-            [
-                'nama' => 'Brosur Penawaran Bisnis - Fendi Corporate',
-                'kategori' => 'Poster & Flyer',
-                'url' => 'assets/portofolio/DC_4502_Fendi_Brosur4.png',
-                'deskripsi' => 'Brosur marketing lipat tiga (tri-fold) dengan tata letak korporat modern.',
-            ],
-            [
-                'nama' => 'Flyer Promosi Digital - Aldrick Reyhan',
-                'kategori' => 'Poster & Flyer',
-                'url' => 'assets/portofolio/DC_5039_aldrick_reyhan_ramadhan_FlyerArtboard 1.jpg',
-                'deskripsi' => 'Flyer selebaran digital resolusi tajam untuk promosi online dan media cetak A5.',
-            ],
-            [
-                'nama' => 'Pricelist Katalog Menu - Mocci Snack',
-                'kategori' => 'Poster & Flyer',
-                'url' => 'assets/portofolio/Dc 4110_gwmocci_PriceList.png',
-                'deskripsi' => 'Desain daftar harga modern dengan layout minimalis dan mudah dibaca di layar smartphone.',
-            ],
-
-            // Social Media & Feed
-            [
-                'nama' => 'Instagram Feed Series - Unlock Digital Talents',
-                'kategori' => 'Social Media',
-                'url' => 'assets/portofolio/DC_5110_bangkitdarmawan_Feeds--Unlock-Digital-Talents1.png',
-                'deskripsi' => 'Template konten Instagram carousel edukasi dengan perpaduan warna neon tech.',
-            ],
-            [
-                'nama' => 'Instagram Post Campaign - Yasui Cargo',
-                'kategori' => 'Social Media',
-                'url' => 'assets/portofolio/DC_4900_Yasui Cargo_Feeds.png',
-                'deskripsi' => 'Desain feed Instagram bisnis logistik untuk meningkatkan engagement dan awareness brand.',
-            ],
-            [
-                'nama' => 'Social Media Feed Promo - Limz Elektronik',
-                'kategori' => 'Social Media',
-                'url' => 'assets/portofolio/DR_1157_Limz-Elektronik_satuan9desainArtboard-1-copy-2.png',
-                'deskripsi' => 'Grafis promosi diskon produk elektronik dengan aksen warna dinamis.',
-            ],
-
-            // Jersey & Apparel
-            [
-                'nama' => 'Custom Sport Jersey - Anie Candra Kirana',
+                'nama' => 'Jersey Apparel Printing - RV 39 Palestin3 Jersey (1)',
                 'kategori' => 'Jersey & Apparel',
-                'url' => 'assets/portofolio/DC_4235_aniecandrakirana_Jersey (1).png',
-                'deskripsi' => 'Pola desain jersey printing sublimasi depan-belakang dengan gradasi warna tajam.',
+                'url' => 'assets/portofolio/RV_39_palestin3_Jersey_(1).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Jersey & Apparel oleh tim Premium Designz.',
             ],
             [
-                'nama' => 'Esport & Gaming Jersey - ErSport Custom',
-                'kategori' => 'Jersey & Apparel',
-                'url' => 'assets/portofolio/DC_4404_jersey_ersport _Menu.png',
-                'deskripsi' => 'Desain seragam tim esport dengan motif geometris futuristik.',
+                'nama' => 'Ayam@2x 100',
+                'kategori' => 'Packaging & Kemasan',
+                'url' => 'assets/portofolio/ayam@2x-100.jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Packaging & Kemasan oleh tim Premium Designz.',
             ],
             [
-                'nama' => 'Cycling Jersey Apparel - Dhimas Rabiansyah',
-                'kategori' => 'Jersey & Apparel',
-                'url' => 'assets/portofolio/DR_1390_dhimasrabiansyah_jersey (1).png',
-                'deskripsi' => 'Desain baju sepeda aero custom dengan penempatan logo sponsor presisi.',
+                'nama' => 'Ayam 1@2x 100',
+                'kategori' => 'Packaging & Kemasan',
+                'url' => 'assets/portofolio/ayam_1@2x-100.jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Packaging & Kemasan oleh tim Premium Designz.',
             ],
-
-            // Booth & Pameran
             [
-                'nama' => 'Stand Booth Pameran 3 Sisi - Dapur Autentik',
+                'nama' => 'Desain Banner Promosi - Banner',
+                'kategori' => 'Banner & Spanduk',
+                'url' => 'assets/portofolio/banner.png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Banner & Spanduk oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Desain Banner Promosi - Banner (1)',
+                'kategori' => 'Banner & Spanduk',
+                'url' => 'assets/portofolio/banner_(1).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Banner & Spanduk oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Desain Banner Promosi - Banner (2)',
+                'kategori' => 'Banner & Spanduk',
+                'url' => 'assets/portofolio/banner_(2).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Banner & Spanduk oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Desain Banner Promosi - Banner (3)',
+                'kategori' => 'Banner & Spanduk',
+                'url' => 'assets/portofolio/banner_(3).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Banner & Spanduk oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Desain Banner Promosi - Banner (4)',
+                'kategori' => 'Banner & Spanduk',
+                'url' => 'assets/portofolio/banner_(4).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Banner & Spanduk oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Stand Booth Pameran - Booth',
                 'kategori' => 'Booth & Stand',
-                'url' => 'assets/portofolio/RV-12_dapur.autentik_Booth-3sisiArtboard-1-copy-3_1.png',
-                'deskripsi' => 'Desain visual booth container pameran kuliner 3 sisi dengan penataan branding mencolok.',
+                'url' => 'assets/portofolio/booth.png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Booth & Stand oleh tim Premium Designz.',
             ],
             [
-                'nama' => 'Event Booth Branding - Tasdek',
+                'nama' => 'Stand Booth Pameran - Booth (2)',
                 'kategori' => 'Booth & Stand',
-                'url' => 'assets/portofolio/DC_5024_tasdek18_BoothArtboard 1.jpg',
-                'deskripsi' => 'Konsep visual booth portable untuk pameran franchise dan bazar UMKM.',
+                'url' => 'assets/portofolio/booth_(2).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Booth & Stand oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Stand Booth Pameran - Booth (3)',
+                'kategori' => 'Booth & Stand',
+                'url' => 'assets/portofolio/booth_(3).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Booth & Stand oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Kemasan Box Retail - Box',
+                'kategori' => 'Packaging & Kemasan',
+                'url' => 'assets/portofolio/box.jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Packaging & Kemasan oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Kemasan Box Retail - Box',
+                'kategori' => 'Packaging & Kemasan',
+                'url' => 'assets/portofolio/box.png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Packaging & Kemasan oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Kemasan Box Retail - Box (1)',
+                'kategori' => 'Packaging & Kemasan',
+                'url' => 'assets/portofolio/box_(1).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Packaging & Kemasan oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Kemasan Box Retail - Box (2)',
+                'kategori' => 'Packaging & Kemasan',
+                'url' => 'assets/portofolio/box_(2).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Packaging & Kemasan oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Kemasan Box Retail - Box (3)',
+                'kategori' => 'Packaging & Kemasan',
+                'url' => 'assets/portofolio/box_(3).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Packaging & Kemasan oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Kemasan Box Retail - Box (4)',
+                'kategori' => 'Packaging & Kemasan',
+                'url' => 'assets/portofolio/box_(4).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Packaging & Kemasan oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Kemasan Box Retail - Box (5)',
+                'kategori' => 'Packaging & Kemasan',
+                'url' => 'assets/portofolio/box_(5).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Packaging & Kemasan oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Kemasan Box Retail - Box (6)',
+                'kategori' => 'Packaging & Kemasan',
+                'url' => 'assets/portofolio/box_(6).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Packaging & Kemasan oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds.png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (1)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(1).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (1)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(1).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (10)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(10).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (11)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(11).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (12)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(12).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (13)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(13).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (14)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(14).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (15)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(15).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (16)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(16).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (17)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(17).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (18)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(18).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (19)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(19).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (2)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(2).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (2)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(2).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (20)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(20).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (21)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(21).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (22)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(22).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (23)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(23).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (24)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(24).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (3)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(3).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (3)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(3).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (4)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(4).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (4)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(4).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (5)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(5).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (5)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(5).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (6)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(6).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (7)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(7).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (8)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(8).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Social Media Feeds - Feeds (9)',
+                'kategori' => 'Social Media',
+                'url' => 'assets/portofolio/feeds_(9).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Social Media oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Final',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/final.png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flayer (1)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flayer_(1).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flayer (2)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flayer_(2).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer.png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (1)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(1).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (1)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(1).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (10)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(10).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (10)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(10).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (11)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(11).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (11)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(11).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (12)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(12).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (13)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(13).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (14)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(14).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (15)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(15).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (16)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(16).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (17)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(17).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (18)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(18).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (19)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(19).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (2)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(2).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (2)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(2).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (20)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(20).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (21)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(21).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (22)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(22).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (23)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(23).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (24)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(24).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (25)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(25).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (26)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(26).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (27)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(27).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (28)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(28).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (29)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(29).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (3)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(3).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (3)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(3).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (30)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(30).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (31)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(31).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (32)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(32).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (33)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(33).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (34)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(34).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (35)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(35).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (36)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(36).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (37)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(37).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (38)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(38).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (39)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(39).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (4)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(4).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (4)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(4).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (5)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(5).PNG',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (5)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(5).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (6)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(6).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (6)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(6).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (7)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(7).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (7)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(7).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (8)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(8).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (8)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(8).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (9)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(9).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Flyer & Poster Promosi - Flyer (9)',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/flyer_(9).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Label',
+                'kategori' => 'Packaging & Kemasan',
+                'url' => 'assets/portofolio/label.png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Packaging & Kemasan oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo.jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo.png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (1)',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(1).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (10)',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(10).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (11)',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(11).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (12)',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(12).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (13)',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(13).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (14)',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(14).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (15)',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(15).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (16)',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(16).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (17)',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(17).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (18)',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(18).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (19)',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(19).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (2)',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(2).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (2) Alt',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(2)_alt.png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (20)',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(20).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (21)',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(21).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (3)',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(3).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (3) Alt',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(3)_alt.png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (4)',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(4).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (4) Alt',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(4)_alt.png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (5)',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(5).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (6)',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(6).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (7)',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(7).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (8)',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(8).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Logo Branding - Logo (9)',
+                'kategori' => 'Logo & Branding',
+                'url' => 'assets/portofolio/logo_(9).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Jersey Apparel Printing - Pakaian',
+                'kategori' => 'Jersey & Apparel',
+                'url' => 'assets/portofolio/pakaian.png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Jersey & Apparel oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Jersey Apparel Printing - Pakaian (1)',
+                'kategori' => 'Jersey & Apparel',
+                'url' => 'assets/portofolio/pakaian_(1).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Jersey & Apparel oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Jersey Apparel Printing - Pakaian (2)',
+                'kategori' => 'Jersey & Apparel',
+                'url' => 'assets/portofolio/pakaian_(2).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Jersey & Apparel oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Jersey Apparel Printing - Pakaian (3)',
+                'kategori' => 'Jersey & Apparel',
+                'url' => 'assets/portofolio/pakaian_(3).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Jersey & Apparel oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Jersey Apparel Printing - Pakaian (4)',
+                'kategori' => 'Jersey & Apparel',
+                'url' => 'assets/portofolio/pakaian_(4).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Jersey & Apparel oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Jersey Apparel Printing - Pakaian (5)',
+                'kategori' => 'Jersey & Apparel',
+                'url' => 'assets/portofolio/pakaian_(5).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Jersey & Apparel oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Jersey Apparel Printing - Pakaian (6)',
+                'kategori' => 'Jersey & Apparel',
+                'url' => 'assets/portofolio/pakaian_(6).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Jersey & Apparel oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Jersey Apparel Printing - Pakaian (7)',
+                'kategori' => 'Jersey & Apparel',
+                'url' => 'assets/portofolio/pakaian_(7).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Jersey & Apparel oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Jersey Apparel Printing - Pakaian (8)',
+                'kategori' => 'Jersey & Apparel',
+                'url' => 'assets/portofolio/pakaian_(8).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Jersey & Apparel oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Poster',
+                'kategori' => 'Poster & Flyer',
+                'url' => 'assets/portofolio/poster.png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Standing Pouch Packaging - Pouch (1)',
+                'kategori' => 'Packaging & Kemasan',
+                'url' => 'assets/portofolio/pouch_(1).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Packaging & Kemasan oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Standing Pouch Packaging - Pouch (2)',
+                'kategori' => 'Packaging & Kemasan',
+                'url' => 'assets/portofolio/pouch_(2).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Packaging & Kemasan oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'Seblak',
+                'kategori' => 'Packaging & Kemasan',
+                'url' => 'assets/portofolio/seblak.png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Packaging & Kemasan oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'UI/UX Interface Design - Ui Ux (1)',
+                'kategori' => 'UI/UX & Web',
+                'url' => 'assets/portofolio/ui_ux_(1).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori UI/UX & Web oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'UI/UX Interface Design - Ui Ux (10)',
+                'kategori' => 'UI/UX & Web',
+                'url' => 'assets/portofolio/ui_ux_(10).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori UI/UX & Web oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'UI/UX Interface Design - Ui Ux (11)',
+                'kategori' => 'UI/UX & Web',
+                'url' => 'assets/portofolio/ui_ux_(11).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori UI/UX & Web oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'UI/UX Interface Design - Ui Ux (12)',
+                'kategori' => 'UI/UX & Web',
+                'url' => 'assets/portofolio/ui_ux_(12).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori UI/UX & Web oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'UI/UX Interface Design - Ui Ux (13)',
+                'kategori' => 'UI/UX & Web',
+                'url' => 'assets/portofolio/ui_ux_(13).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori UI/UX & Web oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'UI/UX Interface Design - Ui Ux (14)',
+                'kategori' => 'UI/UX & Web',
+                'url' => 'assets/portofolio/ui_ux_(14).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori UI/UX & Web oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'UI/UX Interface Design - Ui Ux (15)',
+                'kategori' => 'UI/UX & Web',
+                'url' => 'assets/portofolio/ui_ux_(15).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori UI/UX & Web oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'UI/UX Interface Design - Ui Ux (16)',
+                'kategori' => 'UI/UX & Web',
+                'url' => 'assets/portofolio/ui_ux_(16).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori UI/UX & Web oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'UI/UX Interface Design - Ui Ux (17)',
+                'kategori' => 'UI/UX & Web',
+                'url' => 'assets/portofolio/ui_ux_(17).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori UI/UX & Web oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'UI/UX Interface Design - Ui Ux (2)',
+                'kategori' => 'UI/UX & Web',
+                'url' => 'assets/portofolio/ui_ux_(2).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori UI/UX & Web oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'UI/UX Interface Design - Ui Ux (3)',
+                'kategori' => 'UI/UX & Web',
+                'url' => 'assets/portofolio/ui_ux_(3).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori UI/UX & Web oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'UI/UX Interface Design - Ui Ux (4)',
+                'kategori' => 'UI/UX & Web',
+                'url' => 'assets/portofolio/ui_ux_(4).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori UI/UX & Web oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'UI/UX Interface Design - Ui Ux (5)',
+                'kategori' => 'UI/UX & Web',
+                'url' => 'assets/portofolio/ui_ux_(5).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori UI/UX & Web oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'UI/UX Interface Design - Ui Ux (6)',
+                'kategori' => 'UI/UX & Web',
+                'url' => 'assets/portofolio/ui_ux_(6).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori UI/UX & Web oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'UI/UX Interface Design - Ui Ux (7)',
+                'kategori' => 'UI/UX & Web',
+                'url' => 'assets/portofolio/ui_ux_(7).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori UI/UX & Web oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'UI/UX Interface Design - Ui Ux (8)',
+                'kategori' => 'UI/UX & Web',
+                'url' => 'assets/portofolio/ui_ux_(8).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori UI/UX & Web oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'UI/UX Interface Design - Ui Ux (9)',
+                'kategori' => 'UI/UX & Web',
+                'url' => 'assets/portofolio/ui_ux_(9).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori UI/UX & Web oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'UI/UX Interface Design - Uiux (1)',
+                'kategori' => 'UI/UX & Web',
+                'url' => 'assets/portofolio/uiux_(1).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori UI/UX & Web oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'UI/UX Interface Design - Uiux (2)',
+                'kategori' => 'UI/UX & Web',
+                'url' => 'assets/portofolio/uiux_(2).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori UI/UX & Web oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'X-Banner & Roll Banner - Xbanner',
+                'kategori' => 'Banner & Spanduk',
+                'url' => 'assets/portofolio/xbanner.png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Banner & Spanduk oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'X-Banner & Roll Banner - Xbanner (1)',
+                'kategori' => 'Banner & Spanduk',
+                'url' => 'assets/portofolio/xbanner_(1).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Banner & Spanduk oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'X-Banner & Roll Banner - Xbanner (1)',
+                'kategori' => 'Banner & Spanduk',
+                'url' => 'assets/portofolio/xbanner_(1).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Banner & Spanduk oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'X-Banner & Roll Banner - Xbanner (2)',
+                'kategori' => 'Banner & Spanduk',
+                'url' => 'assets/portofolio/xbanner_(2).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Banner & Spanduk oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'X-Banner & Roll Banner - Xbanner (2)',
+                'kategori' => 'Banner & Spanduk',
+                'url' => 'assets/portofolio/xbanner_(2).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Banner & Spanduk oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'X-Banner & Roll Banner - Xbanner (3)',
+                'kategori' => 'Banner & Spanduk',
+                'url' => 'assets/portofolio/xbanner_(3).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Banner & Spanduk oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'X-Banner & Roll Banner - Xbanner (3)',
+                'kategori' => 'Banner & Spanduk',
+                'url' => 'assets/portofolio/xbanner_(3).png',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Banner & Spanduk oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'X-Banner & Roll Banner - Xbanner (4)',
+                'kategori' => 'Banner & Spanduk',
+                'url' => 'assets/portofolio/xbanner_(4).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Banner & Spanduk oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'X-Banner & Roll Banner - Xbanner (5)',
+                'kategori' => 'Banner & Spanduk',
+                'url' => 'assets/portofolio/xbanner_(5).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Banner & Spanduk oleh tim Premium Designz.',
+            ],
+            [
+                'nama' => 'X-Banner & Roll Banner - Xbanner (6)',
+                'kategori' => 'Banner & Spanduk',
+                'url' => 'assets/portofolio/xbanner_(6).jpg',
+                'deskripsi' => 'Karya portofolio visual profesional kategori Banner & Spanduk oleh tim Premium Designz.',
             ],
         ];
 
-        // Insert Curated Items First
-        $seededUrls = [];
-        foreach ($curatedItems as $item) {
-            $existing = Portofolio::where('url', $item['url'])->first();
-            if (! $existing) {
+        foreach ($items as $item) {
+            if (File::exists(public_path($item['url']))) {
                 Portofolio::create($item);
-            }
-            $seededUrls[$item['url']] = true;
-            $seededUrls[basename($item['url'])] = true;
-        }
-
-        // 2. Scan Directory public/assets/portofolio to Automatically Ingest Other High Quality Images
-        $dir = public_path('assets/portofolio');
-        if (File::isDirectory($dir)) {
-            $files = File::files($dir);
-
-            foreach ($files as $file) {
-                $filename = $file->getFilename();
-                $ext = strtolower($file->getExtension());
-
-                if (! in_array($ext, ['png', 'jpg', 'jpeg', 'webp'])) {
-                    continue;
-                }
-
-                // Check if already seeded in curated list
-                $relativeUrl = 'assets/portofolio/'.$filename;
-                if (isset($seededUrls[$filename]) || isset($seededUrls[$relativeUrl])) {
-                    continue;
-                }
-
-                // Skip very small temp icons or huge files if necessary, or categorize them
-                $category = 'Karya Desain';
-                $lower = strtolower($filename);
-
-                if (Str::contains($lower, ['logo', 'mascot', 'brand', 'emblem', 'badge'])) {
-                    $category = 'Logo & Branding';
-                } elseif (Str::contains($lower, ['box', 'label', 'kemasan', 'pouch', 'packaging'])) {
-                    $category = 'Packaging & Kemasan';
-                } elseif (Str::contains($lower, ['banner', 'spanduk', 'baliho'])) {
-                    $category = 'Banner & Spanduk';
-                } elseif (Str::contains($lower, ['macbook', 'ui', 'ux', 'web', 'mobile', 'tpst', 'mockup', 'app'])) {
-                    $category = 'UI/UX & Web';
-                } elseif (Str::contains($lower, ['jersey', 'apparel', 'baju'])) {
-                    $category = 'Jersey & Apparel';
-                } elseif (Str::contains($lower, ['booth', 'stand'])) {
-                    $category = 'Booth & Stand';
-                } elseif (Str::contains($lower, ['feed', 'reels', 'story', 'instagram', 'social'])) {
-                    $category = 'Social Media';
-                } elseif (Str::contains($lower, ['menu', 'poster', 'flyer', 'brosur', 'leaflet', 'pricelist'])) {
-                    $category = 'Poster & Flyer';
-                } else {
-                    $category = 'Kreatif Visual';
-                }
-
-                // Generate clean human-readable name
-                $cleanName = pathinfo($filename, PATHINFO_FILENAME);
-                $cleanName = preg_replace('/[_\-\+]+/', ' ', $cleanName);
-                $cleanName = preg_replace('/\s+/', ' ', $cleanName);
-                $cleanName = Str::limit(trim($cleanName), 60);
-                $cleanName = ucwords($cleanName);
-
-                Portofolio::create([
-                    'nama' => $cleanName,
-                    'kategori' => $category,
-                    'url' => $relativeUrl,
-                    'deskripsi' => 'Karya portofolio visual profesional kategori '.$category.' oleh tim Premium Designz.',
-                ]);
             }
         }
     }

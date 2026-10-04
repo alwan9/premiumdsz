@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kategori;
 use App\Models\Layanan;
 use App\Models\ProdukDigital;
+use App\Models\Promo;
 use App\Models\Setting;
 use App\Models\Testimoni;
 use Illuminate\Http\Request;
@@ -17,6 +18,8 @@ class HomeController extends Controller
             'Judul' => 'Premium Design Studio & Marketplace',
             'Deskripsi' => 'Studio kreatif dan marketplace desain digital premium. Kami merancang UI/UX modern, identitas visual, aset 3D, dan branding eksklusif.',
         ]);
+
+        $promos = Promo::where('is_active', true)->latest('Id_promo')->get();
 
         $kategoris = Kategori::withCount('produkDigital')->get();
 
@@ -35,15 +38,20 @@ class HomeController extends Controller
             });
         }
 
-        $produks = $query->latest('Id_produk')->get();
+        // Acak setiap refresh jika tidak mencari secara spesifik
+        $produks = ($search || ($selectedKategori && $selectedKategori !== 'all'))
+            ? $query->latest('Id_produk')->get()
+            : $query->inRandomOrder()->get();
+
         $layanans = Layanan::with('produkDigital')->latest('Id_Layanan')->get();
-        $testimonis = Testimoni::latest('Id_testimoni')->take(9)->get();
+        $testimonis = Testimoni::inRandomOrder()->take(9)->get();
 
         $averageRating = 5.0;
         $totalReviews = Testimoni::count();
 
         return view('home', compact(
             'setting',
+            'promos',
             'kategoris',
             'produks',
             'layanans',

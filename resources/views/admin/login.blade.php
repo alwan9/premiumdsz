@@ -53,22 +53,22 @@
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center p-4 relative overflow-hidden font-sans selection:bg-brand-500 selection:text-white">
+<body class="bg-zinc-950 text-zinc-100 min-h-screen flex items-center justify-center p-4 relative overflow-hidden font-sans selection:bg-brand-500 selection:text-white">
 
     <!-- Background Ambient Glow -->
     <div class="absolute -top-32 -left-32 w-96 h-96 bg-brand-600/20 rounded-full blur-[128px] pointer-events-none"></div>
-    <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-indigo-600/20 rounded-full blur-[128px] pointer-events-none"></div>
+    <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-brand-700/20 rounded-full blur-[128px] pointer-events-none"></div>
 
     <div class="w-full max-w-md relative z-10">
         <!-- Brand Header -->
         <div class="text-center mb-8 space-y-2">
             <img src="{{ asset('assets/other/logo_white.png') }}" alt="Logo Premium Design" class="h-14 w-auto object-contain mx-auto mb-4 drop-shadow-xl">
             <h1 class="text-2xl font-bold text-white font-heading tracking-tight">Portal Admin Premium Design</h1>
-            <p class="text-xs text-slate-400">Masuk untuk mengelola portofolio, produk, layanan, dan ulasan</p>
+            <p class="text-xs text-zinc-400">Masuk untuk mengelola portofolio, produk, layanan, dan ulasan</p>
         </div>
 
         <!-- Login Form Box -->
-        <div class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-3xl p-8 shadow-2xl space-y-6">
+        <div class="bg-zinc-900/80 backdrop-blur-xl border border-zinc-800 rounded-3xl p-8 shadow-2xl space-y-6">
             @if ($errors->any())
                 <div class="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs">
                     {{ $errors->first() }}
@@ -86,29 +86,29 @@
                 
                 <!-- Username / Email -->
                 <div class="space-y-1.5">
-                    <label class="text-xs font-semibold text-slate-300">Username atau Email</label>
+                    <label class="text-xs font-semibold text-zinc-300">Username atau Email</label>
                     <div class="relative">
-                        <iconify-icon icon="lucide:user" class="absolute left-4 top-3.5 text-slate-500 text-sm"></iconify-icon>
-                        <input type="text" name="login" value="{{ old('login', 'admin') }}" required class="w-full pl-11 pr-4 py-3 bg-slate-800/80 border border-slate-700 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors" placeholder="admin / designzpremium@gmail.com">
+                        <iconify-icon icon="lucide:user" class="absolute left-4 top-3.5 text-zinc-500 text-sm"></iconify-icon>
+                        <input type="text" name="login" value="{{ old('login', 'admin') }}" required class="w-full pl-11 pr-4 py-3 bg-zinc-800/80 border border-zinc-700 rounded-xl text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors" placeholder="admin / designzpremium@gmail.com">
                     </div>
                 </div>
 
                 <!-- Password -->
                 <div class="space-y-1.5">
-                    <label class="text-xs font-semibold text-slate-300">Password</label>
+                    <label class="text-xs font-semibold text-zinc-300">Password</label>
                     <div class="relative">
-                        <iconify-icon icon="lucide:lock" class="absolute left-4 top-3.5 text-slate-500 text-sm"></iconify-icon>
-                        <input type="password" name="password" value="password123" required class="w-full pl-11 pr-4 py-3 bg-slate-800/80 border border-slate-700 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors" placeholder="••••••••">
+                        <iconify-icon icon="lucide:lock" class="absolute left-4 top-3.5 text-zinc-500 text-sm"></iconify-icon>
+                        <input type="password" name="password" value="password123" required class="w-full pl-11 pr-4 py-3 bg-zinc-800/80 border border-zinc-700 rounded-xl text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors" placeholder="••••••••">
                     </div>
                 </div>
 
                 <!-- Remember Me -->
                 <div class="flex items-center justify-between text-xs pt-1">
-                    <label class="flex items-center space-x-2 text-slate-400 cursor-pointer">
-                        <input type="checkbox" name="remember" class="rounded bg-slate-800 border-slate-700 text-brand-600 focus:ring-brand-500">
+                    <label class="flex items-center space-x-2 text-zinc-400 cursor-pointer">
+                        <input type="checkbox" name="remember" class="rounded bg-zinc-800 border-zinc-700 text-brand-600 focus:ring-brand-500">
                         <span>Ingat saya</span>
                     </label>
-                    <span class="text-slate-500">Default: admin / password123</span>
+                    <span class="text-zinc-500">Default: admin / password123</span>
                 </div>
 
                 <!-- Submit Button -->
@@ -120,7 +120,7 @@
             </form>
 
             <div class="pt-2 text-center">
-                <a href="{{ route('home') }}" class="text-xs text-slate-400 hover:text-brand-400 transition-colors flex items-center justify-center space-x-1">
+                <a href="{{ route('home') }}" class="text-xs text-zinc-400 hover:text-brand-400 transition-colors flex items-center justify-center space-x-1">
                     <iconify-icon icon="lucide:arrow-left" class="text-xs"></iconify-icon>
                     <span>Kembali ke Website Utama</span>
                 </a>

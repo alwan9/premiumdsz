@@ -29,7 +29,11 @@ Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.
 Route::get('/layanan-pricelist', [ServiceController::class, 'index'])->name('services.index');
 
 // Admin Auth Routes
+Route::get('/admin', function () {
+    return redirect()->route('admin.dashboard');
+});
 Route::get('/admin/login', [AuthController::class, 'showLogin'])->name('admin.login');
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/admin/login', [AuthController::class, 'login'])->name('admin.login.submit');
 Route::post('/admin/logout', [AuthController::class, 'logout'])->name('admin.logout');
 

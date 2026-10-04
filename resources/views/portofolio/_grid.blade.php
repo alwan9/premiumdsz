@@ -29,17 +29,17 @@
     <div class="columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-3 sm:gap-4 [column-fill:_balance] py-2">
         @foreach ($portofolios as $index => $item)
             <div data-aos="fade-up" data-aos-delay="{{ ($index % 5) * 35 }}"
-                class="break-inside-avoid mb-3 sm:mb-4 group relative rounded-2xl overflow-hidden bg-zinc-100 skeleton-loader cursor-zoom-in shadow-xs hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-200 ease-out min-h-[140px]"
+                class="break-inside-avoid mb-3 sm:mb-4 group relative rounded-2xl overflow-hidden bg-zinc-200 skeleton-loader cursor-zoom-in shadow-xs hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out min-h-[140px]"
                 onclick="openPortfolioZoom({{ $index }})">
 
                 <img src="{{ $item->image_url }}" alt="{{ $item->nama }}" loading="lazy"
-                    class="w-full h-auto block transition-all duration-300 ease-out group-hover:brightness-90">
+                    class="w-full h-auto block transition-all duration-300 ease-in-out group-hover:brightness-90">
 
                 <!-- Subtle Darkening & Zoom Overlay Icon -->
                 <div
-                    class="absolute inset-0 bg-zinc-950/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center pointer-events-none">
+                    class="absolute inset-0 bg-zinc-950/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out flex items-center justify-center pointer-events-none">
                     <div
-                        class="w-10 h-10 rounded-full bg-white/95 backdrop-blur-sm text-zinc-900 flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-200">
+                        class="w-10 h-10 rounded-full bg-white/95 backdrop-blur-sm text-zinc-900 flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-300 ease-in-out">
                         <iconify-icon icon="lucide:zoom-in" class="text-lg text-brand-600"></iconify-icon>
                     </div>
                 </div>

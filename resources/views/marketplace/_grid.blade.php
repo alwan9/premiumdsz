@@ -30,19 +30,19 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
         @foreach ($produks as $prod)
             <div data-aos="fade-up" data-aos-delay="{{ ($loop->index % 4) * 80 }}"
-                class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-200 ease-out flex flex-col justify-between group">
+                class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                 <div>
                     <!-- Card Image & Overlay (Aspect Ratio 1:1) -->
                     <a href="{{ route('products.show', $prod->Id_produk) }}" class="block">
-                        <div class="aspect-square bg-zinc-100 skeleton-loader relative overflow-hidden cursor-pointer">
+                        <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden cursor-pointer">
                             <img src="{{ $prod->image_url }}" alt="{{ $prod->Nama_produk }}" loading="lazy"
-                                class="w-full h-full object-cover transition-all duration-300 ease-out group-hover:brightness-90">
+                                class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:brightness-90">
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-black/20">
                             </div>
                             <!-- Subtle darkening overlay on hover -->
                             <div
-                                class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-200 pointer-events-none">
+                                class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 ease-in-out pointer-events-none">
                             </div>
 
                             <div class="absolute top-2.5 left-2.5 z-10">
@@ -65,9 +65,9 @@
                     </a>
 
                     <!-- Card Info -->
-                    <div class="p-4 group-hover:bg-zinc-50 transition-colors duration-200">
+                    <div class="p-4 group-hover:bg-zinc-50 transition-colors duration-300 ease-in-out">
                         <h3
-                            class="text-xs sm:text-sm font-bold text-zinc-900 line-clamp-1 group-hover:text-brand-600 transition-colors">
+                            class="text-xs sm:text-sm font-bold text-zinc-900 line-clamp-1 group-hover:text-brand-600 transition-colors duration-300 ease-in-out">
                             <a href="{{ route('products.show', $prod->Id_produk) }}">
                                 {{ $prod->Nama_produk }}
                             </a>
@@ -79,7 +79,7 @@
                 </div>
 
                 <!-- Action Buttons -->
-                <div class="p-4 pt-0 flex items-center space-x-2 group-hover:bg-zinc-50 transition-colors duration-200">
+                <div class="p-4 pt-0 flex items-center space-x-2 group-hover:bg-zinc-50 transition-colors duration-300 ease-in-out">
                     <a href="{{ route('products.show', $prod->Id_produk) }}"
                         class="flex-1 py-1.5 text-center text-xs font-bold text-zinc-700 bg-zinc-100 hover:bg-zinc-200 rounded-xl transition-colors">
                         Detail

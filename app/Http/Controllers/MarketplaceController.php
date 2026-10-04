@@ -43,7 +43,7 @@ class MarketplaceController extends Controller
             $query->inRandomOrder();
         }
 
-        $produks = $query->paginate(9)->withQueryString();
+        $produks = $query->paginate(25)->withQueryString();
         $totalSemuaProduk = ProdukDigital::count();
 
         if ($request->ajax()) {

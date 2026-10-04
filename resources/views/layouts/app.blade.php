@@ -214,7 +214,7 @@
             }
         }
 
-        /* Skeleton Loading & Shimmer Animation */
+        /* Base Background Image Zinc-200 & Skeleton Shimmer */
         @keyframes skeletonShimmer {
             0% {
                 background-position: -200% 0;
@@ -225,13 +225,15 @@
         }
 
         .skeleton-shimmer {
-            background: linear-gradient(90deg, #f1f5f9 0%, #e2e8f0 50%, #f1f5f9 100%) !important;
+            background-color: #e4e4e7 !important;
+            background: linear-gradient(90deg, #e4e4e7 0%, #d4d4d8 50%, #e4e4e7 100%) !important;
             background-size: 200% 100% !important;
             animation: skeletonShimmer 1.5s infinite ease-in-out !important;
         }
 
         .skeleton-loader:not(.skeleton-loaded) {
-            background: linear-gradient(90deg, #f1f5f9 0%, #e2e8f0 50%, #f1f5f9 100%) !important;
+            background-color: #e4e4e7 !important;
+            background: linear-gradient(90deg, #e4e4e7 0%, #d4d4d8 50%, #e4e4e7 100%) !important;
             background-size: 200% 100% !important;
             animation: skeletonShimmer 1.5s infinite ease-in-out !important;
         }
@@ -251,6 +253,40 @@
         .skeleton-loader.skeleton-loaded img,
         .skeleton-loader img.img-loaded {
             opacity: 1 !important;
+        }
+
+        /* Google Translate Hidden Widget & Anti-Layout Shift */
+        .goog-te-banner-frame.skiptranslate,
+        .goog-te-banner-frame,
+        iframe.goog-te-banner-frame,
+        #goog-gt-tt,
+        .goog-te-balloon-frame,
+        .goog-tooltip,
+        .goog-tooltip:hover {
+            display: none !important;
+            visibility: hidden !important;
+        }
+
+        body {
+            top: 0px !important;
+            position: static !important;
+        }
+
+        #google_translate_element {
+            display: none !important;
+        }
+
+        .skiptranslate:not(.notranslate) {
+            display: none !important;
+        }
+
+        .notranslate {
+            translate: no !important;
+        }
+
+        font {
+            background-color: transparent !important;
+            box-shadow: none !important;
         }
     </style>
     <!-- AOS (Animate On Scroll) CSS -->
@@ -319,6 +355,22 @@
                 }, { once: true });
             });
         }
+
+        // Auto Scroll to Top on page transitions & pagination
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!window.location.hash) {
+                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+            }
+        });
+        document.addEventListener('click', function(e) {
+            const paginationAnchor = e.target.closest('.pagination a, [rel="next"], [rel="prev"]');
+            if (paginationAnchor && !e.defaultPrevented) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
     </script>
 
     <!-- Auto Scroll to Top Floating Button Component -->
@@ -326,6 +378,137 @@
 
     <!-- Asset Protection Security Component -->
     @include('components.asset-protection')
+
+    <!-- Google Translate Multi-Language Engine (Automatic Frontend Translation) -->
+    <div id="google_translate_element" style="display: none;" class="notranslate"></div>
+
+    <script type="text/javascript">
+        // Global Google Translate Init Callback
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'id',
+                includedLanguages: 'id,en',
+                autoDisplay: false
+            }, 'google_translate_element');
+            
+            // Sync UI after initialization
+            setTimeout(function() {
+                const currentLang = getSavedLanguage();
+                applyLanguageUI(currentLang);
+            }, 300);
+        }
+
+        function getSavedLanguage() {
+            let lang = localStorage.getItem('site_lang');
+            if (!lang) {
+                const match = document.cookie.match(/(^|;\s*)googtrans=([^;]+)/);
+                if (match) {
+                    const parts = decodeURIComponent(match[2]).split('/');
+                    lang = parts[parts.length - 1];
+                }
+            }
+            return (lang === 'en') ? 'en' : 'id';
+        }
+
+        function setTranslateCookie(lang) {
+            const domain = window.location.hostname;
+            const cookieVal = (lang === 'en') ? '/id/en' : '/id/id';
+            
+            document.cookie = "googtrans=" + cookieVal + "; path=/;";
+            document.cookie = "googtrans=" + cookieVal + "; path=/; domain=" + domain + ";";
+            
+            if (domain.includes('.')) {
+                const domainParts = domain.split('.');
+                if (domainParts.length >= 2) {
+                    const rootDomain = domainParts.slice(-2).join('.');
+                    document.cookie = "googtrans=" + cookieVal + "; path=/; domain=." + rootDomain + ";";
+                }
+            }
+            
+            if (lang === 'id') {
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain + ";";
+            }
+        }
+
+        function applyLanguageUI(lang) {
+            // Update Desktop & Tablet Segmented Switcher Pills
+            document.querySelectorAll('.lang-pill-btn').forEach(function(el) {
+                const elLang = el.getAttribute('data-lang-pill');
+                if (elLang === lang) {
+                    if (lang === 'en') {
+                        el.className = 'lang-pill-btn px-2.5 py-1 rounded-lg text-xs font-extrabold bg-brand-600 text-white shadow-sm border border-brand-500 transition-all duration-200 cursor-pointer select-none';
+                    } else {
+                        el.className = 'lang-pill-btn px-2.5 py-1 rounded-lg text-xs font-extrabold bg-white text-zinc-900 shadow-sm border border-zinc-200/90 transition-all duration-200 cursor-pointer select-none';
+                    }
+                } else {
+                    el.className = 'lang-pill-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 hover:text-zinc-900 hover:bg-white/60 border border-transparent transition-all duration-200 cursor-pointer select-none';
+                }
+            });
+
+            // Update Mobile Tag
+            const mobileTag = document.getElementById('mobile-current-lang-tag');
+            if (mobileTag) {
+                mobileTag.textContent = lang === 'en' ? 'EN' : 'ID';
+                if (lang === 'en') {
+                    mobileTag.className = 'text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-brand-600 text-white shadow-xs';
+                } else {
+                    mobileTag.className = 'text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-brand-50 text-brand-700 border border-brand-200/60';
+                }
+            }
+
+            // Update Mobile Buttons
+            document.querySelectorAll('.mobile-lang-btn').forEach(function(el) {
+                const elLang = el.getAttribute('data-mobile-lang');
+                if (elLang === lang) {
+                    el.className = 'mobile-lang-btn flex items-center justify-center py-2 px-3 rounded-xl border border-brand-600 text-xs font-extrabold bg-brand-600 text-white shadow-sm ring-2 ring-brand-400/30 transition-all duration-200 cursor-pointer';
+                } else {
+                    el.className = 'mobile-lang-btn flex items-center justify-center py-2 px-3 rounded-xl border border-zinc-200 text-xs font-bold bg-zinc-50 text-zinc-700 hover:bg-zinc-100 transition-all duration-200 cursor-pointer shadow-2xs';
+                }
+            });
+        }
+
+        window.changeSiteLanguage = function(lang) {
+            const current = getSavedLanguage();
+            localStorage.setItem('site_lang', lang);
+            setTranslateCookie(lang);
+            applyLanguageUI(lang);
+
+            const select = document.querySelector('.goog-te-combo');
+            if (select) {
+                select.value = lang;
+                select.dispatchEvent(new Event('change'));
+            }
+
+            if (lang === 'id' || !select) {
+                window.location.reload();
+            }
+        };
+
+        // Initial UI Sync on DOM ready
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = getSavedLanguage();
+            applyLanguageUI(savedLang);
+            if (savedLang === 'en') {
+                setTranslateCookie('en');
+            }
+        });
+
+        // Handle Dynamic AJAX Content Re-translation
+        if (window.jQuery) {
+            $(document).ajaxComplete(function() {
+                const savedLang = getSavedLanguage();
+                if (savedLang === 'en') {
+                    const select = document.querySelector('.goog-te-combo');
+                    if (select) {
+                        select.value = 'en';
+                        select.dispatchEvent(new Event('change'));
+                    }
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 

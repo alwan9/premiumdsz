@@ -18,6 +18,25 @@
     --color-brand-800: #13247f;
     --color-brand-900: #061e7d;
     --color-brand-950: #041352;
+
+    --default-transition-duration: 300ms;
+    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Global Smooth Transitions (300ms ease-in-out) */
+*, ::before, ::after {
+    --tw-duration: 300ms;
+    --tw-ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition,
+.transition-all,
+.transition-colors,
+.transition-opacity,
+.transition-shadow,
+.transition-transform {
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Global Image Asset Protection */

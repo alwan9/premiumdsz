@@ -35,16 +35,14 @@
                 <!-- Main Heading -->
                 <h1 data-aos="fade-up" data-aos-delay="100"
                     class="text-3xl sm:text-5xl lg:text-6xl font-extrabold font-heading text-white tracking-tight leading-tight">
-                    Eksplorasi Karya <span
-                        class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-white to-sky-200">Desain
-                        Visual</span> Kami
+                    Tingkatkan Kredibilitas & Penjualan Brand Anda dengan <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-white to-sky-200">Desain Visual Berkualitas</span>
                 </h1>
 
                 <!-- Subtitle -->
                 <p data-aos="fade-up" data-aos-delay="150"
                     class="text-sm sm:text-base text-brand-100/90 max-w-2xl mx-auto leading-relaxed">
-                    Lebih dari {{ $totalCount }}+ proyek desain grafis telah dipercaya oleh berbagai brand, UMKM,
-                    korporat, dan kreator di seluruh Indonesia.
+                    Lebih dari <strong>1.295+ projek</strong> desain grafis telah dipercaya dan terbukti sukses membantu pertumbuhan berbagai brand, UMKM, korporat, hingga kreator di seluruh Indonesia.
                 </p>
 
                 <!-- Search Bar (Live jQuery AJAX Search) -->
@@ -421,8 +419,8 @@
                 if (targetUrl) {
                     fetchPortfolioAjax(targetUrl);
                     $('html, body').animate({
-                        scrollTop: $('#portfolioGridContainer').offset().top - 120
-                    }, 300);
+                        scrollTop: 0
+                    }, 350);
                 }
             });
 

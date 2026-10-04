@@ -133,166 +133,215 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // 5. 16 Produk Digital
+        // 5. Produk Digital (Sesuai dengan Semua File Aset di public/assets)
         $produks = [
             // 1. Banner Wisuda
             [
                 'kategori' => 'Banner & Spanduk',
                 'layanan' => $layananBanner->Id_Layanan,
-                'Nama_produk' => 'CUMA 40RB !!! Jasa Desain Banner Wisuda Custom – Premium Designz',
+                'Nama_produk' => 'Jasa Desain Banner Wisuda & Ucapan Selamat Custom',
                 'No_wa' => '085168174679',
                 'Stok_produk' => 20,
-                'Des_produk' => "Premium Designz menyediakan jasa desain banner media iklan custom yang dibuat sesuai kebutuhan bisnis, konsep promosi, dan identitas brand kamu. Setiap desain dibuat secara original dan disesuaikan dengan tujuan penggunaan, bukan sekadar menggunakan template, sehingga hasil akhir memiliki tampilan yang unik dan profesional.\n\nKeunggulan Layanan:\n• Desain original dan custom sesuai kebutuhan\n• Tampilan modern, menarik, dan profesional\n• Layout informasi rapi dan mudah dipahami\n• Desain menyesuaikan konsep brand dan target pasar\n• Revisi sesuai kesepakatan\n• File berkualitas tinggi / Mentahan (CDR, EPS, PSD)\n• File siap digunakan untuk digital maupun cetak (PDF, JPG, dan PNG)",
+                'Estimasi' => '1 Hari',
+                'Des_produk' => 'Desain banner wisuda eksklusif, estetik, dan berkesan untuk sahabat, pasangan, maupun keluarga. Dibuat custom dengan layout foto elegan, pilihan tipografi modern, dan file mentahan siap cetak resolusi tinggi.',
             ],
 
-            // 2. Kemasan Box
+            // 2. Banner UMKM & Spanduk
+            [
+                'kategori' => 'Banner & Spanduk',
+                'layanan' => $layananBanner->Id_Layanan,
+                'Nama_produk' => 'Jasa Desain Banner & Spanduk UMKM Promosi Toko',
+                'No_wa' => '085168174679',
+                'Stok_produk' => 25,
+                'Estimasi' => '1-2 Hari',
+                'Des_produk' => 'Desain spanduk dan banner outdoor untuk toko fisik, gerai kuliner, dan event promo UMKM. Layout jelas, warna kontras menarik perhatian, dan informasi produk mudah dibaca dari kejauhan.',
+            ],
+
+            // 3. Stand Booth & Gerobak UMKM
+            [
+                'kategori' => 'Banner & Spanduk',
+                'layanan' => $layananBanner->Id_Layanan,
+                'Nama_produk' => 'Jasa Desain Stand Booth Jualan & Pameran UMKM',
+                'No_wa' => '085168174679',
+                'Stok_produk' => 15,
+                'Estimasi' => '2-3 Hari',
+                'Des_produk' => 'Desain visual gerobak jualan portable, booth pameran mall/event, dan stand branding usaha agar terlihat lebih menonjol, rapi, dan profesional di hadapan calon pembeli.',
+            ],
+
+            // 4. X-Banner & Roll Banner
+            [
+                'kategori' => 'Banner & Spanduk',
+                'layanan' => $layananBanner->Id_Layanan,
+                'Nama_produk' => 'Jasa Desain X-Banner & Roll Banner Promosi Event',
+                'No_wa' => '085168174679',
+                'Stok_produk' => 20,
+                'Estimasi' => '1 Hari',
+                'Des_produk' => 'Desain standing X-Banner vertikal dan Roll-Up Banner untuk media promosi di depan toko, seminar kampus, resepsi, maupun booth expo pameran industri.',
+            ],
+
+            // 5. Kemasan Box / Packing
             [
                 'kategori' => 'Packaging & Kemasan',
                 'layanan' => $layananPackaging->Id_Layanan,
-                'Nama_produk' => 'Jasa Desain Kemasan Box / Packing Professional - Premium',
+                'Nama_produk' => 'Jasa Desain Kemasan Box / Packing Karton Profesional',
                 'No_wa' => '085168174679',
                 'Stok_produk' => 15,
-                'Des_produk' => "Premium Designz menyediakan jasa desain custom box packaging yang dibuat sesuai konsep, karakter produk, dan kebutuhan bisnis kamu. Setiap desain dibuat secara original dan custom, bukan sekadar menggunakan template, sehingga hasil akhir dapat menyesuaikan branding serta kebutuhan produksi.\n\nKeunggulan Layanan:\n• Desain original dan custom sesuai kebutuhan\n• Layout desain disesuaikan dengan ukuran dan bentuk box\n• Tampilan profesional dan mendukung branding produk\n• Revisi sesuai kesepakatan\n• File berkualitas tinggi (CDR, EPS, PSD)\n• File siap cetak (PDF, JPG, PNG)",
+                'Estimasi' => '2-3 Hari',
+                'Des_produk' => 'Perancangan desain pola dieline box kemasan produk retail, kotak kue/makanan, box hampers, dan packaging karton kardus dengan ukuran presisi standar pabrik percetakan.',
             ],
 
-            // 3. Redesain AI
-            [
-                'kategori' => 'Foto & Redesain AI',
-                'layanan' => $layananAiFoto->Id_Layanan,
-                'Nama_produk' => 'Jasa Redesain AI - Premium Designz',
-                'No_wa' => '085168174679',
-                'Stok_produk' => 25,
-                'Des_produk' => "Premium Designz menyediakan jasa redesain dan penyempurnaan gambar AI yang dibuat sesuai konsep, kebutuhan, dan referensi yang kamu inginkan. Hasil gambar AI dapat dikembangkan kembali agar tampil lebih sesuai dengan kebutuhan desain, baik dari segi komposisi, warna, elemen, maupun detail visual.\n\nKeunggulan Layanan:\n• Redesain custom sesuai kebutuhan\n• Penyempurnaan hasil gambar AI\n• Penyesuaian komposisi dan elemen visual\n• Penyesuaian warna dan detail desain\n• Penambahan atau pengurangan elemen\n• Revisi sesuai kesepakatan\n• File berkualitas tinggi\n• File siap digunakan untuk digital maupun cetak",
-            ],
-
-            // 4. Jersey Custom
-            [
-                'kategori' => 'Jersey & Apparel',
-                'layanan' => $layananJersey->Id_Layanan,
-                'Nama_produk' => 'Jasa Desain Jersey Custom Profesional',
-                'No_wa' => '085168174679',
-                'Stok_produk' => 15,
-                'Des_produk' => "Premium Designz menyediakan jasa desain jersey custom yang dibuat khusus sesuai kebutuhan kamu. Setiap desain dibuat secara original dan menyesuaikan konsep, warna, karakter, serta identitas yang ingin ditampilkan.\n\nKeunggulan layanan:\n• Desain original dan custom sesuai kebutuhan\n• Konsep desain menyesuaikan karakter tim atau brand\n• Tampilan jersey lebih profesional dan modern\n• Revisi sesuai kesepakatan\n• File berkualitas tinggi / Mentahan (CDR, EPS, PSD)\n• Siap digunakan untuk kebutuhan produksi (PDF, JPG, dan PNG)",
-            ],
-
-            // 5. Kemasan Plastik & Pouch
+            // 6. Kemasan Standing Pouch Snack
             [
                 'kategori' => 'Packaging & Kemasan',
                 'layanan' => $layananPackaging->Id_Layanan,
-                'Nama_produk' => 'Jasa Desain Kemasan Plastik, Pouch, Snack Premium | Custom Packaging Profesional',
+                'Nama_produk' => 'Jasa Desain Kemasan Standing Pouch Snack & Makanan Ringan',
                 'No_wa' => '085168174679',
                 'Stok_produk' => 20,
-                'Des_produk' => "Ingin kemasan snack usaha kamu terlihat lebih menarik, profesional, dan bikin produk lebih standout?\nPremium Designz menyediakan jasa desain pouch snack custom yang dibuat sesuai dengan konsep, karakter produk, dan kebutuhan usaha kamu.\n\nKeunggulan layanan:\n• Desain original dan custom\n• Informasi produk mudah dibaca\n• Revisi sesuai kesepakatan\n• File berkualitas tinggi / Mentahan (CDR, EPS, PSD)\n• Siap digunakan untuk kebutuhan cetak (PDF, JPG, dan PNG)",
+                'Estimasi' => '2 Hari',
+                'Des_produk' => 'Desain pouch snack makanan ringan, keripik, biji kopi, bumbu masak, dan produk olahan UMKM. Tampilan visual appetizing yang meningkatkan daya tarik konsumen di rak supermarket.',
             ],
 
-            // 6. Logo Promo 10K
+            // 7. Packaging & Kemasan Produk Custom
             [
-                'kategori' => 'Logo & Branding',
-                'layanan' => $layananLogo->Id_Layanan,
-                'Nama_produk' => 'PROMO!!! MULAI DARI 10K!! JASA DESAIN LOGO Professional Logo Design Service',
+                'kategori' => 'Packaging & Kemasan',
+                'layanan' => $layananPackaging->Id_Layanan,
+                'Nama_produk' => 'Jasa Desain Packaging & Kemasan Produk Custom Eksklusif',
                 'No_wa' => '085168174679',
-                'Stok_produk' => 30,
-                'Des_produk' => "Logo bukan sekadar gambar, tetapi bagian penting dari identitas visual yang membuat sebuah brand lebih mudah dikenali.\nPremium Designz menyediakan jasa desain logo custom yang dibuat sesuai konsep, karakter, dan kebutuhan kamu.\n\nYang Kamu Dapatkan:\n• Desain logo custom sesuai kebutuhan\n• Konsep warna, bentuk, dan tipografi yang disesuaikan\n• Preview desain sebelum final\n• Mockup logo untuk melihat gambaran penggunaan\n• File final berkualitas tinggi",
+                'Stok_produk' => 18,
+                'Estimasi' => '2-3 Hari',
+                'Des_produk' => 'Desain kemasan botol minuman, jar skincare/kosmetik, kaleng biskuit, dan bungkus produk custom dengan render 3D mockup realistis siap presentasi.',
             ],
 
-            // 7. Editing Foto Studio
-            [
-                'kategori' => 'Foto & Redesain AI',
-                'layanan' => $layananAiFoto->Id_Layanan,
-                'Nama_produk' => 'Jasa Desain dan Editing Foto Studio Produk',
-                'No_wa' => '085168174679',
-                'Stok_produk' => 20,
-                'Des_produk' => "Premium Designz menyediakan jasa desain dan editing foto produk yang dibuat agar produk kamu terlihat lebih menarik, profesional, dan siap digunakan untuk kebutuhan promosi.\n\nKeunggulan Layanan:\n• Editing foto produk custom sesuai kebutuhan\n• Penyesuaian background dan komposisi\n• Penyesuaian warna, pencahayaan, dan detail produk\n• Konsep foto disesuaikan dengan karakter produk\n• Tampilan profesional untuk kebutuhan promosi\n• Revisi sesuai ketentuan\n• File berkualitas tinggi",
-            ],
-
-            // 8. UI UX Mobile App
-            [
-                'kategori' => 'UI/UX & Web',
-                'layanan' => $layananUiUx->Id_Layanan,
-                'Nama_produk' => 'Jasa Desain UI UX Mobile App Custom Professional',
-                'No_wa' => '085168174679',
-                'Stok_produk' => 10,
-                'Des_produk' => "Premium Designz menyediakan jasa desain UI/UX Mobile App dan Website custom yang dibuat berdasarkan kebutuhan bisnis, karakter brand, dan tujuan pengguna.\n\nKeunggulan Layanan:\n• Desain UI/UX original dan custom sesuai kebutuhan\n• Tampilan modern, clean, dan user-friendly\n• User flow dan struktur halaman yang terorganisir\n• Desain menggunakan Figma dengan kualitas profesional\n• Revisi sesuai kesepakatan\n• File design lengkap dan editable (Figma)\n• Prototype interaktif untuk presentasi dan pengembangan",
-            ],
-
-            // 9. Desain CV
-            [
-                'kategori' => 'Dokumen & PPT',
-                'layanan' => $layananDokumen->Id_Layanan,
-                'Nama_produk' => 'Jasa Desain CV - Premium Designz',
-                'No_wa' => '085168174679',
-                'Stok_produk' => 35,
-                'Des_produk' => "Premium Designz menyediakan jasa desain CV custom yang dibuat sesuai kebutuhan, bidang pekerjaan, dan karakter profesional kamu.\n\nKeunggulan Layanan:\n• Desain original dan custom sesuai kebutuhan\n• Layout CV rapi, terstruktur, dan mudah dibaca\n• Penyesuaian warna, tipografi, dan elemen visual\n• Desain disesuaikan dengan bidang dan kebutuhan CV\n• Revisi sesuai kesepakatan\n• File berkualitas tinggi",
-            ],
-
-            // 10. Poster Infografis Digital
-            [
-                'kategori' => 'Poster & Flyer',
-                'layanan' => $layananPoster->Id_Layanan,
-                'Nama_produk' => 'Jasa Desain Poster Infografis Digital',
-                'No_wa' => '085168174679',
-                'Stok_produk' => 25,
-                'Des_produk' => "Jasa desain poster dan infografis digital dengan layanan profesional.\n\nKeunggulan Layanan:\n• Desain poster original & custom sesuai konsep acara atau promosi\n• Visualisasi data infografis yang mudah dipahami dan informatif\n• Komposisi warna dan tipografi menarik serta berkarakter\n• File resolusi tinggi siap diposting di media sosial atau dicetak\n• Revisi sesuai kesepakatan layanan",
-            ],
-
-            // 11. Label Produk
+            // 8. Label & Stiker Produk UMKM
             [
                 'kategori' => 'Label & Stiker',
                 'layanan' => $layananLabel->Id_Layanan,
-                'Nama_produk' => 'Jasa Desain Label Produk - Premium Designz',
+                'Nama_produk' => 'Jasa Desain Label Botol & Stiker Toples Produk UMKM',
                 'No_wa' => '085168174679',
-                'Stok_produk' => 25,
-                'Des_produk' => "Ingin label produk kamu terlihat lebih menarik, rapi, dan profesional?\nPremium Designz menyediakan jasa desain label UMKM dan produk custom yang dibuat sesuai dengan konsep, karakter produk, dan kebutuhan usaha kamu.\n\nKeunggulan layanan:\n• Desain original dan custom\n• Tampilan label menarik & profesional\n• Layout rapi dan proporsional\n• Informasi produk mudah dibaca\n• Bisa request konsep, warna, dan tema\n• Revisi sesuai kesepakatan",
+                'Stok_produk' => 30,
+                'Estimasi' => '1 Hari',
+                'Des_produk' => 'Desain stiker label toples kue kering, label botol sirup/jus, tag jar bumbu, dan segel kemasan produk UMKM siap potong (die cut) dengan komposisi warna memikat.',
             ],
 
-            // 12. Logo Racing
+            // 9. Logo & Brand Identity
             [
                 'kategori' => 'Logo & Branding',
                 'layanan' => $layananLogo->Id_Layanan,
-                'Nama_produk' => 'Jasa Desain Logo Racing - Premium Designz',
+                'Nama_produk' => 'Jasa Desain Logo & Brand Identity Bisnis Profesional',
                 'No_wa' => '085168174679',
-                'Stok_produk' => 15,
-                'Des_produk' => "Premium Designz menyediakan jasa desain logo racing custom yang dibuat sesuai karakter, konsep, dan identitas tim atau brand kamu.\n\nKeunggulan Layanan:\n• Desain original dan custom sesuai konsep\n• Konsep visual sporty dan racing\n• Penyesuaian warna, tipografi, dan elemen visual\n• Desain dapat disesuaikan dengan karakter tim atau brand\n• Preview desain dan mockup\n• Revisi sesuai kesepakatan",
+                'Stok_produk' => 25,
+                'Estimasi' => '2-3 Hari',
+                'Des_produk' => 'Perancangan logo custom original (no template), filosofi warna, tipografi, dan buku panduan brand guideline untuk online shop, korporat, startup, dan UMKM.',
             ],
 
-            // 13. Desain PPT
+            // 10. Redesain Logo & Logo Racing
+            [
+                'kategori' => 'Logo & Branding',
+                'layanan' => $layananLogo->Id_Layanan,
+                'Nama_produk' => 'Jasa Redesain Logo Vektor & Racing Team Custom',
+                'No_wa' => '085168174679',
+                'Stok_produk' => 15,
+                'Estimasi' => '1-2 Hari',
+                'Des_produk' => 'Desain logo gaya racing bernuansa tajam dan agresif untuk tim balap, komunitas motor, esport squad, serta tracing ulang logo buram menjadi file vektor HD.',
+            ],
+
+            // 11. Jersey & Apparel Custom
+            [
+                'kategori' => 'Jersey & Apparel',
+                'layanan' => $layananJersey->Id_Layanan,
+                'Nama_produk' => 'Jasa Desain Jersey Custom Futsal, Esport & Apparel',
+                'No_wa' => '085168174679',
+                'Stok_produk' => 15,
+                'Estimasi' => '2 Hari',
+                'Des_produk' => 'Desain pola baju jersey printing sublimasi untuk tim futsal, sepak bola, basket, esport, kaos komunitas, dan merchandise distro lengkap dengan pola cetak konveksi.',
+            ],
+
+            // 12. Editing Foto Studio Produk
+            [
+                'kategori' => 'Foto & Redesain AI',
+                'layanan' => $layananAiFoto->Id_Layanan,
+                'Nama_produk' => 'Jasa Editing Foto Produk Normal to Studio Marketplace',
+                'No_wa' => '085168174679',
+                'Stok_produk' => 25,
+                'Estimasi' => '1 Hari',
+                'Des_produk' => 'Transformasi foto jepretan kamera ponsel menjadi foto katalog studio mewah berkelas: hapus background, koreksi bayangan natural, lighting dramatis, dan touch-up warna.',
+            ],
+
+            // 13. Redesain AI & Repair Foto
+            [
+                'kategori' => 'Foto & Redesain AI',
+                'layanan' => $layananAiFoto->Id_Layanan,
+                'Nama_produk' => 'Jasa Redesain Gambar AI & Repair Restorasi Foto',
+                'No_wa' => '085168174679',
+                'Stok_produk' => 20,
+                'Estimasi' => '1-2 Hari',
+                'Des_produk' => 'Penyempurnaan gambar artwork AI yang mengalami distorsi jari/wajah, pewarnaan foto lama hitam putih, dan restorasi foto resolusi rendah menjadi tajam kembali.',
+            ],
+
+            // 14. CV & Resume ATS Friendly
             [
                 'kategori' => 'Dokumen & PPT',
                 'layanan' => $layananDokumen->Id_Layanan,
-                'Nama_produk' => 'Jasa Desain PPT - Premium Designz',
+                'Nama_produk' => 'Jasa Desain CV & Resume Lamaran Kerja ATS-Friendly',
+                'No_wa' => '085168174679',
+                'Stok_produk' => 35,
+                'Estimasi' => '1 Hari',
+                'Des_produk' => 'Desain curriculum vitae profesional modern yang lulus uji screening ATS (Applicant Tracking System), layout rapi, pemilihan tipografi jelas, dan format PDF siap kirim HRD.',
+            ],
+
+            // 15. PowerPoint PPT Presentasi
+            [
+                'kategori' => 'Dokumen & PPT',
+                'layanan' => $layananDokumen->Id_Layanan,
+                'Nama_produk' => 'Jasa Desain Slide Presentasi PowerPoint (PPT) Profesional',
                 'No_wa' => '085168174679',
                 'Stok_produk' => 20,
-                'Des_produk' => "Premium Designz menyediakan jasa desain PowerPoint custom yang dibuat sesuai materi, tema, dan kebutuhan presentasi kamu.\n\nKeunggulan Layanan:\n• Desain slide custom sesuai kebutuhan\n• Layout rapi dan terstruktur\n• Penyesuaian warna, tipografi, dan elemen visual\n• Desain disesuaikan dengan tema presentasi\n• Visualisasi informasi agar lebih menarik\n• Revisi sesuai kesepakatan\n• File PPT siap digunakan",
+                'Estimasi' => '1-2 Hari',
+                'Des_produk' => 'Pembuatan deck presentasi PowerPoint interaktif untuk pitching bisnis, sidang tugas akhir skripsi, company profile interaktif, dan slide seminar profesional.',
             ],
 
-            // 14. Banner UMKM
+            // 16. Flyer & Brosur Promosi
             [
-                'kategori' => 'Banner & Spanduk',
-                'layanan' => $layananBanner->Id_Layanan,
-                'Nama_produk' => 'Jasa Desain Banner UMKM - Premium Designz',
+                'kategori' => 'Poster & Flyer',
+                'layanan' => $layananPoster->Id_Layanan,
+                'Nama_produk' => 'Jasa Desain Flyer Promosi, Pamflet & Brosur Bisnis',
                 'No_wa' => '085168174679',
-                'Stok_produk' => 20,
-                'Des_produk' => "Banner menjadi salah satu media penting untuk memperkenalkan usaha, produk, maupun promo kepada pelanggan.\nPremium Designz menyediakan jasa desain banner UMKM custom yang dibuat sesuai dengan konsep, karakter usaha, dan kebutuhan kamu.\n\nKeunggulan layanan:\n• Desain original dan custom\n• Tampilan menarik & profesional\n• Layout rapi dan proporsional\n• Informasi mudah dibaca\n• Bisa request konsep, warna, dan tema\n• Revisi sesuai kesepakatan",
+                'Stok_produk' => 25,
+                'Estimasi' => '1 Hari',
+                'Des_produk' => 'Desain flyer promo diskon, brosur lipat penawaran jasa, dan pamflet event fisik maupun format digital story Instagram resolusi tajam.',
             ],
 
-            // 15. Booth UMKM
+            // 17. Poster & Infografis Digital
             [
-                'kategori' => 'Banner & Spanduk',
-                'layanan' => $layananBanner->Id_Layanan,
-                'Nama_produk' => 'Jasa Desain Booth UMKM - Premium Designz',
+                'kategori' => 'Poster & Flyer',
+                'layanan' => $layananPoster->Id_Layanan,
+                'Nama_produk' => 'Jasa Desain Poster Acara & Infografis Edukasi Digital',
                 'No_wa' => '085168174679',
-                'Stok_produk' => 15,
-                'Des_produk' => "Ingin booth jualan kamu terlihat lebih menarik, profesional, dan punya tampilan yang lebih menonjol?\nPremium Designz menyediakan jasa desain booth jualan custom yang dibuat sesuai dengan konsep, ukuran, karakter usaha, dan kebutuhan kamu.\n\nKeunggulan layanan:\n• Desain original dan custom\n• Tampilan booth menarik & profesional\n• Layout rapi dan proporsional\n• Konsep disesuaikan dengan karakter usaha\n• Preview dan mockup desain",
+                'Stok_produk' => 25,
+                'Estimasi' => '1 Hari',
+                'Des_produk' => 'Desain poster pengumuman resmi, poster konser/webinar, serta visualisasi data infografis informatif yang padat konten namun tetap enak dipandang.',
             ],
 
-            // 16. UI UX Website Custom
+            // 18. UI/UX Mobile App
             [
                 'kategori' => 'UI/UX & Web',
                 'layanan' => $layananUiUx->Id_Layanan,
-                'Nama_produk' => 'Jasa Desain UI UX Website Custom Professional | Figma Design',
+                'Nama_produk' => 'Jasa Desain UI/UX Mobile App Android & iOS Figma',
                 'No_wa' => '085168174679',
                 'Stok_produk' => 10,
-                'Des_produk' => "Premium Designz menyediakan jasa desain UI/UX Website responsif custom yang dibuat berdasarkan kebutuhan bisnis, karakter brand, dan tujuan pengguna.\n\nKeunggulan Layanan:\n• Desain UI/UX original dan custom sesuai kebutuhan\n• Tampilan modern, clean, dan user-friendly\n• User flow dan struktur halaman yang terorganisir\n• Desain menggunakan Figma dengan kualitas profesional\n• Revisi sesuai kesepakatan\n• File design lengkap dan editable (Figma)",
+                'Estimasi' => '3-5 Hari',
+                'Des_produk' => 'Perancangan UI/UX aplikasi mobile Android dan iOS di Figma dengan sistem auto-layout, atomic components, flow pengguna terstruktur, dan interactive prototype.',
+            ],
+
+            // 19. UI/UX Website & Landing Page
+            [
+                'kategori' => 'UI/UX & Web',
+                'layanan' => $layananUiUx->Id_Layanan,
+                'Nama_produk' => 'Jasa Desain UI/UX Website Company Profile & Landing Page',
+                'No_wa' => '085168174679',
+                'Stok_produk' => 10,
+                'Estimasi' => '3-5 Hari',
+                'Des_produk' => 'Desain UI/UX website company profile responsif desktop, tablet, dan mobile. Menggunakan layout modern berbasis grid Figma yang memudahkan proses slicing developer.',
             ],
         ];
 
@@ -317,32 +366,32 @@ class DatabaseSeeder extends Seeder
         }
 
         // Hubungkan produk sampel ke layanan
-        if (isset($createdProducts[0])) {
-            $layananBanner->update(['Id_produk' => $createdProducts[0]->Id_produk]);
-        }
         if (isset($createdProducts[1])) {
-            $layananPackaging->update(['Id_produk' => $createdProducts[1]->Id_produk]);
+            $layananBanner->update(['Id_produk' => $createdProducts[1]->Id_produk]);
         }
-        if (isset($createdProducts[5])) {
-            $layananLogo->update(['Id_produk' => $createdProducts[5]->Id_produk]);
-        }
-        if (isset($createdProducts[7])) {
-            $layananUiUx->update(['Id_produk' => $createdProducts[7]->Id_produk]);
-        }
-        if (isset($createdProducts[3])) {
-            $layananJersey->update(['Id_produk' => $createdProducts[3]->Id_produk]);
-        }
-        if (isset($createdProducts[2])) {
-            $layananAiFoto->update(['Id_produk' => $createdProducts[2]->Id_produk]);
-        }
-        if (isset($createdProducts[10])) {
-            $layananLabel->update(['Id_produk' => $createdProducts[10]->Id_produk]);
+        if (isset($createdProducts[4])) {
+            $layananPackaging->update(['Id_produk' => $createdProducts[4]->Id_produk]);
         }
         if (isset($createdProducts[8])) {
-            $layananDokumen->update(['Id_produk' => $createdProducts[8]->Id_produk]);
+            $layananLogo->update(['Id_produk' => $createdProducts[8]->Id_produk]);
         }
-        if (isset($createdProducts[9])) {
-            $layananPoster->update(['Id_produk' => $createdProducts[9]->Id_produk]);
+        if (isset($createdProducts[18])) {
+            $layananUiUx->update(['Id_produk' => $createdProducts[18]->Id_produk]);
+        }
+        if (isset($createdProducts[10])) {
+            $layananJersey->update(['Id_produk' => $createdProducts[10]->Id_produk]);
+        }
+        if (isset($createdProducts[11])) {
+            $layananAiFoto->update(['Id_produk' => $createdProducts[11]->Id_produk]);
+        }
+        if (isset($createdProducts[7])) {
+            $layananLabel->update(['Id_produk' => $createdProducts[7]->Id_produk]);
+        }
+        if (isset($createdProducts[13])) {
+            $layananDokumen->update(['Id_produk' => $createdProducts[13]->Id_produk]);
+        }
+        if (isset($createdProducts[16])) {
+            $layananPoster->update(['Id_produk' => $createdProducts[16]->Id_produk]);
         }
 
         // 6. Testimoni Klien Nyata & Bukti Review (9 Asset Testimoni)

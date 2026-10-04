@@ -117,58 +117,6 @@
                 </div>
             </div>
 
-            <!-- Visual Portfolio Snapshot -->
-            <div class="pt-10 border-t border-zinc-100">
-                <div data-aos="fade-up" class="flex flex-col sm:flex-row sm:items-end justify-between mb-8">
-                    <div>
-                        <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Dokumentasi Karya</span>
-                        <h2 class="text-2xl font-bold text-zinc-900 mt-1 font-heading">Portofolio & Hasil Cetak</h2>
-                        <p class="text-xs text-zinc-500 mt-1">Beragam hasil implementasi desain kemasan, banner, label,
-                            logo, dan antarmuka web.</p>
-                    </div>
-                    <a href="{{ route('marketplace.index') }}"
-                        class="mt-3 sm:mt-0 text-xs font-bold text-brand-600 hover:text-brand-800 flex items-center space-x-1">
-                        <span>Buka Semua Karya di Marketplace</span>
-                        <iconify-icon icon="lucide:arrow-right" class="text-xs"></iconify-icon>
-                    </a>
-                </div>
-
-                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-                    <div data-aos="zoom-in" data-aos-delay="50"
-                        class="aspect-square rounded-2xl overflow-hidden border border-zinc-200 group">
-                        <img src="{{ asset('assets/kemasan1.jpg') }}" alt="Packaging Pouch Kopi"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div data-aos="zoom-in" data-aos-delay="100"
-                        class="aspect-square rounded-2xl overflow-hidden border border-zinc-200 group">
-                        <img src="{{ asset('assets/box1.jpg') }}" alt="Hardbox Hampers"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div data-aos="zoom-in" data-aos-delay="150"
-                        class="aspect-square rounded-2xl overflow-hidden border border-zinc-200 group">
-                        <img src="{{ asset('assets/bannerumkm1.jpg') }}" alt="Banner Spanduk UMKM"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div data-aos="zoom-in" data-aos-delay="200"
-                        class="aspect-square rounded-2xl overflow-hidden border border-zinc-200 group">
-                        <img src="{{ asset('assets/jasappt1.jpg') }}" alt="Desain Presentasi PPT"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div data-aos="zoom-in" data-aos-delay="250"
-                        class="aspect-square rounded-2xl overflow-hidden border border-zinc-200 group">
-                        <img src="{{ asset('assets/repairfoto1.jpg') }}" alt="Redesain & Repair Grafis"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div data-aos="zoom-in" data-aos-delay="300"
-                        class="aspect-square rounded-2xl overflow-hidden border border-zinc-200 group">
-                        <img src="{{ asset('assets/labelumkm1.jpg') }}" alt="Label Stiker Botol"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                </div>
-            </div>
-
-
-
         </div>
     </div>
 

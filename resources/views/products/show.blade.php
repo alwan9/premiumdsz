@@ -72,7 +72,7 @@
                         class="rounded-2xl bg-white border border-zinc-200 overflow-hidden shadow-sm p-3 sm:p-4 space-y-3"
                         id="productSliderContainer">
                         <!-- Main Image View (Jelas, Terang, Format 3:4 Portrait Cover) -->
-                        <div class="relative bg-zinc-100 skeleton-loader rounded-xl aspect-[3/4] max-h-[640px] w-full overflow-hidden flex items-center justify-center group cursor-pointer border border-zinc-200/60"
+                        <div class="relative bg-zinc-200 skeleton-loader rounded-xl aspect-[3/4] max-h-[640px] w-full overflow-hidden flex items-center justify-center group cursor-pointer border border-zinc-200/60"
                             onclick="openProductLightbox()" title="Klik untuk memperbesar tampilan desain">
                             <!-- Main Image Slider -->
                             <img id="main-product-image" src="{{ $produk->gallery_urls[0] ?? $produk->image_url }}"
@@ -351,18 +351,18 @@
                         style="scrollbar-width: none; -ms-overflow-style: none;">
                         @forelse ($relevantProducts as $rel)
                             <div
-                                class="flex-none w-[160px] sm:w-[180px] md:w-[200px] lg:w-[calc((100%-5*16px)/6)] min-w-[150px] rounded-2xl border border-zinc-200/80 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-200 ease-out flex flex-col justify-between group">
+                                class="flex-none w-[160px] sm:w-[180px] md:w-[200px] lg:w-[calc((100%-5*16px)/6)] min-w-[150px] rounded-2xl border border-zinc-200/80 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                                 <a href="{{ route('products.show', $rel->Id_produk) }}" class="block group">
                                     <!-- Thumbnail Image (Aspect Ratio 1:1) -->
-                                    <div class="aspect-square bg-zinc-100 skeleton-loader relative overflow-hidden cursor-pointer">
+                                    <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden cursor-pointer">
                                         <img src="{{ $rel->image_url }}" alt="{{ $rel->Nama_produk }}" loading="lazy"
-                                            class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:brightness-90">
+                                            class="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:brightness-90">
                                         <div
                                             class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent">
                                         </div>
                                         <!-- Darkening overlay on hover -->
                                         <div
-                                            class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-200 pointer-events-none">
+                                            class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 ease-in-out pointer-events-none">
                                         </div>
 
                                         <div class="absolute top-2 left-2 z-10">
@@ -422,18 +422,18 @@
                         style="scrollbar-width: none; -ms-overflow-style: none;">
                         @forelse ($latestProducts as $rel)
                             <div
-                                class="flex-none w-[160px] sm:w-[180px] md:w-[200px] lg:w-[calc((100%-5*16px)/6)] min-w-[150px] rounded-2xl border border-zinc-200/80 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-200 ease-out flex flex-col justify-between group">
+                                class="flex-none w-[160px] sm:w-[180px] md:w-[200px] lg:w-[calc((100%-5*16px)/6)] min-w-[150px] rounded-2xl border border-zinc-200/80 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                                 <a href="{{ route('products.show', $rel->Id_produk) }}" class="block group">
                                     <!-- Thumbnail Image (Click leads to product/service) -->
-                                    <div class="h-32 sm:h-36 bg-zinc-100 skeleton-loader relative overflow-hidden cursor-pointer">
+                                    <div class="h-32 sm:h-36 bg-zinc-200 skeleton-loader relative overflow-hidden cursor-pointer">
                                         <img src="{{ $rel->image_url }}" alt="{{ $rel->Nama_produk }}" loading="lazy"
-                                            class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:brightness-90">
+                                            class="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:brightness-90">
                                         <div
                                             class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent">
                                         </div>
                                         <!-- Darkening overlay on hover -->
                                         <div
-                                            class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-200 pointer-events-none">
+                                            class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 ease-in-out pointer-events-none">
                                         </div>
 
                                         <div class="absolute top-2 left-2 z-10">

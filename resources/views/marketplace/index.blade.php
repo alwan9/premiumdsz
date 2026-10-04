@@ -379,8 +379,8 @@
                 if (targetUrl) {
                     fetchMarketplaceAjax(targetUrl);
                     $('html, body').animate({
-                        scrollTop: $('#marketplaceGridContainer').offset().top - 120
-                    }, 300);
+                        scrollTop: 0
+                    }, 350);
                 }
             });
 

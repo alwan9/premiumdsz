@@ -123,7 +123,7 @@
                         @foreach ($promos as $promo)
                             <div class="snap-start shrink-0 w-[85vw] sm:w-[380px] lg:w-[400px] group">
                                 <a href="{{ $promo->target_url }}" target="_blank"
-                                    class="block rounded-2xl overflow-hidden border border-zinc-200 bg-zinc-100 skeleton-loader hover:border-brand-500 shadow-sm hover:shadow-md transition-all duration-200 aspect-[16/9]">
+                                    class="block rounded-2xl overflow-hidden border border-zinc-200 bg-zinc-200 skeleton-loader hover:border-brand-500 shadow-sm hover:shadow-md transition-all duration-200 aspect-[16/9]">
                                     <img src="{{ $promo->image_url }}" alt="{{ $promo->Judul ?? 'Promo Desain' }}"
                                         class="w-full h-full object-cover">
                                 </a>
@@ -460,22 +460,22 @@
                 </div>
             </div>
 
-            <!-- Product Cards Grid (4 Columns Desktop, Scale 115% Duration 200 on Hover) -->
+            <!-- Product Cards Grid (4 Columns Desktop, Scale 115% Duration 300 on Hover) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 @foreach ($produks->take(8) as $prod)
                     <div data-aos="fade-up" data-aos-delay="{{ ($loop->index % 4) * 100 }}"
-                        class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-200 ease-out flex flex-col justify-between group">
+                        class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                         <div>
                             <!-- Product Thumbnail Image & Badge Overlay (Aspect Ratio 1:1) -->
-                            <div class="aspect-square bg-zinc-100 skeleton-loader relative overflow-hidden">
+                            <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden">
                                 <img src="{{ $prod->image_url }}" alt="{{ $prod->Nama_produk }}" loading="lazy"
-                                    class="w-full h-full object-cover transition-all duration-300 ease-out group-hover:brightness-90">
+                                    class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:brightness-90">
                                 <div
                                     class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-black/20">
                                 </div>
                                 <!-- Subtle darkening overlay on hover -->
                                 <div
-                                    class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-200 pointer-events-none">
+                                    class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 ease-in-out pointer-events-none">
                                 </div>
 
                                 <div class="absolute top-3 left-3 z-10">
@@ -587,7 +587,7 @@
                             <div
                                 class="bg-white rounded-2xl border border-zinc-200 hover:border-brand-300 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
                                 <!-- Portrait Aspect Image Container (Rasio Potret Vertikal Screenshot) -->
-                                <div class="relative aspect-[9/14] sm:aspect-[9/15] bg-zinc-100 skeleton-loader overflow-hidden cursor-pointer"
+                                <div class="relative aspect-[9/14] sm:aspect-[9/15] bg-zinc-200 skeleton-loader overflow-hidden cursor-pointer"
                                     onclick="openTestiLightbox('{{ $testi->image_url }}', '{{ addslashes($testi->display_title) }}')">
                                     <img src="{{ $testi->image_url }}" alt="{{ $testi->display_title }}" loading="lazy"
                                         class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
@@ -603,31 +603,6 @@
                                         </span>
                                     </div>
 
-                                    <!-- Top Right 5 Full Stars Solid Gold Badge -->
-
-                                </div>
-
-                                <!-- Card Bottom Info with 5 Stars -->
-                                <div class="p-3.5 bg-white border-t border-zinc-100 space-y-1.5">
-                                    <div class="flex items-center">
-                                        <div class="flex text-amber-400 space-x-0.5">
-                                            <iconify-icon icon="material-symbols:star-rounded"
-                                                class="text-amber-400 text-xs"></iconify-icon>
-                                            <iconify-icon icon="material-symbols:star-rounded"
-                                                class="text-amber-400 text-xs"></iconify-icon>
-                                            <iconify-icon icon="material-symbols:star-rounded"
-                                                class="text-amber-400 text-xs"></iconify-icon>
-                                            <iconify-icon icon="material-symbols:star-rounded"
-                                                class="text-amber-400 text-xs"></iconify-icon>
-                                            <iconify-icon icon="material-symbols:star-rounded"
-                                                class="text-amber-400 text-xs"></iconify-icon>
-                                        </div>
-                                    </div>
-
-                                    <h3 class="text-xs font-bold text-zinc-900 truncate font-heading"
-                                        title="{{ $testi->display_title }}">
-                                        {{ $testi->display_title }}
-                                    </h3>
                                 </div>
                             </div>
                         </div>
@@ -947,6 +922,93 @@
                     <img src="{{ asset('assets/other/asset2.jpg') }}" alt="Langkah Pemesanan Desain di Premium Design"
                         class="w-full max-w-[500px] lg:max-w-full h-auto object-contain rounded-2xl border border-zinc-200/80 shadow-sm">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: METODE PEMBAYARAN RESMI (Clean 4-Row Grayscale-to-Color Logos) -->
+    <section class="py-14 sm:py-20 bg-zinc-50/60 border-t border-zinc-200/80 overflow-hidden" id="metode-pembayaran">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div data-aos="fade-up" class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+                <span class="inline-flex items-center space-x-1.5 text-brand-700 text-xs font-bold uppercase tracking-wider">
+                    <iconify-icon icon="lucide:credit-card" class="text-brand-600 text-sm"></iconify-icon>
+                    <span>Metode Pembayaran</span>
+                </span>
+                <h3 class="text-xl sm:text-3xl font-extrabold text-zinc-900 font-heading mt-2.5">
+                    Menerima Pembayaran Seluruh Bank, E-Wallet, QRIS &amp; PayPal
+                </h3>
+                <p class="text-xs sm:text-sm text-zinc-500 mt-1.5">
+                    Transaksi cepat, aman, dan terpercaya untuk pemesanan lokal maupun internasional.
+                </p>
+            </div>
+
+            <!-- 4 Clean Rows of Payment Logos (No Border / No Shadow, Grayscale to Full Color on Hover) -->
+            <div data-aos="fade-up" data-aos-delay="100" class="space-y-6 sm:space-y-8 max-w-5xl mx-auto">
+                
+                <!-- Baris 1: QRIS, Bank Utama & PayPal -->
+                <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 md:gap-12">
+                    <img src="{{ asset('assets/payment/qris.png') }}" alt="QRIS"
+                        class="h-8 sm:h-10 md:h-11 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer" loading="lazy">
+                    <img src="{{ asset('assets/payment/Asset 6.png') }}" alt="Bank BCA"
+                        class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer" loading="lazy">
+                    <img src="{{ asset('assets/payment/mandiri.png') }}" alt="Bank Mandiri"
+                        class="h-7 sm:h-9 md:h-10 w-auto max-w-[130px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer" loading="lazy">
+                    <img src="{{ asset('assets/payment/bri.png') }}" alt="Bank BRI"
+                        class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer" loading="lazy">
+                    <img src="{{ asset('assets/payment/bni.png') }}" alt="Bank BNI"
+                        class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer" loading="lazy">
+                    <div class="flex items-center space-x-2 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer select-none">
+                        <iconify-icon icon="simple-icons:paypal" class="text-blue-600 text-2xl sm:text-3xl"></iconify-icon>
+                        <span class="text-sm sm:text-base font-black text-blue-700 tracking-wider">PayPal</span>
+                    </div>
+                </div>
+
+                <!-- Baris 2: Bank Syariah & Bank Nasional -->
+                <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 md:gap-12">
+                    <img src="{{ asset('assets/payment/Asset 14.png') }}" alt="Bank BSI"
+                        class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer" loading="lazy">
+                    <img src="{{ asset('assets/payment/cimbniaga.png') }}" alt="CIMB Niaga"
+                        class="h-7 sm:h-9 md:h-10 w-auto max-w-[130px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer" loading="lazy">
+                    <img src="{{ asset('assets/payment/danamon.png') }}" alt="Bank Danamon"
+                        class="h-7 sm:h-9 md:h-10 w-auto max-w-[130px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer" loading="lazy">
+                    <img src="{{ asset('assets/payment/bank_mega.png') }}" alt="Bank Mega"
+                        class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer" loading="lazy">
+                    <img src="{{ asset('assets/payment/Asset 11.png') }}" alt="Bank BTN"
+                        class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer" loading="lazy">
+                    <img src="{{ asset('assets/payment/Asset 10.png') }}" alt="Bank BJB"
+                        class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer" loading="lazy">
+                </div>
+
+                <!-- Baris 3: Bank Digital & E-Wallets -->
+                <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-9 md:gap-11">
+                    <img src="{{ asset('assets/payment/Asset 9.png') }}" alt="Bank Jago"
+                        class="h-7 sm:h-9 md:h-10 w-auto max-w-[105px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer" loading="lazy">
+                    <img src="{{ asset('assets/payment/bank_transfer_network_atm_bersama.png') }}" alt="ATM Bersama"
+                        class="h-7 sm:h-9 md:h-10 w-auto max-w-[115px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer" loading="lazy">
+                    <img src="{{ asset('assets/payment/gopay_landscape.png') }}" alt="GoPay"
+                        class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer" loading="lazy">
+                    <img src="{{ asset('assets/payment/Asset 15.png') }}" alt="DANA"
+                        class="h-7 sm:h-9 md:h-10 w-auto max-w-[115px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer" loading="lazy">
+                    <img src="{{ asset('assets/payment/Asset 16.png') }}" alt="OVO"
+                        class="h-7 sm:h-9 md:h-10 w-auto max-w-[95px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer" loading="lazy">
+                    <img src="{{ asset('assets/payment/shopeepay.png') }}" alt="ShopeePay"
+                        class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer" loading="lazy">
+                    <img src="{{ asset('assets/payment/Asset 17.png') }}" alt="LinkAja"
+                        class="h-7 sm:h-9 md:h-10 w-auto max-w-[115px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer" loading="lazy">
+                </div>
+
+                <!-- Baris 4: Kartu Kredit & Gerai Ritel -->
+                <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 md:gap-14">
+                    <img src="{{ asset('assets/payment/visa.png') }}" alt="VISA"
+                        class="h-6 sm:h-8 md:h-9 w-auto max-w-[95px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer" loading="lazy">
+                    <img src="{{ asset('assets/payment/mastercard.png') }}" alt="MasterCard"
+                        class="h-7 sm:h-9 md:h-10 w-auto max-w-[90px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer" loading="lazy">
+                    <img src="{{ asset('assets/payment/indomaret.png') }}" alt="Indomaret"
+                        class="h-6 sm:h-8 md:h-9 w-auto max-w-[110px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer" loading="lazy">
+                    <img src="{{ asset('assets/payment/alfamart.png') }}" alt="Alfamart"
+                        class="h-6 sm:h-8 md:h-9 w-auto max-w-[110px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer" loading="lazy">
+                </div>
+
             </div>
         </div>
     </section>

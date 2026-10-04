@@ -26,7 +26,6 @@ Proyek ini telah dikonversi secara menyeluruh dari arsitektur Laravel (Blade + C
     ├── portofolio.html          # Halaman Portofolio (Grid kategori + live search + lightbox zoom)
     ├── marketplace.html         # Halaman Marketplace (Filter kategori, search, sort harga/rating)
     ├── product-detail.html      # Halaman Detail Produk (?id=X, image slider, specs, WhatsApp CTA, carousel relevan)
-    ├── services.html            # Halaman Paket Layanan & Price List (9 paket layanan + benefit checklist)
     ├── about.html               # Halaman Tentang Studio (Visi, statistik, 3 prinsip kerja)
     └── contact.html             # Halaman Kontak & Form pesan WhatsApp otomatis
 ```
@@ -41,8 +40,7 @@ Proyek ini telah dikonversi secara menyeluruh dari arsitektur Laravel (Blade + C
 | **Portofolio** | `resources/views/portofolio/index.blade.php`<br>`PortofolioController.php` | `pages/portofolio.html` | Filter kategori dinamis, live search, counter item, fullscreen lightbox zoom modal. |
 | **Marketplace** | `resources/views/marketplace/index.blade.php`<br>`MarketplaceController.php` | `pages/marketplace.html` | Sidebar filter kategori, pencarian produk, pengurutan (Terbaru, Populer, Harga), pagination grid. |
 | **Detail Produk** | `resources/views/products/show.blade.php`<br>`ProductController.php` | `pages/product-detail.html?id=:id` | Auto-slide preview galeri, collapsible description, paket layanan & software badges, spesifikasi lengkap, carousel produk serupa. |
-| **Paket Layanan** | `resources/views/services/index.blade.php`<br>`ServiceController.php` | `pages/services.html` | 9 kartu paket layanan dengan checklist benefit, tautan contoh implementasi, dan tombol direct pesan WA. |
-| **Tentang Kami** | `resources/views/about.blade.php` | `pages/about.html` | Profil studio, visi kerja, kartu statistik (20+ portofolio, 8 kategori, 9 paket layanan, rating 5.0), dan prinsip kerja. |
+| **Tentang Kami** | `resources/views/about.blade.php` | `pages/about.html` | Profil studio, visi kerja, kartu statistik (20+ portofolio, 8 kategori, rating 5.0), dan prinsip kerja. |
 | **Kontak** | `resources/views/contact.blade.php`<br>`ContactController.php` | `pages/contact.html` | Saluran resmi (WA 0851-6817-4679, Email, Jam Operasional, Shopee, Fiverr, Lynk.id) dan formulir pembuat chat WA otomatis. |
 | **Header & Navbar** | `resources/views/components/navbar.blade.php` | Komponen Header terintegrasi di setiap file HTML + `assets/js/main.js` | Frosted glass effect saat scroll, active indicator, mobile drawer, translate switcher. |
 | **Footer** | `resources/views/components/footer.blade.php` | Komponen Footer terintegrasi di setiap file HTML | Tautan cepat, channel marketplace, informasi kontak resmi studio, hak cipta. |

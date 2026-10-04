@@ -1,0 +1,220 @@
+/* ==========================================================================
+   Premium Designz - Global Stylesheet
+   Pure CSS & Custom Animations
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-heading: 'Outfit', sans-serif;
+    
+    --color-brand-50: #eef4ff;
+    --color-brand-100: #dbe7fe;
+    --color-brand-200: #bfd3fd;
+    --color-brand-300: #93b5fb;
+    --color-brand-400: #6090f7;
+    --color-brand-500: #2d6ceb;
+    --color-brand-600: #2d6ceb;
+    --color-brand-700: #1d31a1;
+    --color-brand-800: #13247f;
+    --color-brand-900: #061e7d;
+    --color-brand-950: #041352;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: 'Outfit', sans-serif;
+}
+
+iconify-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: -0.125em;
+    width: 1em;
+    height: 1em;
+    font-size: inherit;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+iconify-icon svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 1em;
+    max-height: 1em;
+}
+
+input, textarea, select {
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    user-select: text !important;
+}
+
+/* Brand Gradient Backgrounds */
+.bg-brand-gradient {
+    background: #1d31a1;
+    background: linear-gradient(168deg, rgba(29, 49, 161, 1) 0%, rgba(45, 108, 235, 1) 55%, rgba(6, 30, 125, 1) 100%);
+}
+
+.text-brand-gradient {
+    background: linear-gradient(168deg, #1d31a1 0%, #2d6ceb 55%, #061e7d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Hero Background Grid Pattern */
+.hero-grid-pattern {
+    background-color: #E5E5F7;
+    opacity: 0.3;
+    background-image: linear-gradient(#444CF7 2.5px, transparent 2.5px), linear-gradient(90deg, #444CF7 2.5px, transparent 2.5px), linear-gradient(#444CF7 1.25px, transparent 1.25px), linear-gradient(90deg, #444CF7 1.25px, #E5E5F7 1.25px);
+    background-size: 125px 125px, 125px 125px, 25px 25px, 25px 25px;
+    background-position: -2.5px -2.5px, -2.5px -2.5px, -1.25px -1.25px, -1.25px -1.25px;
+    mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 75%);
+    mask-size: 100% 100%;
+    -webkit-mask-size: 100% 100%;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+}
+
+/* Global Image & Asset Protection */
+*, *::before, *::after {
+    -webkit-user-drag: none !important;
+    user-drag: none !important;
+}
+
+img, picture, svg, .protected-asset, [data-protected="image"] {
+    -webkit-user-drag: none !important;
+    -khtml-user-drag: none !important;
+    -moz-user-drag: none !important;
+    -o-user-drag: none !important;
+    user-drag: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    -webkit-touch-callout: none !important;
+    pointer-events: auto;
+}
+
+/* Anti-Print & Anti-PDF Capture */
+@media print {
+    html, body {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        overflow: hidden !important;
+    }
+}
+
+/* Skeleton Shimmer Loading Effect */
+@keyframes skeletonShimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.skeleton-shimmer {
+    background-color: #e4e4e7 !important;
+    background: linear-gradient(90deg, #e4e4e7 0%, #d4d4d8 50%, #e4e4e7 100%) !important;
+    background-size: 200% 100% !important;
+    animation: skeletonShimmer 1.5s infinite ease-in-out !important;
+}
+
+.skeleton-loader:not(.skeleton-loaded) {
+    background-color: #e4e4e7 !important;
+    background: linear-gradient(90deg, #e4e4e7 0%, #d4d4d8 50%, #e4e4e7 100%) !important;
+    background-size: 200% 100% !important;
+    animation: skeletonShimmer 1.5s infinite ease-in-out !important;
+}
+
+.skeleton-dark {
+    background: linear-gradient(90deg, #18181b 0%, #27272a 50%, #18181b 100%) !important;
+    background-size: 200% 100% !important;
+    animation: skeletonShimmer 1.5s infinite ease-in-out !important;
+}
+
+.skeleton-loader img {
+    opacity: 0;
+    transition: opacity 0.35s ease-out;
+}
+
+.skeleton-loader.skeleton-loaded img,
+.skeleton-loader img.img-loaded {
+    opacity: 1 !important;
+}
+
+/* Category Marquee Animation */
+@keyframes categoryScrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.category-marquee-track {
+    animation: categoryScrollLeft 35s linear infinite;
+}
+
+.category-marquee-track:hover {
+    animation-play-state: paused;
+}
+
+/* Scrollbar Utilities */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Google Translate Hidden Widget */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame,
+iframe.goog-te-banner-frame,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.goog-tooltip,
+.goog-tooltip:hover {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+body {
+    top: 0px !important;
+    position: static !important;
+}
+
+#google_translate_element {
+    display: none !important;
+}
+
+.skiptranslate:not(.notranslate) {
+    display: none !important;
+}
+
+.notranslate {
+    translate: no !important;
+}
+
+font {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}

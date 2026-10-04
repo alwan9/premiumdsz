@@ -244,6 +244,21 @@
         let searchDebounceTimer = null;
         let activePortfolioAjax = null;
 
+        // --- Skeleton HTML Generator for Portfolio Masonry Grid ---
+        function getPortfolioSkeletonHtml(count = 10) {
+            const aspectRatios = ['aspect-[3/4]', 'aspect-square', 'aspect-[4/5]', 'aspect-[2/3]', 'aspect-[4/3]'];
+            let html = '<div class="columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-3 sm:gap-4 [column-fill:_balance] py-2">';
+            for (let i = 0; i < count; i++) {
+                const aspect = aspectRatios[i % aspectRatios.length];
+                html += `
+                    <div class="break-inside-avoid mb-3 sm:mb-4 rounded-2xl overflow-hidden skeleton-shimmer ${aspect} border border-zinc-200/60 shadow-xs">
+                    </div>
+                `;
+            }
+            html += '</div>';
+            return html;
+        }
+
         // --- jQuery AJAX Live Search & Filter Functions ---
         function getPortfolioFilters() {
             return {
@@ -269,8 +284,9 @@
             }
 
             $('#portfolioSearchSpinner').removeClass('hidden');
-            $('#portfolioLoadingOverlay').removeClass('hidden');
-            $('#portfolioGridContainer').addClass('opacity-60 pointer-events-none');
+            
+            // Show Skeleton Grid
+            $('#portfolioGridContainer').html(getPortfolioSkeletonHtml(10));
 
             activePortfolioAjax = $.ajax({
                 url: requestUrl,
@@ -318,7 +334,10 @@
                             path: newUrl
                         }, '', newUrl);
 
-                        // Refresh AOS animations if available
+                        // Initialize image skeletons & refresh AOS
+                        if (typeof initImageSkeletons === 'function') {
+                            initImageSkeletons();
+                        }
                         if (window.AOS) {
                             AOS.refreshHard();
                         }
@@ -331,8 +350,6 @@
                 },
                 complete: function() {
                     $('#portfolioSearchSpinner').addClass('hidden');
-                    $('#portfolioLoadingOverlay').addClass('hidden');
-                    $('#portfolioGridContainer').removeClass('opacity-60 pointer-events-none');
                 }
             });
         }

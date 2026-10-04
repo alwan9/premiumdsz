@@ -123,7 +123,7 @@
                         @foreach ($promos as $promo)
                             <div class="snap-start shrink-0 w-[85vw] sm:w-[380px] lg:w-[400px] group">
                                 <a href="{{ $promo->target_url }}" target="_blank"
-                                    class="block rounded-2xl overflow-hidden border border-zinc-200 bg-zinc-100 hover:border-brand-500 shadow-sm hover:shadow-md transition-all duration-200 aspect-[16/9]">
+                                    class="block rounded-2xl overflow-hidden border border-zinc-200 bg-zinc-100 skeleton-loader hover:border-brand-500 shadow-sm hover:shadow-md transition-all duration-200 aspect-[16/9]">
                                     <img src="{{ $promo->image_url }}" alt="{{ $promo->Judul ?? 'Promo Desain' }}"
                                         class="w-full h-full object-cover">
                                 </a>
@@ -467,9 +467,9 @@
                         class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-200 ease-out flex flex-col justify-between group">
                         <div>
                             <!-- Product Thumbnail Image & Badge Overlay (Aspect Ratio 1:1) -->
-                            <div class="aspect-square bg-zinc-900 relative overflow-hidden">
-                                <img src="{{ $prod->image_url }}" alt="{{ $prod->Nama_produk }}"
-                                    class="w-full h-full object-cover transition-all duration-200 ease-out group-hover:brightness-90">
+                            <div class="aspect-square bg-zinc-100 skeleton-loader relative overflow-hidden">
+                                <img src="{{ $prod->image_url }}" alt="{{ $prod->Nama_produk }}" loading="lazy"
+                                    class="w-full h-full object-cover transition-all duration-300 ease-out group-hover:brightness-90">
                                 <div
                                     class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-black/20">
                                 </div>
@@ -587,9 +587,9 @@
                             <div
                                 class="bg-white rounded-2xl border border-zinc-200 hover:border-brand-300 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
                                 <!-- Portrait Aspect Image Container (Rasio Potret Vertikal Screenshot) -->
-                                <div class="relative aspect-[9/14] sm:aspect-[9/15] bg-zinc-100 overflow-hidden cursor-pointer"
+                                <div class="relative aspect-[9/14] sm:aspect-[9/15] bg-zinc-100 skeleton-loader overflow-hidden cursor-pointer"
                                     onclick="openTestiLightbox('{{ $testi->image_url }}', '{{ addslashes($testi->display_title) }}')">
-                                    <img src="{{ $testi->image_url }}" alt="{{ $testi->display_title }}"
+                                    <img src="{{ $testi->image_url }}" alt="{{ $testi->display_title }}" loading="lazy"
                                         class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
 
                                     <!-- Hover Overlay with Zoom Icon -->

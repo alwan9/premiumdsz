@@ -178,6 +178,37 @@
         let marketplaceSearchDebounce = null;
         let activeMarketplaceAjax = null;
 
+        // --- Skeleton Generator for Marketplace Product Grid ---
+        function getMarketplaceSkeletonHtml(count = 8) {
+            let html = '<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">';
+            for (let i = 0; i < count; i++) {
+                html += `
+                    <div class="rounded-2xl border border-zinc-200 bg-white overflow-hidden flex flex-col justify-between shadow-xs">
+                        <div>
+                            <!-- Image Skeleton -->
+                            <div class="aspect-square skeleton-shimmer relative">
+                                <div class="absolute top-2.5 left-2.5 w-16 h-4 rounded-lg bg-zinc-300/60"></div>
+                                <div class="absolute bottom-2.5 left-2.5 w-12 h-3.5 rounded-md bg-zinc-300/60"></div>
+                            </div>
+                            <!-- Info Skeleton -->
+                            <div class="p-4 space-y-2.5">
+                                <div class="h-4 skeleton-shimmer rounded-md w-3/4"></div>
+                                <div class="h-3 skeleton-shimmer rounded-md w-full"></div>
+                                <div class="h-3 skeleton-shimmer rounded-md w-1/2"></div>
+                            </div>
+                        </div>
+                        <!-- Buttons Skeleton -->
+                        <div class="p-4 pt-0 flex items-center space-x-2">
+                            <div class="flex-1 h-7 skeleton-shimmer rounded-xl"></div>
+                            <div class="flex-1 h-7 skeleton-shimmer rounded-xl"></div>
+                        </div>
+                    </div>
+                `;
+            }
+            html += '</div>';
+            return html;
+        }
+
         function getMarketplaceFilters() {
             return {
                 q: $('#marketplaceSearchInput').val().trim(),
@@ -202,8 +233,9 @@
             }
 
             $('#marketplaceSearchSpinner').removeClass('hidden');
-            $('#marketplaceLoadingOverlay').removeClass('hidden');
-            $('#marketplaceGridContainer').addClass('opacity-60 pointer-events-none');
+
+            // Show skeleton product grid immediately
+            $('#marketplaceGridContainer').html(getMarketplaceSkeletonHtml(8));
 
             activeMarketplaceAjax = $.ajax({
                 url: requestUrl,
@@ -253,6 +285,10 @@
                         let newUrl = "{{ route('marketplace.index') }}" + (newQuery ? '?' + newQuery : '');
                         window.history.pushState({ path: newUrl }, '', newUrl);
 
+                        // Initialize image skeletons & refresh AOS
+                        if (typeof initImageSkeletons === 'function') {
+                            initImageSkeletons();
+                        }
                         if (window.AOS) {
                             AOS.refreshHard();
                         }
@@ -265,8 +301,6 @@
                 },
                 complete: function() {
                     $('#marketplaceSearchSpinner').addClass('hidden');
-                    $('#marketplaceLoadingOverlay').addClass('hidden');
-                    $('#marketplaceGridContainer').removeClass('opacity-60 pointer-events-none');
                 }
             });
         }

@@ -29,11 +29,11 @@
     <div class="columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-3 sm:gap-4 [column-fill:_balance] py-2">
         @foreach ($portofolios as $index => $item)
             <div data-aos="fade-up" data-aos-delay="{{ ($index % 5) * 35 }}"
-                class="break-inside-avoid mb-3 sm:mb-4 group relative rounded-2xl overflow-hidden bg-zinc-900 cursor-zoom-in shadow-xs hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-200 ease-out"
+                class="break-inside-avoid mb-3 sm:mb-4 group relative rounded-2xl overflow-hidden bg-zinc-100 skeleton-loader cursor-zoom-in shadow-xs hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-200 ease-out min-h-[140px]"
                 onclick="openPortfolioZoom({{ $index }})">
 
                 <img src="{{ $item->image_url }}" alt="{{ $item->nama }}" loading="lazy"
-                    class="w-full h-auto block transition-all duration-200 ease-out group-hover:brightness-90">
+                    class="w-full h-auto block transition-all duration-300 ease-out group-hover:brightness-90">
 
                 <!-- Subtle Darkening & Zoom Overlay Icon -->
                 <div

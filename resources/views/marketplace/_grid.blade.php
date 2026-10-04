@@ -34,9 +34,9 @@
                 <div>
                     <!-- Card Image & Overlay (Aspect Ratio 1:1) -->
                     <a href="{{ route('products.show', $prod->Id_produk) }}" class="block">
-                        <div class="aspect-square bg-zinc-900 relative overflow-hidden cursor-pointer">
+                        <div class="aspect-square bg-zinc-100 skeleton-loader relative overflow-hidden cursor-pointer">
                             <img src="{{ $prod->image_url }}" alt="{{ $prod->Nama_produk }}" loading="lazy"
-                                class="w-full h-full object-cover transition-all duration-200 ease-out group-hover:brightness-90">
+                                class="w-full h-full object-cover transition-all duration-300 ease-out group-hover:brightness-90">
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-black/20">
                             </div>

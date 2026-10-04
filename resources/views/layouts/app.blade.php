@@ -213,6 +213,45 @@
                 overflow: hidden !important;
             }
         }
+
+        /* Skeleton Loading & Shimmer Animation */
+        @keyframes skeletonShimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        .skeleton-shimmer {
+            background: linear-gradient(90deg, #f1f5f9 0%, #e2e8f0 50%, #f1f5f9 100%) !important;
+            background-size: 200% 100% !important;
+            animation: skeletonShimmer 1.5s infinite ease-in-out !important;
+        }
+
+        .skeleton-loader:not(.skeleton-loaded) {
+            background: linear-gradient(90deg, #f1f5f9 0%, #e2e8f0 50%, #f1f5f9 100%) !important;
+            background-size: 200% 100% !important;
+            animation: skeletonShimmer 1.5s infinite ease-in-out !important;
+        }
+
+        .skeleton-dark {
+            background: linear-gradient(90deg, #18181b 0%, #27272a 50%, #18181b 100%) !important;
+            background-size: 200% 100% !important;
+            animation: skeletonShimmer 1.5s infinite ease-in-out !important;
+        }
+
+        /* Image Progressive Skeleton Fade-in */
+        .skeleton-loader img {
+            opacity: 0;
+            transition: opacity 0.35s ease-out;
+        }
+
+        .skeleton-loader.skeleton-loaded img,
+        .skeleton-loader img.img-loaded {
+            opacity: 1 !important;
+        }
     </style>
     <!-- AOS (Animate On Scroll) CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -245,10 +284,41 @@
                 offset: 60,
                 easing: 'ease-out-cubic'
             });
+            initImageSkeletons();
         });
         window.addEventListener('load', function() {
             AOS.refresh();
+            initImageSkeletons();
         });
+
+        // Global Image Skeleton Loader Handler
+        function initImageSkeletons() {
+            document.querySelectorAll('img').forEach(function(img) {
+                const parent = img.closest('.skeleton-loader');
+                
+                if (img.complete && img.naturalHeight !== 0) {
+                    img.classList.add('img-loaded');
+                    if (parent) {
+                        parent.classList.add('skeleton-loaded');
+                    }
+                    return;
+                }
+
+                img.addEventListener('load', function() {
+                    img.classList.add('img-loaded');
+                    if (parent) {
+                        parent.classList.add('skeleton-loaded');
+                    }
+                }, { once: true });
+
+                img.addEventListener('error', function() {
+                    img.classList.add('img-loaded');
+                    if (parent) {
+                        parent.classList.add('skeleton-loaded');
+                    }
+                }, { once: true });
+            });
+        }
     </script>
 
     <!-- Auto Scroll to Top Floating Button Component -->

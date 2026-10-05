@@ -3,17 +3,26 @@
  * Pure Vanilla JavaScript
  */
 
-document.addEventListener('DOMContentLoaded', function() {
-    // 1. Inisialisasi AOS (ringan, smooth, once: true untuk performa maksimal)
+// Global AOS Initialization Function (Enabled explicitly on Mobile & Desktop)
+function initAOSGlobal() {
     if (window.AOS) {
         AOS.init({
+            disable: false, // Jamin aktif di perangkat mobile / HP
+            startEvent: 'DOMContentLoaded',
             duration: 650,
             once: true,
-            offset: 40,
+            offset: 20, // Offset rendah agar langsung aktif saat scroll di HP
             easing: 'ease-out-cubic',
-            disableMutationObserver: false
+            disableMutationObserver: false,
+            mirror: false
         });
+        window.AOS.initCalled = true;
     }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Inisialisasi AOS (Mobile + Desktop)
+    initAOSGlobal();
 
     // 2. Inisialisasi Skeleton Images
     initImageSkeletons();
@@ -37,19 +46,22 @@ document.addEventListener('DOMContentLoaded', function() {
 window.addEventListener('load', function() {
     if (window.AOS) {
         if (!window.AOS.initCalled) {
-            AOS.init({
-                duration: 650,
-                once: true,
-                offset: 40,
-                easing: 'ease-out-cubic'
-            });
-            window.AOS.initCalled = true;
+            initAOSGlobal();
         } else {
             AOS.refresh();
         }
     }
     initImageSkeletons();
 });
+
+// Refresh AOS on orientation change / window resize for mobile
+window.addEventListener('orientationchange', function() {
+    if (window.AOS) {
+        setTimeout(function() {
+            AOS.refresh();
+        }, 150);
+    }
+}, { passive: true });
 
 // Global Image Skeleton Loader Handler
 function initImageSkeletons() {

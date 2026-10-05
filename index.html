@@ -87,20 +87,29 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/other/logo_warna.png">
     <link rel="shortcut icon" href="assets/other/logo_warna.png">
 
-    <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+    <!-- Preconnect & DNS-Prefetch Resource Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://code.jquery.com">
+    <link rel="preconnect" href="https://code.iconify.design">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+
+    <!-- Google Fonts: Plus Jakarta Sans & Outfit with font-display swap -->
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
 
-    <!-- jQuery CDN -->
+    <!-- jQuery CDN (Deferred) -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous" defer></script>
 
-    <!-- Iconify Icon Web Component & Embedded Offline Bundle -->
-    <script src="assets/js/icons-bundle.js"></script>
-    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+    <!-- Iconify Icon Web Component & Embedded Offline Bundle (Deferred) -->
+    <script src="assets/js/icons-bundle.js" defer></script>
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" defer></script>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -139,7 +148,7 @@
     </script>
 
     <!-- AOS (Animate On Scroll) CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
@@ -320,14 +329,14 @@
             <!-- Left Workspace UI Artwork -->
             <div
                 class="absolute -left-20 sm:-left-12 md:-left-8 lg:left-0 top-1/2 -translate-y-1/2 pointer-events-none z-0 select-none">
-                <img src="assets/other/header-left.png" alt="Design UI Left"
+                <img src="assets/other/header-left.png" alt="Design UI Left" width="410" height="350" fetchpriority="high" decoding="async"
                     class="w-48 sm:w-64 md:w-80 lg:w-92 xl:w-[410px] max-w-none drop-shadow-2xl opacity-90 sm:opacity-100 transition-transform duration-700 hover:scale-105">
             </div>
 
             <!-- Right Workspace UI Artwork -->
             <div
                 class="absolute -right-20 sm:-right-12 md:-right-8 lg:right-0 top-1/2 -translate-y-1/2 pointer-events-none z-0 select-none">
-                <img src="assets/other/header-right.png" alt="Design UI Right"
+                <img src="assets/other/header-right.png" alt="Design UI Right" width="410" height="350" fetchpriority="high" decoding="async"
                     class="w-48 sm:w-64 md:w-80 lg:w-92 xl:w-[410px] max-w-none drop-shadow-2xl opacity-90 sm:opacity-100 transition-transform duration-700 hover:scale-105">
             </div>
 
@@ -338,7 +347,7 @@
                     <!-- Floating Icon 1: Canva (Top Left) -->
                     <div class="absolute left-0 sm:left-3 md:left-5 lg:left-8 top-0 sm:top-1 z-20 pointer-events-auto">
                         <div class="float-icon-1 cursor-pointer group">
-                            <img src="assets/software/canva.png" alt="Canva"
+                            <img src="assets/software/canva.png" alt="Canva" width="68" height="68" decoding="async"
                                 class="w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-17 lg:h-17 object-contain drop-shadow-xl group-hover:scale-115 transition-transform duration-300">
                         </div>
                     </div>
@@ -347,7 +356,7 @@
                     <div
                         class="absolute -left-1 sm:left-1 md:left-3 lg:left-4 top-[42%] -translate-y-1/2 z-20 pointer-events-auto">
                         <div class="float-icon-2 cursor-pointer group">
-                            <img src="assets/software/powerpoint.png" alt="PowerPoint"
+                            <img src="assets/software/powerpoint.png" alt="PowerPoint" width="64" height="64" decoding="async"
                                 class="w-10 h-10 sm:w-13 sm:h-13 md:w-15 md:h-15 lg:w-16 lg:h-16 object-contain drop-shadow-xl group-hover:scale-115 transition-transform duration-300">
                         </div>
                     </div>
@@ -356,7 +365,7 @@
                     <div
                         class="absolute left-1 sm:left-4 md:left-7 lg:left-10 bottom-16 sm:bottom-20 md:bottom-24 lg:bottom-28 z-20 pointer-events-auto">
                         <div class="float-icon-3 cursor-pointer group">
-                            <img src="assets/software/figma.png" alt="Figma"
+                            <img src="assets/software/figma.png" alt="Figma" width="68" height="68" decoding="async"
                                 class="w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-17 lg:h-17 object-contain drop-shadow-xl group-hover:scale-115 transition-transform duration-300">
                         </div>
                     </div>
@@ -365,7 +374,7 @@
                     <div
                         class="absolute right-16 sm:right-24 md:right-32 lg:right-38 top-0 sm:top-1 z-20 pointer-events-auto">
                         <div class="float-icon-4 cursor-pointer group">
-                            <img src="assets/software/Adobe_Illustrator.png" alt="Adobe Illustrator"
+                            <img src="assets/software/Adobe_Illustrator.png" alt="Adobe Illustrator" width="64" height="64" decoding="async"
                                 class="w-10 h-10 sm:w-13 sm:h-13 md:w-15 md:h-15 lg:w-16 lg:h-16 object-contain drop-shadow-xl group-hover:scale-115 transition-transform duration-300">
                         </div>
                     </div>
@@ -373,7 +382,7 @@
                     <!-- Floating Icon 5: SketchUp (Upper Middle Right) -->
                     <div class="absolute right-1 sm:right-3 md:right-5 lg:right-7 top-[18%] z-20 pointer-events-auto">
                         <div class="float-icon-5 cursor-pointer group">
-                            <img src="assets/software/sketchup.png" alt="SketchUp"
+                            <img src="assets/software/sketchup.png" alt="SketchUp" width="64" height="64" decoding="async"
                                 class="w-10 h-10 sm:w-13 sm:h-13 md:w-15 md:h-15 lg:w-16 lg:h-16 object-contain drop-shadow-xl group-hover:scale-115 transition-transform duration-300">
                         </div>
                     </div>
@@ -382,7 +391,7 @@
                     <div
                         class="absolute -right-1 sm:right-1 md:right-3 lg:right-4 top-[48%] -translate-y-1/2 z-20 pointer-events-auto">
                         <div class="float-icon-6 cursor-pointer group">
-                            <img src="assets/software/adobe_photoshop.png" alt="Adobe Photoshop"
+                            <img src="assets/software/adobe_photoshop.png" alt="Adobe Photoshop" width="68" height="68" decoding="async"
                                 class="w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-17 lg:h-17 object-contain drop-shadow-xl group-hover:scale-115 transition-transform duration-300">
                         </div>
                     </div>
@@ -391,29 +400,26 @@
                     <div
                         class="absolute right-1 sm:right-4 md:right-7 lg:right-11 bottom-16 sm:bottom-20 md:bottom-24 lg:bottom-28 z-20 pointer-events-auto">
                         <div class="float-icon-7 cursor-pointer group">
-                            <img src="assets/software/coreldraw.png" alt="CorelDRAW"
+                            <img src="assets/software/coreldraw.png" alt="CorelDRAW" width="68" height="68" decoding="async"
                                 class="w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-17 lg:h-17 object-contain drop-shadow-xl group-hover:scale-115 transition-transform duration-300">
                         </div>
                     </div>
 
-                    <!-- Main Typography (Shifted slightly lower) -->
+                    <!-- Main Typography (Immediate Render for Rapid LCP) -->
                     <div
                         class="relative z-10 max-w-2xl sm:max-w-3xl lg:max-w-4xl mx-auto space-y-4 px-6 sm:px-12 pt-6 sm:pt-10 md:pt-14">
-                        <h1 data-aos="fade-up" data-aos-delay="100"
-                            class="text-3xl sm:text-5xl lg:text-6xl font-black text-zinc-900 tracking-tight font-heading leading-[1.14]">
+                        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-zinc-900 tracking-tight font-heading leading-[1.14]">
                             Professional Visual Design Solutions to Increase Brand Credibility
                         </h1>
 
-                        <p data-aos="fade-up" data-aos-delay="200"
-                            class="text-xs sm:text-sm md:text-base text-zinc-500 max-w-xl mx-auto leading-relaxed pt-2">
+                        <p class="text-xs sm:text-sm md:text-base text-zinc-500 max-w-xl mx-auto leading-relaxed pt-2">
                             Browse our portfolio catalog, choose a ready-made design package, or discuss your custom
                             needs directly with our team of designers.
                         </p>
 
-                        <!-- Bottom Floating Toolbar Widget (Positioned lower with extended top gap) -->
-                        <div data-aos="fade-up" data-aos-delay="300"
-                            class="pt-12 sm:pt-16 md:pt-20 lg:pt-[30%] pb-2 flex justify-center">
-                            <img src="assets/other/toools.svg" alt="Design Tools Bar"
+                        <!-- Bottom Floating Toolbar Widget -->
+                        <div class="pt-12 sm:pt-16 md:pt-20 lg:pt-[30%] pb-2 flex justify-center">
+                            <img src="assets/other/toools.svg" alt="Design Tools Bar" width="460" height="64" decoding="async"
                                 class="h-11 sm:h-13 md:h-15 lg:h-16 w-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300 cursor-pointer pointer-events-auto">
                         </div>
                     </div>
@@ -457,35 +463,32 @@
                             <a href="https://api.whatsapp.com/send/?phone=6285168174679&text=Halo%20Premium%20Design%2C%20saya%20ingin%20klaim%20Promo%20Banner%20%26%20Media%20Promosi%20UMKM."
                                 target="_blank"
                                 class="block rounded-2xl overflow-hidden border border-zinc-200 bg-zinc-200 skeleton-loader hover:border-brand-500 shadow-sm hover:shadow-md transition-all duration-200 aspect-[16/9]">
-                                <img src="assets/promo/banner promo (1).jpg"
-                                    alt="Promo Spesial Banner &amp; Desain Promosi UMKM"
-                                    class="w-full h-full object-cover">
+                                <img src="assets/promo/banner promo (1).jpg" alt="Promo Spesial Banner &amp; Desain Promosi UMKM"
+                                    width="400" height="225" loading="lazy" decoding="async" class="w-full h-full object-cover">
                             </a>
                         </div>
                         <div class="snap-start shrink-0 w-[85vw] sm:w-[380px] lg:w-[400px] group">
                             <a href="https://api.whatsapp.com/send/?phone=6285168174679&text=Halo%20Premium%20Design%2C%20saya%20ingin%20konsultasi%20Promo%20Paket%20Branding%20%26%20Logo."
                                 target="_blank"
                                 class="block rounded-2xl overflow-hidden border border-zinc-200 bg-zinc-200 skeleton-loader hover:border-brand-500 shadow-sm hover:shadow-md transition-all duration-200 aspect-[16/9]">
-                                <img src="assets/promo/banner promo (2).jpg"
-                                    alt="Diskon Paket Branding &amp; Logo Eksklusif" class="w-full h-full object-cover">
+                                <img src="assets/promo/banner promo (2).jpg" alt="Diskon Paket Branding &amp; Logo Eksklusif"
+                                    width="400" height="225" loading="lazy" decoding="async" class="w-full h-full object-cover">
                             </a>
                         </div>
                         <div class="snap-start shrink-0 w-[85vw] sm:w-[380px] lg:w-[400px] group">
                             <a href="https://api.whatsapp.com/send/?phone=6285168174679&text=Halo%20Premium%20Design%2C%20saya%20ingin%20info%20Promo%20Desain%20Kemasan%20%26%20Pouch."
                                 target="_blank"
                                 class="block rounded-2xl overflow-hidden border border-zinc-200 bg-zinc-200 skeleton-loader hover:border-brand-500 shadow-sm hover:shadow-md transition-all duration-200 aspect-[16/9]">
-                                <img src="assets/promo/banner promo (3).jpg"
-                                    alt="Penawaran Spesial Kemasan &amp; Standing Pouch"
-                                    class="w-full h-full object-cover">
+                                <img src="assets/promo/banner promo (3).jpg" alt="Penawaran Spesial Kemasan &amp; Standing Pouch"
+                                    width="400" height="225" loading="lazy" decoding="async" class="w-full h-full object-cover">
                             </a>
                         </div>
                         <div class="snap-start shrink-0 w-[85vw] sm:w-[380px] lg:w-[400px] group">
                             <a href="https://api.whatsapp.com/send/?phone=6285168174679&text=Halo%20Premium%20Design%2C%20saya%20tertarik%20dengan%20Promo%20Bundling%20Desain%20Media%20Sosial%20%26%20Apparel."
                                 target="_blank"
                                 class="block rounded-2xl overflow-hidden border border-zinc-200 bg-zinc-200 skeleton-loader hover:border-brand-500 shadow-sm hover:shadow-md transition-all duration-200 aspect-[16/9]">
-                                <img src="assets/promo/banner promo (4).jpg"
-                                    alt="Promo Bundling Desain Media Sosial &amp; Apparel"
-                                    class="w-full h-full object-cover">
+                                <img src="assets/promo/banner promo (4).jpg" alt="Promo Bundling Desain Media Sosial &amp; Apparel"
+                                    width="400" height="225" loading="lazy" decoding="async" class="w-full h-full object-cover">
                             </a>
                         </div>
                     </div>
@@ -499,7 +502,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
                     <div data-aos="fade-right" data-aos-duration="600"
                         class="lg:col-span-5 flex items-center justify-center">
-                        <img src="assets/other/asset1.png" alt="Keunggulan Layanan Premium Design"
+                        <img src="assets/other/asset1.png" alt="Keunggulan Layanan Premium Design" width="600" height="450" loading="lazy" decoding="async"
                             class="w-full max-w-[600px] lg:max-w-full h-auto object-contain">
                     </div>
 

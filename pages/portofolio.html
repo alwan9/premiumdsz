@@ -66,20 +66,29 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/other/logo_warna.png">
     <link rel="shortcut icon" href="../assets/other/logo_warna.png">
 
-    <!-- Google Fonts -->
+    <!-- Preconnect & DNS-Prefetch Resource Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://code.jquery.com">
+    <link rel="preconnect" href="https://code.iconify.design">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+
+    <!-- Google Fonts: Plus Jakarta Sans & Outfit with font-display swap -->
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
 
-    <!-- jQuery CDN -->
+    <!-- jQuery CDN (Deferred) -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous" defer></script>
 
-    <!-- Iconify Icon Web Component & Embedded Offline Bundle -->
-    <script src="../assets/js/icons-bundle.js"></script>
-    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+    <!-- Iconify Icon Web Component & Embedded Offline Bundle (Deferred) -->
+    <script src="../assets/js/icons-bundle.js" defer></script>
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" defer></script>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -115,7 +124,7 @@
     </script>
 
     <!-- AOS (Animate On Scroll) CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">

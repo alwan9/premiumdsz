@@ -611,7 +611,7 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
         return;
     }
 
-    let gridHtml = '<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">';
+    let gridHtml = '<div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3.5 sm:gap-5">';
     items.forEach((prod, index) => {
         const detailUrl = baseAssetPrefix ? `product-detail.html?id=${prod.Id_produk}` : `pages/product-detail.html?id=${prod.Id_produk}`;
         const imgUrl = baseAssetPrefix + prod.image_url;
@@ -642,25 +642,25 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
                         </div>
                     </a>
 
-                    <div class="p-4 group-hover:bg-zinc-50 transition-colors duration-300 ease-in-out">
+                    <div class="p-3 sm:p-4 group-hover:bg-zinc-50 transition-colors duration-300 ease-in-out">
                         <h3 class="text-xs sm:text-sm font-bold text-zinc-900 line-clamp-1 group-hover:text-brand-600 transition-colors duration-300 ease-in-out">
                             <a href="${detailUrl}">
                                 ${prod.Nama_produk}
                             </a>
                         </h3>
-                        <p class="text-[11px] text-zinc-500 mt-1 line-clamp-2 leading-relaxed">
+                        <p class="text-[10px] sm:text-[11px] text-zinc-500 mt-1 line-clamp-2 leading-relaxed">
                             ${prod.Des_produk}
                         </p>
                     </div>
                 </div>
 
-                <div class="p-4 pt-0 flex items-center space-x-2 group-hover:bg-zinc-50 transition-colors duration-300 ease-in-out">
+                <div class="p-3 sm:p-4 pt-0 flex items-center space-x-1.5 sm:space-x-2 group-hover:bg-zinc-50 transition-colors duration-300 ease-in-out">
                     <a href="${detailUrl}"
-                        class="flex-1 py-2 text-center text-xs font-bold text-zinc-700 bg-zinc-100 hover:bg-zinc-200 rounded-xl transition-colors">
+                        class="flex-1 py-1.5 sm:py-2 text-center text-[11px] sm:text-xs font-bold text-zinc-700 bg-zinc-100 hover:bg-zinc-200 rounded-lg sm:rounded-xl transition-colors">
                         Detail
                     </a>
                     <a href="${prod.whatsapp_link}" target="_blank"
-                        class="flex-1 inline-flex items-center justify-center space-x-1 py-2 text-center text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-xl shadow-sm transition-all">
+                        class="flex-1 inline-flex items-center justify-center space-x-1 py-1.5 sm:py-2 text-center text-[11px] sm:text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg sm:rounded-xl shadow-sm transition-all">
                         <iconify-icon icon="simple-icons:whatsapp" class="text-xs"></iconify-icon>
                         <span>Pesan</span>
                     </a>

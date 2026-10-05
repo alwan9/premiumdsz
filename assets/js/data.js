@@ -127,49 +127,49 @@ const SERVICES = [
         Nama_layanan: "Layanan Desain Banner & Media Promosi",
         Des_layanan: "Jasa pembuatan banner wisuda, banner promosi UMKM, event toko, hingga media iklan outdoor.",
         Benefit: "• Desain original dan custom sesuai kebutuhan\n• Layout rapi dan mudah dibaca\n• File siap cetak (PDF, JPG, PNG) & Mentahan HD\n• Revisi sesuai kesepakatan",
-        sample_product_id: 2
+        sample_product_id: 1
     },
     {
         Id_Layanan: 2,
         Nama_layanan: "Layanan Desain Kemasan Box & Pouch",
         Des_layanan: "Perancangan desain kemasan pouch makanan ringan, boks hampers, skincare, dan produk UMKM.",
         Benefit: "• Pola dieline presisi sesuai ukuran boks/pouch\n• 3D Mockup realistis untuk presentasi produk\n• Format warna siap cetak percetakan\n• Revisi sesuai kesepakatan",
-        sample_product_id: 5
+        sample_product_id: 4
     },
     {
         Id_Layanan: 3,
         Nama_layanan: "Layanan Desain Logo & Brand Identity",
         Des_layanan: "Perancangan logo bisnis, logo racing, online shop, UMKM, dan identitas visual perusahaan.",
         Benefit: "• Desain logo custom original dari awal (no template)\n• Mockup aplikasi logo & konsep warna/tipografi\n• File resolusi tinggi siap digital dan cetak\n• Konsultasi desain sebelum order",
-        sample_product_id: 9
+        sample_product_id: 5
     },
     {
         Id_Layanan: 4,
         Nama_layanan: "Layanan UI/UX App & Website Figma",
         Des_layanan: "Perancangan antarmuka digital mobile app Android/iOS, website landing page, dan sistem dashboard.",
         Benefit: "• Tampilan modern, clean, dan user-friendly\n• File design Figma editable & auto-layout\n• Interactive clickable prototype\n• User flow & struktur halaman terorganisir",
-        sample_product_id: 19
+        sample_product_id: 8
     },
     {
         Id_Layanan: 5,
         Nama_layanan: "Layanan Desain Jersey & Custom Apparel",
         Des_layanan: "Desain jersey futsal, esport, komunitas motor/gowes, dan seragam apparel custom.",
         Benefit: "• Desain original menyesuaikan karakter tim / komunitas\n• File siap cetak sublimasi / konveksi (CDR/EPS/PSD/PDF)\n• Mockup apparel depan & belakang\n• Revisi sesuai kesepakatan",
-        sample_product_id: 11
+        sample_product_id: 10
     },
     {
         Id_Layanan: 6,
         Nama_layanan: "Layanan Redesain AI & Foto Produk Studio",
         Des_layanan: "Penyempurnaan artwork AI generator dan sentuhan editing foto produk untuk meningkatkan konversi penjualan.",
         Benefit: "• Penyempurnaan detail gambar AI & komposisi warna\n• Editing foto studio produk agar siap marketplace & promosi\n• File resolusi tinggi digital & cetak\n• Pengerjaan rapi dan cepat",
-        sample_product_id: 12
+        sample_product_id: 11
     },
     {
         Id_Layanan: 7,
         Nama_layanan: "Layanan Desain Label & Stiker Produk",
         Des_layanan: "Pembuatan label stiker produk makanan ringan, toples kue, botol minuman, dan kemasan homemade.",
         Benefit: "• Penyesuaian ukuran & bentuk label toples/botol/kemasan\n• Tata letak informasi produk & logo yang proporsional\n• Mockup label realistis & file siap cetak\n• Revisi sesuai kesepakatan",
-        sample_product_id: 8
+        sample_product_id: 9
     },
     {
         Id_Layanan: 8,
@@ -180,10 +180,10 @@ const SERVICES = [
     },
     {
         Id_Layanan: 9,
-        Nama_layanan: "Layanan Desain Poster & Infografis Digital",
-        Des_layanan: "Pembuatan poster digital, infografis promosi bisnis, pengumuman instansi, dan publikasi event.",
-        Benefit: "• Visualisasi data infografis informatif & estetik\n• Tampilan poster atraktif untuk event atau kampanye digital\n• File siap dipublikasikan ke media sosial & cetak\n• Revisi sesuai kesepakatan",
-        sample_product_id: 17
+        Nama_layanan: "Layanan Desain Flyer Promosi, Pamflet & Brosur Bisnis",
+        Des_layanan: "Pembuatan flyer promo, pamflet bisnis, brosur event, dan publikasi media promosi cetak/digital.",
+        Benefit: "• Visualisasi materi promosi informatif & estetik\n• Tampilan flyer atraktif untuk event atau kampanye bisnis\n• File siap dipublikasikan ke media sosial & cetak\n• Revisi sesuai kesepakatan",
+        sample_product_id: 13
     }
 ];
 
@@ -276,16 +276,15 @@ const PRODUCTS = [
         Id_produk: 1,
         Id_kategori: 1,
         Id_layanan: 1,
-        Nama_produk: "Jasa Desain Banner Wisuda & Ucapan Selamat Custom",
+        Nama_produk: "Jasa Desain Banner & Spanduk UMKM Promosi Toko",
         No_wa: "085168174679",
-        Stok_produk: 20,
+        Stok_produk: 25,
         Estimasi: "1 Hari",
-        Des_produk: "Desain banner wisuda eksklusif, estetik, dan berkesan untuk sahabat, pasangan, maupun keluarga. Dibuat custom dengan layout foto elegan, pilihan tipografi modern, dan file mentahan siap cetak resolusi tinggi.",
-        image_url: "assets/bannerumkm2.jpg",
+        Des_produk: "Desain spanduk dan banner outdoor untuk toko fisik, gerai kuliner, banner wisuda, dan event promo UMKM. Layout jelas, warna kontras menarik perhatian, dan informasi produk mudah dibaca dari kejauhan.",
+        image_url: "assets/coverbannerumkm2.jpg",
         gallery_urls: [
-            "assets/bannerumkm2.jpg",
-            "assets/bannerumkm1.jpg",
-            "assets/xbanner_(1).jpg"
+            "assets/coverbannerumkm2.jpg",
+            "assets/bannerumkm1.jpg"
         ],
         software_ids: [1, 3, 2, 5]
     },
@@ -293,38 +292,20 @@ const PRODUCTS = [
         Id_produk: 2,
         Id_kategori: 1,
         Id_layanan: 1,
-        Nama_produk: "Jasa Desain Banner & Spanduk UMKM Promosi Toko",
-        No_wa: "085168174679",
-        Stok_produk: 25,
-        Estimasi: "1-2 Hari",
-        Des_produk: "Desain spanduk dan banner outdoor untuk toko fisik, gerai kuliner, dan event promo UMKM. Layout jelas, warna kontras menarik perhatian, dan informasi produk mudah dibaca dari kejauhan.",
-        image_url: "assets/bannerumkm1.jpg",
-        gallery_urls: [
-            "assets/bannerumkm1.jpg",
-            "assets/bannerumkm2.jpg",
-            "assets/xbanner_(3).jpg",
-            "assets/xbanner_(4).jpg"
-        ],
-        software_ids: [1, 3, 2, 5]
-    },
-    {
-        Id_produk: 3,
-        Id_kategori: 1,
-        Id_layanan: 1,
         Nama_produk: "Jasa Desain Stand Booth Jualan & Pameran UMKM",
         No_wa: "085168174679",
         Stok_produk: 15,
         Estimasi: "2-3 Hari",
         Des_produk: "Desain visual gerobak jualan portable, booth pameran mall/event, dan stand branding usaha agar terlihat lebih menonjol, rapi, dan profesional di hadapan calon pembeli.",
-        image_url: "assets/booth1.jpg",
+        image_url: "assets/coverbooth2.jpg",
         gallery_urls: [
-            "assets/booth1.jpg",
-            "assets/booth2.jpg"
+            "assets/coverbooth2.jpg",
+            "assets/booth1.jpg"
         ],
         software_ids: [1, 3, 2, 7]
     },
     {
-        Id_produk: 4,
+        Id_produk: 3,
         Id_kategori: 1,
         Id_layanan: 1,
         Nama_produk: "Jasa Desain X-Banner & Roll Banner Promosi Event",
@@ -332,33 +313,16 @@ const PRODUCTS = [
         Stok_produk: 20,
         Estimasi: "1 Hari",
         Des_produk: "Desain standing X-Banner vertikal dan Roll-Up Banner untuk media promosi di depan toko, seminar kampus, resepsi, maupun booth expo pameran industri.",
-        image_url: "assets/xbanner_(1).jpg",
+        image_url: "assets/coverxbanner_(1).jpg",
         gallery_urls: [
-            "assets/xbanner_(1).jpg",
+            "assets/coverxbanner_(1).jpg",
             "assets/xbanner_(3).jpg",
             "assets/xbanner_(4).jpg"
         ],
         software_ids: [1, 3, 2, 5]
     },
     {
-        Id_produk: 5,
-        Id_kategori: 2,
-        Id_layanan: 2,
-        Nama_produk: "Jasa Desain Kemasan Box / Packing Karton Profesional",
-        No_wa: "085168174679",
-        Stok_produk: 15,
-        Estimasi: "2-3 Hari",
-        Des_produk: "Perancangan desain pola dieline box kemasan produk retail, kotak kue/makanan, box hampers, dan packaging karton kardus dengan ukuran presisi standar pabrik percetakan.",
-        image_url: "assets/box1.jpg",
-        gallery_urls: [
-            "assets/box1.jpg",
-            "assets/box2.jpg",
-            "assets/box3.jpg"
-        ],
-        software_ids: [2, 3, 1]
-    },
-    {
-        Id_produk: 6,
+        Id_produk: 4,
         Id_kategori: 2,
         Id_layanan: 2,
         Nama_produk: "Jasa Desain Kemasan Standing Pouch Snack & Makanan Ringan",
@@ -366,50 +330,15 @@ const PRODUCTS = [
         Stok_produk: 20,
         Estimasi: "2 Hari",
         Des_produk: "Desain pouch snack makanan ringan, keripik, biji kopi, bumbu masak, dan produk olahan UMKM. Tampilan visual appetizing yang meningkatkan daya tarik konsumen di rak supermarket.",
-        image_url: "assets/jasapouch_(1).jpg",
+        image_url: "assets/coverjasapouch_(2).jpg",
         gallery_urls: [
-            "assets/jasapouch_(1).jpg",
-            "assets/jasapouch_(2).jpg"
+            "assets/coverjasapouch_(2).jpg",
+            "assets/jasapouch_(1).jpg"
         ],
         software_ids: [3, 2, 1]
     },
     {
-        Id_produk: 7,
-        Id_kategori: 2,
-        Id_layanan: 2,
-        Nama_produk: "Jasa Desain Packaging & Kemasan Produk Custom Eksklusif",
-        No_wa: "085168174679",
-        Stok_produk: 18,
-        Estimasi: "2-3 Hari",
-        Des_produk: "Desain kemasan botol minuman, jar skincare/kosmetik, kaleng biskuit, dan bungkus produk custom dengan render 3D mockup realistis siap presentasi.",
-        image_url: "assets/kemasan1.jpg",
-        gallery_urls: [
-            "assets/kemasan1.jpg",
-            "assets/kemasan2.jpg",
-            "assets/kemasan3.jpg",
-            "assets/kemasan4.jpg",
-            "assets/kemasan5.jpg"
-        ],
-        software_ids: [3, 2, 1]
-    },
-    {
-        Id_produk: 8,
-        Id_kategori: 5,
-        Id_layanan: 7,
-        Nama_produk: "Jasa Desain Label Botol & Stiker Toples Produk UMKM",
-        No_wa: "085168174679",
-        Stok_produk: 30,
-        Estimasi: "1 Hari",
-        Des_produk: "Desain stiker label toples kue kering, label botol sirup/jus, tag jar bumbu, dan segel kemasan produk UMKM siap potong (die cut) dengan komposisi warna memikat.",
-        image_url: "assets/labelumkm1.jpg",
-        gallery_urls: [
-            "assets/labelumkm1.jpg",
-            "assets/labelumkm2.jpg"
-        ],
-        software_ids: [1, 3, 2]
-    },
-    {
-        Id_produk: 9,
+        Id_produk: 5,
         Id_kategori: 3,
         Id_layanan: 3,
         Nama_produk: "Jasa Desain Logo & Brand Identity Bisnis Profesional",
@@ -425,7 +354,7 @@ const PRODUCTS = [
         software_ids: [2, 3]
     },
     {
-        Id_produk: 10,
+        Id_produk: 6,
         Id_kategori: 3,
         Id_layanan: 3,
         Nama_produk: "Jasa Redesain Logo Vektor & Racing Team Custom",
@@ -433,15 +362,66 @@ const PRODUCTS = [
         Stok_produk: 15,
         Estimasi: "1-2 Hari",
         Des_produk: "Desain logo gaya racing bernuansa tajam dan agresif untuk tim balap, komunitas motor, esport squad, serta tracing ulang logo buram menjadi file vektor HD.",
-        image_url: "assets/repairlogo_(1).jpg",
+        image_url: "assets/coverrepairlogo_(2).jpg",
         gallery_urls: [
-            "assets/repairlogo_(1).jpg",
-            "assets/repairlogo_(2).jpg"
+            "assets/coverrepairlogo_(2).jpg",
+            "assets/repairlogo_(1).jpg"
         ],
         software_ids: [2, 3]
     },
     {
-        Id_produk: 11,
+        Id_produk: 7,
+        Id_kategori: 4,
+        Id_layanan: 4,
+        Nama_produk: "Jasa Desain UI/UX Mobile App Android & iOS Figma",
+        No_wa: "085168174679",
+        Stok_produk: 10,
+        Estimasi: "3-5 Hari",
+        Des_produk: "Perancangan UI/UX aplikasi mobile Android dan iOS di Figma dengan sistem auto-layout, atomic components, flow pengguna terstruktur, dan interactive prototype.",
+        image_url: "assets/covermobileuiux_(2).jpg",
+        gallery_urls: [
+            "assets/covermobileuiux_(2).jpg",
+            "assets/mobileuiux_(1).jpg"
+        ],
+        software_ids: [4]
+    },
+    {
+        Id_produk: 8,
+        Id_kategori: 4,
+        Id_layanan: 4,
+        Nama_produk: "Jasa Desain UI/UX Website Company Profile & Landing Page",
+        No_wa: "085168174679",
+        Stok_produk: 10,
+        Estimasi: "3-5 Hari",
+        Des_produk: "Desain UI/UX website company profile responsif desktop, tablet, dan mobile. Menggunakan layout modern berbasis grid Figma yang memudahkan proses slicing developer.",
+        image_url: "assets/coverwebuiux_(2).jpg",
+        gallery_urls: [
+            "assets/coverwebuiux_(2).jpg",
+            "assets/webuiux_(1).jpg",
+            "assets/webuiux_(3).jpg",
+            "assets/webuiux_(4).jpg"
+        ],
+        software_ids: [4]
+    },
+    {
+        Id_produk: 9,
+        Id_kategori: 5,
+        Id_layanan: 7,
+        Nama_produk: "Jasa Desain Label Botol & Stiker Toples Produk UMKM",
+        No_wa: "085168174679",
+        Stok_produk: 30,
+        Estimasi: "1 Hari",
+        Des_produk: "Desain stiker label toples kue kering, label botol sirup/jus, tag jar bumbu, dan segel kemasan produk UMKM siap potong (die cut) dengan komposisi warna memikat.",
+        image_url: "assets/coverlabelumkm1.jpg",
+        gallery_urls: [
+            "assets/coverlabelumkm1.jpg",
+            "assets/labelumkm2.jpg",
+            "assets/labelumkm.jpg"
+        ],
+        software_ids: [1, 3, 2]
+    },
+    {
+        Id_produk: 10,
         Id_kategori: 6,
         Id_layanan: 5,
         Nama_produk: "Jasa Desain Jersey Custom Futsal, Esport & Apparel",
@@ -449,16 +429,16 @@ const PRODUCTS = [
         Stok_produk: 15,
         Estimasi: "2 Hari",
         Des_produk: "Desain pola baju jersey printing sublimasi untuk tim futsal, sepak bola, basket, esport, kaos komunitas, dan merchandise distro lengkap dengan pola cetak konveksi.",
-        image_url: "assets/jasajersey_(1).jpg",
+        image_url: "assets/coverjasajersey_(3).jpg",
         gallery_urls: [
+            "assets/coverjasajersey_(3).jpg",
             "assets/jasajersey_(1).jpg",
-            "assets/jasajersey_(2).jpg",
-            "assets/jasajersey_(3).jpg"
+            "assets/jasajersey_(2).jpg"
         ],
         software_ids: [1, 3, 2]
     },
     {
-        Id_produk: 12,
+        Id_produk: 11,
         Id_kategori: 7,
         Id_layanan: 6,
         Nama_produk: "Jasa Editing Foto Produk Normal to Studio Marketplace",
@@ -466,18 +446,18 @@ const PRODUCTS = [
         Stok_produk: 25,
         Estimasi: "1 Hari",
         Des_produk: "Transformasi foto jepretan kamera ponsel menjadi foto katalog studio mewah berkelas: hapus background, koreksi bayangan natural, lighting dramatis, dan touch-up warna.",
-        image_url: "assets/editfotonormaltostudio1.jpg",
+        image_url: "assets/covereditfotonormaltostudio1.jpg",
         gallery_urls: [
-            "assets/editfotonormaltostudio1.jpg",
+            "assets/covereditfotonormaltostudio1.jpg",
+            "assets/editfotonormaltostudio.jpg",
             "assets/editfotonormaltostudio2.jpg",
             "assets/editfotonormaltostudio3.jpg",
-            "assets/editfotonormaltostudio4.jpg",
-            "assets/editfotonormaltostudio.jpg"
+            "assets/editfotonormaltostudio4.jpg"
         ],
         software_ids: [1]
     },
     {
-        Id_produk: 13,
+        Id_produk: 12,
         Id_kategori: 7,
         Id_layanan: 6,
         Nama_produk: "Jasa Redesain Gambar AI & Repair Restorasi Foto",
@@ -485,12 +465,28 @@ const PRODUCTS = [
         Stok_produk: 20,
         Estimasi: "1-2 Hari",
         Des_produk: "Penyempurnaan gambar artwork AI yang mengalami distorsi jari/wajah, pewarnaan foto lama hitam putih, dan restorasi foto resolusi rendah menjadi tajam kembali.",
-        image_url: "assets/repairfoto1.jpg",
+        image_url: "assets/coverrepairfoto1.jpg",
         gallery_urls: [
-            "assets/repairfoto1.jpg",
+            "assets/coverrepairfoto1.jpg",
             "assets/repairfoto2.jpg"
         ],
         software_ids: [1]
+    },
+    {
+        Id_produk: 13,
+        Id_kategori: 8,
+        Id_layanan: 9,
+        Nama_produk: "Jasa Desain Flyer Promosi, Pamflet & Brosur Bisnis",
+        No_wa: "085168174679",
+        Stok_produk: 25,
+        Estimasi: "1 Hari",
+        Des_produk: "Desain flyer promo diskon, brosur lipat penawaran jasa, dan pamflet event fisik maupun format digital story Instagram resolusi tajam.",
+        image_url: "assets/coverjasaflyer_(2).jpg",
+        gallery_urls: [
+            "assets/coverjasaflyer_(2).jpg",
+            "assets/jasaflyer_(1).jpg"
+        ],
+        software_ids: [5, 1, 3, 2]
     },
     {
         Id_produk: 14,
@@ -501,10 +497,10 @@ const PRODUCTS = [
         Stok_produk: 35,
         Estimasi: "1 Hari",
         Des_produk: "Desain curriculum vitae profesional modern yang lulus uji screening ATS (Applicant Tracking System), layout rapi, pemilihan tipografi jelas, dan format PDF siap kirim HRD.",
-        image_url: "assets/jasacv1.jpg",
+        image_url: "assets/coverjasacv2.jpg",
         gallery_urls: [
+            "assets/coverjasacv2.jpg",
             "assets/jasacv1.jpg",
-            "assets/jasacv2.jpg",
             "assets/jasacv3.jpg",
             "assets/jasacv4.jpg"
         ],
@@ -519,80 +515,14 @@ const PRODUCTS = [
         Stok_produk: 20,
         Estimasi: "1-2 Hari",
         Des_produk: "Pembuatan deck presentasi PowerPoint interaktif untuk pitching bisnis, sidang tugas akhir skripsi, company profile interaktif, dan slide seminar profesional.",
-        image_url: "assets/jasapowerpoint_(1).jpg",
+        image_url: "assets/coverjasapowerpoint_(2).jpg",
         gallery_urls: [
+            "assets/coverjasapowerpoint_(2).jpg",
             "assets/jasapowerpoint_(1).jpg",
-            "assets/jasapowerpoint_(2).jpg",
             "assets/jasapowerpoint_(3).jpg",
             "assets/jasapowerpoint_(4).jpg"
         ],
         software_ids: [6, 5, 4]
-    },
-    {
-        Id_produk: 16,
-        Id_kategori: 8,
-        Id_layanan: 9,
-        Nama_produk: "Jasa Desain Flyer Promosi, Pamflet & Brosur Bisnis",
-        No_wa: "085168174679",
-        Stok_produk: 25,
-        Estimasi: "1 Hari",
-        Des_produk: "Desain flyer promo diskon, brosur lipat penawaran jasa, dan pamflet event fisik maupun format digital story Instagram resolusi tajam.",
-        image_url: "assets/jasaflyer_(1).jpg",
-        gallery_urls: [
-            "assets/jasaflyer_(1).jpg",
-            "assets/jasaflyer_(2).jpg"
-        ],
-        software_ids: [5, 1, 3, 2]
-    },
-    {
-        Id_produk: 17,
-        Id_kategori: 8,
-        Id_layanan: 9,
-        Nama_produk: "Jasa Desain Poster Acara & Infografis Edukasi Digital",
-        No_wa: "085168174679",
-        Stok_produk: 25,
-        Estimasi: "1 Hari",
-        Des_produk: "Desain poster pengumuman resmi, poster konser/webinar, serta visualisasi data infografis informatif yang padat konten namun tetap enak dipandang.",
-        image_url: "assets/portofolio_Artboard_1_copy_11.jpg",
-        gallery_urls: [
-            "assets/portofolio_Artboard_1_copy_11.jpg",
-            "assets/portofolio_Artboard_1_copy_9.jpg"
-        ],
-        software_ids: [5, 1, 3, 2]
-    },
-    {
-        Id_produk: 18,
-        Id_kategori: 4,
-        Id_layanan: 4,
-        Nama_produk: "Jasa Desain UI/UX Mobile App Android & iOS Figma",
-        No_wa: "085168174679",
-        Stok_produk: 10,
-        Estimasi: "3-5 Hari",
-        Des_produk: "Perancangan UI/UX aplikasi mobile Android dan iOS di Figma dengan sistem auto-layout, atomic components, flow pengguna terstruktur, dan interactive prototype.",
-        image_url: "assets/mobileuiux_(1).jpg",
-        gallery_urls: [
-            "assets/mobileuiux_(1).jpg",
-            "assets/mobileuiux_(2).jpg"
-        ],
-        software_ids: [4]
-    },
-    {
-        Id_produk: 19,
-        Id_kategori: 4,
-        Id_layanan: 4,
-        Nama_produk: "Jasa Desain UI/UX Website Company Profile & Landing Page",
-        No_wa: "085168174679",
-        Stok_produk: 10,
-        Estimasi: "3-5 Hari",
-        Des_produk: "Desain UI/UX website company profile responsif desktop, tablet, dan mobile. Menggunakan layout modern berbasis grid Figma yang memudahkan proses slicing developer.",
-        image_url: "assets/webuiux_(1).jpg",
-        gallery_urls: [
-            "assets/webuiux_(1).jpg",
-            "assets/webuiux_(2).jpg",
-            "assets/webuiux_(3).jpg",
-            "assets/webuiux_(4).jpg"
-        ],
-        software_ids: [4]
     }
 ];
 
@@ -1840,7 +1770,7 @@ const PORTFOLIOS = [
         "id": 178,
         "nama": "Curriculum Vitae Modern Creative",
         "kategori": "Dokumen & PPT",
-        "url": "assets/jasacv2.jpg",
+        "url": "assets/coverjasacv2.jpg",
         "deskripsi": "Karya portofolio visual profesional kategori Dokumen & PPT oleh tim Premium Designz."
     },
     {
@@ -1868,7 +1798,7 @@ const PORTFOLIOS = [
         "id": 182,
         "nama": "PowerPoint Business Pitch Deck (2)",
         "kategori": "Dokumen & PPT",
-        "url": "assets/jasapowerpoint_(2).jpg",
+        "url": "assets/coverjasapowerpoint_(2).jpg",
         "deskripsi": "Karya portofolio visual profesional kategori Dokumen & PPT oleh tim Premium Designz."
     },
     {
@@ -1889,7 +1819,7 @@ const PORTFOLIOS = [
         "id": 185,
         "nama": "Edit Foto Normal to Studio Product (1)",
         "kategori": "Foto & Redesain AI",
-        "url": "assets/editfotonormaltostudio1.jpg",
+        "url": "assets/covereditfotonormaltostudio1.jpg",
         "deskripsi": "Karya portofolio visual profesional kategori Foto & Redesain AI oleh tim Premium Designz."
     },
     {
@@ -1917,7 +1847,7 @@ const PORTFOLIOS = [
         "id": 189,
         "nama": "Redesign Artwork AI & Restoration (1)",
         "kategori": "Foto & Redesain AI",
-        "url": "assets/repairfoto1.jpg",
+        "url": "assets/coverrepairfoto1.jpg",
         "deskripsi": "Karya portofolio visual profesional kategori Foto & Redesain AI oleh tim Premium Designz."
     },
     {
@@ -1931,7 +1861,7 @@ const PORTFOLIOS = [
         "id": 191,
         "nama": "Label Toples Makanan & Botol (1)",
         "kategori": "Label & Stiker",
-        "url": "assets/labelumkm1.jpg",
+        "url": "assets/coverlabelumkm1.jpg",
         "deskripsi": "Karya portofolio visual profesional kategori Label & Stiker oleh tim Premium Designz."
     },
     {
@@ -1959,7 +1889,7 @@ const PORTFOLIOS = [
         "id": 195,
         "nama": "Jersey Sublimation Printing (3)",
         "kategori": "Jersey & Apparel",
-        "url": "assets/jasajersey_(3).jpg",
+        "url": "assets/coverjasajersey_(3).jpg",
         "deskripsi": "Karya portofolio visual profesional kategori Jersey & Apparel oleh tim Premium Designz."
     }
 ];

@@ -666,18 +666,13 @@
         </button>
     </div>
 
-    <!-- Google Translate Engine -->
-    <div id="google_translate_element" style="display: none;" class="notranslate"></div>
-
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="../assets/js/data.js"></script>
-    <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/security.js"></script>
-    <script src="../assets/js/translate.js"></script>
-    <script src="../assets/js/app-pages.js"></script>
-    <script type="text/javascript"
-        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!-- Scripts (Deferred) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="../assets/js/data.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/security.js" defer></script>
+    <script src="../assets/js/translate.js" defer></script>
+    <script src="../assets/js/app-pages.js" defer></script>
     <script>
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', function () {

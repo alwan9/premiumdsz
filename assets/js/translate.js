@@ -1,7 +1,20 @@
 /**
  * Premium Designz - Multi-Language Engine (ID / EN)
  * Google Translate Integration & Local Storage State
+ * Optimized for Zero-Blocking Performance & Core Web Vitals
  */
+
+window._googleTranslateScriptLoaded = false;
+
+function loadGoogleTranslateScript() {
+    if (window._googleTranslateScriptLoaded) return;
+    window._googleTranslateScriptLoaded = true;
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    script.async = true;
+    document.body.appendChild(script);
+}
 
 function googleTranslateElementInit() {
     if (typeof google === 'undefined' || !google.translate) return;
@@ -93,6 +106,20 @@ window.changeSiteLanguage = function(lang) {
     setTranslateCookie(lang);
     applyLanguageUI(lang);
 
+    if (lang === 'en' && !window._googleTranslateScriptLoaded) {
+        loadGoogleTranslateScript();
+        setTimeout(() => {
+            const select = document.querySelector('.goog-te-combo');
+            if (select) {
+                select.value = 'en';
+                select.dispatchEvent(new Event('change'));
+            } else {
+                window.location.reload();
+            }
+        }, 500);
+        return;
+    }
+
     const select = document.querySelector('.goog-te-combo');
     if (select) {
         select.value = lang;
@@ -109,5 +136,10 @@ document.addEventListener('DOMContentLoaded', function() {
     applyLanguageUI(savedLang);
     if (savedLang === 'en') {
         setTranslateCookie('en');
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(loadGoogleTranslateScript, { timeout: 1500 });
+        } else {
+            setTimeout(loadGoogleTranslateScript, 1000);
+        }
     }
 });

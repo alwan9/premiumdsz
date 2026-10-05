@@ -287,17 +287,26 @@ function highlightActiveNavigation() {
 // ==========================================================================
 function initGlassSpotlightEngine() {
     const cardSelector = '.glass-spotlight, .glass-card, [data-glass="true"], .product-card, .portfolio-card';
+    let rafId = null;
     
     document.addEventListener('pointermove', function(e) {
-        const card = e.target.closest(cardSelector);
-        if (!card) return;
+        if (rafId) return;
+        const target = e.target;
+        const clientX = e.clientX;
+        const clientY = e.clientY;
+        
+        rafId = requestAnimationFrame(function() {
+            rafId = null;
+            const card = target ? target.closest(cardSelector) : null;
+            if (!card) return;
 
-        const rect = card.getBoundingClientRect();
-        const x = Math.round(e.clientX - rect.left);
-        const y = Math.round(e.clientY - rect.top);
+            const rect = card.getBoundingClientRect();
+            const x = Math.round(clientX - rect.left);
+            const y = Math.round(clientY - rect.top);
 
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
     }, { passive: true });
 }
 

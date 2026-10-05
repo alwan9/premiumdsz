@@ -73,6 +73,10 @@ document.addEventListener('keydown', function(e) {
         if (testiModal && !testiModal.classList.contains('hidden')) {
             closeTestiLightbox();
         }
+        const prodModal = document.getElementById('productLightboxModal');
+        if (prodModal && !prodModal.classList.contains('hidden')) {
+            closeProductLightbox();
+        }
     }
 });
 
@@ -503,6 +507,32 @@ function initMarketplacePage(baseAssetPrefix = '') {
         });
     }
 
+    // Synchronize category count badges dynamically from data source
+    if (typeof PRODUCTS !== 'undefined' && Array.isArray(PRODUCTS)) {
+        const counts = { all: PRODUCTS.length };
+        PRODUCTS.forEach(p => {
+            const cId = String(p.Id_kategori);
+            counts[cId] = (counts[cId] || 0) + 1;
+        });
+
+        if (selectCategory) {
+            Array.from(selectCategory.options).forEach(opt => {
+                const val = opt.value;
+                const cCount = counts[val] !== undefined ? counts[val] : 0;
+                const baseText = opt.text.replace(/\s*\(\d+\)$/, '');
+                opt.text = `${baseText} (${cCount})`;
+            });
+        }
+
+        document.querySelectorAll('.marketplace-sidebar-btn').forEach(btn => {
+            const val = btn.getAttribute('data-kategori') || 'all';
+            const badge = btn.lastElementChild;
+            if (badge && counts[val] !== undefined) {
+                badge.textContent = counts[val];
+            }
+        });
+    }
+
     const sortSelect = document.getElementById('marketplaceSortSelect');
     if (sortSelect) {
         sortSelect.value = currentMarketplaceSort;
@@ -523,10 +553,13 @@ function selectMarketplaceCategory(catId, baseAssetPrefix = '') {
     // Update Desktop Sidebar Buttons
     document.querySelectorAll('.marketplace-sidebar-btn').forEach(btn => {
         const k = String(btn.getAttribute('data-kategori') || 'all');
+        const badge = btn.lastElementChild;
         if (k === currentMarketplaceCategory) {
             btn.className = "marketplace-sidebar-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold cursor-pointer transition-all bg-brand-600 text-white shadow-sm";
+            if (badge) badge.className = "text-[10px] text-brand-100 font-semibold";
         } else {
             btn.className = "marketplace-sidebar-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold cursor-pointer transition-all text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900";
+            if (badge) badge.className = "text-[10px] text-zinc-400";
         }
     });
 
@@ -901,15 +934,23 @@ function toggleProductDescription() {
 
 function openProductLightbox() {
     if (productAutoSlideTimer) clearInterval(productAutoSlideTimer);
-    const modal = document.getElementById('testiLightboxModal');
-    const img = document.getElementById('testiLightboxImg');
-    const titleEl = document.getElementById('testiLightboxTitle');
-    if (modal && img) {
+    const modal = document.getElementById('productLightboxModal');
+    const img = document.getElementById('productLightboxImg');
+    if (modal && img && currentProductGallery && currentProductGallery[currentProductSlideIndex]) {
         img.src = currentProductGallery[currentProductSlideIndex];
-        if (titleEl) titleEl.textContent = 'Preview Desain Resolusi Penuh';
         modal.classList.remove('hidden');
         modal.classList.add('flex');
         document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeProductLightbox() {
+    const modal = document.getElementById('productLightboxModal');
+    if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+        startProductAutoSlide();
     }
 }
 

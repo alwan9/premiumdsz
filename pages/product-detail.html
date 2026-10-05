@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://code.jquery.com https://code.iconify.design https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://api.iconify.design https://api.simplesvg.com https://api.unisvg.com; frame-src 'none'; object-src 'none'; base-uri 'self';">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://code.jquery.com https://code.iconify.design https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://api.iconify.design https://api.simplesvg.com https://api.unisvg.com; frame-src 'none'; object-src 'none'; base-uri 'self';">
     <title id="pageTitle">Detail Produk &amp; Jasa Desain - Premium Designz</title>
     <meta name="description" id="metaDescription"
         content="Detail portofolio jasa desain grafis profesional, spesifikasi pengerjaan, dan pemesanan cepat via WhatsApp.">
@@ -60,7 +61,9 @@
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet" media="print" onload="this.media='all'">
     <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet">
     </noscript>
 
     <!-- jQuery CDN (Deferred) -->
@@ -543,44 +546,22 @@
         </div>
     </main>
 
-    <!-- FULLSCREEN LIGHTBOX ZOOM MODAL -->
+    <!-- FULLSCREEN IMAGE LIGHTBOX MODAL -->
     <div id="productLightboxModal"
-        class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl hidden flex flex-col justify-between p-4 sm:p-6 select-none transition-opacity duration-300">
-        <!-- Top Controls Bar -->
-        <div class="flex items-center justify-between z-10">
-            <div class="flex items-center space-x-3">
-                <span id="lightboxCounter"
-                    class="px-3 py-1 rounded-full bg-white/10 text-white text-xs font-bold border border-white/20">
-                    1 / 1
-                </span>
-                <span class="text-xs font-bold text-zinc-400 hidden sm:inline-block">High Resolution Preview</span>
-            </div>
-            <button type="button" onclick="closeProductLightbox()"
-                class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors">
-                <iconify-icon icon="lucide:x" class="text-xl"></iconify-icon>
-            </button>
-        </div>
+        class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6 transition-opacity duration-200 cursor-pointer select-none"
+        onclick="closeProductLightbox()">
+        <!-- Close Button -->
+        <button type="button" onclick="closeProductLightbox()"
+            class="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-all cursor-pointer shadow-lg backdrop-blur-sm focus:outline-none"
+            title="Tutup">
+            <iconify-icon icon="lucide:x" class="text-2xl"></iconify-icon>
+        </button>
 
-        <!-- Center Image View -->
-        <div class="flex-1 flex items-center justify-center relative overflow-hidden py-4">
-            <button type="button" id="lightboxPrevBtn" onclick="prevProductSlide()"
-                class="absolute left-2 sm:left-6 z-20 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors">
-                <iconify-icon icon="lucide:chevron-left" class="text-2xl"></iconify-icon>
-            </button>
-
-            <img id="lightboxImage" src="" alt="Zoom Preview"
-                class="max-w-full max-h-[82vh] object-contain rounded-xl shadow-2xl transition-all duration-300">
-
-            <button type="button" id="lightboxNextBtn" onclick="nextProductSlide()"
-                class="absolute right-2 sm:right-6 z-20 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors">
-                <iconify-icon icon="lucide:chevron-right" class="text-2xl"></iconify-icon>
-            </button>
-        </div>
-
-        <!-- Bottom Controls & Hints -->
-        <div class="text-center z-10">
-            <p class="text-[11px] text-zinc-500">Tekan tombol panah atau tombol keyboard <kbd
-                    class="px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-300">Esc</kbd> untuk menutup.</p>
+        <!-- Image (Clicking on photo stops propagation so overlay click closes) -->
+        <div class="relative max-w-full max-h-full flex items-center justify-center pointer-events-auto cursor-default"
+            onclick="event.stopPropagation()">
+            <img id="productLightboxImg" src="" alt="Preview Desain"
+                class="max-w-[92vw] max-h-[88vh] object-contain rounded-xl shadow-2xl transition-transform duration-200">
         </div>
     </div>
 
@@ -656,35 +637,12 @@
             <div
                 class="pt-8 border-t border-zinc-900 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
                 <p>&copy; 2026 Premium Design Studio. All rights reserved.</p>
-                <div class="flex items-center space-x-4">
-                    <span class="text-[11px] text-zinc-600">Pure HTML5, CSS3, Tailwind CSS &amp; Vanilla JS</span>
-                </div>
+
             </div>
         </div>
     </footer>
 
-    <!-- Product Gallery Lightbox Modal -->
-    <div id="testiLightboxModal"
-        class="fixed inset-0 z-50 bg-zinc-950/85 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-6 transition-opacity"
-        onclick="closeProductLightbox()">
-        <div class="relative max-w-4xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-200"
-            onclick="event.stopPropagation()">
-            <div class="p-4 border-b border-zinc-100 flex items-center justify-between bg-zinc-50">
-                <h3 id="testiLightboxTitle"
-                    class="text-xs sm:text-sm font-bold text-zinc-900 font-heading truncate pr-4">
-                    Preview Desain
-                </h3>
-                <button type="button" onclick="closeProductLightbox()"
-                    class="w-8 h-8 rounded-lg bg-zinc-200 hover:bg-zinc-300 text-zinc-700 flex items-center justify-center transition-colors">
-                    <iconify-icon icon="lucide:x" class="text-base"></iconify-icon>
-                </button>
-            </div>
-            <div class="p-3 sm:p-4 bg-zinc-950 flex items-center justify-center max-h-[82vh] overflow-y-auto">
-                <img id="testiLightboxImg" src="" alt="Preview Desain"
-                    class="max-h-[76vh] max-w-full rounded-lg object-contain shadow-lg">
-            </div>
-        </div>
-    </div>
+
 
     <!-- SCROLL TO TOP BUTTON -->
     <button id="scrollToTopBtn" type="button" onclick="scrollToTop()" aria-label="Kembali ke Atas"

@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://code.jquery.com https://code.iconify.design https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://api.iconify.design https://api.simplesvg.com https://api.unisvg.com; frame-src 'none'; object-src 'none'; base-uri 'self';">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://code.jquery.com https://code.iconify.design https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://api.iconify.design https://api.simplesvg.com https://api.unisvg.com; frame-src 'none'; object-src 'none'; base-uri 'self';">
     <title>Katalog Jasa Desain Grafis &amp; Marketplace Portofolio - Premium Designz</title>
     <meta name="description"
         content="Jelajahi portofolio dan katalog jasa desain grafis: desain logo, kemasan produk, banner wisuda &amp; event UMKM, UI/UX mobile app website, presentasi PPT, dan jersey custom original.">
@@ -79,7 +80,9 @@
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet" media="print" onload="this.media='all'">
     <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+            rel="stylesheet">
     </noscript>
 
     <!-- jQuery CDN (Deferred) -->
@@ -316,7 +319,8 @@
                     <form id="marketplaceFilterForm" class="grid grid-cols-1 sm:grid-cols-12 gap-3.5 items-center"
                         onsubmit="return false;">
                         <div class="sm:col-span-6 relative">
-                            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-zinc-400">
+                            <div
+                                class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-zinc-400">
                                 <iconify-icon icon="lucide:search" class="text-base"></iconify-icon>
                             </div>
                             <input type="text" name="q" id="marketplaceSearchInput"
@@ -334,18 +338,19 @@
                         <div class="sm:col-span-3 relative">
                             <select name="kategori" id="marketplaceCategorySelect"
                                 class="w-full px-3.5 py-3 bg-zinc-50/80 border border-zinc-200 rounded-xl text-xs sm:text-sm font-semibold text-zinc-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white cursor-pointer transition-all appearance-none pr-8">
-                                <option value="all">Semua Kategori (19)</option>
-                                <option value="1">Banner &amp; Spanduk (4)</option>
-                                <option value="2">Packaging &amp; Kemasan (3)</option>
+                                <option value="all">Semua Kategori (15)</option>
+                                <option value="1">Banner &amp; Spanduk (3)</option>
+                                <option value="2">Packaging &amp; Kemasan (1)</option>
                                 <option value="3">Logo &amp; Branding (2)</option>
                                 <option value="4">UI/UX &amp; Web (2)</option>
                                 <option value="5">Label &amp; Stiker (1)</option>
                                 <option value="6">Jersey &amp; Apparel (1)</option>
                                 <option value="7">Foto &amp; Redesain AI (2)</option>
-                                <option value="8">Poster &amp; Flyer (2)</option>
+                                <option value="8">Poster &amp; Flyer (1)</option>
                                 <option value="9">Dokumen &amp; PPT (2)</option>
                             </select>
-                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-zinc-400">
+                            <div
+                                class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-zinc-400">
                                 <iconify-icon icon="lucide:chevron-down" class="text-xs"></iconify-icon>
                             </div>
                         </div>
@@ -357,55 +362,14 @@
                                 <option value="oldest">Urutkan: Terlama</option>
                                 <option value="stock_high">Urutkan: Stok Terbanyak</option>
                             </select>
-                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-zinc-400">
+                            <div
+                                class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-zinc-400">
                                 <iconify-icon icon="lucide:arrow-up-down" class="text-xs"></iconify-icon>
                             </div>
                         </div>
                     </form>
 
-                    <!-- Fast Category Chips (Horizontal Scrollable on Mobile & Tablet) -->
-                    <div class="pt-2 border-t border-zinc-100 flex items-center space-x-2 overflow-x-auto no-scrollbar py-1">
-                        <button type="button" onclick="selectMarketplaceCategory('all', '../')" data-kategori="all"
-                            class="marketplace-pill-btn shrink-0 px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer bg-brand-600 text-white shadow-xs">
-                            Semua
-                        </button>
-                        <button type="button" onclick="selectMarketplaceCategory('1', '../')" data-kategori="1"
-                            class="marketplace-pill-btn shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-900">
-                            Banner
-                        </button>
-                        <button type="button" onclick="selectMarketplaceCategory('2', '../')" data-kategori="2"
-                            class="marketplace-pill-btn shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-900">
-                            Kemasan
-                        </button>
-                        <button type="button" onclick="selectMarketplaceCategory('3', '../')" data-kategori="3"
-                            class="marketplace-pill-btn shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-900">
-                            Logo
-                        </button>
-                        <button type="button" onclick="selectMarketplaceCategory('4', '../')" data-kategori="4"
-                            class="marketplace-pill-btn shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-900">
-                            UI/UX
-                        </button>
-                        <button type="button" onclick="selectMarketplaceCategory('5', '../')" data-kategori="5"
-                            class="marketplace-pill-btn shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-900">
-                            Label
-                        </button>
-                        <button type="button" onclick="selectMarketplaceCategory('6', '../')" data-kategori="6"
-                            class="marketplace-pill-btn shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-900">
-                            Jersey
-                        </button>
-                        <button type="button" onclick="selectMarketplaceCategory('7', '../')" data-kategori="7"
-                            class="marketplace-pill-btn shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-900">
-                            Foto AI
-                        </button>
-                        <button type="button" onclick="selectMarketplaceCategory('8', '../')" data-kategori="8"
-                            class="marketplace-pill-btn shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-900">
-                            Poster
-                        </button>
-                        <button type="button" onclick="selectMarketplaceCategory('9', '../')" data-kategori="9"
-                            class="marketplace-pill-btn shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-900">
-                            Dokumen &amp; PPT
-                        </button>
-                    </div>
+
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -421,7 +385,7 @@
                                         <iconify-icon icon="lucide:layout-grid" class="text-xs"></iconify-icon>
                                         <span>Semua Kategori</span>
                                     </span>
-                                    <span class="text-[10px] text-zinc-400">19</span>
+                                    <span class="text-[10px] text-zinc-400">15</span>
                                 </button>
                                 <button type="button" onclick="selectMarketplaceCategory('1', '../')" data-kategori="1"
                                     class="marketplace-sidebar-btn w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer transition-all text-zinc-600 hover:bg-zinc-50">
@@ -429,7 +393,7 @@
                                         <iconify-icon icon="lucide:flag" class="text-xs"></iconify-icon>
                                         <span>Banner &amp; Spanduk</span>
                                     </span>
-                                    <span class="text-[10px] text-zinc-400">4</span>
+                                    <span class="text-[10px] text-zinc-400">3</span>
                                 </button>
                                 <button type="button" onclick="selectMarketplaceCategory('2', '../')" data-kategori="2"
                                     class="marketplace-sidebar-btn w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer transition-all text-zinc-600 hover:bg-zinc-50">
@@ -437,7 +401,7 @@
                                         <iconify-icon icon="lucide:box" class="text-xs"></iconify-icon>
                                         <span>Packaging &amp; Kemasan</span>
                                     </span>
-                                    <span class="text-[10px] text-zinc-400">3</span>
+                                    <span class="text-[10px] text-zinc-400">1</span>
                                 </button>
                                 <button type="button" onclick="selectMarketplaceCategory('3', '../')" data-kategori="3"
                                     class="marketplace-sidebar-btn w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer transition-all text-zinc-600 hover:bg-zinc-50">
@@ -485,7 +449,7 @@
                                         <iconify-icon icon="lucide:file-text" class="text-xs"></iconify-icon>
                                         <span>Poster &amp; Flyer</span>
                                     </span>
-                                    <span class="text-[10px] text-zinc-400">2</span>
+                                    <span class="text-[10px] text-zinc-400">1</span>
                                 </button>
                                 <button type="button" onclick="selectMarketplaceCategory('9', '../')" data-kategori="9"
                                     class="marketplace-sidebar-btn w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer transition-all text-zinc-600 hover:bg-zinc-50">
@@ -619,9 +583,7 @@
             <div
                 class="pt-8 border-t border-zinc-900 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
                 <p>&copy; 2026 Premium Design Studio. All rights reserved.</p>
-                <div class="flex items-center space-x-4">
-                    <span class="text-[11px] text-zinc-600">Pure HTML5, CSS3, Tailwind CSS &amp; Vanilla JS</span>
-                </div>
+
             </div>
         </div>
     </footer>
@@ -666,7 +628,8 @@
                 <iconify-icon icon="lucide:shield-ban"></iconify-icon>
             </div>
             <div class="space-y-2">
-                <h3 class="text-base sm:text-lg font-bold font-heading text-zinc-900 flex items-center justify-center space-x-2">
+                <h3
+                    class="text-base sm:text-lg font-bold font-heading text-zinc-900 flex items-center justify-center space-x-2">
                     <iconify-icon icon="lucide:shield-alert" class="text-rose-600 text-lg"></iconify-icon>
                     <span>Perlindungan Hak Cipta &amp; Aset</span>
                 </h3>

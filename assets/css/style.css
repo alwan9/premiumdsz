@@ -86,7 +86,7 @@ input, textarea, select {
         transform: translateY(0px) rotate(-6deg);
     }
     50% {
-        transform: translateY(-8px) rotate(-2deg);
+        transform: translateY(-12px) rotate(-2deg);
     }
 }
 
@@ -95,16 +95,16 @@ input, textarea, select {
         transform: translateY(0px) rotate(8deg);
     }
     50% {
-        transform: translateY(-10px) rotate(12deg);
+        transform: translateY(-14px) rotate(14deg);
     }
 }
 
 @keyframes heroIconFloat3 {
     0%, 100% {
-        transform: translateY(0px) rotate(-4deg);
+        transform: translateY(0px) rotate(-5deg);
     }
     50% {
-        transform: translateY(-7px) rotate(-8deg);
+        transform: translateY(-11px) rotate(-10deg);
     }
 }
 
@@ -113,17 +113,22 @@ input, textarea, select {
         transform: translateY(0px) rotate(10deg);
     }
     50% {
-        transform: translateY(-9px) rotate(6deg);
+        transform: translateY(-13px) rotate(5deg);
     }
 }
 
-.float-icon-1 { animation: heroIconFloat1 4.5s ease-in-out infinite; }
-.float-icon-2 { animation: heroIconFloat2 5s ease-in-out infinite 0.5s; }
-.float-icon-3 { animation: heroIconFloat3 4.2s ease-in-out infinite 1s; }
-.float-icon-4 { animation: heroIconFloat4 4.8s ease-in-out infinite 1.5s; }
-.float-icon-5 { animation: heroIconFloat1 5.2s ease-in-out infinite 0.8s; }
-.float-icon-6 { animation: heroIconFloat2 4.6s ease-in-out infinite 1.2s; }
-.float-icon-7 { animation: heroIconFloat3 5.4s ease-in-out infinite 0.3s; }
+.float-icon-1, .float-icon-2, .float-icon-3, .float-icon-4, .float-icon-5, .float-icon-6, .float-icon-7 {
+    display: inline-block;
+    will-change: transform;
+}
+
+.float-icon-1 { animation: heroIconFloat1 4.2s ease-in-out infinite; }
+.float-icon-2 { animation: heroIconFloat2 4.8s ease-in-out infinite 0.4s; }
+.float-icon-3 { animation: heroIconFloat3 4.0s ease-in-out infinite 0.8s; }
+.float-icon-4 { animation: heroIconFloat4 4.5s ease-in-out infinite 1.2s; }
+.float-icon-5 { animation: heroIconFloat1 5.0s ease-in-out infinite 0.6s; }
+.float-icon-6 { animation: heroIconFloat2 4.4s ease-in-out infinite 1.0s; }
+.float-icon-7 { animation: heroIconFloat3 5.2s ease-in-out infinite 0.2s; }
 
 /* Global Image & Asset Protection */
 *, *::before, *::after {

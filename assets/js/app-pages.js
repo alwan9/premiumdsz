@@ -1,7 +1,16 @@
 /**
  * Premium Designz - Interactive Pages Engine
  * Pure Vanilla JavaScript Client Logic
+ * Bilingual Internationalization (i18n) Integrated
  */
+
+// Global Translation Safe Wrapper
+function _t(key, params) {
+    if (typeof window.t === 'function') {
+        return window.t(key, params);
+    }
+    return key;
+}
 
 // ==========================================
 // 1. HOME & GLOBAL CATEGORY MODAL LOGIC
@@ -45,8 +54,9 @@ function filterModalCategories(query) {
     let visibleCount = 0;
 
     cards.forEach(card => {
-        const name = card.getAttribute('data-catname') || '';
-        if (name.includes(term)) {
+        const name = (card.getAttribute('data-catname') || '').toLowerCase();
+        const text = card.textContent.toLowerCase();
+        if (name.includes(term) || text.includes(term)) {
             card.style.display = 'flex';
             visibleCount++;
         } else {
@@ -147,7 +157,7 @@ function openTestiLightbox(url, title) {
     const titleEl = document.getElementById('testiLightboxTitle');
     if (modal && img) {
         img.src = url;
-        if (titleEl) titleEl.textContent = title || 'Bukti Testimoni Klien';
+        if (titleEl) titleEl.textContent = title || _t('testi.lightbox_title');
         modal.classList.remove('hidden');
         modal.classList.add('flex');
         document.body.style.overflow = 'hidden';
@@ -164,7 +174,6 @@ function closeTestiLightbox() {
     }
 }
 
-// Inisialisasi Slider Home
 function initHomeSliders() {
     const testiTrack = document.getElementById('testiSliderTrack');
     if (testiTrack) {
@@ -194,17 +203,24 @@ function initContactForm() {
 
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-        const nama = form.nama.value.trim();
-        const email = form.email.value.trim();
-        const layanan = form.layanan.value.trim();
-        const pesan = form.pesan.value.trim();
+        const nama = form.nama ? form.nama.value.trim() : '';
+        const email = form.email ? form.email.value.trim() : '';
+        const layanan = form.layanan ? form.layanan.value.trim() : '';
+        const pesan = form.pesan ? form.pesan.value.trim() : '';
 
         if (!nama || !email || !pesan) {
-            alert('Mohon lengkapi data formulir Anda.');
+            alert(_t('about.form_alert_required'));
             return;
         }
 
-        const text = `Halo Premium Design,\nSaya ingin konsultasi proyek desain.\n\nNama: ${nama}\nEmail: ${email}\nKebutuhan Jasa: ${layanan}\nPesan: ${pesan}`;
+        const isEnglish = (typeof window.getSavedLanguage === 'function' && window.getSavedLanguage() === 'en');
+        let text = '';
+        if (isEnglish) {
+            text = `Hello Premium Design,\nI would like to consult on a design project.\n\nName: ${nama}\nEmail: ${email}\nService: ${layanan}\nProject Brief: ${pesan}`;
+        } else {
+            text = `Halo Premium Design,\nSaya ingin konsultasi proyek desain.\n\nNama: ${nama}\nEmail: ${email}\nKebutuhan Jasa: ${layanan}\nPesan: ${pesan}`;
+        }
+
         const waUrl = `https://api.whatsapp.com/send/?phone=6285168174679&text=${encodeURIComponent(text)}`;
         window.open(waUrl, '_blank');
     });
@@ -223,7 +239,6 @@ function initPortfolioPage(baseAssetPrefix = '') {
     const urlParams = new URLSearchParams(window.location.search);
     let catParam = urlParams.get('kategori') || urlParams.get('category') || '';
 
-    // Support numeric category IDs (1-9) or raw string names dynamically from master data
     if (typeof getCategoryById === 'function' && typeof getCategoryByName === 'function') {
         const foundCat = getCategoryById(catParam) || getCategoryByName(catParam);
         if (foundCat) {
@@ -316,22 +331,23 @@ function renderPortfolioGrid(baseAssetPrefix = '') {
     let headerHtml = '';
     const safeCat = window.escapeHTML ? window.escapeHTML(currentPortfolioCategory) : currentPortfolioCategory;
     const safeSearch = window.escapeHTML ? window.escapeHTML(currentPortfolioSearch) : currentPortfolioSearch;
+
     if (currentPortfolioSearch || currentPortfolioCategory) {
         headerHtml = `
             <div class="mb-8 p-4 rounded-2xl bg-zinc-50 border border-zinc-200/80 shadow-xs flex flex-wrap items-center justify-between gap-3">
                 <div class="flex items-center space-x-2 text-xs sm:text-sm text-zinc-700">
                     <iconify-icon icon="lucide:filter" class="text-brand-600 text-lg"></iconify-icon>
                     <span>
-                        Hasil filter:
-                        ${safeCat ? `<strong class="text-brand-700">Kategori "${safeCat}"</strong>` : ''}
-                        ${safeSearch ? `<span class="text-zinc-400">|</span> Kata kunci: <strong class="text-brand-700">"${safeSearch}"</strong>` : ''}
-                        <span class="text-zinc-500">(${filteredPortfolios.length} hasil ditemukan)</span>
+                        ${_t('portfolio.filter_results')}
+                        ${safeCat ? `<strong class="text-brand-700">${_t('portfolio.filter_cat', { cat: safeCat })}</strong>` : ''}
+                        ${safeSearch ? `<span class="text-zinc-400">|</span> <strong class="text-brand-700">${_t('portfolio.filter_keyword', { query: safeSearch })}</strong>` : ''}
+                        <span class="text-zinc-500">${_t('portfolio.found_count', { count: filteredPortfolios.length })}</span>
                     </span>
                 </div>
                 <button type="button" onclick="resetPortfolioFilters('${baseAssetPrefix}')"
                     class="text-xs font-bold text-rose-600 hover:text-rose-700 flex items-center space-x-1 cursor-pointer">
                     <iconify-icon icon="lucide:rotate-ccw"></iconify-icon>
-                    <span>Reset Filter</span>
+                    <span>${_t('portfolio.reset_filter')}</span>
                 </button>
             </div>
         `;
@@ -344,13 +360,13 @@ function renderPortfolioGrid(baseAssetPrefix = '') {
                     <iconify-icon icon="lucide:image-off"></iconify-icon>
                 </div>
                 <div class="space-y-1">
-                    <h3 class="text-base font-bold text-zinc-900">Tidak ada karya yang cocok</h3>
-                    <p class="text-xs text-zinc-500">Coba ubah kata kunci pencarian atau pilih kategori lain.</p>
+                    <h3 class="text-base font-bold text-zinc-900">${_t('portfolio.empty_title')}</h3>
+                    <p class="text-xs text-zinc-500">${_t('portfolio.empty_desc')}</p>
                 </div>
                 <button type="button" onclick="resetPortfolioFilters('${baseAssetPrefix}')"
                     class="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-brand-600 text-white text-xs font-bold hover:bg-brand-700 transition-colors shadow-sm cursor-pointer">
                     <iconify-icon icon="lucide:refresh-cw"></iconify-icon>
-                    <span>Tampilkan Semua Portofolio</span>
+                    <span>${_t('portfolio.btn_show_all')}</span>
                 </button>
             </div>
         `;
@@ -360,8 +376,9 @@ function renderPortfolioGrid(baseAssetPrefix = '') {
     let cardsHtml = '<div class="columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-3 sm:gap-4 [column-fill:_balance] py-2">';
     filteredPortfolios.forEach((item, index) => {
         const imgUrl = baseAssetPrefix + item.url;
+        const delay = (index % 8) * 40;
         cardsHtml += `
-            <div class="glass-spotlight break-inside-avoid mb-3 sm:mb-4 group relative rounded-2xl overflow-hidden bg-zinc-100 skeleton-loader cursor-zoom-in shadow-xs hover:shadow-2xl transform hover:scale-[1.03] hover:z-20 transition-all duration-300 ease-in-out"
+            <div data-aos="fade-up" data-aos-delay="${delay}" class="glass-spotlight break-inside-avoid mb-3 sm:mb-4 group relative rounded-2xl overflow-hidden bg-zinc-100 skeleton-loader cursor-zoom-in shadow-xs hover:shadow-2xl transform hover:scale-[1.03] hover:z-20 transition-all duration-300 ease-in-out"
                 onclick="openPortfolioZoom(${index}, '${baseAssetPrefix}')">
                 <img src="${imgUrl}" alt="${item.nama}" loading="lazy"
                     onload="this.classList.add('img-loaded'); this.closest('.skeleton-loader')?.classList.add('skeleton-loaded');"
@@ -384,7 +401,10 @@ function renderPortfolioGrid(baseAssetPrefix = '') {
     cardsHtml += '</div>';
 
     container.innerHTML = headerHtml + cardsHtml;
-    initImageSkeletons();
+    if (typeof initImageSkeletons === 'function') initImageSkeletons();
+    if (window.AOS) {
+        try { AOS.refresh(); } catch(e) {}
+    }
 }
 
 // Portfolio Fullscreen Lightbox Zoom
@@ -402,12 +422,16 @@ function openPortfolioZoom(index, baseAssetPrefix = '') {
     const item = filteredPortfolios[index];
     if (modal && modalImg) {
         modalImg.src = baseAssetPrefix + item.url;
-        modalImg.alt = item.nama || 'Zoom Portofolio';
+        modalImg.alt = item.nama || _t('portfolio.zoom_modal_title');
         modalImg.style.transform = `scale(1)`;
         if (counter) counter.textContent = index + 1;
         if (totalEl) totalEl.textContent = filteredPortfolios.length;
         if (waLink) {
-            waLink.href = `https://api.whatsapp.com/send/?phone=6285168174679&text=${encodeURIComponent('Halo Premium Design, saya ingin memesan jasa/karya desain serupa portofolio: ' + item.nama)}`;
+            const isEnglish = (typeof window.getSavedLanguage === 'function' && window.getSavedLanguage() === 'en');
+            const waText = isEnglish 
+                ? ('Hello Premium Design, I would like to order a similar design to portfolio: ' + item.nama)
+                : ('Halo Premium Design, saya ingin memesan jasa/karya desain serupa portofolio: ' + item.nama);
+            waLink.href = `https://api.whatsapp.com/send/?phone=6285168174679&text=${encodeURIComponent(waText)}`;
         }
 
         modal.classList.remove('hidden');
@@ -507,7 +531,6 @@ function initMarketplacePage(baseAssetPrefix = '') {
         });
     }
 
-    // Synchronize category count badges dynamically from data source
     if (typeof PRODUCTS !== 'undefined' && Array.isArray(PRODUCTS)) {
         const counts = { all: PRODUCTS.length };
         PRODUCTS.forEach(p => {
@@ -627,12 +650,12 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
             <div class="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-zinc-700">
                 <span class="flex items-center space-x-1.5 font-medium">
                     <iconify-icon icon="lucide:layout-grid" class="text-brand-600 text-base"></iconify-icon>
-                    <span>Menampilkan <strong class="text-zinc-900 font-bold">${items.length}</strong> produk/jasa</span>
+                    <span>${_t('marketplace.showing_count', { count: items.length })}</span>
                 </span>
                 ${safeCatName ? `
                     <span class="text-zinc-300">|</span>
                     <span class="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full bg-brand-50 text-brand-700 border border-brand-200/80 text-xs font-semibold">
-                        <span>Kategori: <strong>${safeCatName}</strong></span>
+                        <span>${_t('marketplace.cat_label', { name: safeCatName })}</span>
                         <button type="button" onclick="selectMarketplaceCategory('all', '${baseAssetPrefix}')" class="text-brand-500 hover:text-brand-800 ml-1 cursor-pointer" title="Hapus filter kategori">
                             <iconify-icon icon="lucide:x" class="text-xs"></iconify-icon>
                         </button>
@@ -641,7 +664,7 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
                 ${safeSearch ? `
                     <span class="text-zinc-300">|</span>
                     <span class="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full bg-brand-50 text-brand-700 border border-brand-200/80 text-xs font-semibold">
-                        <span>Kata kunci: <strong>"${safeSearch}"</strong></span>
+                        <span>${_t('marketplace.keyword_label', { query: safeSearch })}</span>
                         <button type="button" onclick="clearMarketplaceSearch('${baseAssetPrefix}')" class="text-brand-500 hover:text-brand-800 ml-1 cursor-pointer" title="Hapus kata kunci">
                             <iconify-icon icon="lucide:x" class="text-xs"></iconify-icon>
                         </button>
@@ -652,7 +675,7 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
                 <button type="button" onclick="resetMarketplaceFilters('${baseAssetPrefix}')"
                     class="text-xs font-bold text-rose-600 hover:text-rose-700 cursor-pointer flex items-center space-x-1 transition-colors">
                     <iconify-icon icon="lucide:rotate-ccw"></iconify-icon>
-                    <span>Reset Filter</span>
+                    <span>${_t('portfolio.reset_filter')}</span>
                 </button>
             ` : ''}
         </div>
@@ -665,13 +688,13 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
                     <iconify-icon icon="lucide:folder-open"></iconify-icon>
                 </div>
                 <div class="space-y-1">
-                    <h4 class="text-sm sm:text-base font-bold text-zinc-800">Tidak ada produk atau jasa yang cocok</h4>
-                    <p class="text-xs text-zinc-500 max-w-sm mx-auto">Coba ubah kata kunci pencarian Anda atau pilih kategori lainnya.</p>
+                    <h4 class="text-sm sm:text-base font-bold text-zinc-800">${_t('marketplace.empty_title')}</h4>
+                    <p class="text-xs text-zinc-500 max-w-sm mx-auto">${_t('marketplace.empty_desc')}</p>
                 </div>
                 <button type="button" onclick="resetMarketplaceFilters('${baseAssetPrefix}')"
                     class="inline-flex items-center space-x-1.5 px-4 py-2.5 rounded-xl bg-brand-600 text-white text-xs font-bold hover:bg-brand-700 transition-colors shadow-sm cursor-pointer">
                     <iconify-icon icon="lucide:refresh-cw" class="text-xs"></iconify-icon>
-                    <span>Tampilkan Semua Produk</span>
+                    <span>${_t('marketplace.btn_show_all')}</span>
                 </button>
             </div>
         `;
@@ -682,8 +705,9 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
     items.forEach((prod, index) => {
         const detailUrl = baseAssetPrefix ? `product-detail.html?id=${prod.Id_produk}` : `pages/product-detail.html?id=${prod.Id_produk}`;
         const imgUrl = baseAssetPrefix + prod.image_url;
+        const delay = (index % 6) * 50;
         gridHtml += `
-            <div class="glass-spotlight relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out flex flex-col justify-between group">
+            <div data-aos="fade-up" data-aos-delay="${delay}" class="glass-spotlight relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                 <div>
                     <a href="${detailUrl}" class="block">
                         <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden cursor-pointer">
@@ -724,12 +748,12 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
                 <div class="p-3 sm:p-4 pt-0 flex items-center space-x-1.5 sm:space-x-2 group-hover:bg-zinc-50 transition-colors duration-300 ease-in-out">
                     <a href="${detailUrl}"
                         class="flex-1 py-1.5 sm:py-2 text-center text-[11px] sm:text-xs font-bold text-zinc-700 bg-zinc-100 hover:bg-zinc-200 rounded-lg sm:rounded-xl transition-colors">
-                        Detail
+                        ${_t('marketplace.btn_detail')}
                     </a>
                     <a href="${prod.whatsapp_link}" target="_blank"
                         class="flex-1 inline-flex items-center justify-center space-x-1 py-1.5 sm:py-2 text-center text-[11px] sm:text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg sm:rounded-xl shadow-sm transition-all">
                         <iconify-icon icon="simple-icons:whatsapp" class="text-xs"></iconify-icon>
-                        <span>Pesan</span>
+                        <span>${_t('marketplace.btn_order')}</span>
                     </a>
                 </div>
             </div>
@@ -738,7 +762,7 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
     gridHtml += '</div>';
 
     container.innerHTML = headerHtml + gridHtml;
-    initImageSkeletons();
+    if (typeof initImageSkeletons === 'function') initImageSkeletons();
     if (window.AOS) {
         try { AOS.refresh(); } catch(e) {}
     }
@@ -760,9 +784,6 @@ function initProductDetailPage(baseAssetPrefix = '') {
 
     currentProductGallery = prod.gallery_urls.map(u => baseAssetPrefix + u);
 
-    // Render Page Elements
-    document.title = `${prod.Nama_produk} - Jasa Desain Grafis Profesional | Premium Designz`;
-    
     // Breadcrumb
     const bcCat = document.getElementById('breadcrumbCategory');
     if (bcCat && prod.kategori) {
@@ -793,7 +814,7 @@ function initProductDetailPage(baseAssetPrefix = '') {
             <div class="p-4 rounded-xl bg-white border border-zinc-200 space-y-2.5">
                 <div class="flex items-center space-x-2 text-brand-700">
                     <iconify-icon icon="lucide:gem" class="text-xs"></iconify-icon>
-                    <span class="text-xs font-bold uppercase tracking-wider">Paket: ${prod.layanan.Nama_layanan}</span>
+                    <span class="text-xs font-bold uppercase tracking-wider">${_t('product_detail.package_label')} ${prod.layanan.Nama_layanan}</span>
                 </div>
                 <div class="text-xs text-zinc-700 whitespace-pre-line leading-relaxed">
                     ${prod.layanan.Benefit}
@@ -810,9 +831,9 @@ function initProductDetailPage(baseAssetPrefix = '') {
                 <div class="flex items-center justify-between text-zinc-700">
                     <div class="flex items-center space-x-1.5 text-brand-700">
                         <iconify-icon icon="lucide:monitor" class="text-xs"></iconify-icon>
-                        <span class="text-xs font-bold uppercase tracking-wider">Bisa Pilih Software</span>
+                        <span class="text-xs font-bold uppercase tracking-wider">${_t('product_detail.can_select_software')}</span>
                     </div>
-                    <span class="text-[10px] font-semibold text-zinc-400">${prod.software.length} Pilihan</span>
+                    <span class="text-[10px] font-semibold text-zinc-400">${prod.software.length} ${_t('product_detail.software_options')}</span>
                 </div>
                 <div class="flex flex-wrap gap-2 pt-0.5">
         `;
@@ -924,11 +945,11 @@ function toggleProductDescription() {
     if (content.classList.contains('hidden')) {
         content.classList.remove('hidden');
         if (chevron) chevron.style.transform = 'rotate(0deg)';
-        if (status) status.textContent = 'Tutup';
+        if (status) status.textContent = _t('product_detail.toggle_close');
     } else {
         content.classList.add('hidden');
         if (chevron) chevron.style.transform = 'rotate(180deg)';
-        if (status) status.textContent = 'Buka';
+        if (status) status.textContent = _t('product_detail.toggle_open');
     }
 }
 
@@ -963,7 +984,7 @@ function renderRelatedProducts(prodId, catId, baseAssetPrefix = '') {
 
     function buildCards(items) {
         if (items.length === 0) {
-            return `<div class="w-full py-8 text-center text-zinc-400 text-xs">Belum ada karya serupa lainnya di kategori ini.</div>`;
+            return `<div class="w-full py-8 text-center text-zinc-400 text-xs">${_t('product_detail.empty_related')}</div>`;
         }
         return items.map(rel => `
             <div class="flex-none w-[160px] sm:w-[180px] md:w-[200px] lg:w-[calc((100%-5*16px)/6)] min-w-[150px] rounded-2xl border border-zinc-200/80 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
@@ -1001,12 +1022,12 @@ function renderRelatedProducts(prodId, catId, baseAssetPrefix = '') {
                 <div class="p-3 pt-0 flex items-center space-x-1.5 group-hover:bg-zinc-50 transition-colors duration-200">
                     <a href="product-detail.html?id=${rel.Id_produk}"
                         class="flex-1 py-1.5 text-center text-xs font-bold text-zinc-700 bg-zinc-100 hover:bg-zinc-200 rounded-xl transition-colors">
-                        Detail
+                        ${_t('marketplace.btn_detail')}
                     </a>
                     <a href="${rel.whatsapp_link}" target="_blank"
                         class="flex-1 inline-flex items-center justify-center space-x-1 py-1.5 text-center text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-xl shadow-sm transition-all">
                         <iconify-icon icon="simple-icons:whatsapp" class="text-xs"></iconify-icon>
-                        <span>Pesan</span>
+                        <span>${_t('marketplace.btn_order')}</span>
                     </a>
                 </div>
             </div>
@@ -1015,7 +1036,10 @@ function renderRelatedProducts(prodId, catId, baseAssetPrefix = '') {
 
     if (relevantTrack) relevantTrack.innerHTML = buildCards(relevantItems);
     if (latestTrack) latestTrack.innerHTML = buildCards(latestItems);
-    initImageSkeletons();
+    if (typeof initImageSkeletons === 'function') initImageSkeletons();
+    if (window.AOS) {
+        try { AOS.refresh(); } catch(e) {}
+    }
 }
 
 function switchRelatedTab(tab) {
@@ -1046,3 +1070,25 @@ function scrollRelated(direction) {
     const scrollAmount = (direction === 'left' ? -280 : 280);
     activeTrack.scrollBy({ left: scrollAmount, behavior: 'smooth' });
 }
+
+// ==========================================
+// 7. GLOBAL RE-RENDER ON LANGUAGE CHANGED
+// ==========================================
+window.addEventListener('languageChanged', function() {
+    const isPortfolio = document.getElementById('portfolioGridContainer');
+    const isMarketplace = document.getElementById('marketplaceGridContainer');
+    const isProductDetail = document.getElementById('productDetailTitle');
+
+    if (isPortfolio) {
+        const prefix = window.location.pathname.includes('/pages/') ? '../' : '';
+        renderPortfolioGrid(prefix);
+    }
+    if (isMarketplace) {
+        const prefix = window.location.pathname.includes('/pages/') ? '../' : '';
+        renderMarketplaceGrid(prefix);
+    }
+    if (isProductDetail) {
+        const prefix = window.location.pathname.includes('/pages/') ? '../' : '';
+        initProductDetailPage(prefix);
+    }
+});

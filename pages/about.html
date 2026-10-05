@@ -138,11 +138,11 @@
     <div class="bg-brand-gradient text-white text-xs py-2 px-4 border-b border-brand-700/40">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <div class="flex items-center space-x-4">
-                <span class="flex items-center text-white font-medium">
+                <span class="flex items-center text-white font-medium" data-i18n="topbar.badge">
                     Jasa Desain Grafis &amp; Marketplace Resmi
                 </span>
                 <span class="hidden sm:inline text-white/40">|</span>
-                <span class="hidden sm:inline text-brand-100">Pengerjaan Tepat Waktu &amp; File Master Lengkap Siap
+                <span class="hidden sm:inline text-brand-100" data-i18n="topbar.sub">Pengerjaan Tepat Waktu &amp; File Master Lengkap Siap
                     Cetak</span>
             </div>
             <div class="flex items-center space-x-4 text-brand-100">
@@ -174,7 +174,7 @@
                     target="_blank"
                     class="hover:text-white transition-colors flex items-center space-x-1 font-semibold text-brand-100">
                     <iconify-icon icon="simple-icons:whatsapp" class="text-sm"></iconify-icon>
-                    <span class="hidden sm:inline">WhatsApp: 0851-6817-4679</span>
+                    <span class="hidden sm:inline" data-i18n="topbar.wa">WhatsApp: 0851-6817-4679</span>
                 </a>
             </div>
         </div>
@@ -195,30 +195,32 @@
 
                 <nav id="nav-desktop-menu" class="hidden md:flex items-center space-x-1" aria-label="Navigasi Utama">
                     <a href="../index.html" data-nav="home"
-                        class="nav-link px-3.5 py-2 text-sm font-semibold text-zinc-600 hover:text-brand-600 transition-colors">
+                        class="nav-link px-3.5 py-2 text-sm font-semibold text-zinc-600 hover:text-brand-600 transition-colors"
+                        data-i18n="nav.home">
                         Home
                     </a>
                     <a href="portofolio.html" data-nav="portofolio"
                         class="nav-link px-3.5 py-2 text-sm font-semibold flex items-center space-x-1.5 text-zinc-600 hover:text-brand-600 transition-colors">
-                        <span>Portofolio</span>
+                        <span data-i18n="nav.portfolio">Portofolio</span>
                     </a>
                     <a href="marketplace.html" data-nav="marketplace"
                         class="nav-link px-3.5 py-2 text-sm font-semibold flex items-center space-x-1.5 text-zinc-600 hover:text-brand-600 transition-colors">
-                        <span>Jasa Desain</span>
+                        <span data-i18n="nav.marketplace">Jasa Desain</span>
                     </a>
                     <a href="../index.html#langkah-pemesanan" data-nav="cara-pemesanan"
                         class="nav-link px-3.5 py-2 text-sm font-semibold flex items-center space-x-1.5 text-zinc-600 hover:text-brand-600 transition-colors">
-                        <span>Cara Pemesanan</span>
+                        <span data-i18n="nav.order_steps">Cara Pemesanan</span>
                     </a>
                     <a href="about.html" data-nav="about"
-                        class="nav-link is-active px-3.5 py-2 text-sm font-bold text-brand-600 transition-colors">
+                        class="nav-link is-active px-3.5 py-2 text-sm font-bold text-brand-600 transition-colors"
+                        data-i18n="nav.about_contact">
                         Tentang &amp; Kontak
                     </a>
                 </nav>
 
                 <div class="flex items-center space-x-2 sm:space-x-3">
                     <div class="notranslate inline-flex items-center p-1 rounded-xl bg-zinc-100/90 border border-zinc-200/90 shadow-2xs"
-                        id="desktop-lang-switcher" aria-label="Pilih Bahasa">
+                        id="desktop-lang-switcher" aria-label="Pilih Bahasa" data-i18n-aria-label="nav.select_language">
                         <button type="button" onclick="window.changeSiteLanguage('id')" data-lang-pill="id"
                             class="lang-pill-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all duration-200 cursor-pointer select-none"
                             title="ID - Bahasa Indonesia">
@@ -243,23 +245,28 @@
         <div id="mobile-menu"
             class="hidden md:hidden border-t border-zinc-100 bg-white px-4 pt-3 pb-6 space-y-2 shadow-lg transition-colors">
             <a href="../index.html"
-                class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-semibold text-zinc-700 hover:bg-zinc-50">
+                class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-semibold text-zinc-700 hover:bg-zinc-50"
+                data-i18n="nav.home">
                 Home
             </a>
             <a href="portofolio.html"
-                class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-semibold text-zinc-700 hover:bg-zinc-50">
+                class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-semibold text-zinc-700 hover:bg-zinc-50"
+                data-i18n="nav.portfolio_gallery">
                 Galeri Portofolio
             </a>
             <a href="marketplace.html"
-                class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-semibold text-zinc-700 hover:bg-zinc-50">
+                class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-semibold text-zinc-700 hover:bg-zinc-50"
+                data-i18n="nav.marketplace_catalog">
                 Marketplace Jasa Desain
             </a>
             <a href="../index.html#langkah-pemesanan"
-                class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-semibold text-zinc-700 hover:bg-zinc-50">
+                class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-semibold text-zinc-700 hover:bg-zinc-50"
+                data-i18n="nav.order_steps">
                 Cara Pemesanan
             </a>
             <a href="about.html"
-                class="mobile-nav-link is-active block px-4 py-2.5 rounded-xl text-sm font-bold bg-brand-50 text-brand-600">
+                class="mobile-nav-link is-active block px-4 py-2.5 rounded-xl text-sm font-bold bg-brand-50 text-brand-600"
+                data-i18n="nav.about_contact">
                 Tentang &amp; Kontak
             </a>
 
@@ -268,7 +275,7 @@
                     <span
                         class="text-[11px] font-bold text-zinc-500 uppercase tracking-wider flex items-center space-x-1.5">
                         <iconify-icon icon="lucide:languages" class="text-base text-brand-600"></iconify-icon>
-                        <span>Bahasa</span>
+                        <span data-i18n="nav.language">Bahasa</span>
                     </span>
                     <span id="mobile-current-lang-tag"
                         class="text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-brand-50 text-brand-700 border border-brand-200/60">
@@ -295,11 +302,11 @@
             class="bg-gradient-to-b from-brand-50/60 via-zinc-50/40 to-white py-16 sm:py-20 border-b border-zinc-100 overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div data-aos="fade-down" class="max-w-3xl space-y-3">
-                    <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Profil Studio &amp;
+                    <span class="text-xs font-bold uppercase tracking-wider text-brand-600" data-i18n="about.badge">Profil Studio &amp;
                         Konsultasi</span>
-                    <h1 class="text-3xl sm:text-5xl font-extrabold font-heading text-zinc-900">Tentang Kami &amp; Kontak
+                    <h1 class="text-3xl sm:text-5xl font-extrabold font-heading text-zinc-900" data-i18n="about.title">Tentang Kami &amp; Kontak
                     </h1>
-                    <p class="text-xs sm:text-base text-zinc-600 leading-relaxed">
+                    <p class="text-xs sm:text-base text-zinc-600 leading-relaxed" data-i18n="about.subtitle">
                         Studio desain grafis dan marketplace penyedia solusi identitas visual profesional yang memadukan
                         kejelasan fungsi, estetika modern, dan layanan konsultasi responsif.
                     </p>
@@ -313,15 +320,15 @@
                 <!-- Story & Philosophy Grid -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                     <div data-aos="fade-right" class="lg:col-span-6 space-y-5">
-                        <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Visi Kerja Studio</span>
-                        <h2 class="text-2xl sm:text-3xl font-bold text-zinc-900 font-heading leading-tight">
+                        <span class="text-xs font-bold uppercase tracking-wider text-brand-600" data-i18n="about.vision_badge">Visi Kerja Studio</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-zinc-900 font-heading leading-tight" data-i18n="about.vision_title">
                             Membangun Citra Merek yang Kuat dan Kredibel Melalui Desain Tepat Sasaran
                         </h2>
-                        <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed">
+                        <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed" data-i18n="about.vision_p1">
                             Premium Design hadir untuk menjawab kebutuhan para pelaku usaha, kreator, dan organisasi
                             yang menginginkan materi visual berkualitas tinggi tanpa proses yang rumit.
                         </p>
-                        <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed">
+                        <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed" data-i18n="about.vision_p2">
                             Kami meyakini bahwa desain yang baik bukan sekadar hiasan visual, melainkan alat komunikasi
                             strategis yang mampu menumbuhkan kepercayaan konsumen dan memperkuat posisi brand di pasar.
                         </p>
@@ -330,19 +337,19 @@
                     <div data-aos="fade-left" data-aos-delay="150" class="lg:col-span-6">
                         <div
                             class="bg-brand-gradient text-white rounded-3xl p-8 sm:p-10 space-y-6 shadow-xl shadow-brand-700/20">
-                            <h3 class="text-lg font-bold font-heading text-white">Ringkasan Statistik Studio</h3>
+                            <h3 class="text-lg font-bold font-heading text-white" data-i18n="about.stats_title">Ringkasan Statistik Studio</h3>
                             <div class="grid grid-cols-2 gap-4 sm:gap-6 pt-2">
                                 <div class="p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15">
                                     <p class="text-3xl font-extrabold text-white font-heading">20+</p>
-                                    <p class="text-xs text-brand-100 mt-1">Katalog Portofolio</p>
+                                    <p class="text-xs text-brand-100 mt-1" data-i18n="about.stats_portfolio">Katalog Portofolio</p>
                                 </div>
                                 <div class="p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15">
                                     <p class="text-3xl font-extrabold text-white font-heading">8</p>
-                                    <p class="text-xs text-brand-100 mt-1">Spesialisasi Kategori</p>
+                                    <p class="text-xs text-brand-100 mt-1" data-i18n="about.stats_cats">Spesialisasi Kategori</p>
                                 </div>
                                 <div class="p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15">
                                     <p class="text-3xl font-extrabold text-white font-heading">9</p>
-                                    <p class="text-xs text-brand-100 mt-1">Paket Layanan Siap Pakai</p>
+                                    <p class="text-xs text-brand-100 mt-1" data-i18n="about.stats_packages">Paket Layanan Siap Pakai</p>
                                 </div>
                                 <div class="p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15">
                                     <p
@@ -350,7 +357,7 @@
                                         5.0 <iconify-icon icon="material-symbols:star-rounded"
                                             class="text-amber-300 text-xl"></iconify-icon>
                                     </p>
-                                    <p class="text-xs text-brand-100 mt-1">Kepuasan Klien</p>
+                                    <p class="text-xs text-brand-100 mt-1" data-i18n="about.stats_satisfaction">Kepuasan Klien</p>
                                 </div>
                             </div>
                         </div>
@@ -360,8 +367,8 @@
                 <!-- Principles -->
                 <div class="pt-10 border-t border-zinc-100">
                     <div data-aos="fade-up" class="max-w-2xl mb-10">
-                        <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Prinsip Kerja</span>
-                        <h2 class="text-2xl font-bold text-zinc-900 mt-1 font-heading">Standar yang Kami Terapkan di
+                        <span class="text-xs font-bold uppercase tracking-wider text-brand-600" data-i18n="about.principles_badge">Prinsip Kerja</span>
+                        <h2 class="text-2xl font-bold text-zinc-900 mt-1 font-heading" data-i18n="about.principles_title">Standar yang Kami Terapkan di
                             Setiap Proyek</h2>
                     </div>
 
@@ -371,8 +378,8 @@
                             <div
                                 class="w-8 h-8 rounded-lg bg-brand-100 text-brand-700 flex items-center justify-center text-sm font-bold">
                                 1</div>
-                            <h4 class="text-sm font-bold text-zinc-900">Konseptual dan Terarah</h4>
-                            <p class="text-xs text-zinc-500 leading-relaxed">
+                            <h4 class="text-sm font-bold text-zinc-900" data-i18n="about.p1_title">Konseptual dan Terarah</h4>
+                            <p class="text-xs text-zinc-500 leading-relaxed" data-i18n="about.p1_desc">
                                 Setiap elemen desain memiliki alasan yang jelas, disesuaikan dengan target audiens dan
                                 nilai merek klien.
                             </p>
@@ -383,8 +390,8 @@
                             <div
                                 class="w-8 h-8 rounded-lg bg-brand-100 text-brand-700 flex items-center justify-center text-sm font-bold">
                                 2</div>
-                            <h4 class="text-sm font-bold text-zinc-900">Kesiapan Cetak & Digital</h4>
-                            <p class="text-xs text-zinc-500 leading-relaxed">
+                            <h4 class="text-sm font-bold text-zinc-900" data-i18n="about.p2_title">Kesiapan Cetak & Digital</h4>
+                            <p class="text-xs text-zinc-500 leading-relaxed" data-i18n="about.p2_desc">
                                 Penataan warna CMYK/RGB, resolusi 300 DPI, dan format file master yang terstruktur rapi
                                 untuk vendor percetakan.
                             </p>
@@ -395,8 +402,8 @@
                             <div
                                 class="w-8 h-8 rounded-lg bg-brand-100 text-brand-700 flex items-center justify-center text-sm font-bold">
                                 3</div>
-                            <h4 class="text-sm font-bold text-zinc-900">Transparansi dan Ketepatan</h4>
-                            <p class="text-xs text-zinc-500 leading-relaxed">
+                            <h4 class="text-sm font-bold text-zinc-900" data-i18n="about.p3_title">Transparansi dan Ketepatan</h4>
+                            <p class="text-xs text-zinc-500 leading-relaxed" data-i18n="about.p3_desc">
                                 Rincian paket jelas tanpa biaya tersembunyi, disertai jadwal penyelesaian proyek yang
                                 dapat diandalkan.
                             </p>
@@ -406,17 +413,17 @@
             </div>
         </div>
 
-        <!-- Section: Hubungi Studio & Konsultasi Langsung (Merged Contact Section) -->
+        <!-- Section: Hubungi Studio & Konsultasi Langsung -->
         <div id="kontak-studio" class="py-16 bg-zinc-50/70 border-t border-zinc-200/80 overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                     <!-- Left: Contact Information Cards -->
                     <div data-aos="fade-right" class="lg:col-span-5 space-y-6">
                         <div>
-                            <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Saluran Resmi</span>
-                            <h2 class="text-xl sm:text-2xl font-bold text-zinc-900 mt-1 font-heading">Informasi Kontak
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand-600" data-i18n="about.contact_badge">Saluran Resmi</span>
+                            <h2 class="text-xl sm:text-2xl font-bold text-zinc-900 mt-1 font-heading" data-i18n="about.contact_title">Informasi Kontak
                                 Studio</h2>
-                            <p class="text-xs text-zinc-500 mt-1 leading-relaxed">
+                            <p class="text-xs text-zinc-500 mt-1 leading-relaxed" data-i18n="about.contact_subtitle">
                                 Pilih saluran komunikasi yang paling nyaman bagi Anda. Kami menyarankan WhatsApp untuk
                                 respon tercepat.
                             </p>
@@ -431,18 +438,18 @@
                                     <iconify-icon icon="simple-icons:whatsapp"></iconify-icon>
                                 </div>
                                 <div>
-                                    <h3 class="text-xs font-bold text-zinc-900 uppercase tracking-wider">WhatsApp Studio
+                                    <h3 class="text-xs font-bold text-zinc-900 uppercase tracking-wider" data-i18n="about.wa_card_title">WhatsApp Studio
                                         (Rekomendasi)</h3>
                                     <p class="text-sm font-extrabold text-brand-700 font-mono">0851-6817-4679</p>
                                 </div>
                             </div>
-                            <p class="text-xs text-zinc-600 leading-relaxed">
+                            <p class="text-xs text-zinc-600 leading-relaxed" data-i18n="about.wa_card_desc">
                                 Respon langsung dari desainer pada jam operasional kerja.
                             </p>
                             <a href="https://api.whatsapp.com/send/?phone=6285168174679&text=Halo%20Premium%20Design%2C%20saya%20ingin%20konsultasi%20kebutuhan%20desain."
                                 target="_blank"
                                 class="inline-flex items-center space-x-2 px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-xs font-bold transition-colors shadow-sm">
-                                <span>Mulai Chat WhatsApp</span>
+                                <span data-i18n="about.wa_card_btn">Mulai Chat WhatsApp</span>
                                 <iconify-icon icon="lucide:external-link" class="text-xs"></iconify-icon>
                             </a>
                         </div>
@@ -453,7 +460,7 @@
                                 class="glass-spotlight p-4 rounded-xl border border-zinc-200 bg-white/80 flex items-start space-x-3">
                                 <iconify-icon icon="lucide:mail" class="text-brand-600 text-lg mt-0.5"></iconify-icon>
                                 <div>
-                                    <p class="font-bold text-zinc-800">Email Resmi</p>
+                                    <p class="font-bold text-zinc-800" data-i18n="about.email_card_title">Email Resmi</p>
                                     <a href="mailto:designzpremium@gmail.com"
                                         class="text-brand-600 font-semibold hover:underline mt-0.5 block">designzpremium@gmail.com</a>
                                 </div>
@@ -463,8 +470,8 @@
                                 class="glass-spotlight p-4 rounded-xl border border-zinc-200 bg-white/80 flex items-start space-x-3">
                                 <iconify-icon icon="lucide:clock" class="text-brand-600 text-lg mt-0.5"></iconify-icon>
                                 <div>
-                                    <p class="font-bold text-zinc-800">Jam Operasional</p>
-                                    <p class="text-zinc-500 mt-0.5 font-medium">Setiap Hari: 09.00 - 23.00 WIB</p>
+                                    <p class="font-bold text-zinc-800" data-i18n="about.hours_card_title">Jam Operasional</p>
+                                    <p class="text-zinc-500 mt-0.5 font-medium" data-i18n="about.hours_val">Setiap Hari: 09.00 - 23.00 WIB</p>
                                 </div>
                             </div>
                         </div>
@@ -472,7 +479,7 @@
                         <!-- Official Store & Social Channels -->
                         <div data-aos="fade-up" data-aos-delay="200"
                             class="glass-spotlight-dark p-5 rounded-2xl bg-brand-gradient text-white space-y-4 shadow-lg shadow-brand-700/20">
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-white">Marketplace & Official
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-white" data-i18n="about.social_channels">Marketplace & Official
                                 Channels</h3>
                             <div class="grid grid-cols-2 gap-2.5 text-xs">
                                 <a href="https://shopee.co.id/premium_dz" target="_blank"
@@ -503,7 +510,7 @@
                             <a href="https://lynk.id/premiumdsz" target="_blank"
                                 class="w-full py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-center text-xs font-bold text-white flex items-center justify-center space-x-2 transition-colors">
                                 <iconify-icon icon="lucide:link-2" class="text-xs"></iconify-icon>
-                                <span>Buka Lynk.id Link Hub (Semua Tautan)</span>
+                                <span data-i18n="about.link_hub_btn">Buka Lynk.id Link Hub (Semua Tautan)</span>
                             </a>
                         </div>
                     </div>
@@ -513,11 +520,11 @@
                         <div
                             class="glass-spotlight p-8 sm:p-10 rounded-2xl bg-white/90 border border-zinc-200 space-y-6 shadow-sm">
                             <div>
-                                <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Formulir
+                                <span class="text-xs font-bold uppercase tracking-wider text-brand-600" data-i18n="about.form_badge">Formulir
                                     Pesan</span>
-                                <h3 class="text-xl font-bold text-zinc-900 mt-1 font-heading">Kirimkan Rencana Proyek
+                                <h3 class="text-xl font-bold text-zinc-900 mt-1 font-heading" data-i18n="about.form_title">Kirimkan Rencana Proyek
                                     Desain</h3>
-                                <p class="text-xs text-zinc-500 mt-1">
+                                <p class="text-xs text-zinc-500 mt-1" data-i18n="about.form_subtitle">
                                     Isi rincian awal berikut, sistem kami akan langsung menyusun pesan otomatis ke
                                     WhatsApp desainer kami.
                                 </p>
@@ -526,54 +533,50 @@
                             <form id="contactForm" class="space-y-4">
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     <div class="space-y-1.5">
-                                        <label class="text-xs font-bold text-zinc-700">Nama Lengkap <span
+                                        <label class="text-xs font-bold text-zinc-700"><span data-i18n="about.form_name">Nama Lengkap</span> <span
                                                 class="text-rose-500">*</span></label>
                                         <input type="text" id="contactNama" name="nama" required
                                             class="w-full px-4 py-2.5 bg-zinc-50 border border-zinc-200 rounded-xl text-xs text-zinc-800 focus:outline-none focus:ring-2 focus:ring-brand-500"
-                                            placeholder="Nama Anda">
+                                            placeholder="Nama Anda" data-i18n-placeholder="about.form_name_ph">
                                     </div>
                                     <div class="space-y-1.5">
-                                        <label class="text-xs font-bold text-zinc-700">Alamat Email <span
+                                        <label class="text-xs font-bold text-zinc-700"><span data-i18n="about.form_email">Alamat Email</span> <span
                                                 class="text-rose-500">*</span></label>
                                         <input type="email" id="contactEmail" name="email" required
                                             class="w-full px-4 py-2.5 bg-zinc-50 border border-zinc-200 rounded-xl text-xs text-zinc-800 focus:outline-none focus:ring-2 focus:ring-brand-500"
-                                            placeholder="nama@email.com">
+                                            placeholder="nama@email.com" data-i18n-placeholder="about.form_email_ph">
                                     </div>
                                 </div>
 
                                 <div class="space-y-1.5">
-                                    <label class="text-xs font-bold text-zinc-700">Kebutuhan Jasa Desain <span
+                                    <label class="text-xs font-bold text-zinc-700"><span data-i18n="about.form_service">Kebutuhan Jasa Desain</span> <span
                                             class="text-rose-500">*</span></label>
                                     <select id="contactLayanan" name="layanan" required
                                         class="w-full px-4 py-2.5 bg-zinc-50 border border-zinc-200 rounded-xl text-xs text-zinc-800 focus:outline-none focus:ring-2 focus:ring-brand-500">
-                                        <option value="Logo & Brand Identity">Logo & Brand Identity</option>
-                                        <option value="Desain Kemasan & Packaging">Desain Kemasan & Packaging</option>
-                                        <option value="Materi Promosi, Banner & Poster">Materi Promosi, Banner & Poster
-                                        </option>
-                                        <option value="Brosur, Katalog & Company Profile">Brosur, Katalog & Company
-                                            Profile</option>
-                                        <option value="UI/UX Website & Aplikasi Mobile">UI/UX Website & Aplikasi Mobile
-                                        </option>
-                                        <option value="Jersey & Apparel Desain">Jersey & Apparel Desain</option>
-                                        <option value="Repair / Vektorisasi Desain Lama">Repair / Vektorisasi Desain
-                                            Lama</option>
-                                        <option value="Kebutuhan Desain Lainnya">Kebutuhan Desain Lainnya</option>
+                                        <option value="Logo & Brand Identity" data-i18n="about.opt_logo">Logo & Brand Identity</option>
+                                        <option value="Desain Kemasan & Packaging" data-i18n="about.opt_packaging">Desain Kemasan & Packaging</option>
+                                        <option value="Materi Promosi, Banner & Poster" data-i18n="about.opt_banner">Materi Promosi, Banner & Poster</option>
+                                        <option value="Brosur, Katalog & Company Profile" data-i18n="about.opt_catalog">Brosur, Katalog & Company Profile</option>
+                                        <option value="UI/UX Website & Aplikasi Mobile" data-i18n="about.opt_uiux">UI/UX Website & Aplikasi Mobile</option>
+                                        <option value="Jersey & Apparel Desain" data-i18n="about.opt_jersey">Jersey & Apparel Desain</option>
+                                        <option value="Repair / Vektorisasi Desain Lama" data-i18n="about.opt_vector">Repair / Vektorisasi Desain Lama</option>
+                                        <option value="Kebutuhan Desain Lainnya" data-i18n="about.opt_other">Kebutuhan Desain Lainnya</option>
                                     </select>
                                 </div>
 
                                 <div class="space-y-1.5">
-                                    <label class="text-xs font-bold text-zinc-700">Ceritakan Singkat Rencana Proyek
+                                    <label class="text-xs font-bold text-zinc-700"><span data-i18n="about.form_msg">Ceritakan Singkat Rencana Proyek</span>
                                         <span class="text-rose-500">*</span></label>
                                     <textarea id="contactPesan" name="pesan" rows="4" required
                                         class="w-full px-4 py-2.5 bg-zinc-50 border border-zinc-200 rounded-xl text-xs text-zinc-800 focus:outline-none focus:ring-2 focus:ring-brand-500"
-                                        placeholder="Jelaskan jenis usaha, target waktu penyelesaian, atau referensi gaya desain yang diinginkan..."></textarea>
+                                        placeholder="Jelaskan jenis usaha, target waktu penyelesaian, atau referensi gaya desain yang diinginkan..." data-i18n-placeholder="about.form_msg_ph"></textarea>
                                 </div>
 
                                 <div class="pt-2">
                                     <button type="submit"
                                         class="w-full py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all flex items-center justify-center space-x-2">
                                         <iconify-icon icon="simple-icons:whatsapp" class="text-base"></iconify-icon>
-                                        <span>Kirimkan ke WhatsApp Studio</span>
+                                        <span data-i18n="about.form_submit">Kirimkan ke WhatsApp Studio</span>
                                     </button>
                                 </div>
                             </form>
@@ -590,7 +593,7 @@
             <div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="lg:col-span-2 space-y-4">
                     <img src="../assets/other/logo_white.png" alt="Logo Footer" class="h-10 w-auto object-contain">
-                    <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-sm">
+                    <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-sm" data-i18n="footer.desc">
                         Studio desain grafis &amp; marketplace penyedia identitas visual profesional, logo, kemasan,
                         banner, dan UI/UX modern dengan standar tinggi.
                     </p>
@@ -619,22 +622,22 @@
                 </div>
 
                 <div>
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Navigasi Cepat</h4>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4" data-i18n="footer.nav_title">Navigasi Cepat</h4>
                     <ul class="space-y-2.5 text-xs">
-                        <li><a href="../index.html" class="hover:text-white transition-colors">Home Utama</a></li>
-                        <li><a href="portofolio.html" class="hover:text-white transition-colors">Katalog
+                        <li><a href="../index.html" class="hover:text-white transition-colors" data-i18n="footer.nav_home">Home Utama</a></li>
+                        <li><a href="portofolio.html" class="hover:text-white transition-colors" data-i18n="footer.nav_portfolio">Katalog
                                 Portofolio</a></li>
-                        <li><a href="marketplace.html" class="hover:text-white transition-colors">Marketplace
+                        <li><a href="marketplace.html" class="hover:text-white transition-colors" data-i18n="footer.nav_marketplace">Marketplace
                                 Desain</a></li>
-                        <li><a href="../index.html#langkah-pemesanan" class="hover:text-white transition-colors">Cara
+                        <li><a href="../index.html#langkah-pemesanan" class="hover:text-white transition-colors" data-i18n="footer.nav_steps">Cara
                                 Pemesanan</a></li>
-                        <li><a href="about.html" class="hover:text-white transition-colors">Tentang &amp;
+                        <li><a href="about.html" class="hover:text-white transition-colors" data-i18n="footer.nav_about">Tentang &amp;
                                 Kontak</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Kontak Studio</h4>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4" data-i18n="footer.contact_title">Kontak Studio</h4>
                     <div class="space-y-3 text-xs">
                         <p class="flex items-center space-x-2">
                             <iconify-icon icon="simple-icons:whatsapp"
@@ -647,7 +650,7 @@
                         </p>
                         <p class="flex items-center space-x-2">
                             <iconify-icon icon="lucide:clock" class="text-brand-400 text-sm shrink-0"></iconify-icon>
-                            <span>09:00 - 23:00 WIB</span>
+                            <span data-i18n="about.hours_val">09:00 - 23:00 WIB</span>
                         </p>
                     </div>
                 </div>
@@ -655,19 +658,46 @@
 
             <div
                 class="pt-8 border-t border-zinc-900 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
-                <p>&copy; 2026 Premium Design Studio. All rights reserved.</p>
-
+                <p data-i18n="footer.copyright">&copy; 2026 Premium Design Studio. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- SCROLL TO TOP BUTTON -->
-    <button id="scrollToTopBtn" type="button" onclick="scrollToTop()" aria-label="Kembali ke Atas"
+    <button id="scrollToTopBtn" type="button" onclick="scrollToTop()" aria-label="Kembali ke Atas" data-i18n-aria-label="common.scroll_to_top"
         class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-2xl bg-brand-600 hover:bg-brand-500 text-white shadow-xl shadow-brand-700/30 border border-white/20 flex items-center justify-center transition-all duration-300 opacity-0 pointer-events-none translate-y-6 hover:scale-110 active:scale-95 group"
-        title="Scroll ke Atas">
+        title="Scroll ke Atas" data-i18n-title="common.scroll_to_top">
         <iconify-icon icon="lucide:arrow-up"
             class="text-xl group-hover:-translate-y-0.5 transition-transform duration-200"></iconify-icon>
     </button>
+
+    <!-- SECURITY & COPYRIGHT DIALOG -->
+    <div id="security-warning-modal"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-950/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 notranslate"
+        role="dialog" aria-modal="true" aria-labelledby="sec-modal-title">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-md w-full p-6 text-center space-y-4 shadow-2xl">
+            <div class="w-12 h-12 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-500 flex items-center justify-center mx-auto text-2xl">
+                <iconify-icon icon="lucide:shield-alert"></iconify-icon>
+            </div>
+            <h3 id="sec-modal-title" class="text-base font-bold text-white font-heading" data-i18n="security.modal_title">
+                Perlindungan Hak Cipta &amp; Aset
+            </h3>
+            <p class="text-xs text-zinc-400 leading-relaxed" data-i18n-html="security.modal_desc">
+                Seluruh karya desain, gambar, dan aset visual pada platform <strong>Premium Designz</strong> dilindungi oleh hak cipta.<br>Dilarang menyalin, mengunduh tanpa lisensi, atau memodifikasi aset ini.
+            </p>
+            <button type="button" onclick="closeSecurityModal()"
+                class="w-full py-2.5 px-4 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold transition-colors cursor-pointer" data-i18n="security.btn_understand">
+                Saya Mengerti &amp; Tutup
+            </button>
+        </div>
+    </div>
+
+    <!-- SECURITY TOAST NOTIFICATION CONTAINER -->
+    <div id="security-toast"
+        class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-full bg-zinc-950/90 text-white text-xs font-medium border border-zinc-800 shadow-2xl backdrop-blur-md flex items-center space-x-2 opacity-0 pointer-events-none transition-all duration-300 -translate-y-2 select-none notranslate">
+        <iconify-icon icon="lucide:shield-check" class="text-brand-400 text-base"></iconify-icon>
+        <span id="security-toast-msg" data-i18n="security.toast_text">Aksi ini dinonaktifkan demi perlindungan hak cipta</span>
+    </div>
 
     <!-- SCRIPTS (Deferred) -->
     <script src="../assets/js/data.js" defer></script>

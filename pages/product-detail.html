@@ -119,36 +119,35 @@
     <div class="bg-brand-gradient text-white text-xs py-2 px-4 border-b border-brand-700/40">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <div class="flex items-center space-x-4">
-                <span class="flex items-center text-white font-medium">
-
+                <span data-i18n="topbar.tagline" class="flex items-center text-white font-medium">
                     Jasa Desain Grafis &amp; Marketplace Resmi
                 </span>
                 <span class="hidden sm:inline text-white/40">|</span>
-                <span class="hidden sm:inline text-brand-100">Pengerjaan Tepat Waktu &amp; File Master Lengkap Siap
+                <span data-i18n="topbar.usp" class="hidden sm:inline text-brand-100">Pengerjaan Tepat Waktu &amp; File Master Lengkap Siap
                     Cetak</span>
             </div>
             <div class="flex items-center space-x-4 text-brand-100">
                 <a href="https://www.instagram.com/premiumdsz/" target="_blank"
                     class="hover:text-pink-300 transition-colors flex items-center space-x-1"
-                    title="Instagram @premiumdsz">
+                    title="Instagram @premiumdsz" data-i18n-title="footer.instagram">
                     <iconify-icon icon="simple-icons:instagram" class="text-xs"></iconify-icon>
                     <span class="hidden md:inline">@premiumdsz</span>
                 </a>
                 <a href="https://www.tiktok.com/@premium.designz" target="_blank"
                     class="hover:text-cyan-300 transition-colors flex items-center space-x-1"
-                    title="TikTok @premium.designz">
+                    title="TikTok @premium.designz" data-i18n-title="footer.tiktok">
                     <iconify-icon icon="simple-icons:tiktok" class="text-xs"></iconify-icon>
                     <span class="hidden md:inline">TikTok</span>
                 </a>
                 <a href="https://shopee.co.id/premium_dz" target="_blank"
                     class="hover:text-amber-300 transition-colors flex items-center space-x-1"
-                    title="Shopee Official Store">
+                    title="Shopee Official Store" data-i18n-title="footer.shopee">
                     <iconify-icon icon="simple-icons:shopee" class="text-xs"></iconify-icon>
                     <span class="hidden md:inline">Shopee</span>
                 </a>
                 <a href="https://www.fiverr.com/premiumdz" target="_blank"
                     class="hover:text-emerald-300 transition-colors flex items-center space-x-1"
-                    title="Fiverr Global Orders">
+                    title="Fiverr Global Orders" data-i18n-title="footer.fiverr">
                     <iconify-icon icon="simple-icons:fiverr" class="text-sm"></iconify-icon>
                     <span class="hidden md:inline">Fiverr</span>
                 </a>
@@ -156,7 +155,7 @@
                     target="_blank"
                     class="hover:text-white transition-colors flex items-center space-x-1 font-semibold text-brand-100">
                     <iconify-icon icon="simple-icons:whatsapp" class="text-sm"></iconify-icon>
-                    <span class="hidden sm:inline">WhatsApp: 0851-6817-4679</span>
+                    <span data-i18n="topbar.wa_consult" class="hidden sm:inline">WhatsApp: 0851-6817-4679</span>
                 </a>
             </div>
         </div>
@@ -176,23 +175,23 @@
                 </a>
 
                 <nav id="nav-desktop-menu" class="hidden md:flex items-center space-x-1" aria-label="Navigasi Utama">
-                    <a href="../index.html" data-nav="home"
+                    <a href="../index.html" data-nav="home" data-i18n="nav.home"
                         class="nav-link px-3.5 py-2 text-sm font-semibold text-zinc-600 hover:text-brand-600 transition-colors">
                         Home
                     </a>
                     <a href="portofolio.html" data-nav="portofolio"
                         class="nav-link px-3.5 py-2 text-sm font-semibold flex items-center space-x-1.5 text-zinc-600 hover:text-brand-600 transition-colors">
-                        <span>Portofolio</span>
+                        <span data-i18n="nav.portfolio">Portofolio</span>
                     </a>
                     <a href="marketplace.html" data-nav="marketplace"
                         class="nav-link is-active px-3.5 py-2 text-sm font-bold text-brand-600 flex items-center space-x-1.5 transition-colors">
-                        <span>Jasa Desain</span>
+                        <span data-i18n="nav.services">Jasa Desain</span>
                     </a>
                     <a href="../index.html#langkah-pemesanan" data-nav="cara-pemesanan"
                         class="nav-link px-3.5 py-2 text-sm font-semibold flex items-center space-x-1.5 text-zinc-600 hover:text-brand-600 transition-colors">
-                        <span>Cara Pemesanan</span>
+                        <span data-i18n="nav.how_to_order">Cara Pemesanan</span>
                     </a>
-                    <a href="about.html" data-nav="about"
+                    <a href="about.html" data-nav="about" data-i18n="nav.about"
                         class="nav-link px-3.5 py-2 text-sm font-semibold text-zinc-600 hover:text-brand-600 transition-colors">
                         Tentang &amp; Kontak
                     </a>
@@ -200,7 +199,7 @@
 
                 <div class="flex items-center space-x-2 sm:space-x-3">
                     <div class="notranslate inline-flex items-center p-1 rounded-xl bg-zinc-100/90 border border-zinc-200/90 shadow-2xs"
-                        id="desktop-lang-switcher" aria-label="Pilih Bahasa">
+                        id="desktop-lang-switcher" aria-label="Pilih Bahasa" data-i18n-aria-label="aria.select_language">
                         <button type="button" onclick="window.changeSiteLanguage('id')" data-lang-pill="id"
                             class="lang-pill-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all duration-200 cursor-pointer select-none"
                             title="ID - Bahasa Indonesia">
@@ -215,7 +214,7 @@
 
                     <button id="mobile-menu-btn" type="button"
                         class="md:hidden p-2.5 rounded-xl text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 focus:outline-none transition-colors"
-                        aria-label="Toggle navigation">
+                        aria-label="Toggle navigation" data-i18n-aria-label="aria.toggle_nav">
                         <iconify-icon id="mobile-menu-icon" icon="lucide:menu" class="text-2xl"></iconify-icon>
                     </button>
                 </div>
@@ -224,23 +223,23 @@
 
         <div id="mobile-menu"
             class="hidden md:hidden border-t border-zinc-100 bg-white px-4 pt-3 pb-6 space-y-2 shadow-lg transition-colors">
-            <a href="../index.html"
+            <a href="../index.html" data-i18n="nav.home"
                 class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-semibold text-zinc-700 hover:bg-zinc-50">
                 Home
             </a>
-            <a href="portofolio.html"
+            <a href="portofolio.html" data-i18n="nav.portfolio_gallery"
                 class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-semibold text-zinc-700 hover:bg-zinc-50">
                 Galeri Portofolio
             </a>
-            <a href="marketplace.html"
+            <a href="marketplace.html" data-i18n="nav.marketplace_services"
                 class="mobile-nav-link is-active block px-4 py-2.5 rounded-xl text-sm font-bold bg-brand-50 text-brand-600">
                 Marketplace Jasa Desain
             </a>
-            <a href="../index.html#langkah-pemesanan"
+            <a href="../index.html#langkah-pemesanan" data-i18n="nav.how_to_order"
                 class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-semibold text-zinc-700 hover:bg-zinc-50">
                 Cara Pemesanan
             </a>
-            <a href="about.html"
+            <a href="about.html" data-i18n="nav.about"
                 class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-semibold text-zinc-700 hover:bg-zinc-50">
                 Tentang &amp; Kontak
             </a>
@@ -250,7 +249,7 @@
                     <span
                         class="text-[11px] font-bold text-zinc-500 uppercase tracking-wider flex items-center space-x-1.5">
                         <iconify-icon icon="lucide:languages" class="text-base text-brand-600"></iconify-icon>
-                        <span>Bahasa</span>
+                        <span data-i18n="nav.language">Bahasa</span>
                     </span>
                     <span id="mobile-current-lang-tag"
                         class="text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-brand-50 text-brand-700 border border-brand-200/60">
@@ -276,9 +275,9 @@
         <div class="bg-zinc-50 py-5 border-b border-zinc-200/80 overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <nav data-aos="fade-down" class="flex text-xs space-x-2 text-zinc-500">
-                    <a href="../index.html" class="hover:text-brand-600 transition-colors">Home</a>
+                    <a href="../index.html" data-i18n="nav.home" class="hover:text-brand-600 transition-colors">Home</a>
                     <span class="text-zinc-300">/</span>
-                    <a href="marketplace.html" class="hover:text-brand-600 transition-colors">Marketplace</a>
+                    <a href="marketplace.html" data-i18n="nav.marketplace" class="hover:text-brand-600 transition-colors">Marketplace</a>
                     <span class="text-zinc-300">/</span>
                     <a id="breadcrumbCategory" href="marketplace.html"
                         class="hover:text-brand-600 transition-colors">Kategori</a>
@@ -300,13 +299,13 @@
                             id="productSliderContainer">
                             <!-- Main Image View -->
                             <div class="relative bg-zinc-200 skeleton-loader rounded-xl aspect-[3/4] max-h-[640px] w-full overflow-hidden flex items-center justify-center group cursor-pointer border border-zinc-200/60"
-                                onclick="openProductLightbox()" title="Klik untuk memperbesar tampilan desain">
+                                onclick="openProductLightbox()" title="Klik untuk memperbesar tampilan desain" data-i18n-title="product_detail.zoom_hint">
                                 <img id="main-product-image" src="" alt="Product Image"
                                     class="w-full h-full object-cover transition-all duration-500 ease-in-out">
 
                                 <!-- Top Badges -->
                                 <div class="absolute top-3 left-3 z-10 flex items-center space-x-2">
-                                    <span id="productCategoryBadge"
+                                    <span id="productCategoryBadge" data-i18n="common.design"
                                         class="px-3 py-1 rounded-lg bg-brand-gradient text-white text-xs font-bold uppercase tracking-wider shadow-md">
                                         Desain
                                     </span>
@@ -315,7 +314,7 @@
                                 <div class="absolute top-3 right-3 z-10 flex items-center space-x-2">
                                     <button type="button" onclick="event.stopPropagation(); openProductLightbox();"
                                         class="p-2 rounded-lg bg-white/90 hover:bg-white text-zinc-800 backdrop-blur-md border border-zinc-200/80 transition-colors shadow-md"
-                                        title="Perbesar Tampilan">
+                                        title="Perbesar Tampilan" data-i18n-title="product_detail.enlarge_view">
                                         <iconify-icon icon="lucide:maximize-2" class="text-sm"></iconify-icon>
                                     </button>
                                 </div>
@@ -342,7 +341,7 @@
                                     <span
                                         class="text-emerald-600 text-[11px] font-bold bg-white/90 px-2.5 py-1 rounded-lg backdrop-blur-sm border border-zinc-200/80 shadow-sm flex items-center space-x-1">
                                         <iconify-icon icon="lucide:sparkles" class="text-xs"></iconify-icon>
-                                        <span>High-Res Master</span>
+                                        <span data-i18n="product_detail.master_high_res">High-Res Master</span>
                                     </span>
                                 </div>
                             </div>
@@ -350,7 +349,7 @@
                             <!-- Gallery Thumbnails Strip & Dot Indicators -->
                             <div id="productThumbnailsWrapper" class="space-y-2 pt-1 hidden">
                                 <div class="flex items-center justify-between">
-                                    <p class="text-[11px] font-bold uppercase tracking-wider text-zinc-400">
+                                    <p data-i18n="product_detail.preview_variations" class="text-[11px] font-bold uppercase tracking-wider text-zinc-400">
                                         Pratinjau Variasi & Karya (Auto Slide)
                                     </p>
                                     <div class="flex items-center space-x-1" id="sliderDotsContainer"></div>
@@ -366,13 +365,13 @@
                                 class="w-full p-5 sm:p-6 flex items-center justify-between text-left hover:bg-zinc-50/80 transition-colors focus:outline-none">
                                 <div class="flex items-center space-x-2.5">
                                     <span class="w-2.5 h-2.5 rounded-full bg-brand-600"></span>
-                                    <h3
+                                    <h3 data-i18n="product_detail.scope_desc"
                                         class="text-xs sm:text-sm font-bold uppercase tracking-wider text-zinc-800 font-heading">
                                         Deskripsi & Ruang Lingkup Karya
                                     </h3>
                                 </div>
                                 <div class="flex items-center space-x-2">
-                                    <span id="descToggleStatus"
+                                    <span id="descToggleStatus" data-i18n="product_detail.collapse"
                                         class="text-[11px] font-semibold text-zinc-400 hidden sm:inline-block">Tutup</span>
                                     <div
                                         class="w-8 h-8 rounded-xl bg-zinc-100 flex items-center justify-center text-zinc-600 hover:bg-zinc-200 transition-colors">
@@ -394,7 +393,7 @@
                         <div
                             class="bg-zinc-50 rounded-2xl p-6 sm:p-8 border border-zinc-200 space-y-6 sticky top-28 shadow-sm">
                             <div>
-                                <span class="text-[10px] font-bold uppercase tracking-wider text-brand-600">Pemesanan
+                                <span data-i18n="product_detail.direct_order" class="text-[10px] font-bold uppercase tracking-wider text-brand-600">Pemesanan
                                     Langsung</span>
                                 <h1 id="productTitle"
                                     class="text-xl sm:text-2xl font-bold text-zinc-900 mt-1 font-heading"></h1>
@@ -418,10 +417,10 @@
                                 <div class="flex items-center justify-between text-zinc-700">
                                     <div class="flex items-center space-x-1.5 text-brand-700">
                                         <iconify-icon icon="lucide:monitor" class="text-xs"></iconify-icon>
-                                        <span class="text-xs font-bold uppercase tracking-wider">Bisa Pilih
+                                        <span data-i18n="product_detail.choose_software" class="text-xs font-bold uppercase tracking-wider">Bisa Pilih
                                             Software</span>
                                     </div>
-                                    <span id="productSoftwareCount"
+                                    <span id="productSoftwareCount" data-i18n="product_detail.software_option"
                                         class="text-[10px] font-semibold text-zinc-400">Pilihan</span>
                                 </div>
                                 <div id="productSoftwareList" class="flex flex-wrap gap-2 pt-0.5"></div>
@@ -430,23 +429,23 @@
                             <!-- Key Specifications -->
                             <div class="space-y-2 text-xs text-zinc-600">
                                 <div class="flex items-center justify-between py-1.5 border-b border-zinc-200/60">
-                                    <span class="text-zinc-400">Kategori</span>
+                                    <span data-i18n="product_detail.spec_category" class="text-zinc-400">Kategori</span>
                                     <span id="specCategory" class="font-semibold text-zinc-800">-</span>
                                 </div>
                                 <div class="flex items-center justify-between py-1.5 border-b border-zinc-200/60">
-                                    <span class="text-zinc-400">Estimasi Pengerjaan</span>
+                                    <span data-i18n="product_detail.spec_estimation" class="text-zinc-400">Estimasi Pengerjaan</span>
                                     <span class="font-semibold text-brand-700 flex items-center space-x-1">
                                         <iconify-icon icon="lucide:clock" class="text-xs text-brand-600"></iconify-icon>
-                                        <span id="specEstimasi">1-2 Hari</span>
+                                        <span id="specEstimasi" data-i18n="product_detail.spec_days">1-2 Hari</span>
                                     </span>
                                 </div>
                                 <div class="flex items-center justify-between py-1.5 border-b border-zinc-200/60">
-                                    <span class="text-zinc-400">Status Layanan</span>
-                                    <span class="font-semibold text-emerald-600">Tersedia & Siap Order</span>
+                                    <span data-i18n="product_detail.spec_status" class="text-zinc-400">Status Layanan</span>
+                                    <span data-i18n="product_detail.spec_status_available" class="font-semibold text-emerald-600">Tersedia & Siap Order</span>
                                 </div>
                                 <div class="flex items-center justify-between py-1.5">
-                                    <span class="text-zinc-400">Format Output</span>
-                                    <span class="font-semibold text-zinc-800">Disesuaikan / SVG / PDF / PNG 300
+                                    <span data-i18n="product_detail.spec_format" class="text-zinc-400">Format Output</span>
+                                    <span data-i18n="product_detail.spec_format_val" class="font-semibold text-zinc-800">Disesuaikan / SVG / PDF / PNG 300
                                         DPI</span>
                                 </div>
                             </div>
@@ -456,7 +455,7 @@
                                 <a id="productWaBtn" href="#" target="_blank"
                                     class="w-full inline-flex items-center justify-center space-x-2 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold uppercase tracking-wider shadow-md shadow-brand-700/20 transition-all">
                                     <iconify-icon icon="simple-icons:whatsapp" class="text-base"></iconify-icon>
-                                    <span>Pesan Sekarang via WhatsApp</span>
+                                    <span data-i18n="product_detail.order_whatsapp">Pesan Sekarang via WhatsApp</span>
                                 </a>
 
                                 <div class="grid grid-cols-2 gap-2 pt-1">
@@ -464,17 +463,17 @@
                                         class="py-2.5 px-3 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-900 text-xs font-bold text-center flex items-center justify-center space-x-1.5 transition-colors">
                                         <iconify-icon icon="simple-icons:shopee"
                                             class="text-amber-600 text-xs"></iconify-icon>
-                                        <span>Toko Shopee</span>
+                                        <span data-i18n="product_detail.shopee_store">Toko Shopee</span>
                                     </a>
                                     <a href="https://www.fiverr.com/premiumdz" target="_blank"
                                         class="py-2.5 px-3 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-900 text-xs font-bold text-center flex items-center justify-center space-x-1.5 transition-colors">
                                         <iconify-icon icon="simple-icons:fiverr"
                                             class="text-emerald-700 text-sm"></iconify-icon>
-                                        <span>Fiverr Gig</span>
+                                        <span data-i18n="product_detail.fiverr_gig">Fiverr Gig</span>
                                     </a>
                                 </div>
 
-                                <p class="text-[10px] text-center text-zinc-400 mt-1.5">
+                                <p data-i18n="product_detail.safe_payment" class="text-[10px] text-center text-zinc-400 mt-1.5">
                                     Pembayaran aman via WhatsApp, Shopee, atau Fiverr.
                                 </p>
                             </div>
@@ -488,9 +487,9 @@
                     <div
                         class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-zinc-100 pb-4">
                         <div>
-                            <span class="text-[10px] font-bold uppercase tracking-wider text-brand-600">Rekomendasi
+                            <span data-i18n="product_detail.rec_badge" class="text-[10px] font-bold uppercase tracking-wider text-brand-600">Rekomendasi
                                 Terkait</span>
-                            <h3 id="relatedSectionTitle"
+                            <h3 id="relatedSectionTitle" data-i18n="product_detail.rec_title"
                                 class="text-sm sm:text-base font-bold text-zinc-900 font-heading">
                                 Karya & Jasa Serupa di Kategori Ini
                             </h3>
@@ -502,31 +501,31 @@
                                 <button type="button" id="tabRelevantBtn" onclick="switchRelatedTab('relevant')"
                                     class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 bg-brand-600 text-white shadow-sm">
                                     <iconify-icon icon="lucide:sparkles" class="text-xs"></iconify-icon>
-                                    <span>Paling Relevan</span>
+                                    <span data-i18n="product_detail.tab_relevant">Paling Relevan</span>
                                 </button>
                                 <button type="button" id="tabLatestBtn" onclick="switchRelatedTab('latest')"
                                     class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 text-zinc-600 hover:text-zinc-900">
                                     <iconify-icon icon="lucide:clock" class="text-xs"></iconify-icon>
-                                    <span>Terbaru</span>
+                                    <span data-i18n="product_detail.tab_latest">Terbaru</span>
                                 </button>
                             </div>
 
                             <div class="flex items-center space-x-1.5">
                                 <button type="button" onclick="scrollRelated('left')"
                                     class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-zinc-100 hover:bg-brand-600 hover:text-white text-zinc-600 flex items-center justify-center transition-all text-sm shadow-sm"
-                                    title="Geser Kiri">
+                                    title="Geser Kiri" data-i18n-title="product_detail.slide_left">
                                     <iconify-icon icon="lucide:chevron-left"></iconify-icon>
                                 </button>
                                 <button type="button" onclick="scrollRelated('right')"
                                     class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-zinc-100 hover:bg-brand-600 hover:text-white text-zinc-600 flex items-center justify-center transition-all text-sm shadow-sm"
-                                    title="Geser Kanan">
+                                    title="Geser Kanan" data-i18n-title="product_detail.slide_right">
                                     <iconify-icon icon="lucide:chevron-right"></iconify-icon>
                                 </button>
                             </div>
 
                             <a id="relatedViewAllLink" href="marketplace.html"
                                 class="text-xs font-bold text-brand-600 hover:text-brand-800 ml-1 flex items-center space-x-0.5">
-                                <span>Lihat Semua</span>
+                                <span data-i18n="common.view_all">Lihat Semua</span>
                                 <iconify-icon icon="lucide:chevron-right" class="text-xs"></iconify-icon>
                             </a>
                         </div>
@@ -553,7 +552,7 @@
         <!-- Close Button -->
         <button type="button" onclick="closeProductLightbox()"
             class="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-all cursor-pointer shadow-lg backdrop-blur-sm focus:outline-none"
-            title="Tutup">
+            title="Tutup" data-i18n-title="common.close">
             <iconify-icon icon="lucide:x" class="text-2xl"></iconify-icon>
         </button>
 
@@ -571,51 +570,51 @@
             <div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="lg:col-span-2 space-y-4">
                     <img src="../assets/other/logo_white.png" alt="Logo Footer" class="h-10 w-auto object-contain">
-                    <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-sm">
+                    <p data-i18n="footer.desc" class="text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-sm">
                         Studio desain grafis &amp; marketplace penyedia identitas visual profesional, logo, kemasan,
                         banner, dan UI/UX modern dengan standar tinggi.
                     </p>
                     <div class="flex items-center space-x-3 pt-2">
                         <a href="https://www.instagram.com/premiumdsz/" target="_blank"
                             class="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-brand-600 transition-colors"
-                            title="Instagram @premiumdsz">
+                            title="Instagram @premiumdsz" data-i18n-title="footer.instagram">
                             <iconify-icon icon="simple-icons:instagram" class="text-sm"></iconify-icon>
                         </a>
                         <a href="https://www.tiktok.com/@premium.designz" target="_blank"
                             class="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-brand-600 transition-colors"
-                            title="TikTok @premium.designz">
+                            title="TikTok @premium.designz" data-i18n-title="footer.tiktok">
                             <iconify-icon icon="simple-icons:tiktok" class="text-sm"></iconify-icon>
                         </a>
                         <a href="https://shopee.co.id/premium_dz" target="_blank"
                             class="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-amber-400 hover:bg-zinc-800 transition-colors"
-                            title="Shopee Official Store">
+                            title="Shopee Official Store" data-i18n-title="footer.shopee">
                             <iconify-icon icon="simple-icons:shopee" class="text-sm"></iconify-icon>
                         </a>
                         <a href="https://www.fiverr.com/premiumdz" target="_blank"
                             class="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-emerald-400 hover:bg-zinc-800 transition-colors"
-                            title="Fiverr Global Orders">
+                            title="Fiverr Global Orders" data-i18n-title="footer.fiverr">
                             <iconify-icon icon="simple-icons:fiverr" class="text-sm"></iconify-icon>
                         </a>
                     </div>
                 </div>
 
                 <div>
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Navigasi Cepat</h4>
+                    <h4 data-i18n="footer.quick_nav" class="text-xs font-bold uppercase tracking-wider text-white mb-4">Navigasi Cepat</h4>
                     <ul class="space-y-2.5 text-xs">
-                        <li><a href="../index.html" class="hover:text-white transition-colors">Home Utama</a></li>
-                        <li><a href="portofolio.html" class="hover:text-white transition-colors">Katalog
+                        <li><a href="../index.html" data-i18n="nav.home" class="hover:text-white transition-colors">Home Utama</a></li>
+                        <li><a href="portofolio.html" data-i18n="nav.portfolio" class="hover:text-white transition-colors">Katalog
                                 Portofolio</a></li>
-                        <li><a href="marketplace.html" class="hover:text-white transition-colors">Marketplace
+                        <li><a href="marketplace.html" data-i18n="nav.marketplace" class="hover:text-white transition-colors">Marketplace
                                 Desain</a></li>
-                        <li><a href="../index.html#langkah-pemesanan" class="hover:text-white transition-colors">Cara
+                        <li><a href="../index.html#langkah-pemesanan" data-i18n="nav.how_to_order" class="hover:text-white transition-colors">Cara
                                 Pemesanan</a></li>
-                        <li><a href="about.html" class="hover:text-white transition-colors">Tentang &amp;
+                        <li><a href="about.html" data-i18n="nav.about" class="hover:text-white transition-colors">Tentang &amp;
                                 Kontak</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Kontak Studio</h4>
+                    <h4 data-i18n="footer.contact_studio" class="text-xs font-bold uppercase tracking-wider text-white mb-4">Kontak Studio</h4>
                     <div class="space-y-3 text-xs">
                         <p class="flex items-center space-x-2">
                             <iconify-icon icon="simple-icons:whatsapp"
@@ -628,7 +627,7 @@
                         </p>
                         <p class="flex items-center space-x-2">
                             <iconify-icon icon="lucide:clock" class="text-brand-400 text-sm shrink-0"></iconify-icon>
-                            <span>09:00 - 23:00 WIB</span>
+                            <span data-i18n="footer.hours">09:00 - 23:00 WIB</span>
                         </p>
                     </div>
                 </div>
@@ -636,21 +635,85 @@
 
             <div
                 class="pt-8 border-t border-zinc-900 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
-                <p>&copy; 2026 Premium Design Studio. All rights reserved.</p>
+                <p data-i18n="footer.rights">&copy; 2026 Premium Design Studio. All rights reserved.</p>
 
             </div>
         </div>
     </footer>
 
-
-
     <!-- SCROLL TO TOP BUTTON -->
-    <button id="scrollToTopBtn" type="button" onclick="scrollToTop()" aria-label="Kembali ke Atas"
+    <button id="scrollToTopBtn" type="button" onclick="scrollToTop()" aria-label="Kembali ke Atas" data-i18n-aria-label="aria.scroll_top"
         class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-2xl bg-brand-600 hover:bg-brand-500 text-white shadow-xl shadow-brand-700/30 border border-white/20 flex items-center justify-center transition-all duration-300 opacity-0 pointer-events-none translate-y-6 hover:scale-110 active:scale-95 group"
-        title="Scroll ke Atas">
+        title="Scroll ke Atas" data-i18n-title="aria.scroll_top">
         <iconify-icon icon="lucide:arrow-up"
             class="text-xl group-hover:-translate-y-0.5 transition-transform duration-200"></iconify-icon>
     </button>
+
+    <!-- ASSET PROTECTION WATERMARK & MODAL -->
+    <div class="fixed inset-0 z-[10] pointer-events-none select-none opacity-[0.025] overflow-hidden flex flex-wrap gap-16 p-6 items-center justify-around"
+        aria-hidden="true">
+        <div
+            class="transform -rotate-12 text-zinc-900 font-extrabold text-xs tracking-widest uppercase whitespace-nowrap">
+            PREMIUM DESIGNZ &bull; PROTECTED CONTENT</div>
+        <div
+            class="transform -rotate-12 text-zinc-900 font-extrabold text-xs tracking-widest uppercase whitespace-nowrap">
+            PREMIUM DESIGNZ &bull; PROTECTED CONTENT</div>
+        <div
+            class="transform -rotate-12 text-zinc-900 font-extrabold text-xs tracking-widest uppercase whitespace-nowrap">
+            PREMIUM DESIGNZ &bull; PROTECTED CONTENT</div>
+        <div
+            class="transform -rotate-12 text-zinc-900 font-extrabold text-xs tracking-widest uppercase whitespace-nowrap">
+            PREMIUM DESIGNZ &bull; PROTECTED CONTENT</div>
+    </div>
+
+    <!-- DevTools Warning Modal -->
+    <div id="asset-protection-modal"
+        class="fixed inset-0 z-[9999] hidden bg-zinc-950/80 items-center justify-center p-4 transition-all duration-300 opacity-0 pointer-events-none"
+        onclick="closeAssetWarning()">
+        <div class="relative max-w-md w-full bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-zinc-200 text-center space-y-4 transform scale-95 transition-all duration-300"
+            onclick="event.stopPropagation()">
+            <button type="button" onclick="closeAssetWarning()" aria-label="Tutup Peringatan" data-i18n-aria-label="common.close"
+                class="absolute top-4 right-4 w-9 h-9 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-500 hover:text-zinc-800 flex items-center justify-center text-lg transition-all active:scale-90">
+                <iconify-icon icon="lucide:x"></iconify-icon>
+            </button>
+            <div
+                class="w-16 h-16 rounded-2xl bg-rose-50 text-rose-600 border border-rose-200 flex items-center justify-center mx-auto text-3xl shadow-inner">
+                <iconify-icon icon="lucide:shield-ban"></iconify-icon>
+            </div>
+            <div class="space-y-2">
+                <h3
+                    class="text-base sm:text-lg font-bold font-heading text-zinc-900 flex items-center justify-center space-x-2">
+                    <iconify-icon icon="lucide:shield-alert" class="text-rose-600 text-lg"></iconify-icon>
+                    <span data-i18n="security.modal_title">Perlindungan Hak Cipta &amp; Aset</span>
+                </h3>
+                <p data-i18n-html="security.modal_desc" class="text-xs sm:text-sm text-zinc-600 leading-relaxed">
+                    Seluruh karya desain, gambar, dan aset visual pada platform <strong>Premium Designz</strong>
+                    dilindungi oleh hak cipta.<br>
+                    Dilarang menyalin, mengunduh tanpa lisensi, atau memodifikasi aset ini.
+                </p>
+            </div>
+            <div class="pt-2">
+                <button type="button" onclick="closeAssetWarning()" data-i18n="security.modal_close"
+                    class="w-full py-3 px-4 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold transition-all shadow-md shadow-brand-600/25 active:scale-95">
+                    Saya Mengerti &amp; Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="image-protection-toast"
+        class="fixed bottom-20 left-1/2 -translate-x-1/2 z-[9998] hidden bg-zinc-900/95 text-white px-4 py-2.5 sm:px-5 sm:py-3 rounded-2xl text-xs font-semibold shadow-2xl border border-white/15 items-center space-x-3 transition-all duration-300 opacity-0 pointer-events-none">
+        <div
+            class="w-7 h-7 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center text-sm flex-shrink-0">
+            <iconify-icon id="toast-icon" icon="lucide:shield-alert"></iconify-icon>
+        </div>
+        <span id="toast-text" data-i18n="security.toast_default" class="leading-tight">Aksi ini dinonaktifkan demi perlindungan hak cipta</span>
+        <button type="button" onclick="closeProtectionToast()" aria-label="Tutup Notifikasi" data-i18n-aria-label="common.close"
+            class="ml-2 w-6 h-6 rounded-lg bg-white/10 hover:bg-white/20 text-zinc-300 hover:text-white flex items-center justify-center text-xs transition-all active:scale-90 flex-shrink-0">
+            <iconify-icon icon="lucide:x"></iconify-icon>
+        </button>
+    </div>
 
     <!-- SCRIPTS (Deferred) -->
     <script src="../assets/js/data.js" defer></script>

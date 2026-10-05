@@ -4,13 +4,14 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Inisialisasi AOS
+    // 1. Inisialisasi AOS (ringan, smooth, once: true untuk performa maksimal)
     if (window.AOS) {
         AOS.init({
-            duration: 700,
+            duration: 650,
             once: true,
-            offset: 60,
-            easing: 'ease-out-cubic'
+            offset: 40,
+            easing: 'ease-out-cubic',
+            disableMutationObserver: false
         });
     }
 
@@ -35,7 +36,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 window.addEventListener('load', function() {
     if (window.AOS) {
-        AOS.refresh();
+        if (!window.AOS.initCalled) {
+            AOS.init({
+                duration: 650,
+                once: true,
+                offset: 40,
+                easing: 'ease-out-cubic'
+            });
+            window.AOS.initCalled = true;
+        } else {
+            AOS.refresh();
+        }
     }
     initImageSkeletons();
 });

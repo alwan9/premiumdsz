@@ -1917,6 +1917,10 @@ function getProductById(id) {
     const cat = getCategoryById(p.Id_kategori);
     const srv = getServiceById(p.Id_layanan);
     const softs = (p.software_ids || []).map(sid => SOFTWARE_TOOLS.find(s => s.Id_software == sid)).filter(Boolean);
+    const currentLang = (typeof window !== 'undefined' && window.getSavedLanguage) ? window.getSavedLanguage() : 'id';
+    const waPrefix = currentLang === 'en' 
+        ? "Hello Premium Design, I would like to order design service for: " 
+        : "Halo Premium Design, saya ingin memesan jasa/produk desain: ";
 
     return {
         ...p,
@@ -1925,7 +1929,7 @@ function getProductById(id) {
         kategori: cat,
         layanan: srv,
         software: softs,
-        whatsapp_link: "https://api.whatsapp.com/send/?phone=" + (p.No_wa || "6285168174679") + "&text=" + encodeURIComponent("Halo Premium Design, saya ingin memesan jasa/produk desain: " + p.Nama_produk)
+        whatsapp_link: "https://api.whatsapp.com/send/?phone=" + (p.No_wa || "6285168174679") + "&text=" + encodeURIComponent(waPrefix + p.Nama_produk)
     };
 }
 
@@ -1944,3 +1948,4 @@ function getLatestProducts(currentId, limit = 12) {
     const diff = all.filter(p => p.Id_produk != currentId);
     return diff.slice(0, limit);
 }
+

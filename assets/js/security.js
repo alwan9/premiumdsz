@@ -228,7 +228,8 @@
             // Check for immediate script tag injection
             if (/<script|onerror=|onload=|javascript:/i.test(target.value)) {
                 target.value = SecurityUtils.sanitizeInput(target.value);
-                window.showProtectionToast("Karakter skrip berbahaya dihapus secara otomatis.", "lucide:shield-alert");
+                const msg = window.t ? window.t("security.toast_xss") : "Karakter skrip berbahaya dihapus secara otomatis.";
+                window.showProtectionToast(msg, "lucide:shield-alert");
             }
         }
     }, { passive: true });
@@ -239,7 +240,7 @@
     const originalTitle = document.title;
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
-            document.title = "Jangan lupa pesan desainmu! - Premium Designz";
+            document.title = window.t ? window.t("security.tab_inactive") : "Jangan lupa pesan desainmu! - Premium Designz";
         } else {
             document.title = originalTitle;
         }
@@ -284,7 +285,8 @@
     };
 
     window.showImageToast = function() {
-        window.showProtectionToast("Aset dan karya visual dilindungi hak cipta", "lucide:shield-ban");
+        const msg = window.t ? window.t("security.toast_image") : "Aset dan karya visual dilindungi hak cipta";
+        window.showProtectionToast(msg, "lucide:shield-ban");
     };
 
     // =========================================================================
@@ -292,14 +294,16 @@
     // =========================================================================
     function overwriteClipboard() {
         if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText("Tangkapan layar dinonaktifkan. Konten dilindungi hak cipta Premium Designz.").catch(() => {});
+            const clipMsg = window.t ? window.t("security.clipboard_warn") : "Konten dilindungi hak cipta Premium Designz.";
+            navigator.clipboard.writeText(clipMsg).catch(() => {});
         }
     }
 
     window.addEventListener('keyup', function(e) {
         if (e.key === 'PrintScreen' || e.keyCode === 44 || e.code === 'PrintScreen') {
             overwriteClipboard();
-            window.showProtectionToast("Tangkapan layar (Screenshot) dinonaktifkan", "lucide:camera-off");
+            const msg = window.t ? window.t("security.toast_screenshot") : "Tangkapan layar (Screenshot) dinonaktifkan";
+            window.showProtectionToast(msg, "lucide:camera-off");
         }
     }, { capture: true });
 
@@ -307,27 +311,31 @@
         // PrintScreen key
         if (e.key === 'PrintScreen' || e.keyCode === 44 || e.code === 'PrintScreen') {
             overwriteClipboard();
-            window.showProtectionToast("Tangkapan layar (Screenshot) dinonaktifkan", "lucide:camera-off");
+            const msg = window.t ? window.t("security.toast_screenshot") : "Tangkapan layar (Screenshot) dinonaktifkan";
+            window.showProtectionToast(msg, "lucide:camera-off");
         }
 
         // Print Shortcut: Ctrl+P / Cmd+P
         if ((e.ctrlKey || e.metaKey) && (e.key === 'p' || e.key === 'P')) {
             e.preventDefault();
-            window.showProtectionToast("Pencetakan dokumen dan halaman dinonaktifkan", "lucide:printer");
+            const msg = window.t ? window.t("security.toast_print") : "Pencetakan dokumen dan halaman dinonaktifkan";
+            window.showProtectionToast(msg, "lucide:printer");
             return false;
         }
 
         // Save Page Shortcut: Ctrl+S / Cmd+S
         if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
             e.preventDefault();
-            window.showProtectionToast("Penyimpanan halaman dinonaktifkan", "lucide:save");
+            const msg = window.t ? window.t("security.toast_save") : "Penyimpanan halaman dinonaktifkan";
+            window.showProtectionToast(msg, "lucide:save");
             return false;
         }
 
         // Snipping / Web Capture: Ctrl+Shift+S / Cmd+Shift+S
         if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 's' || e.key === 'S')) {
             e.preventDefault();
-            window.showProtectionToast("Tangkapan layar dinonaktifkan", "lucide:camera-off");
+            const msg = window.t ? window.t("security.toast_screenshot") : "Tangkapan layar dinonaktifkan";
+            window.showProtectionToast(msg, "lucide:camera-off");
             return false;
         }
 
@@ -346,7 +354,8 @@
         const targetTag = e.target ? e.target.tagName : '';
         if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'C')) {
             if (targetTag !== 'INPUT' && targetTag !== 'TEXTAREA') {
-                window.showProtectionToast("Penyalinan teks dibatasi hak cipta", "lucide:copy");
+                const msg = window.t ? window.t("security.toast_copy") : "Penyalinan teks dibatasi hak cipta";
+                window.showProtectionToast(msg, "lucide:copy");
             }
         }
     }, { capture: true });
@@ -361,7 +370,8 @@
             if (target.tagName === 'IMG' || target.closest('img') || target.classList.contains('protected-asset')) {
                 window.showImageToast();
             } else {
-                window.showProtectionToast("Klik kanan dinonaktifkan demi perlindungan aset", "lucide:lock");
+                const msg = window.t ? window.t("security.toast_rightclick") : "Klik kanan dinonaktifkan demi perlindungan aset";
+                window.showProtectionToast(msg, "lucide:lock");
             }
             return false;
         }
@@ -384,10 +394,12 @@
             const selection = window.getSelection().toString();
             if (selection.length > 0) {
                 e.preventDefault();
+                const clipMsg = window.t ? window.t("security.clipboard_warn") : "Konten dilindungi hak cipta Premium Designz.";
                 if (e.clipboardData) {
-                    e.clipboardData.setData('text/plain', "Konten dilindungi hak cipta Premium Designz.");
+                    e.clipboardData.setData('text/plain', clipMsg);
                 }
-                window.showProtectionToast("Penyalinan teks dilindungi hak cipta", "lucide:shield-alert");
+                const msg = window.t ? window.t("security.toast_copy") : "Penyalinan teks dilindungi hak cipta";
+                window.showProtectionToast(msg, "lucide:shield-alert");
             }
         }
     });

@@ -139,36 +139,35 @@
     <div class="bg-brand-gradient text-white text-xs py-2 px-4 border-b border-brand-700/40">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <div class="flex items-center space-x-4">
-                <span class="flex items-center text-white font-medium">
-
+                <span data-i18n="topbar.tagline" class="flex items-center text-white font-medium">
                     Jasa Desain Grafis &amp; Marketplace Resmi
                 </span>
                 <span class="hidden sm:inline text-white/40">|</span>
-                <span class="hidden sm:inline text-brand-100">Pengerjaan Tepat Waktu &amp; File Master Lengkap Siap
+                <span data-i18n="topbar.usp" class="hidden sm:inline text-brand-100">Pengerjaan Tepat Waktu &amp; File Master Lengkap Siap
                     Cetak</span>
             </div>
             <div class="flex items-center space-x-4 text-brand-100">
                 <a href="https://www.instagram.com/premiumdsz/" target="_blank"
                     class="hover:text-pink-300 transition-colors flex items-center space-x-1"
-                    title="Instagram @premiumdsz">
+                    title="Instagram @premiumdsz" data-i18n-title="footer.instagram">
                     <iconify-icon icon="simple-icons:instagram" class="text-xs"></iconify-icon>
                     <span class="hidden md:inline">@premiumdsz</span>
                 </a>
                 <a href="https://www.tiktok.com/@premium.designz" target="_blank"
                     class="hover:text-cyan-300 transition-colors flex items-center space-x-1"
-                    title="TikTok @premium.designz">
+                    title="TikTok @premium.designz" data-i18n-title="footer.tiktok">
                     <iconify-icon icon="simple-icons:tiktok" class="text-xs"></iconify-icon>
                     <span class="hidden md:inline">TikTok</span>
                 </a>
                 <a href="https://shopee.co.id/premium_dz" target="_blank"
                     class="hover:text-amber-300 transition-colors flex items-center space-x-1"
-                    title="Shopee Official Store">
+                    title="Shopee Official Store" data-i18n-title="footer.shopee">
                     <iconify-icon icon="simple-icons:shopee" class="text-xs"></iconify-icon>
                     <span class="hidden md:inline">Shopee</span>
                 </a>
                 <a href="https://www.fiverr.com/premiumdz" target="_blank"
                     class="hover:text-emerald-300 transition-colors flex items-center space-x-1"
-                    title="Fiverr Global Orders">
+                    title="Fiverr Global Orders" data-i18n-title="footer.fiverr">
                     <iconify-icon icon="simple-icons:fiverr" class="text-sm"></iconify-icon>
                     <span class="hidden md:inline">Fiverr</span>
                 </a>
@@ -176,7 +175,7 @@
                     target="_blank"
                     class="hover:text-white transition-colors flex items-center space-x-1 font-semibold text-brand-100">
                     <iconify-icon icon="simple-icons:whatsapp" class="text-sm"></iconify-icon>
-                    <span class="hidden sm:inline">WhatsApp: 0851-6817-4679</span>
+                    <span data-i18n="topbar.wa_consult" class="hidden sm:inline">WhatsApp: 0851-6817-4679</span>
                 </a>
             </div>
         </div>
@@ -196,23 +195,23 @@
                 </a>
 
                 <nav id="nav-desktop-menu" class="hidden md:flex items-center space-x-1" aria-label="Navigasi Utama">
-                    <a href="../index.html" data-nav="home"
+                    <a href="../index.html" data-nav="home" data-i18n="nav.home"
                         class="nav-link px-3.5 py-2 text-sm font-semibold text-zinc-600 hover:text-brand-600 transition-colors">
                         Home
                     </a>
                     <a href="portofolio.html" data-nav="portofolio"
                         class="nav-link px-3.5 py-2 text-sm font-semibold flex items-center space-x-1.5 text-zinc-600 hover:text-brand-600 transition-colors">
-                        <span>Portofolio</span>
+                        <span data-i18n="nav.portfolio">Portofolio</span>
                     </a>
                     <a href="marketplace.html" data-nav="marketplace"
                         class="nav-link is-active px-3.5 py-2 text-sm font-bold text-brand-600 flex items-center space-x-1.5 transition-colors">
-                        <span>Jasa Desain</span>
+                        <span data-i18n="nav.services">Jasa Desain</span>
                     </a>
                     <a href="../index.html#langkah-pemesanan" data-nav="cara-pemesanan"
                         class="nav-link px-3.5 py-2 text-sm font-semibold flex items-center space-x-1.5 text-zinc-600 hover:text-brand-600 transition-colors">
-                        <span>Cara Pemesanan</span>
+                        <span data-i18n="nav.how_to_order">Cara Pemesanan</span>
                     </a>
-                    <a href="about.html" data-nav="about"
+                    <a href="about.html" data-nav="about" data-i18n="nav.about"
                         class="nav-link px-3.5 py-2 text-sm font-semibold text-zinc-600 hover:text-brand-600 transition-colors">
                         Tentang &amp; Kontak
                     </a>
@@ -220,7 +219,7 @@
 
                 <div class="flex items-center space-x-2 sm:space-x-3">
                     <div class="notranslate inline-flex items-center p-1 rounded-xl bg-zinc-100/90 border border-zinc-200/90 shadow-2xs"
-                        id="desktop-lang-switcher" aria-label="Pilih Bahasa">
+                        id="desktop-lang-switcher" aria-label="Pilih Bahasa" data-i18n-aria-label="aria.select_language">
                         <button type="button" onclick="window.changeSiteLanguage('id')" data-lang-pill="id"
                             class="lang-pill-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all duration-200 cursor-pointer select-none"
                             title="ID - Bahasa Indonesia">
@@ -235,7 +234,7 @@
 
                     <button id="mobile-menu-btn" type="button"
                         class="md:hidden p-2.5 rounded-xl text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 focus:outline-none transition-colors"
-                        aria-label="Toggle navigation">
+                        aria-label="Toggle navigation" data-i18n-aria-label="aria.toggle_nav">
                         <iconify-icon id="mobile-menu-icon" icon="lucide:menu" class="text-2xl"></iconify-icon>
                     </button>
                 </div>
@@ -244,23 +243,23 @@
 
         <div id="mobile-menu"
             class="hidden md:hidden border-t border-zinc-100 bg-white px-4 pt-3 pb-6 space-y-2 shadow-lg transition-colors">
-            <a href="../index.html"
+            <a href="../index.html" data-i18n="nav.home"
                 class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-semibold text-zinc-700 hover:bg-zinc-50">
                 Home
             </a>
-            <a href="portofolio.html"
+            <a href="portofolio.html" data-i18n="nav.portfolio_gallery"
                 class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-semibold text-zinc-700 hover:bg-zinc-50">
                 Galeri Portofolio
             </a>
-            <a href="marketplace.html"
+            <a href="marketplace.html" data-i18n="nav.marketplace_services"
                 class="mobile-nav-link is-active block px-4 py-2.5 rounded-xl text-sm font-bold bg-brand-50 text-brand-600">
                 Marketplace Jasa Desain
             </a>
-            <a href="../index.html#langkah-pemesanan"
+            <a href="../index.html#langkah-pemesanan" data-i18n="nav.how_to_order"
                 class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-semibold text-zinc-700 hover:bg-zinc-50">
                 Cara Pemesanan
             </a>
-            <a href="about.html"
+            <a href="about.html" data-i18n="nav.about"
                 class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-semibold text-zinc-700 hover:bg-zinc-50">
                 Tentang &amp; Kontak
             </a>
@@ -270,7 +269,7 @@
                     <span
                         class="text-[11px] font-bold text-zinc-500 uppercase tracking-wider flex items-center space-x-1.5">
                         <iconify-icon icon="lucide:languages" class="text-base text-brand-600"></iconify-icon>
-                        <span>Bahasa</span>
+                        <span data-i18n="nav.language">Bahasa</span>
                     </span>
                     <span id="mobile-current-lang-tag"
                         class="text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-brand-50 text-brand-700 border border-brand-200/60">
@@ -298,11 +297,11 @@
             class="bg-gradient-to-b from-brand-50/60 via-zinc-50/40 to-white py-12 sm:py-16 border-b border-zinc-100 overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div data-aos="fade-down" class="max-w-3xl space-y-2">
-                    <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Katalog Desain &amp;
+                    <span data-i18n="marketplace.badge" class="text-xs font-bold uppercase tracking-wider text-brand-600">Katalog Desain &amp;
                         Jasa</span>
-                    <h1 class="text-2xl sm:text-4xl font-extrabold font-heading text-zinc-900">Marketplace Karya &amp;
+                    <h1 data-i18n="marketplace.title" class="text-2xl sm:text-4xl font-extrabold font-heading text-zinc-900">Marketplace Karya &amp;
                         Layanan Desain</h1>
-                    <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed">
+                    <p data-i18n="marketplace.subtitle" class="text-xs sm:text-sm text-zinc-600 leading-relaxed">
                         Pilih kategori desain yang Anda butuhkan, lihat rincian spesifikasi, dan lakukan pemesanan cepat
                         langsung ke WhatsApp tim desainer kami.
                     </p>
@@ -325,11 +324,12 @@
                             </div>
                             <input type="text" name="q" id="marketplaceSearchInput"
                                 placeholder="Cari nama desain, kebutuhan, atau kata kunci..." autocomplete="off"
+                                data-i18n-placeholder="marketplace.search_placeholder"
                                 class="w-full pl-10 pr-10 py-3 bg-zinc-50/80 border border-zinc-200 rounded-xl text-xs sm:text-sm text-zinc-800 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition-all font-medium">
                             <div class="absolute inset-y-0 right-0 pr-2.5 flex items-center">
                                 <button type="button" id="marketplaceClearBtn" onclick="clearMarketplaceSearch('../')"
                                     class="p-1.5 text-zinc-400 hover:text-zinc-700 rounded-lg hover:bg-zinc-200/70 transition-colors hidden cursor-pointer"
-                                    title="Hapus pencarian">
+                                    title="Hapus pencarian" data-i18n-title="marketplace.clear_search">
                                     <iconify-icon icon="lucide:x" class="text-sm"></iconify-icon>
                                 </button>
                             </div>
@@ -338,16 +338,16 @@
                         <div class="sm:col-span-3 relative">
                             <select name="kategori" id="marketplaceCategorySelect"
                                 class="w-full px-3.5 py-3 bg-zinc-50/80 border border-zinc-200 rounded-xl text-xs sm:text-sm font-semibold text-zinc-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white cursor-pointer transition-all appearance-none pr-8">
-                                <option value="all">Semua Kategori (15)</option>
-                                <option value="1">Banner &amp; Spanduk (3)</option>
-                                <option value="2">Packaging &amp; Kemasan (1)</option>
-                                <option value="3">Logo &amp; Branding (2)</option>
-                                <option value="4">UI/UX &amp; Web (2)</option>
-                                <option value="5">Label &amp; Stiker (1)</option>
-                                <option value="6">Jersey &amp; Apparel (1)</option>
-                                <option value="7">Foto &amp; Redesain AI (2)</option>
-                                <option value="8">Poster &amp; Flyer (1)</option>
-                                <option value="9">Dokumen &amp; PPT (2)</option>
+                                <option value="all" data-i18n="marketplace.cat_all_count">Semua Kategori (15)</option>
+                                <option value="1" data-i18n="marketplace.cat_1_count">Banner &amp; Spanduk (3)</option>
+                                <option value="2" data-i18n="marketplace.cat_2_count">Packaging &amp; Kemasan (1)</option>
+                                <option value="3" data-i18n="marketplace.cat_3_count">Logo &amp; Branding (2)</option>
+                                <option value="4" data-i18n="marketplace.cat_4_count">UI/UX &amp; Web (2)</option>
+                                <option value="5" data-i18n="marketplace.cat_5_count">Label &amp; Stiker (1)</option>
+                                <option value="6" data-i18n="marketplace.cat_6_count">Jersey &amp; Apparel (1)</option>
+                                <option value="7" data-i18n="marketplace.cat_7_count">Foto &amp; Redesain AI (2)</option>
+                                <option value="8" data-i18n="marketplace.cat_8_count">Poster &amp; Flyer (1)</option>
+                                <option value="9" data-i18n="marketplace.cat_9_count">Dokumen &amp; PPT (2)</option>
                             </select>
                             <div
                                 class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-zinc-400">
@@ -358,9 +358,9 @@
                         <div class="sm:col-span-3 relative">
                             <select name="sort" id="marketplaceSortSelect"
                                 class="w-full px-3.5 py-3 bg-zinc-50/80 border border-zinc-200 rounded-xl text-xs sm:text-sm font-semibold text-zinc-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white cursor-pointer transition-all appearance-none pr-8">
-                                <option value="latest">Urutkan: Terbaru</option>
-                                <option value="oldest">Urutkan: Terlama</option>
-                                <option value="stock_high">Urutkan: Stok Terbanyak</option>
+                                <option value="latest" data-i18n="marketplace.sort_latest">Urutkan: Terbaru</option>
+                                <option value="oldest" data-i18n="marketplace.sort_oldest">Urutkan: Terlama</option>
+                                <option value="stock_high" data-i18n="marketplace.sort_stock">Urutkan: Stok Terbanyak</option>
                             </select>
                             <div
                                 class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-zinc-400">
@@ -376,14 +376,14 @@
                     <!-- Sidebar Category List (Desktop) -->
                     <aside data-aos="fade-right" data-aos-delay="100" class="hidden lg:block lg:col-span-3 space-y-6">
                         <div class="bg-white border border-zinc-200 rounded-2xl p-5 space-y-3">
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-zinc-400">Kategori Desain</h3>
+                            <h3 data-i18n="marketplace.sidebar_cat_title" class="text-xs font-bold uppercase tracking-wider text-zinc-400">Kategori Desain</h3>
                             <div id="marketplaceSidebarCategories" class="space-y-1">
                                 <button type="button" onclick="selectMarketplaceCategory('all', '../')"
                                     data-kategori="all"
                                     class="marketplace-sidebar-btn w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer transition-all bg-brand-50 text-brand-700 font-bold">
                                     <span class="flex items-center space-x-2">
                                         <iconify-icon icon="lucide:layout-grid" class="text-xs"></iconify-icon>
-                                        <span>Semua Kategori</span>
+                                        <span data-i18n="cat.all">Semua Kategori</span>
                                     </span>
                                     <span class="text-[10px] text-zinc-400">15</span>
                                 </button>
@@ -391,7 +391,7 @@
                                     class="marketplace-sidebar-btn w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer transition-all text-zinc-600 hover:bg-zinc-50">
                                     <span class="flex items-center space-x-2">
                                         <iconify-icon icon="lucide:flag" class="text-xs"></iconify-icon>
-                                        <span>Banner &amp; Spanduk</span>
+                                        <span data-i18n="cat.1">Banner &amp; Spanduk</span>
                                     </span>
                                     <span class="text-[10px] text-zinc-400">3</span>
                                 </button>
@@ -399,7 +399,7 @@
                                     class="marketplace-sidebar-btn w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer transition-all text-zinc-600 hover:bg-zinc-50">
                                     <span class="flex items-center space-x-2">
                                         <iconify-icon icon="lucide:box" class="text-xs"></iconify-icon>
-                                        <span>Packaging &amp; Kemasan</span>
+                                        <span data-i18n="cat.2">Packaging &amp; Kemasan</span>
                                     </span>
                                     <span class="text-[10px] text-zinc-400">1</span>
                                 </button>
@@ -407,7 +407,7 @@
                                     class="marketplace-sidebar-btn w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer transition-all text-zinc-600 hover:bg-zinc-50">
                                     <span class="flex items-center space-x-2">
                                         <iconify-icon icon="lucide:sparkles" class="text-xs"></iconify-icon>
-                                        <span>Logo &amp; Branding</span>
+                                        <span data-i18n="cat.3">Logo &amp; Branding</span>
                                     </span>
                                     <span class="text-[10px] text-zinc-400">2</span>
                                 </button>
@@ -415,7 +415,7 @@
                                     class="marketplace-sidebar-btn w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer transition-all text-zinc-600 hover:bg-zinc-50">
                                     <span class="flex items-center space-x-2">
                                         <iconify-icon icon="lucide:layout" class="text-xs"></iconify-icon>
-                                        <span>UI/UX &amp; Web</span>
+                                        <span data-i18n="cat.4">UI/UX &amp; Web</span>
                                     </span>
                                     <span class="text-[10px] text-zinc-400">2</span>
                                 </button>
@@ -423,7 +423,7 @@
                                     class="marketplace-sidebar-btn w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer transition-all text-zinc-600 hover:bg-zinc-50">
                                     <span class="flex items-center space-x-2">
                                         <iconify-icon icon="lucide:tag" class="text-xs"></iconify-icon>
-                                        <span>Label &amp; Stiker</span>
+                                        <span data-i18n="cat.5">Label &amp; Stiker</span>
                                     </span>
                                     <span class="text-[10px] text-zinc-400">1</span>
                                 </button>
@@ -431,7 +431,7 @@
                                     class="marketplace-sidebar-btn w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer transition-all text-zinc-600 hover:bg-zinc-50">
                                     <span class="flex items-center space-x-2">
                                         <iconify-icon icon="lucide:shirt" class="text-xs"></iconify-icon>
-                                        <span>Jersey &amp; Apparel</span>
+                                        <span data-i18n="cat.6">Jersey &amp; Apparel</span>
                                     </span>
                                     <span class="text-[10px] text-zinc-400">1</span>
                                 </button>
@@ -439,7 +439,7 @@
                                     class="marketplace-sidebar-btn w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer transition-all text-zinc-600 hover:bg-zinc-50">
                                     <span class="flex items-center space-x-2">
                                         <iconify-icon icon="lucide:image" class="text-xs"></iconify-icon>
-                                        <span>Foto &amp; Redesain AI</span>
+                                        <span data-i18n="cat.7">Foto &amp; Redesain AI</span>
                                     </span>
                                     <span class="text-[10px] text-zinc-400">2</span>
                                 </button>
@@ -447,7 +447,7 @@
                                     class="marketplace-sidebar-btn w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer transition-all text-zinc-600 hover:bg-zinc-50">
                                     <span class="flex items-center space-x-2">
                                         <iconify-icon icon="lucide:file-text" class="text-xs"></iconify-icon>
-                                        <span>Poster &amp; Flyer</span>
+                                        <span data-i18n="cat.8">Poster &amp; Flyer</span>
                                     </span>
                                     <span class="text-[10px] text-zinc-400">1</span>
                                 </button>
@@ -455,7 +455,7 @@
                                     class="marketplace-sidebar-btn w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer transition-all text-zinc-600 hover:bg-zinc-50">
                                     <span class="flex items-center space-x-2">
                                         <iconify-icon icon="lucide:presentation" class="text-xs"></iconify-icon>
-                                        <span>Dokumen &amp; PPT</span>
+                                        <span data-i18n="cat.9">Dokumen &amp; PPT</span>
                                     </span>
                                     <span class="text-[10px] text-zinc-400">2</span>
                                 </button>
@@ -463,7 +463,7 @@
                         </div>
 
                         <div class="p-5 rounded-2xl bg-white border border-zinc-200 space-y-3">
-                            <h4 class="text-xs font-bold uppercase tracking-wider text-zinc-400">Order via Marketplace
+                            <h4 data-i18n="marketplace.order_via_mp" class="text-xs font-bold uppercase tracking-wider text-zinc-400">Order via Marketplace
                             </h4>
                             <div class="space-y-2">
                                 <a href="https://shopee.co.id/premium_dz" target="_blank"
@@ -471,7 +471,7 @@
                                     <span class="flex items-center space-x-2">
                                         <iconify-icon icon="simple-icons:shopee"
                                             class="text-amber-600 text-xs"></iconify-icon>
-                                        <span>Shopee Official</span>
+                                        <span data-i18n="marketplace.shopee_store">Shopee Official</span>
                                     </span>
                                     <iconify-icon icon="lucide:external-link"
                                         class="text-xs text-amber-600"></iconify-icon>
@@ -481,7 +481,7 @@
                                     <span class="flex items-center space-x-2">
                                         <iconify-icon icon="simple-icons:fiverr"
                                             class="text-emerald-700 text-sm"></iconify-icon>
-                                        <span>Fiverr Orders</span>
+                                        <span data-i18n="marketplace.fiverr_orders">Fiverr Orders</span>
                                     </span>
                                     <iconify-icon icon="lucide:external-link"
                                         class="text-xs text-emerald-600"></iconify-icon>
@@ -491,7 +491,7 @@
                                     <span class="flex items-center space-x-2">
                                         <iconify-icon icon="lucide:link-2"
                                             class="text-brand-600 text-xs"></iconify-icon>
-                                        <span>Lynk.id Portofolio</span>
+                                        <span data-i18n="marketplace.lynk_portfolio">Lynk.id Portofolio</span>
                                     </span>
                                     <iconify-icon icon="lucide:external-link"
                                         class="text-xs text-zinc-400"></iconify-icon>
@@ -517,51 +517,51 @@
             <div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="lg:col-span-2 space-y-4">
                     <img src="../assets/other/logo_white.png" alt="Logo Footer" class="h-10 w-auto object-contain">
-                    <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-sm">
+                    <p data-i18n="footer.desc" class="text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-sm">
                         Studio desain grafis &amp; marketplace penyedia identitas visual profesional, logo, kemasan,
                         banner, dan UI/UX modern dengan standar tinggi.
                     </p>
                     <div class="flex items-center space-x-3 pt-2">
                         <a href="https://www.instagram.com/premiumdsz/" target="_blank"
                             class="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-brand-600 transition-colors"
-                            title="Instagram @premiumdsz">
+                            title="Instagram @premiumdsz" data-i18n-title="footer.instagram">
                             <iconify-icon icon="simple-icons:instagram" class="text-sm"></iconify-icon>
                         </a>
                         <a href="https://www.tiktok.com/@premium.designz" target="_blank"
                             class="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-brand-600 transition-colors"
-                            title="TikTok @premium.designz">
+                            title="TikTok @premium.designz" data-i18n-title="footer.tiktok">
                             <iconify-icon icon="simple-icons:tiktok" class="text-sm"></iconify-icon>
                         </a>
                         <a href="https://shopee.co.id/premium_dz" target="_blank"
                             class="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-amber-400 hover:bg-zinc-800 transition-colors"
-                            title="Shopee Official Store">
+                            title="Shopee Official Store" data-i18n-title="footer.shopee">
                             <iconify-icon icon="simple-icons:shopee" class="text-sm"></iconify-icon>
                         </a>
                         <a href="https://www.fiverr.com/premiumdz" target="_blank"
                             class="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-emerald-400 hover:bg-zinc-800 transition-colors"
-                            title="Fiverr Global Orders">
+                            title="Fiverr Global Orders" data-i18n-title="footer.fiverr">
                             <iconify-icon icon="simple-icons:fiverr" class="text-sm"></iconify-icon>
                         </a>
                     </div>
                 </div>
 
                 <div>
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Navigasi Cepat</h4>
+                    <h4 data-i18n="footer.quick_nav" class="text-xs font-bold uppercase tracking-wider text-white mb-4">Navigasi Cepat</h4>
                     <ul class="space-y-2.5 text-xs">
-                        <li><a href="../index.html" class="hover:text-white transition-colors">Home Utama</a></li>
-                        <li><a href="portofolio.html" class="hover:text-white transition-colors">Katalog
+                        <li><a href="../index.html" data-i18n="nav.home" class="hover:text-white transition-colors">Home Utama</a></li>
+                        <li><a href="portofolio.html" data-i18n="nav.portfolio" class="hover:text-white transition-colors">Katalog
                                 Portofolio</a></li>
-                        <li><a href="marketplace.html" class="hover:text-white transition-colors">Marketplace
+                        <li><a href="marketplace.html" data-i18n="nav.marketplace" class="hover:text-white transition-colors">Marketplace
                                 Desain</a></li>
-                        <li><a href="../index.html#langkah-pemesanan" class="hover:text-white transition-colors">Cara
+                        <li><a href="../index.html#langkah-pemesanan" data-i18n="nav.how_to_order" class="hover:text-white transition-colors">Cara
                                 Pemesanan</a></li>
-                        <li><a href="about.html" class="hover:text-white transition-colors">Tentang &amp;
+                        <li><a href="about.html" data-i18n="nav.about" class="hover:text-white transition-colors">Tentang &amp;
                                 Kontak</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Kontak Studio</h4>
+                    <h4 data-i18n="footer.contact_studio" class="text-xs font-bold uppercase tracking-wider text-white mb-4">Kontak Studio</h4>
                     <div class="space-y-3 text-xs">
                         <p class="flex items-center space-x-2">
                             <iconify-icon icon="simple-icons:whatsapp"
@@ -574,7 +574,7 @@
                         </p>
                         <p class="flex items-center space-x-2">
                             <iconify-icon icon="lucide:clock" class="text-brand-400 text-sm shrink-0"></iconify-icon>
-                            <span>09:00 - 23:00 WIB</span>
+                            <span data-i18n="footer.hours">09:00 - 23:00 WIB</span>
                         </p>
                     </div>
                 </div>
@@ -582,16 +582,16 @@
 
             <div
                 class="pt-8 border-t border-zinc-900 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
-                <p>&copy; 2026 Premium Design Studio. All rights reserved.</p>
+                <p data-i18n="footer.rights">&copy; 2026 Premium Design Studio. All rights reserved.</p>
 
             </div>
         </div>
     </footer>
 
     <!-- SCROLL TO TOP BUTTON -->
-    <button id="scrollToTopBtn" type="button" onclick="scrollToTop()" aria-label="Kembali ke Atas"
+    <button id="scrollToTopBtn" type="button" onclick="scrollToTop()" aria-label="Kembali ke Atas" data-i18n-aria-label="aria.scroll_top"
         class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-2xl bg-brand-600 hover:bg-brand-500 text-white shadow-xl shadow-brand-700/30 border border-white/20 flex items-center justify-center transition-all duration-300 opacity-0 pointer-events-none translate-y-6 hover:scale-110 active:scale-95 group"
-        title="Scroll ke Atas">
+        title="Scroll ke Atas" data-i18n-title="aria.scroll_top">
         <iconify-icon icon="lucide:arrow-up"
             class="text-xl group-hover:-translate-y-0.5 transition-transform duration-200"></iconify-icon>
     </button>
@@ -619,7 +619,7 @@
         onclick="closeAssetWarning()">
         <div class="relative max-w-md w-full bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-zinc-200 text-center space-y-4 transform scale-95 transition-all duration-300"
             onclick="event.stopPropagation()">
-            <button type="button" onclick="closeAssetWarning()" aria-label="Tutup Peringatan"
+            <button type="button" onclick="closeAssetWarning()" aria-label="Tutup Peringatan" data-i18n-aria-label="common.close"
                 class="absolute top-4 right-4 w-9 h-9 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-500 hover:text-zinc-800 flex items-center justify-center text-lg transition-all active:scale-90">
                 <iconify-icon icon="lucide:x"></iconify-icon>
             </button>
@@ -631,16 +631,16 @@
                 <h3
                     class="text-base sm:text-lg font-bold font-heading text-zinc-900 flex items-center justify-center space-x-2">
                     <iconify-icon icon="lucide:shield-alert" class="text-rose-600 text-lg"></iconify-icon>
-                    <span>Perlindungan Hak Cipta &amp; Aset</span>
+                    <span data-i18n="security.modal_title">Perlindungan Hak Cipta &amp; Aset</span>
                 </h3>
-                <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed">
+                <p data-i18n-html="security.modal_desc" class="text-xs sm:text-sm text-zinc-600 leading-relaxed">
                     Seluruh karya desain, gambar, dan aset visual pada platform <strong>Premium Designz</strong>
                     dilindungi oleh hak cipta.<br>
                     Dilarang menyalin, mengunduh tanpa lisensi, atau memodifikasi aset ini.
                 </p>
             </div>
             <div class="pt-2">
-                <button type="button" onclick="closeAssetWarning()"
+                <button type="button" onclick="closeAssetWarning()" data-i18n="security.modal_close"
                     class="w-full py-3 px-4 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold transition-all shadow-md shadow-brand-600/25 active:scale-95">
                     Saya Mengerti &amp; Tutup
                 </button>
@@ -655,8 +655,8 @@
             class="w-7 h-7 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center text-sm flex-shrink-0">
             <iconify-icon id="toast-icon" icon="lucide:shield-alert"></iconify-icon>
         </div>
-        <span id="toast-text" class="leading-tight">Aksi ini dinonaktifkan demi perlindungan hak cipta</span>
-        <button type="button" onclick="closeProtectionToast()" aria-label="Tutup Notifikasi"
+        <span id="toast-text" data-i18n="security.toast_default" class="leading-tight">Aksi ini dinonaktifkan demi perlindungan hak cipta</span>
+        <button type="button" onclick="closeProtectionToast()" aria-label="Tutup Notifikasi" data-i18n-aria-label="common.close"
             class="ml-2 w-6 h-6 rounded-lg bg-white/10 hover:bg-white/20 text-zinc-300 hover:text-white flex items-center justify-center text-xs transition-all active:scale-90 flex-shrink-0">
             <iconify-icon icon="lucide:x"></iconify-icon>
         </button>

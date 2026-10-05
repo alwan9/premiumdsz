@@ -219,21 +219,12 @@ function initPortfolioPage(baseAssetPrefix = '') {
     const urlParams = new URLSearchParams(window.location.search);
     let catParam = urlParams.get('kategori') || urlParams.get('category') || '';
 
-    // Support numeric category IDs (1-9) or raw string names
-    const idToCatMap = {
-        '1': 'Banner & Spanduk',
-        '2': 'Packaging & Kemasan',
-        '3': 'Logo & Branding',
-        '4': 'UI/UX & Web',
-        '5': 'Label & Stiker',
-        '6': 'Jersey & Apparel',
-        '7': 'Foto & Redesain AI',
-        '8': 'Poster & Flyer',
-        '9': 'Dokumen & PPT'
-    };
-
-    if (idToCatMap[catParam]) {
-        catParam = idToCatMap[catParam];
+    // Support numeric category IDs (1-9) or raw string names dynamically from master data
+    if (typeof getCategoryById === 'function' && typeof getCategoryByName === 'function') {
+        const foundCat = getCategoryById(catParam) || getCategoryByName(catParam);
+        if (foundCat) {
+            catParam = foundCat.Nama_kategori;
+        }
     }
 
     currentPortfolioCategory = catParam;
@@ -319,6 +310,8 @@ function renderPortfolioGrid(baseAssetPrefix = '') {
     });
 
     let headerHtml = '';
+    const safeCat = window.escapeHTML ? window.escapeHTML(currentPortfolioCategory) : currentPortfolioCategory;
+    const safeSearch = window.escapeHTML ? window.escapeHTML(currentPortfolioSearch) : currentPortfolioSearch;
     if (currentPortfolioSearch || currentPortfolioCategory) {
         headerHtml = `
             <div class="mb-8 p-4 rounded-2xl bg-zinc-50 border border-zinc-200/80 shadow-xs flex flex-wrap items-center justify-between gap-3">
@@ -326,8 +319,8 @@ function renderPortfolioGrid(baseAssetPrefix = '') {
                     <iconify-icon icon="lucide:filter" class="text-brand-600 text-lg"></iconify-icon>
                     <span>
                         Hasil filter:
-                        ${currentPortfolioCategory ? `<strong class="text-brand-700">Kategori "${currentPortfolioCategory}"</strong>` : ''}
-                        ${currentPortfolioSearch ? `<span class="text-zinc-400">|</span> Kata kunci: <strong class="text-brand-700">"${currentPortfolioSearch}"</strong>` : ''}
+                        ${safeCat ? `<strong class="text-brand-700">Kategori "${safeCat}"</strong>` : ''}
+                        ${safeSearch ? `<span class="text-zinc-400">|</span> Kata kunci: <strong class="text-brand-700">"${safeSearch}"</strong>` : ''}
                         <span class="text-zinc-500">(${filteredPortfolios.length} hasil ditemukan)</span>
                     </span>
                 </div>
@@ -523,16 +516,27 @@ function initMarketplacePage(baseAssetPrefix = '') {
 }
 
 function selectMarketplaceCategory(catId, baseAssetPrefix = '') {
-    currentMarketplaceCategory = catId;
+    currentMarketplaceCategory = String(catId || 'all');
     const select = document.getElementById('marketplaceCategorySelect');
-    if (select) select.value = catId;
+    if (select) select.value = currentMarketplaceCategory;
 
+    // Update Desktop Sidebar Buttons
     document.querySelectorAll('.marketplace-sidebar-btn').forEach(btn => {
-        const k = btn.getAttribute('data-kategori') || '';
-        if (k == catId) {
-            btn.className = "marketplace-sidebar-btn w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer transition-all bg-brand-50 text-brand-700 font-bold";
+        const k = String(btn.getAttribute('data-kategori') || 'all');
+        if (k === currentMarketplaceCategory) {
+            btn.className = "marketplace-sidebar-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold cursor-pointer transition-all bg-brand-600 text-white shadow-sm";
         } else {
-            btn.className = "marketplace-sidebar-btn w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer transition-all text-zinc-600 hover:bg-zinc-50";
+            btn.className = "marketplace-sidebar-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold cursor-pointer transition-all text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900";
+        }
+    });
+
+    // Update Fast Category Chips (Horizontal / Mobile)
+    document.querySelectorAll('.marketplace-pill-btn').forEach(pill => {
+        const k = String(pill.getAttribute('data-kategori') || 'all');
+        if (k === currentMarketplaceCategory) {
+            pill.className = "marketplace-pill-btn shrink-0 px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer bg-brand-600 text-white shadow-xs scale-105";
+        } else {
+            pill.className = "marketplace-pill-btn shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-900";
         }
     });
 
@@ -553,6 +557,8 @@ function resetMarketplaceFilters(baseAssetPrefix = '') {
     currentMarketplaceSearch = '';
     const searchInput = document.getElementById('marketplaceSearchInput');
     if (searchInput) searchInput.value = '';
+    const clearBtn = document.getElementById('marketplaceClearBtn');
+    if (clearBtn) clearBtn.classList.add('hidden');
     selectMarketplaceCategory('all', baseAssetPrefix);
 }
 
@@ -564,7 +570,7 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
 
     // Filter
     items = items.filter(prod => {
-        const matchCategory = currentMarketplaceCategory === 'all' || !currentMarketplaceCategory || prod.Id_kategori == currentMarketplaceCategory;
+        const matchCategory = currentMarketplaceCategory === 'all' || !currentMarketplaceCategory || String(prod.Id_kategori) === currentMarketplaceCategory;
         const query = currentMarketplaceSearch.toLowerCase();
         const matchSearch = !query || prod.Nama_produk.toLowerCase().includes(query) || prod.Des_produk.toLowerCase().includes(query);
         return matchCategory && matchSearch;
@@ -579,16 +585,41 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
         items.sort((a, b) => b.Stok_produk - a.Stok_produk);
     }
 
+    let currentCatObj = (currentMarketplaceCategory !== 'all' && currentMarketplaceCategory) ? getCategoryById(currentMarketplaceCategory) : null;
+    let safeCatName = currentCatObj ? (window.escapeHTML ? window.escapeHTML(currentCatObj.Nama_kategori) : currentCatObj.Nama_kategori) : '';
+    let safeSearch = window.escapeHTML ? window.escapeHTML(currentMarketplaceSearch) : currentMarketplaceSearch;
+
     let headerHtml = `
-        <div class="flex items-center justify-between mb-6">
-            <p class="text-xs text-zinc-500">
-                Menampilkan <span class="font-bold text-zinc-800">${items.length}</span> produk/jasa desain
-            </p>
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-6 p-4 rounded-2xl bg-zinc-50 border border-zinc-200/80 shadow-2xs">
+            <div class="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-zinc-700">
+                <span class="flex items-center space-x-1.5 font-medium">
+                    <iconify-icon icon="lucide:layout-grid" class="text-brand-600 text-base"></iconify-icon>
+                    <span>Menampilkan <strong class="text-zinc-900 font-bold">${items.length}</strong> produk/jasa</span>
+                </span>
+                ${safeCatName ? `
+                    <span class="text-zinc-300">|</span>
+                    <span class="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full bg-brand-50 text-brand-700 border border-brand-200/80 text-xs font-semibold">
+                        <span>Kategori: <strong>${safeCatName}</strong></span>
+                        <button type="button" onclick="selectMarketplaceCategory('all', '${baseAssetPrefix}')" class="text-brand-500 hover:text-brand-800 ml-1 cursor-pointer" title="Hapus filter kategori">
+                            <iconify-icon icon="lucide:x" class="text-xs"></iconify-icon>
+                        </button>
+                    </span>
+                ` : ''}
+                ${safeSearch ? `
+                    <span class="text-zinc-300">|</span>
+                    <span class="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full bg-brand-50 text-brand-700 border border-brand-200/80 text-xs font-semibold">
+                        <span>Kata kunci: <strong>"${safeSearch}"</strong></span>
+                        <button type="button" onclick="clearMarketplaceSearch('${baseAssetPrefix}')" class="text-brand-500 hover:text-brand-800 ml-1 cursor-pointer" title="Hapus kata kunci">
+                            <iconify-icon icon="lucide:x" class="text-xs"></iconify-icon>
+                        </button>
+                    </span>
+                ` : ''}
+            </div>
             ${(currentMarketplaceCategory !== 'all' || currentMarketplaceSearch) ? `
                 <button type="button" onclick="resetMarketplaceFilters('${baseAssetPrefix}')"
-                    class="text-xs font-bold text-brand-600 hover:text-brand-800 cursor-pointer flex items-center space-x-1">
+                    class="text-xs font-bold text-rose-600 hover:text-rose-700 cursor-pointer flex items-center space-x-1 transition-colors">
                     <iconify-icon icon="lucide:rotate-ccw"></iconify-icon>
-                    <span>Reset Filter & Pencarian</span>
+                    <span>Reset Filter</span>
                 </button>
             ` : ''}
         </div>
@@ -596,15 +627,18 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
 
     if (items.length === 0) {
         container.innerHTML = headerHtml + `
-            <div class="text-center py-16 bg-zinc-50 rounded-2xl border border-zinc-200 p-8">
-                <div class="w-12 h-12 rounded-full bg-zinc-200 text-zinc-400 flex items-center justify-center text-xl mx-auto mb-3">
-                    <iconify-icon icon="lucide:folder-open" class="text-2xl"></iconify-icon>
+            <div class="text-center py-16 bg-zinc-50 rounded-2xl border border-zinc-200 p-8 space-y-4">
+                <div class="w-14 h-14 rounded-2xl bg-zinc-200/80 text-zinc-400 flex items-center justify-center text-2xl mx-auto shadow-inner">
+                    <iconify-icon icon="lucide:folder-open"></iconify-icon>
                 </div>
-                <h4 class="text-sm font-bold text-zinc-800">Tidak ada produk ditemukan</h4>
-                <p class="text-xs text-zinc-500 mt-1">Coba sesuaikan kata kunci pencarian atau pilih kategori lainnya.</p>
+                <div class="space-y-1">
+                    <h4 class="text-sm sm:text-base font-bold text-zinc-800">Tidak ada produk atau jasa yang cocok</h4>
+                    <p class="text-xs text-zinc-500 max-w-sm mx-auto">Coba ubah kata kunci pencarian Anda atau pilih kategori lainnya.</p>
+                </div>
                 <button type="button" onclick="resetMarketplaceFilters('${baseAssetPrefix}')"
-                    class="inline-block mt-4 px-4 py-2 rounded-xl bg-brand-600 text-white text-xs font-bold hover:bg-brand-700 transition-colors cursor-pointer">
-                    Tampilkan Semua Produk
+                    class="inline-flex items-center space-x-1.5 px-4 py-2.5 rounded-xl bg-brand-600 text-white text-xs font-bold hover:bg-brand-700 transition-colors shadow-sm cursor-pointer">
+                    <iconify-icon icon="lucide:refresh-cw" class="text-xs"></iconify-icon>
+                    <span>Tampilkan Semua Produk</span>
                 </button>
             </div>
         `;

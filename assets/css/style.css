@@ -75,18 +75,57 @@ input, textarea, select {
 
 /* Hero Background Grid Pattern */
 .hero-grid-pattern {
-    background-color: #E5E5F7;
-    opacity: 0.3;
-    background-image: linear-gradient(#444CF7 2.5px, transparent 2.5px), linear-gradient(90deg, #444CF7 2.5px, transparent 2.5px), linear-gradient(#444CF7 1.25px, transparent 1.25px), linear-gradient(90deg, #444CF7 1.25px, #E5E5F7 1.25px);
-    background-size: 125px 125px, 125px 125px, 25px 25px, 25px 25px;
-    background-position: -2.5px -2.5px, -2.5px -2.5px, -1.25px -1.25px, -1.25px -1.25px;
-    mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 75%);
-    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 75%);
-    mask-size: 100% 100%;
-    -webkit-mask-size: 100% 100%;
-    mask-repeat: no-repeat;
-    -webkit-mask-repeat: no-repeat;
+    background-color: #ffffff;
+    opacity: 0.85;
+    background-image: linear-gradient(rgba(45, 108, 235, 0.08) 1.5px, transparent 1.5px), linear-gradient(90deg, rgba(45, 108, 235, 0.08) 1.5px, transparent 1.5px), linear-gradient(rgba(45, 108, 235, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(45, 108, 235, 0.04) 1px, #ffffff 1px);
+    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+    background-position: -1.5px -1.5px, -1.5px -1.5px, -1px -1px, -1px -1px;
 }
+
+/* Hero Floating Software Icons Animation */
+@keyframes heroIconFloat1 {
+    0%, 100% {
+        transform: translateY(0px) rotate(-6deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(-2deg);
+    }
+}
+
+@keyframes heroIconFloat2 {
+    0%, 100% {
+        transform: translateY(0px) rotate(8deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(12deg);
+    }
+}
+
+@keyframes heroIconFloat3 {
+    0%, 100% {
+        transform: translateY(0px) rotate(-4deg);
+    }
+    50% {
+        transform: translateY(-7px) rotate(-8deg);
+    }
+}
+
+@keyframes heroIconFloat4 {
+    0%, 100% {
+        transform: translateY(0px) rotate(10deg);
+    }
+    50% {
+        transform: translateY(-9px) rotate(6deg);
+    }
+}
+
+.float-icon-1 { animation: heroIconFloat1 4.5s ease-in-out infinite; }
+.float-icon-2 { animation: heroIconFloat2 5s ease-in-out infinite 0.5s; }
+.float-icon-3 { animation: heroIconFloat3 4.2s ease-in-out infinite 1s; }
+.float-icon-4 { animation: heroIconFloat4 4.8s ease-in-out infinite 1.5s; }
+.float-icon-5 { animation: heroIconFloat1 5.2s ease-in-out infinite 0.8s; }
+.float-icon-6 { animation: heroIconFloat2 4.6s ease-in-out infinite 1.2s; }
+.float-icon-7 { animation: heroIconFloat3 5.4s ease-in-out infinite 0.3s; }
 
 /* Global Image & Asset Protection */
 *, *::before, *::after {
@@ -236,6 +275,50 @@ font {
                 background-color 0.35s ease;
     overflow: hidden;
     isolation: isolate;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   Universal Card Pointer Cursor Engine (All Cards on Hover)
+   ========================================================================== */
+.card,
+[class*="card"],
+.glass-spotlight-dark,
+.glass-dark,
+.modal-cat-card,
+.product-card,
+.portfolio-card,
+.service-card,
+.pricing-card,
+.promo-card,
+.testi-card,
+.faq-card,
+.step-card,
+.feature-card,
+.snap-start.group,
+.snap-start a,
+#promoSliderTrack > div,
+#promoSliderTrack a,
+#productGrid > div,
+#productGrid a,
+#portfolioGrid > div,
+#portfolioGrid a,
+#categoryGrid > div,
+#categoryGrid a,
+#testimonialTrack > div,
+#testimonialTrack a,
+#faqAccordion > div,
+.faq-accordion-item,
+[data-catname],
+[data-product-id],
+[data-portfolio-id],
+[data-step-card],
+[data-feature-card],
+.grid > div.group,
+.grid > a.group,
+.grid > div[class*="rounded-"],
+[onclick]:not(input):not(textarea):not(select):not(body):not(html) {
+    cursor: pointer !important;
 }
 
 /* Dynamic Spotlight Border Light (Follows Cursor) */

@@ -63,4 +63,4 @@ Proyek ini telah dikonversi secara menyeluruh dari arsitektur Laravel (Blade + C
    - Mengubah submit formulir kontak menjadi format teks WhatsApp yang terstruktur dan langsung membuka aplikasi WhatsApp tujuan secara instan.
 
 4. **Kemandirian Penuh (Standalone)**:
-   - Dapat dibuka langsung via browser atau di-host di platform web statis mana pun (GitHub Pages, Vercel, Netlify, Cloudflare Pages, Nginx, Apache) tanpa memerlukan PHP runtime atau MySQL server.
+   - Dapat dibuka langsung via browser atau di-host di platform web statis mana pun (GitHub Pages, Netlify, Cloudflare Pages, Nginx, Apache) tanpa memerlukan PHP runtime atau MySQL server.

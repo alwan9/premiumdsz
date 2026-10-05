@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://code.jquery.com https://code.iconify.design https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://api.iconify.design https://api.simplesvg.com https://api.unisvg.com; frame-src 'none'; object-src 'none'; base-uri 'self';">
     <title>Jasa Desain Grafis Profesional &amp; Marketplace Desain Custom - Premium Designz</title>
     <meta name="description"
         content="Penyedia jasa desain grafis profesional &amp; marketplace visual terpercaya: jasa desain logo brand, kemasan box, standing pouch snack, banner wisuda &amp; promosi UMKM, UI/UX Figma, slide PPT presentasi, CV lamaran, dan apparel jersey custom.">
@@ -309,64 +313,108 @@
     <main class="flex-grow">
         <!-- HERO SECTION -->
         <section
-            class="relative bg-gradient-to-b from-brand-50/50 via-white to-white pt-16 pb-20 md:pt-24 md:pb-28 border-b border-zinc-100 overflow-hidden">
+            class="relative bg-white border-b border-zinc-100 overflow-hidden flex flex-col justify-center min-h-[calc(100vh-116px)] min-h-[calc(100dvh-116px)] py-10 sm:py-14 lg:py-16">
+            <!-- Blueprint Grid Pattern Background -->
             <div class="hero-grid-pattern absolute inset-0 pointer-events-none z-0"></div>
 
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="max-w-3xl mx-auto text-center space-y-6">
-                    <h1 data-aos="fade-up" data-aos-delay="100"
-                        class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-zinc-900 tracking-tight font-heading leading-tight">
-                        Solusi Desain Visual Profesional untuk Meningkatkan Kredibilitas Brand
-                    </h1>
+            <!-- Left Workspace UI Artwork -->
+            <div
+                class="absolute -left-20 sm:-left-12 md:-left-8 lg:left-0 top-1/2 -translate-y-1/2 pointer-events-none z-0 select-none">
+                <img src="assets/other/header-left.png" alt="Design UI Left"
+                    class="w-48 sm:w-64 md:w-80 lg:w-92 xl:w-[410px] max-w-none drop-shadow-2xl opacity-90 sm:opacity-100 transition-transform duration-700 hover:scale-105">
+            </div>
 
-                    <p data-aos="fade-up" data-aos-delay="200"
-                        class="text-sm sm:text-base text-zinc-600 leading-relaxed max-w-2xl mx-auto">
-                        Jelajahi katalog karya portofolio, pilih paket desain siap pakai, atau konsultasikan kebutuhan
-                        kustom langsung dengan tim desainer kami.
-                    </p>
+            <!-- Right Workspace UI Artwork -->
+            <div
+                class="absolute -right-20 sm:-right-12 md:-right-8 lg:right-0 top-1/2 -translate-y-1/2 pointer-events-none z-0 select-none">
+                <img src="assets/other/header-right.png" alt="Design UI Right"
+                    class="w-48 sm:w-64 md:w-80 lg:w-92 xl:w-[410px] max-w-none drop-shadow-2xl opacity-90 sm:opacity-100 transition-transform duration-700 hover:scale-105">
+            </div>
 
-                    <div data-aos="fade-up" data-aos-delay="300"
-                        class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
-                        <a href="pages/portofolio.html"
-                            class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-7 py-3.5 rounded-xl bg-brand-gradient hover:brightness-110 text-white text-xs font-bold uppercase tracking-wider shadow-md shadow-brand-700/20 transition-all">
-                            <iconify-icon icon="lucide:image" class="text-sm"></iconify-icon>
-                            <span>Galeri Portofolio</span>
-                        </a>
-                        <a href="pages/marketplace.html"
-                            class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-7 py-3.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-bold uppercase tracking-wider transition-all">
-                            <span>Katalog Jasa</span>
-                            <iconify-icon icon="lucide:arrow-right" class="text-xs"></iconify-icon>
-                        </a>
-                        <a href="https://api.whatsapp.com/send/?phone=6285168174679&text=Halo%20Premium%20Design%2C%20saya%20ingin%20konsultasi%20kebutuhan%20desain."
-                            target="_blank"
-                            class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-7 py-3.5 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-800 text-xs font-bold uppercase tracking-wider transition-all">
-                            <iconify-icon icon="simple-icons:whatsapp" class="text-brand-600 text-base"></iconify-icon>
-                            <span>WhatsApp</span>
-                        </a>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto">
+                <!-- Relative Canvas with Orbiting Floating Icons -->
+                <div class="relative max-w-5xl mx-auto text-center py-4 sm:py-8">
+
+                    <!-- Floating Icon 1: Canva (Top Left) -->
+                    <div class="absolute left-0 sm:left-3 md:left-5 lg:left-8 top-0 sm:top-1 z-20 pointer-events-auto">
+                        <div class="float-icon-1 cursor-pointer group">
+                            <img src="assets/software/canva.png" alt="Canva"
+                                class="w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-17 lg:h-17 object-contain drop-shadow-xl group-hover:scale-115 transition-transform duration-300">
+                        </div>
                     </div>
 
-                    <!-- Trust Stats Summary -->
-                    <div data-aos="fade-up" data-aos-delay="400"
-                        class="pt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto text-center border-t border-zinc-100">
-                        <div>
-                            <p class="text-2xl font-bold text-zinc-900 font-heading">19+</p>
-                            <p class="text-xs text-zinc-500 mt-0.5">Karya &amp; Produk</p>
+                    <!-- Floating Icon 2: PowerPoint (Middle Left) -->
+                    <div
+                        class="absolute -left-1 sm:left-1 md:left-3 lg:left-4 top-[42%] -translate-y-1/2 z-20 pointer-events-auto">
+                        <div class="float-icon-2 cursor-pointer group">
+                            <img src="assets/software/powerpoint.png" alt="PowerPoint"
+                                class="w-10 h-10 sm:w-13 sm:h-13 md:w-15 md:h-15 lg:w-16 lg:h-16 object-contain drop-shadow-xl group-hover:scale-115 transition-transform duration-300">
                         </div>
-                        <div>
-                            <p class="text-2xl font-bold text-zinc-900 font-heading">9</p>
-                            <p class="text-xs text-zinc-500 mt-0.5">Kategori Jasa</p>
+                    </div>
+
+                    <!-- Floating Icon 3: Figma (Bottom Left - lifted up) -->
+                    <div
+                        class="absolute left-1 sm:left-4 md:left-7 lg:left-10 bottom-16 sm:bottom-20 md:bottom-24 lg:bottom-28 z-20 pointer-events-auto">
+                        <div class="float-icon-3 cursor-pointer group">
+                            <img src="assets/software/figma.png" alt="Figma"
+                                class="w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-17 lg:h-17 object-contain drop-shadow-xl group-hover:scale-115 transition-transform duration-300">
                         </div>
-                        <div>
-                            <p
-                                class="text-2xl font-bold text-zinc-900 font-heading flex items-center justify-center gap-1">
-                                5.0 <iconify-icon icon="material-symbols:star-rounded"
-                                    class="text-amber-400 text-xl"></iconify-icon>
-                            </p>
-                            <p class="text-xs text-zinc-500 mt-0.5">Rating Klien</p>
+                    </div>
+
+                    <!-- Floating Icon 4: Adobe Illustrator (Top Right) -->
+                    <div
+                        class="absolute right-16 sm:right-24 md:right-32 lg:right-38 top-0 sm:top-1 z-20 pointer-events-auto">
+                        <div class="float-icon-4 cursor-pointer group">
+                            <img src="assets/software/Adobe_Illustrator.png" alt="Adobe Illustrator"
+                                class="w-10 h-10 sm:w-13 sm:h-13 md:w-15 md:h-15 lg:w-16 lg:h-16 object-contain drop-shadow-xl group-hover:scale-115 transition-transform duration-300">
                         </div>
-                        <div>
-                            <p class="text-2xl font-bold text-emerald-600 font-heading">100%</p>
-                            <p class="text-xs text-zinc-500 mt-0.5">Garansi File Master</p>
+                    </div>
+
+                    <!-- Floating Icon 5: SketchUp (Upper Middle Right) -->
+                    <div class="absolute right-1 sm:right-3 md:right-5 lg:right-7 top-[18%] z-20 pointer-events-auto">
+                        <div class="float-icon-5 cursor-pointer group">
+                            <img src="assets/software/sketchup.png" alt="SketchUp"
+                                class="w-10 h-10 sm:w-13 sm:h-13 md:w-15 md:h-15 lg:w-16 lg:h-16 object-contain drop-shadow-xl group-hover:scale-115 transition-transform duration-300">
+                        </div>
+                    </div>
+
+                    <!-- Floating Icon 6: Adobe Photoshop (Middle Right) -->
+                    <div
+                        class="absolute -right-1 sm:right-1 md:right-3 lg:right-4 top-[48%] -translate-y-1/2 z-20 pointer-events-auto">
+                        <div class="float-icon-6 cursor-pointer group">
+                            <img src="assets/software/adobe_photoshop.png" alt="Adobe Photoshop"
+                                class="w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-17 lg:h-17 object-contain drop-shadow-xl group-hover:scale-115 transition-transform duration-300">
+                        </div>
+                    </div>
+
+                    <!-- Floating Icon 7: CorelDRAW (Bottom Right - lifted up) -->
+                    <div
+                        class="absolute right-1 sm:right-4 md:right-7 lg:right-11 bottom-16 sm:bottom-20 md:bottom-24 lg:bottom-28 z-20 pointer-events-auto">
+                        <div class="float-icon-7 cursor-pointer group">
+                            <img src="assets/software/coreldraw.png" alt="CorelDRAW"
+                                class="w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-17 lg:h-17 object-contain drop-shadow-xl group-hover:scale-115 transition-transform duration-300">
+                        </div>
+                    </div>
+
+                    <!-- Main Typography (Shifted slightly lower) -->
+                    <div
+                        class="relative z-10 max-w-2xl sm:max-w-3xl lg:max-w-4xl mx-auto space-y-4 px-6 sm:px-12 pt-6 sm:pt-10 md:pt-14">
+                        <h1 data-aos="fade-up" data-aos-delay="100"
+                            class="text-3xl sm:text-5xl lg:text-6xl font-black text-zinc-900 tracking-tight font-heading leading-[1.14]">
+                            Professional Visual Design Solutions to Increase Brand Credibility
+                        </h1>
+
+                        <p data-aos="fade-up" data-aos-delay="200"
+                            class="text-xs sm:text-sm md:text-base text-zinc-500 max-w-xl mx-auto leading-relaxed pt-2">
+                            Browse our portfolio catalog, choose a ready-made design package, or discuss your custom
+                            needs directly with our team of designers.
+                        </p>
+
+                        <!-- Bottom Floating Toolbar Widget (Positioned lower with extended top gap) -->
+                        <div data-aos="fade-up" data-aos-delay="300"
+                            class="pt-12 sm:pt-16 md:pt-20 lg:pt-[30%] pb-2 flex justify-center">
+                            <img src="assets/other/toools.svg" alt="Design Tools Bar"
+                                class="h-11 sm:h-13 md:h-15 lg:h-16 w-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300 cursor-pointer pointer-events-auto">
                         </div>
                     </div>
                 </div>
@@ -1841,8 +1889,10 @@
                 <iconify-icon icon="lucide:shield-ban"></iconify-icon>
             </div>
             <div class="space-y-2">
-                <h3 class="text-base sm:text-lg font-bold font-heading text-zinc-900">
-                    ⚠️ Perlindungan Hak Cipta &amp; Aset
+                <h3
+                    class="text-base sm:text-lg font-bold font-heading text-zinc-900 flex items-center justify-center space-x-2">
+                    <iconify-icon icon="lucide:shield-alert" class="text-rose-600 text-lg"></iconify-icon>
+                    <span>Perlindungan Hak Cipta &amp; Aset</span>
                 </h3>
                 <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed">
                     Seluruh karya desain, gambar, dan aset visual pada platform <strong>Premium Designz</strong>

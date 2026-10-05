@@ -364,7 +364,7 @@ function renderPortfolioGrid(baseAssetPrefix = '') {
     filteredPortfolios.forEach((item, index) => {
         const imgUrl = baseAssetPrefix + item.url;
         cardsHtml += `
-            <div class="break-inside-avoid mb-3 sm:mb-4 group relative rounded-2xl overflow-hidden bg-zinc-100 skeleton-loader cursor-zoom-in shadow-xs hover:shadow-2xl transform hover:scale-[1.03] hover:z-20 transition-all duration-300 ease-in-out"
+            <div class="glass-spotlight break-inside-avoid mb-3 sm:mb-4 group relative rounded-2xl overflow-hidden bg-zinc-100 skeleton-loader cursor-zoom-in shadow-xs hover:shadow-2xl transform hover:scale-[1.03] hover:z-20 transition-all duration-300 ease-in-out"
                 onclick="openPortfolioZoom(${index}, '${baseAssetPrefix}')">
                 <img src="${imgUrl}" alt="${item.nama}" loading="lazy"
                     onload="this.classList.add('img-loaded'); this.closest('.skeleton-loader')?.classList.add('skeleton-loaded');"
@@ -616,7 +616,7 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
         const detailUrl = baseAssetPrefix ? `product-detail.html?id=${prod.Id_produk}` : `pages/product-detail.html?id=${prod.Id_produk}`;
         const imgUrl = baseAssetPrefix + prod.image_url;
         gridHtml += `
-            <div class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out flex flex-col justify-between group">
+            <div class="glass-spotlight relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                 <div>
                     <a href="${detailUrl}" class="block">
                         <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden cursor-pointer">

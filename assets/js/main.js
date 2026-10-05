@@ -28,6 +28,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 6. Highlight Nav Aktif
     highlightActiveNavigation();
+
+    // 7. Dynamic Glassmorphism Cursor Spotlight Engine
+    initGlassSpotlightEngine();
 });
 
 window.addEventListener('load', function() {
@@ -269,13 +272,32 @@ function highlightActiveNavigation() {
         activeNavKey = 'portofolio';
     } else if (currentPage.includes('marketplace') || currentPage.includes('product')) {
         activeNavKey = 'marketplace';
-    } else if (currentPage.includes('about')) {
+    } else if (currentPage.includes('about') || currentPage.includes('contact')) {
         activeNavKey = 'about';
-    } else if (currentPage.includes('contact')) {
-        activeNavKey = 'contact';
     }
 
     document.querySelectorAll(`[data-nav="${activeNavKey}"]`).forEach(el => {
         el.classList.add('is-active');
     });
 }
+
+// ==========================================================================
+// 7. DYNAMIC GLASSMORHPISM CURSOR SPOTLIGHT ENGINE
+// Tracks cursor coordinates per card for dynamic border & surface illumination
+// ==========================================================================
+function initGlassSpotlightEngine() {
+    const cardSelector = '.glass-spotlight, .glass-card, [data-glass="true"], .product-card, .portfolio-card';
+    
+    document.addEventListener('pointermove', function(e) {
+        const card = e.target.closest(cardSelector);
+        if (!card) return;
+
+        const rect = card.getBoundingClientRect();
+        const x = Math.round(e.clientX - rect.left);
+        const y = Math.round(e.clientY - rect.top);
+
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+    }, { passive: true });
+}
+

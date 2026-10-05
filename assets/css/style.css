@@ -218,3 +218,146 @@ font {
     background-color: transparent !important;
     box-shadow: none !important;
 }
+
+/* ==========================================================================
+   Interactive Glassmorphism & Cursor-Following Dynamic Spotlight Border Engine
+   ========================================================================== */
+.glass-spotlight,
+.glass-card,
+[data-glass="true"] {
+    position: relative;
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(18px) saturate(190%);
+    -webkit-backdrop-filter: blur(18px) saturate(190%);
+    border: 1px solid rgba(228, 228, 231, 0.85);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.35s ease,
+                background-color 0.35s ease;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* Dynamic Spotlight Border Light (Follows Cursor) */
+.glass-spotlight::before,
+.glass-card::before,
+[data-glass="true"]::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: radial-gradient(
+        260px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+        rgba(45, 108, 235, 0.95),
+        rgba(96, 144, 247, 0.6) 35%,
+        rgba(147, 181, 251, 0.2) 60%,
+        transparent 80%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* Dynamic Spotlight Surface Light Glow (Follows Cursor) */
+.glass-spotlight::after,
+.glass-card::after,
+[data-glass="true"]::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+        340px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+        rgba(45, 108, 235, 0.08),
+        rgba(96, 144, 247, 0.03) 45%,
+        transparent 75%
+    );
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.glass-spotlight:hover::before,
+.glass-spotlight:hover::after,
+.glass-card:hover::before,
+.glass-card:hover::after,
+[data-glass="true"]:hover::before,
+[data-glass="true"]:hover::after {
+    opacity: 1;
+}
+
+.glass-spotlight:hover,
+.glass-card:hover,
+[data-glass="true"]:hover {
+    box-shadow: 0 16px 36px -10px rgba(45, 108, 235, 0.12),
+                0 4px 12px -2px rgba(0, 0, 0, 0.04);
+}
+
+/* Dark Glassmorphism Variant */
+.glass-spotlight-dark,
+.glass-dark {
+    position: relative;
+    background: rgba(18, 18, 22, 0.72) !important;
+    backdrop-filter: blur(20px) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(190%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.glass-spotlight-dark::before,
+.glass-dark::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: radial-gradient(
+        280px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+        rgba(96, 144, 247, 1),
+        rgba(45, 108, 235, 0.7) 40%,
+        rgba(147, 181, 251, 0.25) 65%,
+        transparent 80%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    z-index: 3;
+}
+
+.glass-spotlight-dark::after,
+.glass-dark::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+        360px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+        rgba(96, 144, 247, 0.12),
+        rgba(45, 108, 235, 0.05) 50%,
+        transparent 80%
+    );
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.glass-spotlight-dark:hover::before,
+.glass-spotlight-dark:hover::after,
+.glass-dark:hover::before,
+.glass-dark:hover::after {
+    opacity: 1;
+}
+

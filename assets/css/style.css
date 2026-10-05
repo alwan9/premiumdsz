@@ -200,6 +200,16 @@ img, picture, svg, .protected-asset, [data-protected="image"] {
     opacity: 1 !important;
 }
 
+/* Progressive HD Image Modal Loading Effect */
+.hd-loading {
+    filter: blur(8px);
+    transition: filter 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s ease-out;
+}
+.hd-loaded {
+    filter: blur(0px);
+    transition: filter 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s ease-out;
+}
+
 /* Category Marquee Animation */
 @keyframes categoryScrollLeft {
     0% {

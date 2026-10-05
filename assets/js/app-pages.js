@@ -375,14 +375,15 @@ function renderPortfolioGrid(baseAssetPrefix = '') {
 
     let cardsHtml = '<div class="columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-3 sm:gap-4 [column-fill:_balance] py-2">';
     filteredPortfolios.forEach((item, index) => {
-        const imgUrl = baseAssetPrefix + item.url;
+        const fullHdUrl = baseAssetPrefix + item.url;
+        const thumbUrl = baseAssetPrefix + item.url.replace('assets/portofolio/', 'assets/portofolio/thumbs/');
         const delay = (index % 8) * 40;
         cardsHtml += `
             <div data-aos="fade-up" data-aos-delay="${delay}" class="glass-spotlight break-inside-avoid mb-3 sm:mb-4 group relative rounded-2xl overflow-hidden bg-zinc-100 skeleton-loader cursor-zoom-in shadow-xs hover:shadow-2xl transform hover:scale-[1.03] hover:z-20 transition-all duration-300 ease-in-out"
                 onclick="openPortfolioZoom(${index}, '${baseAssetPrefix}')">
-                <img src="${imgUrl}" alt="${item.nama}" loading="lazy"
+                <img src="${thumbUrl}" alt="${item.nama}" loading="lazy"
                     onload="this.classList.add('img-loaded'); this.closest('.skeleton-loader')?.classList.add('skeleton-loaded');"
-                    onerror="this.classList.add('img-loaded'); this.closest('.skeleton-loader')?.classList.add('skeleton-loaded');"
+                    onerror="this.onerror=null; this.src='${fullHdUrl}'; this.classList.add('img-loaded'); this.closest('.skeleton-loader')?.classList.add('skeleton-loaded');"
                     class="w-full h-auto block object-cover transition-all duration-300 ease-in-out group-hover:brightness-95">
                 <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/75 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out flex flex-col justify-between p-3 pointer-events-none">
                     <div class="self-end w-8 h-8 rounded-full bg-white/95 backdrop-blur-sm text-zinc-900 flex items-center justify-center shadow-md transform scale-75 group-hover:scale-100 transition-transform duration-300">
@@ -407,7 +408,7 @@ function renderPortfolioGrid(baseAssetPrefix = '') {
     }
 }
 
-// Portfolio Fullscreen Lightbox Zoom
+// Portfolio Fullscreen Lightbox Zoom (Loads Thumb instantly + Preloads Crisp HD)
 function openPortfolioZoom(index, baseAssetPrefix = '') {
     if (!filteredPortfolios[index]) return;
     currentZoomIndex = index;
@@ -421,9 +422,31 @@ function openPortfolioZoom(index, baseAssetPrefix = '') {
 
     const item = filteredPortfolios[index];
     if (modal && modalImg) {
-        modalImg.src = baseAssetPrefix + item.url;
+        const fullHdUrl = baseAssetPrefix + item.url;
+        const thumbUrl = baseAssetPrefix + item.url.replace('assets/portofolio/', 'assets/portofolio/thumbs/');
+
+        // Display thumbnail instantly with smooth loading transition
+        modalImg.src = thumbUrl;
         modalImg.alt = item.nama || _t('portfolio.zoom_modal_title');
         modalImg.style.transform = `scale(1)`;
+        modalImg.classList.add('hd-loading');
+        modalImg.classList.remove('hd-loaded');
+
+        // Preload crisp full HD master image
+        const hdLoader = new Image();
+        hdLoader.onload = function() {
+            if (currentZoomIndex === index) {
+                modalImg.src = fullHdUrl;
+                modalImg.classList.remove('hd-loading');
+                modalImg.classList.add('hd-loaded');
+            }
+        };
+        hdLoader.onerror = function() {
+            modalImg.classList.remove('hd-loading');
+            modalImg.classList.add('hd-loaded');
+        };
+        hdLoader.src = fullHdUrl;
+
         if (counter) counter.textContent = index + 1;
         if (totalEl) totalEl.textContent = filteredPortfolios.length;
         if (waLink) {

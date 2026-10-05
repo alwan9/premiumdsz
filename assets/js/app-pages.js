@@ -217,8 +217,27 @@ let filteredPortfolios = [];
 
 function initPortfolioPage(baseAssetPrefix = '') {
     const urlParams = new URLSearchParams(window.location.search);
-    currentPortfolioCategory = urlParams.get('kategori') || '';
-    currentPortfolioSearch = urlParams.get('search') || '';
+    let catParam = urlParams.get('kategori') || urlParams.get('category') || '';
+
+    // Support numeric category IDs (1-9) or raw string names
+    const idToCatMap = {
+        '1': 'Banner & Spanduk',
+        '2': 'Packaging & Kemasan',
+        '3': 'Logo & Branding',
+        '4': 'UI/UX & Web',
+        '5': 'Label & Stiker',
+        '6': 'Jersey & Apparel',
+        '7': 'Foto & Redesain AI',
+        '8': 'Poster & Flyer',
+        '9': 'Dokumen & PPT'
+    };
+
+    if (idToCatMap[catParam]) {
+        catParam = idToCatMap[catParam];
+    }
+
+    currentPortfolioCategory = catParam;
+    currentPortfolioSearch = urlParams.get('search') || urlParams.get('q') || '';
 
     const searchInput = document.getElementById('portfolioSearchInput');
     if (searchInput) {
@@ -234,19 +253,21 @@ function initPortfolioPage(baseAssetPrefix = '') {
         });
     }
 
-    renderPortfolioGrid(baseAssetPrefix);
+    selectPortfolioCategory(currentPortfolioCategory, baseAssetPrefix);
 }
 
 function selectPortfolioCategory(catName, baseAssetPrefix = '') {
-    currentPortfolioCategory = catName === 'all' ? '' : catName;
+    currentPortfolioCategory = (catName === 'all' || !catName) ? '' : catName;
     const input = document.getElementById('selectedCategoryInput');
     if (input) input.value = currentPortfolioCategory;
 
     // Update Pills UI
     document.querySelectorAll('.category-pill').forEach(pill => {
-        const k = pill.getAttribute('data-kategori') || '';
-        if (k === currentPortfolioCategory || (!k && !currentPortfolioCategory)) {
-            pill.className = "category-pill shrink-0 px-4 py-2 rounded-full transition-all duration-200 cursor-pointer bg-zinc-900 text-white shadow-sm font-bold";
+        const k = (pill.getAttribute('data-kategori') || '').toLowerCase().trim();
+        const target = currentPortfolioCategory.toLowerCase().trim();
+
+        if (k === target || (!k && !target)) {
+            pill.className = "category-pill shrink-0 px-4 py-2 rounded-full transition-all duration-200 cursor-pointer bg-zinc-900 text-white shadow-sm font-bold scale-105";
         } else {
             pill.className = "category-pill shrink-0 px-4 py-2 rounded-full transition-all duration-200 cursor-pointer bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-900";
         }
@@ -269,6 +290,8 @@ function resetPortfolioFilters(baseAssetPrefix = '') {
     currentPortfolioSearch = '';
     const searchInput = document.getElementById('portfolioSearchInput');
     if (searchInput) searchInput.value = '';
+    const clearBtn = document.getElementById('portfolioSearchClearBtn');
+    if (clearBtn) clearBtn.classList.add('hidden');
     selectPortfolioCategory('', baseAssetPrefix);
 }
 
@@ -278,9 +301,20 @@ function renderPortfolioGrid(baseAssetPrefix = '') {
 
     // Filter items
     filteredPortfolios = PORTFOLIOS.filter(item => {
-        const matchCategory = !currentPortfolioCategory || item.kategori.toLowerCase() === currentPortfolioCategory.toLowerCase();
-        const query = currentPortfolioSearch.toLowerCase();
-        const matchSearch = !query || item.nama.toLowerCase().includes(query) || item.kategori.toLowerCase().includes(query) || item.deskripsi.toLowerCase().includes(query);
+        const itemCat = (item.kategori || '').toLowerCase().trim();
+        const targetCat = currentPortfolioCategory.toLowerCase().trim();
+
+        let matchCategory = true;
+        if (targetCat && targetCat !== 'all') {
+            matchCategory = itemCat === targetCat || itemCat.includes(targetCat) || targetCat.includes(itemCat);
+        }
+
+        const query = currentPortfolioSearch.toLowerCase().trim();
+        const matchSearch = !query ||
+            (item.nama && item.nama.toLowerCase().includes(query)) ||
+            (item.kategori && item.kategori.toLowerCase().includes(query)) ||
+            (item.deskripsi && item.deskripsi.toLowerCase().includes(query));
+
         return matchCategory && matchSearch;
     });
 
@@ -330,13 +364,21 @@ function renderPortfolioGrid(baseAssetPrefix = '') {
     filteredPortfolios.forEach((item, index) => {
         const imgUrl = baseAssetPrefix + item.url;
         cardsHtml += `
-            <div class="break-inside-avoid mb-3 sm:mb-4 group relative rounded-2xl overflow-hidden bg-zinc-200 skeleton-loader cursor-zoom-in shadow-xs hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out min-h-[140px]"
+            <div class="break-inside-avoid mb-3 sm:mb-4 group relative rounded-2xl overflow-hidden bg-zinc-100 skeleton-loader cursor-zoom-in shadow-xs hover:shadow-2xl transform hover:scale-[1.03] hover:z-20 transition-all duration-300 ease-in-out"
                 onclick="openPortfolioZoom(${index}, '${baseAssetPrefix}')">
                 <img src="${imgUrl}" alt="${item.nama}" loading="lazy"
-                    class="w-full h-auto block transition-all duration-300 ease-in-out group-hover:brightness-90">
-                <div class="absolute inset-0 bg-zinc-950/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out flex items-center justify-center pointer-events-none">
-                    <div class="w-10 h-10 rounded-full bg-white/95 backdrop-blur-sm text-zinc-900 flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-300 ease-in-out">
-                        <iconify-icon icon="lucide:zoom-in" class="text-lg text-brand-600"></iconify-icon>
+                    onload="this.classList.add('img-loaded'); this.closest('.skeleton-loader')?.classList.add('skeleton-loaded');"
+                    onerror="this.classList.add('img-loaded'); this.closest('.skeleton-loader')?.classList.add('skeleton-loaded');"
+                    class="w-full h-auto block object-cover transition-all duration-300 ease-in-out group-hover:brightness-95">
+                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/75 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out flex flex-col justify-between p-3 pointer-events-none">
+                    <div class="self-end w-8 h-8 rounded-full bg-white/95 backdrop-blur-sm text-zinc-900 flex items-center justify-center shadow-md transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                        <iconify-icon icon="lucide:zoom-in" class="text-sm text-brand-600"></iconify-icon>
+                    </div>
+                    <div class="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                        <span class="inline-block px-2 py-0.5 rounded-md bg-brand-600 text-white text-[9px] font-bold uppercase tracking-wider mb-1 shadow-xs">
+                            ${item.kategori}
+                        </span>
+                        <p class="text-white text-xs font-bold truncate drop-shadow-sm">${item.nama}</p>
                     </div>
                 </div>
             </div>
@@ -363,6 +405,7 @@ function openPortfolioZoom(index, baseAssetPrefix = '') {
     const item = filteredPortfolios[index];
     if (modal && modalImg) {
         modalImg.src = baseAssetPrefix + item.url;
+        modalImg.alt = item.nama || 'Zoom Portofolio';
         modalImg.style.transform = `scale(1)`;
         if (counter) counter.textContent = index + 1;
         if (totalEl) totalEl.textContent = filteredPortfolios.length;
@@ -547,6 +590,7 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
                     <iconify-icon icon="lucide:rotate-ccw"></iconify-icon>
                     <span>Reset Filter & Pencarian</span>
                 </button>
+            ` : ''}
         </div>
     `;
 
@@ -577,6 +621,8 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
                     <a href="${detailUrl}" class="block">
                         <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden cursor-pointer">
                             <img src="${imgUrl}" alt="${prod.Nama_produk}" loading="lazy"
+                                onload="this.classList.add('img-loaded'); this.closest('.skeleton-loader')?.classList.add('skeleton-loaded');"
+                                onerror="this.classList.add('img-loaded'); this.closest('.skeleton-loader')?.classList.add('skeleton-loaded');"
                                 class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:scale-105 group-hover:brightness-95">
                             <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-black/20"></div>
                             <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 ease-in-out pointer-events-none"></div>
@@ -629,7 +675,6 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
     if (window.AOS) {
         try { AOS.refresh(); } catch(e) {}
     }
-}
 }
 
 // ==========================================

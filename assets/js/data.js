@@ -528,13 +528,6 @@ const PRODUCTS = [
 
 const PORTFOLIOS = [
     {
-        "id": 1,
-        "nama": "Logo Identity Master Vector",
-        "kategori": "Logo & Branding",
-        "url": "assets/portofolio/Asset_7@11x.png",
-        "deskripsi": "Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz."
-    },
-    {
         "id": 2,
         "nama": "UI/UX Web Dashboard Interface",
         "kategori": "UI/UX & Web",
@@ -1423,13 +1416,7 @@ const PORTFOLIOS = [
         "url": "assets/portofolio/logo_(4).png",
         "deskripsi": "Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz."
     },
-    {
-        "id": 129,
-        "nama": "Logo (4) Alt",
-        "kategori": "Logo & Branding",
-        "url": "assets/portofolio/logo_(4)_alt.png",
-        "deskripsi": "Karya portofolio visual profesional kategori Logo & Branding oleh tim Premium Designz."
-    },
+
     {
         "id": 130,
         "nama": "Logo (5)",
@@ -1535,20 +1522,7 @@ const PORTFOLIOS = [
         "url": "assets/portofolio/poster.png",
         "deskripsi": "Karya portofolio visual profesional kategori Poster & Flyer oleh tim Premium Designz."
     },
-    {
-        "id": 145,
-        "nama": "Pouch (1)",
-        "kategori": "Packaging & Kemasan",
-        "url": "assets/portofolio/pouch_(1).jpg",
-        "deskripsi": "Karya portofolio visual profesional kategori Packaging & Kemasan oleh tim Premium Designz."
-    },
-    {
-        "id": 146,
-        "nama": "Pouch (2)",
-        "kategori": "Packaging & Kemasan",
-        "url": "assets/portofolio/pouch_(2).jpg",
-        "deskripsi": "Karya portofolio visual profesional kategori Packaging & Kemasan oleh tim Premium Designz."
-    },
+
     {
         "id": 147,
         "nama": "Desain Standing Pouch Seblak",

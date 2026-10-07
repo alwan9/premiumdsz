@@ -234,6 +234,10 @@ let currentPortfolioSearch = '';
 let currentZoomIndex = 0;
 let currentScale = 1;
 let filteredPortfolios = [];
+let portfolioRenderedCount = 0;
+const PORTFOLIO_BATCH_SIZE = 15;
+let portfolioScrollObserver = null;
+let isPortfolioLoadingBatch = false;
 
 function initPortfolioPage(baseAssetPrefix = '') {
     const urlParams = new URLSearchParams(window.location.search);
@@ -309,6 +313,12 @@ function renderPortfolioGrid(baseAssetPrefix = '') {
     const container = document.getElementById('portfolioGridContainer');
     if (!container) return;
 
+    // Disconnect previous observer
+    if (portfolioScrollObserver) {
+        portfolioScrollObserver.disconnect();
+        portfolioScrollObserver = null;
+    }
+
     // Filter items
     filteredPortfolios = PORTFOLIOS.filter(item => {
         const itemCat = (item.kategori || '').toLowerCase().trim();
@@ -327,6 +337,9 @@ function renderPortfolioGrid(baseAssetPrefix = '') {
 
         return matchCategory && matchSearch;
     });
+
+    portfolioRenderedCount = 0;
+    isPortfolioLoadingBatch = false;
 
     let headerHtml = '';
     const safeCat = window.escapeHTML ? window.escapeHTML(currentPortfolioCategory) : currentPortfolioCategory;
@@ -355,7 +368,7 @@ function renderPortfolioGrid(baseAssetPrefix = '') {
 
     if (filteredPortfolios.length === 0) {
         container.innerHTML = headerHtml + `
-            <div data-aos="fade-up" class="max-w-md mx-auto text-center py-16 px-4 space-y-4">
+            <div class="max-w-md mx-auto text-center py-16 px-4 space-y-4 portfolio-card-enter">
                 <div class="w-16 h-16 rounded-3xl bg-brand-50 text-brand-600 mx-auto flex items-center justify-center text-3xl">
                     <iconify-icon icon="lucide:image-off"></iconify-icon>
                 </div>
@@ -373,14 +386,49 @@ function renderPortfolioGrid(baseAssetPrefix = '') {
         return;
     }
 
-    let cardsHtml = '<div class="columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-3 sm:gap-4 [column-fill:_balance] py-2">';
-    filteredPortfolios.forEach((item, index) => {
+    container.innerHTML = `
+        ${headerHtml}
+        <div id="portfolioGridItems" class="columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-3 sm:gap-4 py-2"></div>
+        <div id="portfolioScrollSentinel" class="py-8 text-center flex flex-col items-center justify-center space-y-2 min-h-[60px]">
+            <div id="portfolioLoadingSpinner" class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-zinc-100 text-zinc-600 text-xs font-semibold">
+                <iconify-icon icon="lucide:loader-2" class="animate-spin text-base text-brand-600"></iconify-icon>
+                <span>${_t('portfolio.loading_more')}</span>
+            </div>
+        </div>
+    `;
+
+    // Render initial viewport batch
+    appendPortfolioBatch(baseAssetPrefix);
+
+    // Setup smooth infinite scroll observer
+    setupPortfolioInfiniteScroll(baseAssetPrefix);
+}
+
+function appendPortfolioBatch(baseAssetPrefix = '') {
+    const gridItems = document.getElementById('portfolioGridItems');
+    if (!gridItems || isPortfolioLoadingBatch) return;
+
+    if (portfolioRenderedCount >= filteredPortfolios.length) {
+        updatePortfolioSentinelEnd();
+        return;
+    }
+
+    isPortfolioLoadingBatch = true;
+    const startIndex = portfolioRenderedCount;
+    const endIndex = Math.min(startIndex + PORTFOLIO_BATCH_SIZE, filteredPortfolios.length);
+    const batchItems = filteredPortfolios.slice(startIndex, endIndex);
+
+    let batchHtml = '';
+    batchItems.forEach((item, localIdx) => {
+        const globalIndex = startIndex + localIdx;
         const fullHdUrl = baseAssetPrefix + item.url;
         const thumbUrl = baseAssetPrefix + item.url.replace('assets/portofolio/', 'assets/portofolio/thumbs/');
-        const delay = (index % 8) * 40;
-        cardsHtml += `
-            <div data-aos="fade-up" data-aos-delay="${delay}" class="glass-spotlight break-inside-avoid mb-3 sm:mb-4 group relative rounded-2xl overflow-hidden bg-zinc-100 skeleton-loader cursor-zoom-in shadow-xs hover:shadow-2xl transform hover:scale-[1.03] hover:z-20 transition-all duration-300 ease-in-out"
-                onclick="openPortfolioZoom(${index}, '${baseAssetPrefix}')">
+        const delayMs = (localIdx % 10) * 45;
+
+        batchHtml += `
+            <div class="portfolio-card-enter glass-spotlight break-inside-avoid mb-3 sm:mb-4 group relative rounded-2xl overflow-hidden bg-zinc-100 skeleton-loader cursor-zoom-in shadow-xs hover:shadow-2xl transform hover:scale-[1.03] hover:z-20 transition-all duration-300 ease-in-out"
+                style="animation-delay: ${delayMs}ms;"
+                onclick="openPortfolioZoom(${globalIndex}, '${baseAssetPrefix}')">
                 <img src="${thumbUrl}" alt="${item.nama}" loading="lazy"
                     onload="this.classList.add('img-loaded'); this.closest('.skeleton-loader')?.classList.add('skeleton-loaded');"
                     onerror="this.onerror=null; this.src='${fullHdUrl}'; this.classList.add('img-loaded'); this.closest('.skeleton-loader')?.classList.add('skeleton-loaded');"
@@ -399,12 +447,66 @@ function renderPortfolioGrid(baseAssetPrefix = '') {
             </div>
         `;
     });
-    cardsHtml += '</div>';
 
-    container.innerHTML = headerHtml + cardsHtml;
+    gridItems.insertAdjacentHTML('beforeend', batchHtml);
+    portfolioRenderedCount = endIndex;
+    isPortfolioLoadingBatch = false;
+
     if (typeof initImageSkeletons === 'function') initImageSkeletons();
-    if (window.AOS) {
-        try { AOS.refresh(); } catch(e) {}
+
+    if (portfolioRenderedCount >= filteredPortfolios.length) {
+        updatePortfolioSentinelEnd();
+    }
+}
+
+function updatePortfolioSentinelEnd() {
+    const sentinel = document.getElementById('portfolioScrollSentinel');
+    if (!sentinel) return;
+
+    if (portfolioScrollObserver) {
+        portfolioScrollObserver.disconnect();
+        portfolioScrollObserver = null;
+    }
+
+    if (filteredPortfolios.length > PORTFOLIO_BATCH_SIZE) {
+        sentinel.innerHTML = `
+            <div class="text-center py-6 text-xs font-medium text-zinc-400 flex items-center justify-center space-x-2">
+                <span class="w-12 h-px bg-zinc-200"></span>
+                <span>${_t('portfolio.all_shown', { count: filteredPortfolios.length })}</span>
+                <span class="w-12 h-px bg-zinc-200"></span>
+            </div>
+        `;
+    } else {
+        sentinel.innerHTML = '';
+    }
+}
+
+function setupPortfolioInfiniteScroll(baseAssetPrefix = '') {
+    const sentinel = document.getElementById('portfolioScrollSentinel');
+    if (!sentinel) return;
+
+    if ('IntersectionObserver' in window) {
+        portfolioScrollObserver = new IntersectionObserver((entries) => {
+            const entry = entries[0];
+            if (entry && entry.isIntersecting && portfolioRenderedCount < filteredPortfolios.length && !isPortfolioLoadingBatch) {
+                appendPortfolioBatch(baseAssetPrefix);
+            }
+        }, {
+            root: null,
+            rootMargin: '350px 0px',
+            threshold: 0.01
+        });
+
+        portfolioScrollObserver.observe(sentinel);
+    } else {
+        window.addEventListener('scroll', function() {
+            if (portfolioRenderedCount >= filteredPortfolios.length || isPortfolioLoadingBatch) return;
+            const scrollPos = window.innerHeight + window.scrollY;
+            const triggerPos = document.documentElement.offsetHeight - 400;
+            if (scrollPos >= triggerPos) {
+                appendPortfolioBatch(baseAssetPrefix);
+            }
+        }, { passive: true });
     }
 }
 

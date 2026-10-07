@@ -200,6 +200,39 @@ img, picture, svg, .protected-asset, [data-protected="image"] {
     opacity: 1 !important;
 }
 
+/* Portfolio Smooth Progressive Entrance (Bottom-Up Fade In) */
+@keyframes portfolioCardReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(28px) scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.portfolio-card-enter {
+    opacity: 0;
+    animation: portfolioCardReveal 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    will-change: transform, opacity;
+}
+
+/* AOS Performance & Accessibility Optimizations */
+[data-aos] {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-aos] {
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+    }
+}
+
 /* Progressive HD Image Modal Loading Effect */
 .hd-loading {
     filter: blur(8px);

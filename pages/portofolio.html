@@ -7,7 +7,7 @@
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://code.jquery.com https://code.iconify.design https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://api.iconify.design https://api.simplesvg.com https://api.unisvg.com; frame-src 'none'; object-src 'none'; base-uri 'self';">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://code.jquery.com https://code.iconify.design https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://api.iconify.design https://api.simplesvg.com https://api.unisvg.com; frame-src 'none'; object-src 'none'; base-uri 'self';">
     <title>Portofolio Desain Grafis &amp; Galeri Karya Visual - Premium Designz</title>
     <meta name="description"
         content="Jelajahi galeri portofolio desain grafis terlengkap: logo brand identity, kemasan packaging box, banner promosi, UI/UX website, poster, dan jersey custom.">
@@ -62,10 +62,10 @@
     <meta name="apple-mobile-web-app-title" content="Premium Designz">
 
     <!-- Favicon & Apple Touch Icons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/other/logo_warna.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/other/logo_warna.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/other/logo_warna.png">
-    <link rel="shortcut icon" href="../assets/other/logo_warna.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/other/fav-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/other/fav-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/other/fav-icon.png">
+    <link rel="shortcut icon" href="../assets/other/fav-icon.png">
 
     <!-- Preconnect & DNS-Prefetch Resource Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -127,7 +127,7 @@
     </script>
 
     <!-- AOS (Animate On Scroll) CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
@@ -667,14 +667,20 @@
         </button>
     </div>
 
-    <!-- Scripts (Deferred) -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../assets/js/data.js" defer></script>
     <script src="../assets/js/main.js" defer></script>
     <script src="../assets/js/security.js" defer></script>
     <script src="../assets/js/translate.js" defer></script>
     <script src="../assets/js/app-pages.js" defer></script>
     <script>
+        AOS.init({
+            duration: 600,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 30
+        });
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', function () {
                 initPortfolioPage('../');

@@ -7,7 +7,7 @@
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://code.jquery.com https://code.iconify.design https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://api.iconify.design https://api.simplesvg.com https://api.unisvg.com; frame-src 'none'; object-src 'none'; base-uri 'self';">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://code.jquery.com https://code.iconify.design https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://api.iconify.design https://api.simplesvg.com https://api.unisvg.com; frame-src 'none'; object-src 'none'; base-uri 'self';">
     <title id="pageTitle">Detail Produk &amp; Jasa Desain - Premium Designz</title>
     <meta name="description" id="metaDescription"
         content="Detail portofolio jasa desain grafis profesional, spesifikasi pengerjaan, dan pemesanan cepat via WhatsApp.">
@@ -43,10 +43,10 @@
     <meta name="apple-mobile-web-app-title" content="Premium Designz">
 
     <!-- Favicon & Apple Touch Icons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/other/logo_warna.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/other/logo_warna.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/other/logo_warna.png">
-    <link rel="shortcut icon" href="../assets/other/logo_warna.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/other/fav-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/other/fav-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/other/fav-icon.png">
+    <link rel="shortcut icon" href="../assets/other/fav-icon.png">
 
     <!-- Preconnect & DNS-Prefetch Resource Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,9 +69,8 @@
     <!-- jQuery CDN (Deferred) -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
 
-    <!-- AOS CSS & JS (Deferred) -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Iconify Icon Web Component & Embedded Offline Bundle (Deferred) -->
     <script src="../assets/js/icons-bundle.js" defer></script>
@@ -715,13 +714,20 @@
         </button>
     </div>
 
-    <!-- SCRIPTS (Deferred) -->
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../assets/js/data.js" defer></script>
     <script src="../assets/js/security.js" defer></script>
     <script src="../assets/js/translate.js" defer></script>
     <script src="../assets/js/main.js" defer></script>
     <script src="../assets/js/app-pages.js" defer></script>
     <script>
+        AOS.init({
+            duration: 600,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 30
+        });
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => {
                 initProductDetailPage('../');

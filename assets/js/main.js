@@ -3,20 +3,32 @@
  * Pure Vanilla JavaScript
  */
 
-// Global AOS Initialization Function (Enabled explicitly on Mobile & Desktop)
+// Global AOS Initialization Function (Fast, Lightweight & Responsive on all screen sizes)
 function initAOSGlobal() {
-    if (window.AOS) {
-        AOS.init({
-            disable: false, // Jamin aktif di perangkat mobile / HP
-            startEvent: 'DOMContentLoaded',
-            duration: 650,
-            once: true,
-            offset: 20, // Offset rendah agar langsung aktif saat scroll di HP
-            easing: 'ease-out-cubic',
-            disableMutationObserver: false,
-            mirror: false
-        });
-        window.AOS.initCalled = true;
+    if (typeof window.AOS !== 'undefined') {
+        try {
+            AOS.init({
+                disable: false, // Aktif di semua perangkat (Desktop & Mobile)
+                duration: 600,
+                easing: 'ease-out-cubic',
+                once: true, // Animasi berjalan sekali untuk performa scroll yang sangat ringan & anti-lag
+                offset: 30, // Trigger animasi tepat saat elemen masuk viewport
+                delay: 0,
+                disableMutationObserver: false,
+                mirror: false,
+                anchorPlacement: 'top-bottom'
+            });
+            window.AOS.initCalled = true;
+        } catch (e) {
+            console.warn('AOS init warning:', e);
+        }
+    } else {
+        // Retry shortly in case AOS script is still executing via defer
+        setTimeout(function() {
+            if (typeof window.AOS !== 'undefined' && (!window.AOS.initCalled)) {
+                initAOSGlobal();
+            }
+        }, 100);
     }
 }
 

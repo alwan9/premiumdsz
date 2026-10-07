@@ -722,17 +722,12 @@
     <script src="../assets/js/main.js" defer></script>
     <script src="../assets/js/app-pages.js" defer></script>
     <script>
-        AOS.init({
-            duration: 600,
-            easing: 'ease-out-cubic',
-            once: true,
-            offset: 30
-        });
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof initProductDetailPage === 'function') {
                 initProductDetailPage('../');
-            });
-        } else {
+            }
+        });
+        if (document.readyState !== 'loading' && typeof initProductDetailPage === 'function') {
             initProductDetailPage('../');
         }
     </script>

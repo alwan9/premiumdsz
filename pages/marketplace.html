@@ -670,17 +670,12 @@
     <script src="../assets/js/translate.js" defer></script>
     <script src="../assets/js/app-pages.js" defer></script>
     <script>
-        AOS.init({
-            duration: 600,
-            easing: 'ease-out-cubic',
-            once: true,
-            offset: 30
-        });
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof initMarketplacePage === 'function') {
                 initMarketplacePage('../');
-            });
-        } else {
+            }
+        });
+        if (document.readyState !== 'loading' && typeof initMarketplacePage === 'function') {
             initMarketplacePage('../');
         }
     </script>

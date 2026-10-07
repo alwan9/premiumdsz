@@ -630,8 +630,19 @@ let currentMarketplaceSort = 'latest';
 
 function initMarketplacePage(baseAssetPrefix = '') {
     const urlParams = new URLSearchParams(window.location.search);
-    currentMarketplaceCategory = urlParams.get('kategori') || 'all';
-    currentMarketplaceSearch = urlParams.get('q') || '';
+    let rawCat = urlParams.get('kategori') || urlParams.get('category') || 'all';
+
+    // Support category name, ID, or slug in URL
+    if (rawCat && rawCat !== 'all') {
+        if (typeof getCategoryByName === 'function') {
+            const foundByName = getCategoryByName(rawCat);
+            if (foundByName) {
+                rawCat = String(foundByName.Id_kategori);
+            }
+        }
+    }
+    currentMarketplaceCategory = String(rawCat || 'all');
+    currentMarketplaceSearch = urlParams.get('q') || urlParams.get('search') || '';
     currentMarketplaceSort = urlParams.get('sort') || 'latest';
 
     const searchInput = document.getElementById('marketplaceSearchInput');
@@ -663,7 +674,7 @@ function initMarketplacePage(baseAssetPrefix = '') {
             counts[cId] = (counts[cId] || 0) + 1;
         });
 
-        if (selectCategory) {
+        if (selectCategory && selectCategory.options) {
             Array.from(selectCategory.options).forEach(opt => {
                 const val = opt.value;
                 const cCount = counts[val] !== undefined ? counts[val] : 0;
@@ -694,6 +705,16 @@ function initMarketplacePage(baseAssetPrefix = '') {
 }
 
 function selectMarketplaceCategory(catId, baseAssetPrefix = '') {
+    // If a category name was passed, convert to Id_kategori
+    if (catId && catId !== 'all') {
+        if (typeof getCategoryByName === 'function') {
+            const foundByName = getCategoryByName(catId);
+            if (foundByName) {
+                catId = String(foundByName.Id_kategori);
+            }
+        }
+    }
+
     currentMarketplaceCategory = String(catId || 'all');
     const select = document.getElementById('marketplaceCategorySelect');
     if (select) select.value = currentMarketplaceCategory;
@@ -747,26 +768,32 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
     const container = document.getElementById('marketplaceGridContainer');
     if (!container) return;
 
-    let items = getAllProductsWithRelations();
+    let items = (typeof getAllProductsWithRelations === 'function')
+        ? getAllProductsWithRelations()
+        : ((typeof PRODUCTS !== 'undefined' && Array.isArray(PRODUCTS)) ? PRODUCTS.map(p => (typeof getProductById === 'function' ? getProductById(p.Id_produk) : p)) : []);
 
     // Filter
     items = items.filter(prod => {
+        if (!prod) return false;
         const matchCategory = currentMarketplaceCategory === 'all' || !currentMarketplaceCategory || String(prod.Id_kategori) === currentMarketplaceCategory;
-        const query = currentMarketplaceSearch.toLowerCase();
-        const matchSearch = !query || prod.Nama_produk.toLowerCase().includes(query) || prod.Des_produk.toLowerCase().includes(query);
+        const query = (currentMarketplaceSearch || '').toLowerCase().trim();
+        const nama = (prod.Nama_produk || '').toLowerCase();
+        const desk = (prod.Des_produk || '').toLowerCase();
+        const katNama = (prod.kategori && prod.kategori.Nama_kategori) ? prod.kategori.Nama_kategori.toLowerCase() : '';
+        const matchSearch = !query || nama.includes(query) || desk.includes(query) || katNama.includes(query);
         return matchCategory && matchSearch;
     });
 
     // Sort
     if (currentMarketplaceSort === 'oldest') {
-        items.sort((a, b) => a.Id_produk - b.Id_produk);
+        items.sort((a, b) => (a.Id_produk || 0) - (b.Id_produk || 0));
     } else if (currentMarketplaceSort === 'latest') {
-        items.sort((a, b) => b.Id_produk - a.Id_produk);
+        items.sort((a, b) => (b.Id_produk || 0) - (a.Id_produk || 0));
     } else if (currentMarketplaceSort === 'stock_high') {
-        items.sort((a, b) => b.Stok_produk - a.Stok_produk);
+        items.sort((a, b) => (b.Stok_produk || 0) - (a.Stok_produk || 0));
     }
 
-    let currentCatObj = (currentMarketplaceCategory !== 'all' && currentMarketplaceCategory) ? getCategoryById(currentMarketplaceCategory) : null;
+    let currentCatObj = (currentMarketplaceCategory !== 'all' && currentMarketplaceCategory && typeof getCategoryById === 'function') ? getCategoryById(currentMarketplaceCategory) : null;
     let safeCatName = currentCatObj ? (window.escapeHTML ? window.escapeHTML(currentCatObj.Nama_kategori) : currentCatObj.Nama_kategori) : '';
     let safeSearch = window.escapeHTML ? window.escapeHTML(currentMarketplaceSearch) : currentMarketplaceSearch;
 
@@ -828,15 +855,18 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
 
     let gridHtml = '<div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3.5 sm:gap-5">';
     items.forEach((prod, index) => {
-        const detailUrl = baseAssetPrefix ? `product-detail.html?id=${prod.Id_produk}` : `pages/product-detail.html?id=${prod.Id_produk}`;
-        const imgUrl = baseAssetPrefix + prod.image_url;
-        const delay = (index % 6) * 50;
+        const detailUrl = (baseAssetPrefix === '../') ? `product-detail.html?id=${prod.Id_produk}` : `pages/product-detail.html?id=${prod.Id_produk}`;
+        const imgUrl = (baseAssetPrefix || '') + (prod.image_url || '');
+        const delay = Math.min((index % 8) * 40, 300);
+        const catName = prod.kategori ? prod.kategori.Nama_kategori : 'Desain';
+        const waLink = prod.whatsapp_link || 'https://api.whatsapp.com/send/?phone=6285168174679';
+
         gridHtml += `
-            <div data-aos="fade-up" data-aos-delay="${delay}" class="glass-spotlight relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out flex flex-col justify-between group">
+            <div class="portfolio-card-enter glass-spotlight relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out flex flex-col justify-between group" style="animation-delay: ${delay}ms;">
                 <div>
                     <a href="${detailUrl}" class="block">
                         <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden cursor-pointer">
-                            <img src="${imgUrl}" alt="${prod.Nama_produk}" loading="lazy"
+                            <img src="${imgUrl}" alt="${prod.Nama_produk || 'Produk Desain'}" loading="lazy"
                                 onload="this.classList.add('img-loaded'); this.closest('.skeleton-loader')?.classList.add('skeleton-loaded');"
                                 onerror="this.classList.add('img-loaded'); this.closest('.skeleton-loader')?.classList.add('skeleton-loaded');"
                                 class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:scale-105 group-hover:brightness-95">
@@ -845,7 +875,7 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
 
                             <div class="absolute top-2.5 left-2.5 z-10">
                                 <span class="px-2 py-0.5 rounded-lg bg-zinc-900/80 backdrop-blur-md text-white text-[9px] font-bold uppercase tracking-wider border border-white/10">
-                                    ${prod.kategori ? prod.kategori.Nama_kategori : 'Desain'}
+                                    ${catName}
                                 </span>
                             </div>
 
@@ -861,11 +891,11 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
                     <div class="p-3 sm:p-4 group-hover:bg-zinc-50 transition-colors duration-300 ease-in-out">
                         <h3 class="text-xs sm:text-sm font-bold text-zinc-900 line-clamp-1 group-hover:text-brand-600 transition-colors duration-300 ease-in-out">
                             <a href="${detailUrl}">
-                                ${prod.Nama_produk}
+                                ${prod.Nama_produk || 'Desain Grafis'}
                             </a>
                         </h3>
                         <p class="text-[10px] sm:text-[11px] text-zinc-500 mt-1 line-clamp-2 leading-relaxed">
-                            ${prod.Des_produk}
+                            ${prod.Des_produk || ''}
                         </p>
                     </div>
                 </div>
@@ -875,7 +905,7 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
                         class="flex-1 py-1.5 sm:py-2 text-center text-[11px] sm:text-xs font-bold text-zinc-700 bg-zinc-100 hover:bg-zinc-200 rounded-lg sm:rounded-xl transition-colors">
                         ${_t('marketplace.btn_detail')}
                     </a>
-                    <a href="${prod.whatsapp_link}" target="_blank"
+                    <a href="${waLink}" target="_blank"
                         class="flex-1 inline-flex items-center justify-center space-x-1 py-1.5 sm:py-2 text-center text-[11px] sm:text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg sm:rounded-xl shadow-sm transition-all">
                         <iconify-icon icon="simple-icons:whatsapp" class="text-xs"></iconify-icon>
                         <span>${_t('marketplace.btn_order')}</span>

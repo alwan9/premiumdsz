@@ -41,6 +41,7 @@
     }
 
     // =========================================================================
+    // =========================================================================
     // 3. SECURITY UTILITIES & SANITIZATION ENGINE (GLOBAL API)
     // =========================================================================
     const SecurityUtils = {
@@ -66,30 +67,117 @@
         },
 
         /**
-         * Sanitize URLs to prevent `javascript:`, `data:text/html` and XSS URI execution
+         * Dedicated Title Sanitizer:
+         * Specifically purifies title fields (product names, portfolio titles, promo titles)
+         * to strictly prevent Stored XSS attacks.
+         * Strips all HTML tags, script protocols, zero-width characters, and caps length.
+         */
+        sanitizeTitle: function(title, maxLength = 180) {
+            if (title === null || title === undefined) return '';
+            let clean = String(title);
+
+            // 1. Iterative strip of any HTML/XML tags (prevents nested bypass like <scr<script>ipt>)
+            let prev = '';
+            while (prev !== clean) {
+                prev = clean;
+                clean = clean.replace(/<[^>]*>?/gm, '');
+            }
+
+            // 2. Strip decoded / encoded entities and script schemes
+            clean = clean
+                .replace(/&[a-z0-9#]+;/gi, '') // Strip HTML entities
+                .replace(/javascript\s*:/gi, '')
+                .replace(/data\s*:\s*text\/html/gi, '')
+                .replace(/vbscript\s*:/gi, '')
+                .replace(/on[a-z]+\s*=/gi, '')
+                .replace(/[\x00-\x1F\x7F-\x9F\u200B-\u200D\uFEFF]/g, '') // Control characters & zero-width chars
+                .replace(/\s+/g, ' ') // Collapse multiple whitespace
+                .trim();
+
+            // 3. Length ceiling
+            if (maxLength && clean.length > maxLength) {
+                clean = clean.substring(0, maxLength).trim();
+            }
+
+            return clean;
+        },
+
+        /**
+         * Title Safety Validator:
+         * Returns true if title is clean of any dangerous script patterns.
+         */
+        validateTitleNoScript: function(title) {
+            if (!title || typeof title !== 'string') return true;
+            const dangerousPattern = /(<[\s/]*(script|iframe|object|embed|svg|img|style|link|meta|base|form|input|button|body|frameset|audio|video)[^>]*>|javascript\s*:|vbscript\s*:|data\s*:\s*text\/html|on[a-z]+\s*=)/i;
+            return !dangerousPattern.test(title);
+        },
+
+        /**
+         * Sanitize multi-line descriptions while preserving standard safe formatting
+         */
+        sanitizeText: function(text, maxLength = 2500) {
+            if (text === null || text === undefined) return '';
+            let clean = String(text);
+            let prev = '';
+            while (prev !== clean) {
+                prev = clean;
+                clean = clean.replace(/<[^>]*>?/gm, '');
+            }
+            clean = clean
+                .replace(/javascript\s*:/gi, '')
+                .replace(/on[a-z]+\s*=/gi, '')
+                .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '');
+            if (maxLength && clean.length > maxLength) {
+                clean = clean.substring(0, maxLength);
+            }
+            return clean.trim();
+        },
+
+        /**
+         * Sanitize URLs using strict protocol whitelisting
+         * Prevents `javascript:`, `data:`, `vbscript:` and protocol spoofing
          */
         sanitizeURL: function(url) {
             if (!url || typeof url !== 'string') return '#';
             const cleanUrl = url.trim();
-            // Block dangerous protocols
-            const dangerousProtocols = /^(javascript:|data:text\/html|vbscript:|file:)/i;
-            if (dangerousProtocols.test(cleanUrl)) {
-                console.warn('[Security] Blocked potentially malicious URI protocol:', cleanUrl);
+
+            // 1. Immediately block dangerous pseudo protocols
+            if (/^(javascript|vbscript|data|file):/i.test(cleanUrl.replace(/[\x00-\x20]/g, ''))) {
+                console.warn('[Security] Blocked dangerous URI scheme:', cleanUrl);
                 return '#';
             }
-            return cleanUrl;
+
+            // 2. Allow safe relative paths
+            if (/^(\/|\.\/|\.\.\/|#|assets\/|pages\/|[a-zA-Z0-9_\-\.]+\.html(\?.*)?$)/.test(cleanUrl)) {
+                return cleanUrl;
+            }
+
+            // 3. Allow safe absolute URLs (http, https, mailto, tel)
+            try {
+                const parsed = new URL(cleanUrl, window.location.href);
+                if (['http:', 'https:', 'mailto:', 'tel:'].includes(parsed.protocol)) {
+                    return cleanUrl;
+                }
+            } catch (_) {}
+
+            return '#';
         },
 
         /**
-         * Sanitize user input (Search bars, forms)
+         * Sanitize user input (Search bars, forms) with iterative tag stripping
          */
         sanitizeInput: function(input) {
             if (typeof input !== 'string') return '';
-            return input
-                .replace(/<[^>]*>?/gm, '') // Remove HTML tags
-                .replace(/javascript:/gi, '') // Strip inline protocols
-                .replace(/on\w+\s*=/gi, '') // Strip inline event handlers like onerror=, onload=
-                .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, ''); // Strip control characters
+            let clean = input;
+            let prev = '';
+            while (prev !== clean) {
+                prev = clean;
+                clean = clean.replace(/<[^>]*>?/gm, '');
+            }
+            return clean
+                .replace(/javascript\s*:/gi, '')
+                .replace(/on[a-z]+\s*=/gi, '')
+                .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '');
         },
 
         /**
@@ -119,6 +207,9 @@
     // Expose SecurityUtils to window
     window.SecurityUtils = Object.freeze(SecurityUtils);
     window.escapeHTML = SecurityUtils.escapeHTML;
+    window.sanitizeTitle = SecurityUtils.sanitizeTitle;
+    window.sanitizeURL = SecurityUtils.sanitizeURL;
+    window.validateTitleNoScript = SecurityUtils.validateTitleNoScript;
 
     // =========================================================================
     // 4. RATE LIMITING & ANTI-FLOOD ENGINE (BOT / CLICK SPAM PROTECTION)
@@ -225,8 +316,9 @@
     document.addEventListener('input', function(e) {
         const target = e.target;
         if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA')) {
-            // Check for immediate script tag injection
-            if (/<script|onerror=|onload=|javascript:/i.test(target.value)) {
+            // Check for immediate script tag / dangerous protocol / inline event injection
+            const dangerousPattern = /<[\s/]*(script|iframe|object|embed|svg|img|style|audio|video|form|body)[^>]*>|javascript\s*:|vbscript\s*:|data\s*:\s*text\/html|on[a-z]+\s*=/i;
+            if (dangerousPattern.test(target.value)) {
                 target.value = SecurityUtils.sanitizeInput(target.value);
                 const msg = window.t ? window.t("security.toast_xss") : "Karakter skrip berbahaya dihapus secara otomatis.";
                 window.showProtectionToast(msg, "lucide:shield-alert");

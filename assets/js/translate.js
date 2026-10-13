@@ -842,7 +842,9 @@
         
         if (params && typeof params === 'object') {
             Object.keys(params).forEach(p => {
-                text = text.replace(new RegExp('\\{' + p + '\\}', 'g'), params[p]);
+                const val = (params[p] !== null && params[p] !== undefined) ? String(params[p]) : '';
+                const safeKey = p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                text = text.replace(new RegExp('\\{' + safeKey + '\\}', 'g'), () => val);
             });
         }
         return text;

@@ -12,6 +12,39 @@ function _t(key, params) {
     return key;
 }
 
+// Global XSS & Title Sanitizer Wrappers (Safe Fallbacks)
+function _escape(str) {
+    if (window.SecurityUtils && typeof window.SecurityUtils.escapeHTML === 'function') {
+        return window.SecurityUtils.escapeHTML(str);
+    }
+    if (typeof window.escapeHTML === 'function') {
+        return window.escapeHTML(str);
+    }
+    if (str === null || str === undefined) return '';
+    return String(str).replace(/[&<>"'`=\/]/g, function(s) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#x27;', '/': '&#x2F;', '`': '&#x60;', '=': '&#x3D;' }[s] || s;
+    });
+}
+
+function _safeUrl(url) {
+    if (window.SecurityUtils && typeof window.SecurityUtils.sanitizeURL === 'function') {
+        return window.SecurityUtils.sanitizeURL(url);
+    }
+    if (typeof window.sanitizeURL === 'function') {
+        return window.sanitizeURL(url);
+    }
+    const clean = String(url || '').trim();
+    if (/^(javascript|vbscript|data|file):/i.test(clean.replace(/[\x00-\x20]/g, ''))) return '#';
+    return clean;
+}
+
+function _sanitizeTitle(title, max = 180) {
+    if (window.SecurityUtils && typeof window.SecurityUtils.sanitizeTitle === 'function') {
+        return window.SecurityUtils.sanitizeTitle(title, max);
+    }
+    return String(title || '').replace(/<[^>]*>?/gm, '').trim();
+}
+
 // ==========================================
 // 1. HOME & GLOBAL CATEGORY MODAL LOGIC
 // ==========================================
@@ -203,10 +236,10 @@ function initContactForm() {
 
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-        const nama = form.nama ? form.nama.value.trim() : '';
-        const email = form.email ? form.email.value.trim() : '';
-        const layanan = form.layanan ? form.layanan.value.trim() : '';
-        const pesan = form.pesan ? form.pesan.value.trim() : '';
+        const nama = _sanitizeTitle(form.nama ? form.nama.value.trim() : '', 100);
+        const email = String(form.email ? form.email.value.trim() : '').replace(/[\r\n\x00-\x1F]/g, '').slice(0, 100);
+        const layanan = _sanitizeTitle(form.layanan ? form.layanan.value.trim() : '', 100);
+        const pesan = String(form.pesan ? form.pesan.value.trim() : '').replace(/<[^>]*>?/gm, '').slice(0, 2000);
 
         if (!nama || !email || !pesan) {
             alert(_t('about.form_alert_required'));
@@ -421,15 +454,17 @@ function appendPortfolioBatch(baseAssetPrefix = '') {
     let batchHtml = '';
     batchItems.forEach((item, localIdx) => {
         const globalIndex = startIndex + localIdx;
-        const fullHdUrl = baseAssetPrefix + item.url;
-        const thumbUrl = baseAssetPrefix + item.url.replace('assets/portofolio/', 'assets/portofolio/thumbs/');
+        const fullHdUrl = _safeUrl(baseAssetPrefix + item.url);
+        const thumbUrl = _safeUrl(baseAssetPrefix + item.url.replace('assets/portofolio/', 'assets/portofolio/thumbs/'));
+        const safeNama = _escape(item.nama);
+        const safeKategori = _escape(item.kategori);
         const delayMs = (localIdx % 10) * 45;
 
         batchHtml += `
             <div class="portfolio-card-enter glass-spotlight break-inside-avoid mb-3 sm:mb-4 group relative rounded-2xl overflow-hidden bg-zinc-100 skeleton-loader cursor-zoom-in shadow-xs hover:shadow-2xl transform hover:scale-[1.03] hover:z-20 transition-all duration-300 ease-in-out"
                 style="animation-delay: ${delayMs}ms;"
                 onclick="openPortfolioZoom(${globalIndex}, '${baseAssetPrefix}')">
-                <img src="${thumbUrl}" alt="${item.nama}" loading="lazy"
+                <img src="${thumbUrl}" alt="${safeNama}" loading="lazy"
                     onload="this.classList.add('img-loaded'); this.closest('.skeleton-loader')?.classList.add('skeleton-loaded');"
                     onerror="this.onerror=null; this.src='${fullHdUrl}'; this.classList.add('img-loaded'); this.closest('.skeleton-loader')?.classList.add('skeleton-loaded');"
                     class="w-full h-auto block object-cover transition-all duration-300 ease-in-out group-hover:brightness-95">
@@ -439,9 +474,9 @@ function appendPortfolioBatch(baseAssetPrefix = '') {
                     </div>
                     <div class="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                         <span class="inline-block px-2 py-0.5 rounded-md bg-brand-600 text-white text-[9px] font-bold uppercase tracking-wider mb-1 shadow-xs">
-                            ${item.kategori}
+                            ${safeKategori}
                         </span>
-                        <p class="text-white text-xs font-bold truncate drop-shadow-sm">${item.nama}</p>
+                        <p class="text-white text-xs font-bold truncate drop-shadow-sm">${safeNama}</p>
                     </div>
                 </div>
             </div>
@@ -524,12 +559,13 @@ function openPortfolioZoom(index, baseAssetPrefix = '') {
 
     const item = filteredPortfolios[index];
     if (modal && modalImg) {
-        const fullHdUrl = baseAssetPrefix + item.url;
-        const thumbUrl = baseAssetPrefix + item.url.replace('assets/portofolio/', 'assets/portofolio/thumbs/');
+        const fullHdUrl = _safeUrl(baseAssetPrefix + item.url);
+        const thumbUrl = _safeUrl(baseAssetPrefix + item.url.replace('assets/portofolio/', 'assets/portofolio/thumbs/'));
+        const safeTitle = _sanitizeTitle(item.nama);
 
         // Display thumbnail instantly with smooth loading transition
         modalImg.src = thumbUrl;
-        modalImg.alt = item.nama || _t('portfolio.zoom_modal_title');
+        modalImg.alt = safeTitle || _t('portfolio.zoom_modal_title');
         modalImg.style.transform = `scale(1)`;
         modalImg.classList.add('hd-loading');
         modalImg.classList.remove('hd-loaded');
@@ -554,8 +590,8 @@ function openPortfolioZoom(index, baseAssetPrefix = '') {
         if (waLink) {
             const isEnglish = (typeof window.getSavedLanguage === 'function' && window.getSavedLanguage() === 'en');
             const waText = isEnglish 
-                ? ('Hello Premium Design, I would like to order a similar design to portfolio: ' + item.nama)
-                : ('Halo Premium Design, saya ingin memesan jasa/karya desain serupa portofolio: ' + item.nama);
+                ? ('Hello Premium Design, I would like to order a similar design to portfolio: ' + safeTitle)
+                : ('Halo Premium Design, saya ingin memesan jasa/karya desain serupa portofolio: ' + safeTitle);
             waLink.href = `https://api.whatsapp.com/send/?phone=6285168174679&text=${encodeURIComponent(waText)}`;
         }
 
@@ -855,18 +891,21 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
 
     let gridHtml = '<div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3.5 sm:gap-5">';
     items.forEach((prod, index) => {
-        const detailUrl = (baseAssetPrefix === '../') ? `product-detail.html?id=${prod.Id_produk}` : `pages/product-detail.html?id=${prod.Id_produk}`;
-        const imgUrl = (baseAssetPrefix || '') + (prod.image_url || '');
+        const rawDetailUrl = (baseAssetPrefix === '../') ? `product-detail.html?id=${encodeURIComponent(prod.Id_produk)}` : `pages/product-detail.html?id=${encodeURIComponent(prod.Id_produk)}`;
+        const detailUrl = _safeUrl(rawDetailUrl);
+        const imgUrl = _safeUrl((baseAssetPrefix || '') + (prod.image_url || ''));
         const delay = Math.min((index % 8) * 40, 300);
-        const catName = prod.kategori ? prod.kategori.Nama_kategori : 'Desain';
-        const waLink = prod.whatsapp_link || 'https://api.whatsapp.com/send/?phone=6285168174679';
+        const catName = _escape(prod.kategori ? prod.kategori.Nama_kategori : 'Desain');
+        const waLink = _safeUrl(prod.whatsapp_link || 'https://api.whatsapp.com/send/?phone=6285168174679');
+        const prodTitle = _escape(prod.Nama_produk || 'Desain Grafis');
+        const prodDesc = _escape(prod.Des_produk || '');
 
         gridHtml += `
             <div class="portfolio-card-enter glass-spotlight relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out flex flex-col justify-between group" style="animation-delay: ${delay}ms;">
                 <div>
                     <a href="${detailUrl}" class="block">
                         <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden cursor-pointer">
-                            <img src="${imgUrl}" alt="${prod.Nama_produk || 'Produk Desain'}" loading="lazy"
+                            <img src="${imgUrl}" alt="${prodTitle}" loading="lazy"
                                 onload="this.classList.add('img-loaded'); this.closest('.skeleton-loader')?.classList.add('skeleton-loaded');"
                                 onerror="this.classList.add('img-loaded'); this.closest('.skeleton-loader')?.classList.add('skeleton-loaded');"
                                 class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:scale-105 group-hover:brightness-95">
@@ -891,11 +930,11 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
                     <div class="p-3 sm:p-4 group-hover:bg-zinc-50 transition-colors duration-300 ease-in-out">
                         <h3 class="text-xs sm:text-sm font-bold text-zinc-900 line-clamp-1 group-hover:text-brand-600 transition-colors duration-300 ease-in-out">
                             <a href="${detailUrl}">
-                                ${prod.Nama_produk || 'Desain Grafis'}
+                                ${prodTitle}
                             </a>
                         </h3>
                         <p class="text-[10px] sm:text-[11px] text-zinc-500 mt-1 line-clamp-2 leading-relaxed">
-                            ${prod.Des_produk || ''}
+                            ${prodDesc}
                         </p>
                     </div>
                 </div>
@@ -942,25 +981,25 @@ function initProductDetailPage(baseAssetPrefix = '') {
     // Breadcrumb
     const bcCat = document.getElementById('breadcrumbCategory');
     if (bcCat && prod.kategori) {
-        bcCat.textContent = prod.kategori.Nama_kategori;
-        bcCat.href = `marketplace.html?kategori=${prod.Id_kategori}`;
+        bcCat.textContent = _sanitizeTitle(prod.kategori.Nama_kategori);
+        bcCat.href = `marketplace.html?kategori=${encodeURIComponent(prod.Id_kategori)}`;
     }
     const bcTitle = document.getElementById('breadcrumbTitle');
-    if (bcTitle) bcTitle.textContent = prod.Nama_produk;
+    if (bcTitle) bcTitle.textContent = _sanitizeTitle(prod.Nama_produk);
 
     // Title & Category Badge
     const titleEl = document.getElementById('productDetailTitle');
-    if (titleEl) titleEl.textContent = prod.Nama_produk;
+    if (titleEl) titleEl.textContent = _sanitizeTitle(prod.Nama_produk);
     const catBadge = document.getElementById('productCategoryBadge');
-    if (catBadge && prod.kategori) catBadge.textContent = prod.kategori.Nama_kategori;
+    if (catBadge && prod.kategori) catBadge.textContent = _sanitizeTitle(prod.kategori.Nama_kategori);
 
     // Main Image
     const mainImg = document.getElementById('main-product-image');
-    if (mainImg) mainImg.src = currentProductGallery[0] || (baseAssetPrefix + prod.image_url);
+    if (mainImg) mainImg.src = _safeUrl(currentProductGallery[0] || (baseAssetPrefix + prod.image_url));
 
     // Description
     const descEl = document.getElementById('productDescriptionContent');
-    if (descEl) descEl.innerHTML = `<p class="text-xs sm:text-sm text-zinc-700 leading-relaxed whitespace-pre-line">${prod.Des_produk}</p>`;
+    if (descEl) descEl.innerHTML = `<p class="text-xs sm:text-sm text-zinc-700 leading-relaxed whitespace-pre-line">${_escape(prod.Des_produk)}</p>`;
 
     // Linked Service Package
     const serviceBox = document.getElementById('productServicePackageBox');
@@ -969,10 +1008,10 @@ function initProductDetailPage(baseAssetPrefix = '') {
             <div class="p-4 rounded-xl bg-white border border-zinc-200 space-y-2.5">
                 <div class="flex items-center space-x-2 text-brand-700">
                     <iconify-icon icon="lucide:gem" class="text-xs"></iconify-icon>
-                    <span class="text-xs font-bold uppercase tracking-wider">${_t('product_detail.package_label')} ${prod.layanan.Nama_layanan}</span>
+                    <span class="text-xs font-bold uppercase tracking-wider">${_t('product_detail.package_label')} ${_escape(prod.layanan.Nama_layanan)}</span>
                 </div>
                 <div class="text-xs text-zinc-700 whitespace-pre-line leading-relaxed">
-                    ${prod.layanan.Benefit}
+                    ${_escape(prod.layanan.Benefit)}
                 </div>
             </div>
         `;
@@ -993,13 +1032,15 @@ function initProductDetailPage(baseAssetPrefix = '') {
                 <div class="flex flex-wrap gap-2 pt-0.5">
         `;
         prod.software.forEach(soft => {
+            const softName = _escape(soft.Nama_software);
+            const softLogo = _safeUrl(baseAssetPrefix + soft.Logo_url);
             softsHtml += `
                 <div class="inline-flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-zinc-50 border border-zinc-200/80 shadow-2xs hover:border-brand-400 hover:bg-brand-50/50 transition-colors"
-                    title="${soft.Nama_software}">
+                    title="${softName}">
                     <div class="w-4 h-4 rounded bg-white p-0.5 flex items-center justify-center shrink-0 overflow-hidden">
-                        <img src="${baseAssetPrefix + soft.Logo_url}" alt="${soft.Nama_software}" class="max-w-full max-h-full object-contain">
+                        <img src="${softLogo}" alt="${softName}" class="max-w-full max-h-full object-contain">
                     </div>
-                    <span class="text-[11px] font-bold text-zinc-800">${soft.Nama_software}</span>
+                    <span class="text-[11px] font-bold text-zinc-800">${softName}</span>
                 </div>
             `;
         });
@@ -1009,13 +1050,13 @@ function initProductDetailPage(baseAssetPrefix = '') {
 
     // Specifications
     const specCat = document.getElementById('specCategory');
-    if (specCat && prod.kategori) specCat.textContent = prod.kategori.Nama_kategori;
+    if (specCat && prod.kategori) specCat.textContent = _sanitizeTitle(prod.kategori.Nama_kategori);
     const specEst = document.getElementById('specEstimation');
-    if (specEst) specEst.textContent = prod.Estimasi || '1-2 Hari';
+    if (specEst) specEst.textContent = _sanitizeTitle(prod.Estimasi || '1-2 Hari');
 
     // WhatsApp Order Button
     const waBtn = document.getElementById('productWhatsAppOrderBtn');
-    if (waBtn) waBtn.href = prod.whatsapp_link;
+    if (waBtn) waBtn.href = _safeUrl(prod.whatsapp_link);
 
     // Gallery Thumbnails
     renderProductGalleryThumbnails(baseAssetPrefix);
@@ -1047,7 +1088,7 @@ function renderProductGalleryThumbnails(baseAssetPrefix = '') {
             <button type="button" onclick="setProductSlide(${i})"
                 class="gallery-thumb-btn aspect-square rounded-xl overflow-hidden border-2 transition-all group ${i === 0 ? 'border-brand-600 ring-2 ring-brand-500/20 shadow-sm' : 'border-zinc-200 hover:border-brand-400 opacity-70 hover:opacity-100'}"
                 data-index="${i}">
-                <img src="${gUrl}" alt="Preview ${i + 1}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                <img src="${_safeUrl(gUrl)}" alt="Preview ${i + 1}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             </button>
         `).join('');
     }
@@ -1141,18 +1182,26 @@ function renderRelatedProducts(prodId, catId, baseAssetPrefix = '') {
         if (items.length === 0) {
             return `<div class="w-full py-8 text-center text-zinc-400 text-xs">${_t('product_detail.empty_related')}</div>`;
         }
-        return items.map(rel => `
+        return items.map(rel => {
+            const relTitle = _escape(rel.Nama_produk || 'Desain Grafis');
+            const relDesc = _escape(rel.Des_produk || '');
+            const relCat = _escape(rel.kategori ? rel.kategori.Nama_kategori : 'Desain');
+            const relImg = _safeUrl(baseAssetPrefix + (rel.image_url || ''));
+            const relWa = _safeUrl(rel.whatsapp_link || 'https://api.whatsapp.com/send/?phone=6285168174679');
+            const relId = encodeURIComponent(rel.Id_produk);
+
+            return `
             <div class="flex-none w-[160px] sm:w-[180px] md:w-[200px] lg:w-[calc((100%-5*16px)/6)] min-w-[150px] rounded-2xl border border-zinc-200/80 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
-                <a href="product-detail.html?id=${rel.Id_produk}" class="block group">
+                <a href="product-detail.html?id=${relId}" class="block group">
                     <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden cursor-pointer">
-                        <img src="${baseAssetPrefix + rel.image_url}" alt="${rel.Nama_produk}" loading="lazy"
+                        <img src="${relImg}" alt="${relTitle}" loading="lazy"
                             class="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:brightness-90">
                         <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent"></div>
                         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 ease-in-out pointer-events-none"></div>
 
                         <div class="absolute top-2 left-2 z-10">
                             <span class="px-2 py-0.5 rounded-md bg-zinc-900/80 backdrop-blur-md text-white text-[9px] font-bold uppercase tracking-wider border border-white/10">
-                                ${rel.kategori ? rel.kategori.Nama_kategori : 'Desain'}
+                                ${relCat}
                             </span>
                         </div>
 
@@ -1166,27 +1215,28 @@ function renderRelatedProducts(prodId, catId, baseAssetPrefix = '') {
 
                     <div class="p-3 space-y-1 group-hover:bg-zinc-50 transition-colors duration-200">
                         <h4 class="text-xs sm:text-sm font-bold text-zinc-900 line-clamp-1 group-hover:text-brand-600 transition-colors">
-                            ${rel.Nama_produk}
+                            ${relTitle}
                         </h4>
                         <p class="text-[11px] text-zinc-500 line-clamp-2 leading-relaxed">
-                            ${rel.Des_produk}
+                            ${relDesc}
                         </p>
                     </div>
                 </a>
 
                 <div class="p-3 pt-0 flex items-center space-x-1.5 group-hover:bg-zinc-50 transition-colors duration-200">
-                    <a href="product-detail.html?id=${rel.Id_produk}"
+                    <a href="product-detail.html?id=${relId}"
                         class="flex-1 py-1.5 text-center text-xs font-bold text-zinc-700 bg-zinc-100 hover:bg-zinc-200 rounded-xl transition-colors">
                         ${_t('marketplace.btn_detail')}
                     </a>
-                    <a href="${rel.whatsapp_link}" target="_blank"
+                    <a href="${relWa}" target="_blank"
                         class="flex-1 inline-flex items-center justify-center space-x-1 py-1.5 text-center text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-xl shadow-sm transition-all">
                         <iconify-icon icon="simple-icons:whatsapp" class="text-xs"></iconify-icon>
                         <span>${_t('marketplace.btn_order')}</span>
                     </a>
                 </div>
             </div>
-        `).join('');
+            `;
+        }).join('');
     }
 
     if (relevantTrack) relevantTrack.innerHTML = buildCards(relevantItems);

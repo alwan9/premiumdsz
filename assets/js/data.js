@@ -1958,6 +1958,23 @@ const PORTFOLIOS = [
     }
 ];
 
+// Data Security & Sanitization Helpers
+function cleanStoredTitle(title, max = 180) {
+    if (typeof window !== 'undefined' && window.SecurityUtils && typeof window.SecurityUtils.sanitizeTitle === 'function') {
+        return window.SecurityUtils.sanitizeTitle(title, max);
+    }
+    if (!title || typeof title !== 'string') return '';
+    return title.replace(/<[^>]*>?/gm, '').replace(/[\x00-\x1F\x7F-\x9F\u200B-\u200D\uFEFF]/g, '').trim().slice(0, max);
+}
+
+function cleanStoredText(text, max = 3000) {
+    if (typeof window !== 'undefined' && window.SecurityUtils && typeof window.SecurityUtils.sanitizeText === 'function') {
+        return window.SecurityUtils.sanitizeText(text, max);
+    }
+    if (!text || typeof text !== 'string') return '';
+    return text.replace(/<[^>]*>?/gm, '').replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '').trim().slice(0, max);
+}
+
 // Master Data Helper Functions
 function getCategoryById(id) {
     return CATEGORIES.find(c => c.Id_kategori == id) || null;
@@ -1986,14 +2003,19 @@ function getProductById(id) {
         ? "Hello Premium Design, I would like to order design service for: " 
         : "Halo Premium Design, saya ingin memesan jasa/produk desain: ";
 
+    const safeTitle = cleanStoredTitle(p.Nama_produk);
+    const safeDesc = cleanStoredText(p.Des_produk);
+
     return {
         ...p,
+        Nama_produk: safeTitle,
+        Des_produk: safeDesc,
         custom_id: 'JS-' + String(p.Id_produk).padStart(4, '0'),
         average_rating: 5.0,
         kategori: cat,
         layanan: srv,
         software: softs,
-        whatsapp_link: "https://api.whatsapp.com/send/?phone=" + (p.No_wa || "6285168174679") + "&text=" + encodeURIComponent(waPrefix + p.Nama_produk)
+        whatsapp_link: "https://api.whatsapp.com/send/?phone=" + (p.No_wa || "6285168174679") + "&text=" + encodeURIComponent(waPrefix + safeTitle)
     };
 }
 
@@ -2012,4 +2034,32 @@ function getLatestProducts(currentId, limit = 12) {
     const diff = all.filter(p => p.Id_produk != currentId);
     return diff.slice(0, limit);
 }
+
+// Data Sanitization Pipeline: Ensure all master data arrays are purified at runtime
+try {
+    if (typeof PRODUCTS !== 'undefined' && Array.isArray(PRODUCTS)) {
+        PRODUCTS.forEach(p => {
+            if (p.Nama_produk) p.Nama_produk = cleanStoredTitle(p.Nama_produk);
+            if (p.Des_produk) p.Des_produk = cleanStoredText(p.Des_produk);
+        });
+    }
+    if (typeof PORTFOLIOS !== 'undefined' && Array.isArray(PORTFOLIOS)) {
+        PORTFOLIOS.forEach(item => {
+            if (item.nama) item.nama = cleanStoredTitle(item.nama);
+            if (item.kategori) item.kategori = cleanStoredTitle(item.kategori, 50);
+            if (item.deskripsi) item.deskripsi = cleanStoredText(item.deskripsi, 500);
+        });
+    }
+    if (typeof PROMOS !== 'undefined' && Array.isArray(PROMOS)) {
+        PROMOS.forEach(pr => {
+            if (pr.Judul) pr.Judul = cleanStoredTitle(pr.Judul);
+        });
+    }
+    if (typeof TESTIMONIALS !== 'undefined' && Array.isArray(TESTIMONIALS)) {
+        TESTIMONIALS.forEach(t => {
+            if (t.Judul) t.Judul = cleanStoredTitle(t.Judul);
+            if (t.display_title) t.display_title = cleanStoredTitle(t.display_title);
+        });
+    }
+} catch (_) {}
 

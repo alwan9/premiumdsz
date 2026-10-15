@@ -38,7 +38,7 @@
         content="Jasa desain premium &amp; grafis profesional terpercaya di Indonesia: logo branding, standing pouch &amp; kemasan box, banner UMKM &amp; wisuda, UI/UX website, template PPT, CV, dan jersey custom.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://premiumdsz.my.id/">
-    <meta property="og:image" content="https://premiumdsz.my.id/assets/other/logo_warna.png">
+    <meta property="og:image" content="https://premiumdsz.my.id/assets/other/logo_warna.webp">
     <meta property="og:image:alt" content="Premium Designz - Jasa Desain Premium">
     <meta property="og:locale" content="id_ID">
 
@@ -47,7 +47,7 @@
     <meta name="twitter:title" content="Jasa Desain Premium &amp; Grafis Profesional - Premium Designz">
     <meta name="twitter:description"
         content="Penyedia jasa desain premium &amp; grafis custom original: logo, kemasan, banner, UI/UX, PPT, CV, dan jersey custom berkualitas tinggi.">
-    <meta name="twitter:image" content="https://premiumdsz.my.id/assets/other/logo_warna.png">
+    <meta name="twitter:image" content="https://premiumdsz.my.id/assets/other/logo_warna.webp">
 
     <!-- Geo & Language Meta Tags -->
     <meta name="geo.region" content="ID">
@@ -69,8 +69,8 @@
             "Premium Designz Creative Studio"
         ],
         "url": "https://premiumdsz.my.id/",
-        "logo": "https://premiumdsz.my.id/assets/other/logo_warna.png",
-        "image": "https://premiumdsz.my.id/assets/other/logo_warna.png",
+        "logo": "https://premiumdsz.my.id/assets/other/logo_warna.webp",
+        "image": "https://premiumdsz.my.id/assets/other/logo_warna.webp",
         "description": "Studio penyedia jasa desain premium dan desain grafis profesional terpercaya di Indonesia: desain logo brand, kemasan boks & pouch snack, banner promosi UMKM & wisuda, UI/UX aplikasi & website, slide presentasi PPT, CV lamaran, stiker label, dan jersey custom.",
         "telephone": "+6285168174679",
         "priceRange": "Rp 10.000 - Rp 500.000",
@@ -143,8 +143,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://code.jquery.com">
     <link rel="preconnect" href="https://code.iconify.design">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://api.iconify.design">
+
+    <!-- Preload Critical LCP Hero Artwork -->
+    <link rel="preload" as="image" href="assets/other/header-left.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/other/header-right.webp" fetchpriority="high">
 
     <!-- Google Fonts: Plus Jakarta Sans & Outfit with font-display swap -->
     <link
@@ -155,10 +161,6 @@
             href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
             rel="stylesheet">
     </noscript>
-
-    <!-- jQuery CDN (Deferred) -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous" defer></script>
 
     <!-- Iconify Icon Web Component & Embedded Offline Bundle (Deferred) -->
     <script src="assets/js/icons-bundle.js" defer></script>
@@ -260,8 +262,8 @@
                 <!-- Brand Logo -->
                 <a href="index.html" class="flex items-center space-x-3 group"
                     title="Premium Designz - Jasa Desain Grafis Profesional">
-                    <img id="nav-brand-logo" src="assets/other/logo_warna.png"
-                        data-logo-light="assets/other/logo_warna.png" data-logo-dark="assets/other/logo_white.png"
+                    <img id="nav-brand-logo" src="assets/other/logo_warna.webp"
+                        data-logo-light="assets/other/logo_warna.webp" data-logo-dark="assets/other/logo_white.webp"
                         alt="Logo Premium Designz - Jasa Desain Grafis"
                         class="h-10 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
                 </a>
@@ -377,14 +379,14 @@
 
             <!-- Left Workspace UI Artwork (Pure CSS entrance animation, perfectly preserves -translate-y-1/2) -->
             <div class="hero-artwork-left absolute -left-20 sm:-left-12 md:-left-8 lg:left-0 top-1/2 -translate-y-1/2 pointer-events-none z-0 select-none">
-                <img src="assets/other/header-left.png" alt="Design UI Left" width="410" height="350"
+                <img src="assets/other/header-left.webp" alt="Design UI Left" width="410" height="350"
                     fetchpriority="high" decoding="async"
                     class="w-44 sm:w-64 md:w-80 lg:w-92 xl:w-[410px] max-w-none drop-shadow-2xl opacity-75 sm:opacity-90 md:opacity-100 transition-transform duration-700 hover:scale-105">
             </div>
 
             <!-- Right Workspace UI Artwork (Pure CSS entrance animation, perfectly preserves -translate-y-1/2) -->
             <div class="hero-artwork-right absolute -right-20 sm:-right-12 md:-right-8 lg:right-0 top-1/2 -translate-y-1/2 pointer-events-none z-0 select-none">
-                <img src="assets/other/header-right.png" alt="Design UI Right" width="410" height="350"
+                <img src="assets/other/header-right.webp" alt="Design UI Right" width="410" height="350"
                     fetchpriority="high" decoding="async"
                     class="w-44 sm:w-64 md:w-80 lg:w-92 xl:w-[410px] max-w-none drop-shadow-2xl opacity-75 sm:opacity-90 md:opacity-100 transition-transform duration-700 hover:scale-105">
             </div>
@@ -398,7 +400,7 @@
                         <!-- Floating Icon 1: Canva (Top Left) -->
                         <div class="absolute left-0 sm:left-3 md:left-5 lg:left-8 top-0 sm:top-1 z-20 pointer-events-auto">
                             <div class="float-icon-1 cursor-pointer group">
-                                <img src="assets/software/canva.png" alt="Canva" width="68" height="68" decoding="async"
+                                <img src="assets/software/canva.webp" alt="Canva" width="68" height="68" decoding="async"
                                     class="w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-17 lg:h-17 object-contain drop-shadow-xl group-hover:scale-115 transition-transform duration-300">
                             </div>
                         </div>
@@ -407,7 +409,7 @@
                         <div
                             class="absolute -left-1 sm:left-1 md:left-3 lg:left-4 top-[42%] -translate-y-1/2 z-20 pointer-events-auto">
                             <div class="float-icon-2 cursor-pointer group">
-                                <img src="assets/software/powerpoint.png" alt="PowerPoint" width="64" height="64"
+                                <img src="assets/software/powerpoint.webp" alt="PowerPoint" width="64" height="64"
                                     decoding="async"
                                     class="w-10 h-10 sm:w-13 sm:h-13 md:w-15 md:h-15 lg:w-16 lg:h-16 object-contain drop-shadow-xl group-hover:scale-115 transition-transform duration-300">
                             </div>
@@ -417,7 +419,7 @@
                         <div
                             class="absolute left-1 sm:left-4 md:left-7 lg:left-10 bottom-16 sm:bottom-20 md:bottom-24 lg:bottom-28 z-20 pointer-events-auto">
                             <div class="float-icon-3 cursor-pointer group">
-                                <img src="assets/software/figma.png" alt="Figma" width="68" height="68" decoding="async"
+                                <img src="assets/software/figma.webp" alt="Figma" width="68" height="68" decoding="async"
                                     class="w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-17 lg:h-17 object-contain drop-shadow-xl group-hover:scale-115 transition-transform duration-300">
                             </div>
                         </div>
@@ -426,7 +428,7 @@
                         <div
                             class="absolute right-16 sm:right-24 md:right-32 lg:right-38 top-0 sm:top-1 z-20 pointer-events-auto">
                             <div class="float-icon-4 cursor-pointer group">
-                                <img src="assets/software/Adobe_Illustrator.png" alt="Adobe Illustrator" width="64"
+                                <img src="assets/software/Adobe_Illustrator.webp" alt="Adobe Illustrator" width="64"
                                     height="64" decoding="async"
                                     class="w-10 h-10 sm:w-13 sm:h-13 md:w-15 md:h-15 lg:w-16 lg:h-16 object-contain drop-shadow-xl group-hover:scale-115 transition-transform duration-300">
                             </div>
@@ -435,7 +437,7 @@
                         <!-- Floating Icon 5: SketchUp (Upper Middle Right) -->
                         <div class="absolute right-1 sm:right-3 md:right-5 lg:right-7 top-[18%] z-20 pointer-events-auto">
                             <div class="float-icon-5 cursor-pointer group">
-                                <img src="assets/software/sketchup.png" alt="SketchUp" width="64" height="64"
+                                <img src="assets/software/sketchup.webp" alt="SketchUp" width="64" height="64"
                                     decoding="async"
                                     class="w-10 h-10 sm:w-13 sm:h-13 md:w-15 md:h-15 lg:w-16 lg:h-16 object-contain drop-shadow-xl group-hover:scale-115 transition-transform duration-300">
                             </div>
@@ -445,7 +447,7 @@
                         <div
                             class="absolute -right-1 sm:right-1 md:right-3 lg:right-4 top-[48%] -translate-y-1/2 z-20 pointer-events-auto">
                             <div class="float-icon-6 cursor-pointer group">
-                                <img src="assets/software/adobe_photoshop.png" alt="Adobe Photoshop" width="68" height="68"
+                                <img src="assets/software/adobe_photoshop.webp" alt="Adobe Photoshop" width="68" height="68"
                                     decoding="async"
                                     class="w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-17 lg:h-17 object-contain drop-shadow-xl group-hover:scale-115 transition-transform duration-300">
                             </div>
@@ -455,7 +457,7 @@
                         <div
                             class="absolute right-1 sm:right-4 md:right-7 lg:right-11 bottom-16 sm:bottom-20 md:bottom-24 lg:bottom-28 z-20 pointer-events-auto">
                             <div class="float-icon-7 cursor-pointer group">
-                                <img src="assets/software/coreldraw.png" alt="CorelDRAW" width="68" height="68"
+                                <img src="assets/software/coreldraw.webp" alt="CorelDRAW" width="68" height="68"
                                     decoding="async"
                                     class="w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-17 lg:h-17 object-contain drop-shadow-xl group-hover:scale-115 transition-transform duration-300">
                             </div>
@@ -467,35 +469,35 @@
                         <!-- 1: Canva -->
                         <div class="transform -rotate-12 translate-y-2 pointer-events-auto">
                             <div class="float-icon-1 cursor-pointer">
-                                <img src="assets/software/canva.png" alt="Canva" width="52" height="52" decoding="async"
+                                <img src="assets/software/canva.webp" alt="Canva" width="52" height="52" decoding="async"
                                     class="w-10 h-10 sm:w-12 sm:h-12 object-contain drop-shadow-lg active:scale-110 transition-transform">
                             </div>
                         </div>
                         <!-- 2: Adobe Illustrator -->
                         <div class="transform rotate-8 -translate-y-2 pointer-events-auto">
                             <div class="float-icon-4 cursor-pointer">
-                                <img src="assets/software/Adobe_Illustrator.png" alt="Adobe Illustrator" width="48" height="48" decoding="async"
+                                <img src="assets/software/Adobe_Illustrator.webp" alt="Adobe Illustrator" width="48" height="48" decoding="async"
                                     class="w-9 h-9 sm:w-11 sm:h-11 object-contain drop-shadow-lg active:scale-110 transition-transform">
                             </div>
                         </div>
                         <!-- 3: Figma -->
                         <div class="transform -rotate-6 translate-y-3.5 pointer-events-auto">
                             <div class="float-icon-3 cursor-pointer">
-                                <img src="assets/software/figma.png" alt="Figma" width="52" height="52" decoding="async"
+                                <img src="assets/software/figma.webp" alt="Figma" width="52" height="52" decoding="async"
                                     class="w-10 h-10 sm:w-12 sm:h-12 object-contain drop-shadow-lg active:scale-110 transition-transform">
                             </div>
                         </div>
                         <!-- 4: Adobe Photoshop -->
                         <div class="transform rotate-12 -translate-y-2.5 pointer-events-auto">
                             <div class="float-icon-6 cursor-pointer">
-                                <img src="assets/software/adobe_photoshop.png" alt="Adobe Photoshop" width="52" height="52" decoding="async"
+                                <img src="assets/software/adobe_photoshop.webp" alt="Adobe Photoshop" width="52" height="52" decoding="async"
                                     class="w-10 h-10 sm:w-12 sm:h-12 object-contain drop-shadow-lg active:scale-110 transition-transform">
                             </div>
                         </div>
                         <!-- 5: SketchUp -->
                         <div class="transform -rotate-10 translate-y-1.5 pointer-events-auto">
                             <div class="float-icon-5 cursor-pointer">
-                                <img src="assets/software/sketchup.png" alt="SketchUp" width="48" height="48" decoding="async"
+                                <img src="assets/software/sketchup.webp" alt="SketchUp" width="48" height="48" decoding="async"
                                     class="w-9 h-9 sm:w-11 sm:h-11 object-contain drop-shadow-lg active:scale-110 transition-transform">
                             </div>
                         </div>
@@ -518,14 +520,14 @@
                             <!-- 6: PowerPoint -->
                             <div class="transform -rotate-12 -translate-y-1.5 pointer-events-auto">
                                 <div class="float-icon-2 cursor-pointer">
-                                    <img src="assets/software/powerpoint.png" alt="PowerPoint" width="48" height="48" decoding="async"
+                                    <img src="assets/software/powerpoint.webp" alt="PowerPoint" width="48" height="48" decoding="async"
                                         class="w-9 h-9 sm:w-11 sm:h-11 object-contain drop-shadow-lg active:scale-110 transition-transform">
                                 </div>
                             </div>
                             <!-- 7: CorelDRAW -->
                             <div class="transform rotate-10 translate-y-2 pointer-events-auto">
                                 <div class="float-icon-7 cursor-pointer">
-                                    <img src="assets/software/coreldraw.png" alt="CorelDRAW" width="52" height="52" decoding="async"
+                                    <img src="assets/software/coreldraw.webp" alt="CorelDRAW" width="52" height="52" decoding="async"
                                         class="w-10 h-10 sm:w-12 sm:h-12 object-contain drop-shadow-lg active:scale-110 transition-transform">
                                 </div>
                             </div>
@@ -578,7 +580,7 @@
                             <a href="https://api.whatsapp.com/send/?phone=6285168174679&text=Halo%20Premium%20Design%2C%20saya%20ingin%20klaim%20Promo%20Banner%20%26%20Media%20Promosi%20UMKM."
                                 target="_blank"
                                 class="block rounded-2xl overflow-hidden border border-zinc-200 bg-zinc-200 skeleton-loader hover:border-brand-500 shadow-sm hover:shadow-md transition-all duration-200 aspect-[16/9]">
-                                <img src="assets/promo/banner promo (1).jpg"
+                                <img src="assets/promo/banner promo (1).webp"
                                     alt="Promo Spesial Banner &amp; Desain Promosi UMKM" width="400" height="225"
                                     loading="lazy" decoding="async" class="w-full h-full object-cover">
                             </a>
@@ -587,7 +589,7 @@
                             <a href="https://api.whatsapp.com/send/?phone=6285168174679&text=Halo%20Premium%20Design%2C%20saya%20ingin%20konsultasi%20Promo%20Paket%20Branding%20%26%20Logo."
                                 target="_blank"
                                 class="block rounded-2xl overflow-hidden border border-zinc-200 bg-zinc-200 skeleton-loader hover:border-brand-500 shadow-sm hover:shadow-md transition-all duration-200 aspect-[16/9]">
-                                <img src="assets/promo/banner promo (2).jpg"
+                                <img src="assets/promo/banner promo (2).webp"
                                     alt="Diskon Paket Branding &amp; Logo Eksklusif" width="400" height="225"
                                     loading="lazy" decoding="async" class="w-full h-full object-cover">
                             </a>
@@ -596,7 +598,7 @@
                             <a href="https://api.whatsapp.com/send/?phone=6285168174679&text=Halo%20Premium%20Design%2C%20saya%20ingin%20info%20Promo%20Desain%20Kemasan%20%26%20Pouch."
                                 target="_blank"
                                 class="block rounded-2xl overflow-hidden border border-zinc-200 bg-zinc-200 skeleton-loader hover:border-brand-500 shadow-sm hover:shadow-md transition-all duration-200 aspect-[16/9]">
-                                <img src="assets/promo/banner promo (3).jpg"
+                                <img src="assets/promo/banner promo (3).webp"
                                     alt="Penawaran Spesial Kemasan &amp; Standing Pouch" width="400" height="225"
                                     loading="lazy" decoding="async" class="w-full h-full object-cover">
                             </a>
@@ -605,7 +607,7 @@
                             <a href="https://api.whatsapp.com/send/?phone=6285168174679&text=Halo%20Premium%20Design%2C%20saya%20tertarik%20dengan%20Promo%20Bundling%20Desain%20Media%20Sosial%20%26%20Apparel."
                                 target="_blank"
                                 class="block rounded-2xl overflow-hidden border border-zinc-200 bg-zinc-200 skeleton-loader hover:border-brand-500 shadow-sm hover:shadow-md transition-all duration-200 aspect-[16/9]">
-                                <img src="assets/promo/banner promo (4).jpg"
+                                <img src="assets/promo/banner promo (4).webp"
                                     alt="Promo Bundling Desain Media Sosial &amp; Apparel" width="400" height="225"
                                     loading="lazy" decoding="async" class="w-full h-full object-cover">
                             </a>
@@ -621,7 +623,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
                     <div data-aos="fade-right" data-aos-duration="600"
                         class="lg:col-span-5 flex items-center justify-center">
-                        <img src="assets/other/asset1.png" alt="Keunggulan Layanan Premium Design" width="600"
+                        <img src="assets/other/asset1.webp" alt="Keunggulan Layanan Premium Design" width="600"
                             height="450" loading="lazy" decoding="async"
                             class="w-full max-w-[600px] lg:max-w-full h-auto object-contain">
                     </div>
@@ -1051,7 +1053,7 @@
                         class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                         <div>
                             <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden">
-                                <img src="assets/coverbannerumkm2.jpg"
+                                <img src="assets/coverbannerumkm2.webp"
                                     alt="Jasa Desain Banner &amp; Spanduk UMKM Promosi Toko" loading="lazy"
                                     class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:brightness-90">
                                 <div
@@ -1104,7 +1106,7 @@
                         class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                         <div>
                             <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden">
-                                <img src="assets/coverbooth2.jpg"
+                                <img src="assets/coverbooth2.webp"
                                     alt="Jasa Desain Stand Booth Jualan &amp; Pameran UMKM" loading="lazy"
                                     class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:brightness-90">
                                 <div
@@ -1157,7 +1159,7 @@
                         class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                         <div>
                             <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden">
-                                <img src="assets/coverxbanner_(1).jpg"
+                                <img src="assets/coverxbanner_(1).webp"
                                     alt="Jasa Desain X-Banner &amp; Roll Banner Promosi Event" loading="lazy"
                                     class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:brightness-90">
                                 <div
@@ -1210,7 +1212,7 @@
                         class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                         <div>
                             <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden">
-                                <img src="assets/coverjasapouch_(2).jpg" alt="Jasa Desain Kemasan Standing Pouch Snack"
+                                <img src="assets/coverjasapouch_(2).webp" alt="Jasa Desain Kemasan Standing Pouch Snack"
                                     loading="lazy"
                                     class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:brightness-90">
                                 <div
@@ -1263,7 +1265,7 @@
                         class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                         <div>
                             <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden">
-                                <img src="assets/jasalogo_(1).jpg"
+                                <img src="assets/jasalogo_(1).webp"
                                     alt="Jasa Desain Logo &amp; Brand Identity Bisnis Profesional" loading="lazy"
                                     class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:brightness-90">
                                 <div
@@ -1316,7 +1318,7 @@
                         class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                         <div>
                             <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden">
-                                <img src="assets/coverjasajersey_(3).jpg"
+                                <img src="assets/coverjasajersey_(3).webp"
                                     alt="Jasa Desain Jersey Custom Futsal, Esport &amp; Apparel" loading="lazy"
                                     class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:brightness-90">
                                 <div
@@ -1369,7 +1371,7 @@
                         class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                         <div>
                             <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden">
-                                <img src="assets/covereditfotonormaltostudio1.jpg"
+                                <img src="assets/covereditfotonormaltostudio1.webp"
                                     alt="Jasa Editing Foto Produk Normal to Studio Marketplace" loading="lazy"
                                     class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:brightness-90">
                                 <div
@@ -1422,7 +1424,7 @@
                         class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                         <div>
                             <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden">
-                                <img src="assets/coverwebuiux_(2).jpg"
+                                <img src="assets/coverwebuiux_(2).webp"
                                     alt="Jasa Desain UI/UX Website Company Profile &amp; Landing Page" loading="lazy"
                                     class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:brightness-90">
                                 <div
@@ -1527,8 +1529,8 @@
                             <div
                                 class="bg-white rounded-2xl border border-zinc-200 hover:border-brand-300 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
                                 <div class="relative aspect-[9/14] sm:aspect-[9/15] bg-zinc-200 skeleton-loader overflow-hidden cursor-pointer"
-                                    onclick="openTestiLightbox('assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0000_6cbaeec1-2b90-4301-bbf6-20f37fc48781artboard1.jpg', 'Kemasan Standing Pouch Kopi')">
-                                    <img src="assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0000_6cbaeec1-2b90-4301-bbf6-20f37fc48781artboard1.jpg"
+                                    onclick="openTestiLightbox('assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0000_6cbaeec1-2b90-4301-bbf6-20f37fc48781artboard1.webp', 'Kemasan Standing Pouch Kopi')">
+                                    <img src="assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0000_6cbaeec1-2b90-4301-bbf6-20f37fc48781artboard1.webp"
                                         alt="Kemasan Standing Pouch Kopi" loading="lazy"
                                         class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                                     <div
@@ -1549,8 +1551,8 @@
                             <div
                                 class="bg-white rounded-2xl border border-zinc-200 hover:border-brand-300 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
                                 <div class="relative aspect-[9/14] sm:aspect-[9/15] bg-zinc-200 skeleton-loader overflow-hidden cursor-pointer"
-                                    onclick="openTestiLightbox('assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0001_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0007_layer0.jpg', 'Desain Box Kosmetik &amp; Serum')">
-                                    <img src="assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0001_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0007_layer0.jpg"
+                                    onclick="openTestiLightbox('assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0001_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0007_layer0.webp', 'Desain Box Kosmetik &amp; Serum')">
+                                    <img src="assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0001_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0007_layer0.webp"
                                         alt="Desain Box Kosmetik &amp; Serum" loading="lazy"
                                         class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                                     <div
@@ -1571,8 +1573,8 @@
                             <div
                                 class="bg-white rounded-2xl border border-zinc-200 hover:border-brand-300 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
                                 <div class="relative aspect-[9/14] sm:aspect-[9/15] bg-zinc-200 skeleton-loader overflow-hidden cursor-pointer"
-                                    onclick="openTestiLightbox('assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0002_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0006_eadbf863-a0cf-4fa8-a300-.jpg', 'Desain Banner &amp; Spanduk UMKM')">
-                                    <img src="assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0002_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0006_eadbf863-a0cf-4fa8-a300-.jpg"
+                                    onclick="openTestiLightbox('assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0002_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0006_eadbf863-a0cf-4fa8-a300-.webp', 'Desain Banner &amp; Spanduk UMKM')">
+                                    <img src="assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0002_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0006_eadbf863-a0cf-4fa8-a300-.webp"
                                         alt="Desain Banner &amp; Spanduk UMKM" loading="lazy"
                                         class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                                     <div
@@ -1593,8 +1595,8 @@
                             <div
                                 class="bg-white rounded-2xl border border-zinc-200 hover:border-brand-300 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
                                 <div class="relative aspect-[9/14] sm:aspect-[9/15] bg-zinc-200 skeleton-loader overflow-hidden cursor-pointer"
-                                    onclick="openTestiLightbox('assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0003_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0005_92cb19d8-f7ee-4d3e-97c5-.jpg', 'UI/UX Design &amp; Landing Page')">
-                                    <img src="assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0003_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0005_92cb19d8-f7ee-4d3e-97c5-.jpg"
+                                    onclick="openTestiLightbox('assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0003_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0005_92cb19d8-f7ee-4d3e-97c5-.webp', 'UI/UX Design &amp; Landing Page')">
+                                    <img src="assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0003_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0005_92cb19d8-f7ee-4d3e-97c5-.webp"
                                         alt="UI/UX Design &amp; Landing Page" loading="lazy"
                                         class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                                     <div
@@ -1615,8 +1617,8 @@
                             <div
                                 class="bg-white rounded-2xl border border-zinc-200 hover:border-brand-300 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
                                 <div class="relative aspect-[9/14] sm:aspect-[9/15] bg-zinc-200 skeleton-loader overflow-hidden cursor-pointer"
-                                    onclick="openTestiLightbox('assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0004_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0004_d39d3d08-e900-4b71-aea4-.jpg', 'Brand Identity &amp; Logo Monogram')">
-                                    <img src="assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0004_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0004_d39d3d08-e900-4b71-aea4-.jpg"
+                                    onclick="openTestiLightbox('assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0004_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0004_d39d3d08-e900-4b71-aea4-.webp', 'Brand Identity &amp; Logo Monogram')">
+                                    <img src="assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0004_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0004_d39d3d08-e900-4b71-aea4-.webp"
                                         alt="Brand Identity &amp; Logo Monogram" loading="lazy"
                                         class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                                     <div
@@ -1775,7 +1777,7 @@
 
                     <div data-aos="fade-left" data-aos-duration="600"
                         class="lg:col-span-5 flex items-center justify-center">
-                        <img src="assets/other/asset2.jpg" alt="Langkah Pemesanan Desain di Premium Design"
+                        <img src="assets/other/asset2.webp" alt="Langkah Pemesanan Desain di Premium Design"
                             class="w-full max-w-[500px] lg:max-w-full h-auto object-contain rounded-2xl border border-zinc-200/80 shadow-sm">
                     </div>
                 </div>
@@ -1803,19 +1805,19 @@
                 <div class="space-y-6 sm:space-y-8 max-w-5xl mx-auto">
                     <!-- Baris 1: QRIS, Bank Utama & PayPal -->
                     <div data-aos="fade-up" data-aos-delay="50" class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 md:gap-12">
-                        <img src="assets/payment/qris.png" alt="QRIS"
+                        <img src="assets/payment/qris.webp" alt="QRIS"
                             class="h-8 sm:h-10 md:h-11 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/Asset 6.png" alt="Bank BCA"
+                        <img src="assets/payment/Asset 6.webp" alt="Bank BCA"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/mandiri.png" alt="Bank Mandiri"
+                        <img src="assets/payment/mandiri.webp" alt="Bank Mandiri"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[130px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/bri.png" alt="Bank BRI"
+                        <img src="assets/payment/bri.webp" alt="Bank BRI"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/bni.png" alt="Bank BNI"
+                        <img src="assets/payment/bni.webp" alt="Bank BNI"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
                         <div
@@ -1828,63 +1830,63 @@
 
                     <!-- Baris 2: Bank Syariah & Bank Nasional -->
                     <div data-aos="fade-up" data-aos-delay="100" class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 md:gap-12">
-                        <img src="assets/payment/Asset 14.png" alt="Bank BSI"
+                        <img src="assets/payment/Asset 14.webp" alt="Bank BSI"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/cimbniaga.png" alt="CIMB Niaga"
+                        <img src="assets/payment/cimbniaga.webp" alt="CIMB Niaga"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[130px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/danamon.png" alt="Bank Danamon"
+                        <img src="assets/payment/danamon.webp" alt="Bank Danamon"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[130px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/bank_mega.png" alt="Bank Mega"
+                        <img src="assets/payment/bank_mega.webp" alt="Bank Mega"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/Asset 11.png" alt="Bank BTN"
+                        <img src="assets/payment/Asset 11.webp" alt="Bank BTN"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/Asset 10.png" alt="Bank BJB"
+                        <img src="assets/payment/Asset 10.webp" alt="Bank BJB"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
                     </div>
 
                     <!-- Baris 3: Bank Digital & E-Wallets -->
                     <div data-aos="fade-up" data-aos-delay="150" class="flex flex-wrap items-center justify-center gap-6 sm:gap-9 md:gap-11">
-                        <img src="assets/payment/Asset 9.png" alt="Bank Jago"
+                        <img src="assets/payment/Asset 9.webp" alt="Bank Jago"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[105px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/bank_transfer_network_atm_bersama.png" alt="ATM Bersama"
+                        <img src="assets/payment/bank_transfer_network_atm_bersama.webp" alt="ATM Bersama"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[115px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/gopay_landscape.png" alt="GoPay"
+                        <img src="assets/payment/gopay_landscape.webp" alt="GoPay"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/Asset 15.png" alt="DANA"
+                        <img src="assets/payment/Asset 15.webp" alt="DANA"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[115px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/Asset 16.png" alt="OVO"
+                        <img src="assets/payment/Asset 16.webp" alt="OVO"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[95px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/shopeepay.png" alt="ShopeePay"
+                        <img src="assets/payment/shopeepay.webp" alt="ShopeePay"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/Asset 17.png" alt="LinkAja"
+                        <img src="assets/payment/Asset 17.webp" alt="LinkAja"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[115px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
                     </div>
 
                     <!-- Baris 4: Kartu Kredit & Gerai Ritel -->
                     <div data-aos="fade-up" data-aos-delay="200" class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 md:gap-14">
-                        <img src="assets/payment/visa.png" alt="VISA"
+                        <img src="assets/payment/visa.webp" alt="VISA"
                             class="h-6 sm:h-8 md:h-9 w-auto max-w-[95px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/mastercard.png" alt="MasterCard"
+                        <img src="assets/payment/mastercard.webp" alt="MasterCard"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[90px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/indomaret.png" alt="Indomaret"
+                        <img src="assets/payment/indomaret.webp" alt="Indomaret"
                             class="h-6 sm:h-8 md:h-9 w-auto max-w-[110px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/alfamart.png" alt="Alfamart"
+                        <img src="assets/payment/alfamart.webp" alt="Alfamart"
                             class="h-6 sm:h-8 md:h-9 w-auto max-w-[110px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
                     </div>
@@ -1898,7 +1900,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div data-aos="fade-up" data-aos-delay="50" class="lg:col-span-2 space-y-4">
-                    <img src="assets/other/logo_white.png" alt="Logo Footer" class="h-10 w-auto object-contain">
+                    <img src="assets/other/logo_white.webp" alt="Logo Footer" class="h-10 w-auto object-contain">
                     <p data-i18n="footer.desc" class="text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-sm">
                         Studio desain grafis &amp; marketplace penyedia identitas visual profesional, logo, kemasan,
                         banner, dan UI/UX modern dengan standar tinggi.

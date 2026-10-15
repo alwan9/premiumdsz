@@ -1,0 +1,8 @@
+# Robots.txt for Premium Designz
+# https://premiumdsz.my.id/
+
+User-agent: *
+Allow: /
+
+# XML Sitemap
+Sitemap: https://premiumdsz.my.id/sitemap.xml

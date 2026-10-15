@@ -57,8 +57,8 @@ DefaultLanguage id
     </IfModule>
 </FilesMatch>
 
-# Block access to documentation, markdown, and config files
-<FilesMatch "\.(md|markdown|json|lock|yml|yaml|sql|bak|config|env|git|sh|log|code-workspace)$">
+# Block access to sensitive documentation, backup, database and config files
+<FilesMatch "\.(md|markdown|lock|yml|yaml|sql|bak|config|env|git|sh|log|code-workspace)$">
     <IfModule mod_authz_core.c>
         Require all denied
     </IfModule>
@@ -86,7 +86,8 @@ DefaultLanguage id
     RewriteEngine On
     RewriteBase /
 
-    # 5.1 Enforce HTTPS
+    # 5.1 Enforce HTTPS (Dikecualikan untuk localhost agar tidak error saat testing lokal)
+    RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1)(:\d+)?$ [NC]
     RewriteCond %{HTTPS} off
     RewriteCond %{HTTP:X-Forwarded-Proto} !https
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
@@ -121,25 +122,29 @@ DefaultLanguage id
 # ------------------------------------------------------------------------------
 # 6. ASSET PROTECTION & HOTLINK DEFENSE (Prevent Stolen Bandwidth/Images)
 # ------------------------------------------------------------------------------
-<IfModule mod_rewrite.c>
-    RewriteCond %{HTTP_REFERER} !^$
-    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?premiumdesignz\.com [NC]
-    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?google\. [NC]
-    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?bing\. [NC]
-    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?yahoo\. [NC]
-    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?instagram\.com [NC]
-    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?tiktok\.com [NC]
-    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?whatsapp\.com [NC]
-    RewriteCond %{HTTP_REFERER} !^https?://localhost [NC]
-    RewriteCond %{HTTP_REFERER} !^https?://127\.0\.0\.1 [NC]
-    # RewriteRule \.(jpg|jpeg|png|gif|webp|svg)$ - [F,NC]
-</IfModule>
+# Dinonaktifkan sementara agar tidak memicu error syntax orphan RewriteCond tanpa RewriteRule.
+# Jika ingin diaktifkan, buka tanda komentar (#) pada seluruh baris di bawah:
+# <IfModule mod_rewrite.c>
+#     RewriteCond %{HTTP_REFERER} !^$
+#     RewriteCond %{HTTP_REFERER} !^https?://(www\.)?premiumdsz\.my\.id [NC]
+#     RewriteCond %{HTTP_REFERER} !^https?://(www\.)?google\. [NC]
+#     RewriteCond %{HTTP_REFERER} !^https?://(www\.)?bing\. [NC]
+#     RewriteCond %{HTTP_REFERER} !^https?://(www\.)?yahoo\. [NC]
+#     RewriteCond %{HTTP_REFERER} !^https?://(www\.)?instagram\.com [NC]
+#     RewriteCond %{HTTP_REFERER} !^https?://(www\.)?tiktok\.com [NC]
+#     RewriteCond %{HTTP_REFERER} !^https?://(www\.)?whatsapp\.com [NC]
+#     RewriteCond %{HTTP_REFERER} !^https?://localhost [NC]
+#     RewriteCond %{HTTP_REFERER} !^https?://127\.0\.0\.1 [NC]
+#     RewriteRule \.(jpg|jpeg|png|gif|webp|svg)$ - [F,NC]
+# </IfModule>
 
 # ------------------------------------------------------------------------------
 # 7. PERFORMANCE & CACHING (GZIP / BROTLI & BROWSER CACHE)
 # ------------------------------------------------------------------------------
 <IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+    <IfModule mod_filter.c>
+        AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+    </IfModule>
 </IfModule>
 
 <IfModule mod_expires.c>

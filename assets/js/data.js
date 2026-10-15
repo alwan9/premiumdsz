@@ -4,8 +4,8 @@
  */
 
 const SITE_SETTINGS = {
-    Judul: "Solusi Desain Grafis dan Identitas Visual Profesional untuk Brand Anda",
-    Deskripsi: "Studio kreatif dan marketplace penyedia jasa desain logo, kemasan, media promosi, UI/UX, dan perlengkapan identitas visual dengan standar estetika tinggi dan pengerjaan tepat waktu.",
+    Judul: "Jasa Desain Premium & Grafis Profesional - Solusi Identitas Visual Brand",
+    Deskripsi: "Studio kreatif penyedia jasa desain premium: logo brand, kemasan boks & pouch snack, banner UMKM & wisuda, UI/UX website, slide PPT, dan jersey custom berkualitas tinggi.",
     whatsapp: "0851-6817-4679",
     whatsapp_raw: "6285168174679",
     email: "designzpremium@gmail.com",

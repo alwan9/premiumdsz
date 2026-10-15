@@ -13,7 +13,7 @@
     const DICTIONARY = {
         id: {
             // Topbar & Info
-            "topbar.badge": "Jasa Desain Grafis & Marketplace Resmi",
+            "topbar.badge": "Jasa Desain Premium & Marketplace Resmi",
             "topbar.sub": "Pengerjaan Tepat Waktu & File Master Lengkap Siap Cetak",
             "topbar.wa": "WhatsApp: 0851-6817-4679",
 
@@ -29,8 +29,8 @@
             "nav.language": "Bahasa",
 
             // Hero Section
-            "hero.title": "Solusi Desain Grafis Profesional untuk Meningkatkan Kredibilitas Brand",
-            "hero.subtitle": "Jelajahi katalog portofolio kami, pilih paket desain siap pakai, atau konsultasikan kebutuhan kustom Anda langsung dengan tim desainer kami.",
+            "hero.title": "Jasa Desain Premium & Solusi Grafis Profesional untuk Kredibilitas Brand",
+            "hero.subtitle": "Penyedia jasa desain premium terpercaya: jelajahi katalog portofolio, pilih paket desain siap pakai, atau konsultasikan kebutuhan kustom Anda langsung dengan tim desainer kami.",
             "hero.cta_wa": "Konsultasi via WhatsApp",
             "hero.cta_explore": "Eksplor Katalog Marketplace",
             "hero.tools_title": "Software Desain yang Kami Kuasai",
@@ -334,7 +334,7 @@
             "nav.marketplace_services": "Marketplace Jasa Desain",
             "security.modal_close": "Saya Mengerti & Tutup",
             "security.toast_default": "Aksi ini dinonaktifkan demi perlindungan hak cipta",
-            "topbar.tagline": "Jasa Desain Grafis & Marketplace Resmi",
+            "topbar.tagline": "Jasa Desain Premium & Marketplace Resmi",
             "topbar.usp": "Pengerjaan Tepat Waktu & File Master Lengkap Siap Cetak",
             "topbar.wa_consult": "WhatsApp: 0851-6817-4679",
             "marketplace.badge": "Katalog Desain & Jasa",
@@ -407,7 +407,7 @@
 
         en: {
             // Topbar & Info
-            "topbar.badge": "Professional Graphic Design & Official Visual Marketplace",
+            "topbar.badge": "Premium Design Services & Official Visual Marketplace",
             "topbar.sub": "On-Time Delivery & Complete Print-Ready Master Files",
             "topbar.wa": "WhatsApp: +62 851-6817-4679",
 
@@ -423,8 +423,8 @@
             "nav.language": "Language",
 
             // Hero Section
-            "hero.title": "Professional Visual Design Solutions to Increase Brand Credibility",
-            "hero.subtitle": "Browse our portfolio catalog, choose a ready-made design package, or discuss your custom needs directly with our team of designers.",
+            "hero.title": "Premium Design Services & Professional Visual Solutions to Elevate Brand Credibility",
+            "hero.subtitle": "Trusted premium design services provider: browse our portfolio catalog, choose a ready-made design package, or discuss your custom needs directly with our team of designers.",
             "hero.cta_wa": "Consult via WhatsApp",
             "hero.cta_explore": "Explore Marketplace Catalog",
             "hero.tools_title": "Design Software We Master",
@@ -728,7 +728,7 @@
             "nav.marketplace_services": "Design Services Marketplace",
             "security.modal_close": "I Understand & Close",
             "security.toast_default": "This action is disabled for copyright protection",
-            "topbar.tagline": "Professional Graphic Design & Official Visual Marketplace",
+            "topbar.tagline": "Premium Design Services & Official Visual Marketplace",
             "topbar.usp": "On-Time Delivery & Complete Print-Ready Master Files",
             "topbar.wa_consult": "WhatsApp: +62 851-6817-4679",
             "marketplace.badge": "Design Catalog & Services",
@@ -921,27 +921,27 @@
         const path = window.location.pathname.toLowerCase();
         if (lang === 'en') {
             if (path.includes('marketplace')) {
-                document.title = "Graphic Design Catalog & Visual Marketplace - Premium Designz";
+                document.title = "Premium Design Services - Catalog & Creative Marketplace | Premium Designz";
             } else if (path.includes('portofolio')) {
-                document.title = "Graphic Design Portfolio Gallery - Premium Designz";
+                document.title = "Premium Design Portfolio - Creative Visual Gallery | Premium Designz";
             } else if (path.includes('about')) {
-                document.title = "About Us & Contact Studio - Premium Designz";
+                document.title = "About Us & Contact - Premium Design Services Studio | Premium Designz";
             } else if (path.includes('product-detail')) {
                 // Maintained by app-pages.js dynamically
             } else {
-                document.title = "Professional Graphic Design Services & Custom Visual Marketplace - Premium Designz";
+                document.title = "Premium Design Services & Professional Graphics - Premium Designz";
             }
         } else {
             if (path.includes('marketplace')) {
-                document.title = "Katalog Jasa Desain Grafis & Marketplace Portofolio - Premium Designz";
+                document.title = "Jasa Desain Premium - Katalog & Marketplace Desain Grafis - Premium Designz";
             } else if (path.includes('portofolio')) {
-                document.title = "Galeri Portofolio Jasa Desain Grafis Profesional - Premium Designz";
+                document.title = "Portofolio Jasa Desain Premium & Galeri Visual - Premium Designz";
             } else if (path.includes('about')) {
-                document.title = "Tentang Kami & Kontak Studio - Premium Designz";
+                document.title = "Tentang Kami & Kontak - Studio Jasa Desain Premium - Premium Designz";
             } else if (path.includes('product-detail')) {
                 // Maintained by app-pages.js dynamically
             } else {
-                document.title = "Jasa Desain Grafis Profesional & Marketplace Desain Custom - Premium Designz";
+                document.title = "Jasa Desain Premium & Grafis Profesional - Premium Designz";
             }
         }
     }

@@ -987,9 +987,21 @@ function initProductDetailPage(baseAssetPrefix = '') {
     const bcTitle = document.getElementById('breadcrumbTitle');
     if (bcTitle) bcTitle.textContent = _sanitizeTitle(prod.Nama_produk);
 
+    // Dynamic SEO Title & Meta for Product Detail
+    const productName = _sanitizeTitle(prod.Nama_produk);
+    document.title = `${productName} - Jasa Desain Premium | Premium Designz`;
+    const metaDesc = document.getElementById('metaDescription');
+    if (metaDesc) {
+        metaDesc.setAttribute('content', `Pesan ${productName} di studio jasa desain premium Premium Designz. Kategori: ${_sanitizeTitle(prod.kategori ? prod.kategori.Nama_kategori : 'Desain')}, estimasi pengerjaan ${_sanitizeTitle(prod.Estimasi || '1-3 Hari')} dengan file master siap cetak.`);
+    }
+    const ogTitle = document.getElementById('ogTitle');
+    if (ogTitle) ogTitle.setAttribute('content', `${productName} - Jasa Desain Premium | Premium Designz`);
+    const twitterTitle = document.getElementById('twitterTitle');
+    if (twitterTitle) twitterTitle.setAttribute('content', `${productName} - Jasa Desain Premium | Premium Designz`);
+
     // Title & Category Badge
     const titleEl = document.getElementById('productDetailTitle');
-    if (titleEl) titleEl.textContent = _sanitizeTitle(prod.Nama_produk);
+    if (titleEl) titleEl.textContent = productName;
     const catBadge = document.getElementById('productCategoryBadge');
     if (catBadge && prod.kategori) catBadge.textContent = _sanitizeTitle(prod.kategori.Nama_kategori);
 

@@ -3,33 +3,59 @@
  * Pure Vanilla JavaScript
  */
 
-// Global AOS Initialization Function (Fast, Lightweight & Responsive on all screen sizes)
+// Native Vanilla IntersectionObserver Animate On Scroll (Replaces external AOS library)
+let nativeAOSObserver = null;
+
 function initAOSGlobal() {
-    if (typeof window.AOS !== 'undefined') {
-        try {
-            AOS.init({
-                disable: false, // Aktif di semua perangkat (Desktop & Mobile)
-                duration: 600,
-                easing: 'ease-out-cubic',
-                once: true, // Animasi berjalan sekali untuk performa scroll yang sangat ringan & anti-lag
-                offset: 30, // Trigger animasi tepat saat elemen masuk viewport
-                delay: 0,
-                disableMutationObserver: false,
-                mirror: false,
-                anchorPlacement: 'top-bottom'
-            });
-            window.AOS.initCalled = true;
-        } catch (e) {
-            console.warn('AOS init warning:', e);
-        }
-    } else {
-        // Retry shortly in case AOS script is still executing via defer
-        setTimeout(function() {
-            if (typeof window.AOS !== 'undefined' && (!window.AOS.initCalled)) {
-                initAOSGlobal();
-            }
-        }, 100);
+    const elements = document.querySelectorAll('[data-aos]');
+    if (!elements.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+        elements.forEach(function(el) {
+            el.classList.add('aos-animate');
+        });
+        return;
     }
+
+    if (!nativeAOSObserver) {
+        nativeAOSObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('aos-animate');
+                    nativeAOSObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px 0px -25px 0px',
+            threshold: 0.05
+        });
+    }
+
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    elements.forEach(function(el) {
+        if (el.classList.contains('aos-animate')) return;
+        const rect = el.getBoundingClientRect();
+        // Animate elements already in viewport immediately for rapid LCP
+        if (rect.top <= windowHeight) {
+            el.classList.add('aos-animate');
+        } else {
+            nativeAOSObserver.observe(el);
+        }
+    });
+
+    window.AOS = {
+        init: function() { initAOSGlobal(); },
+        refresh: function() {
+            if (nativeAOSObserver) {
+                document.querySelectorAll('[data-aos]:not(.aos-animate)').forEach(function(el) {
+                    nativeAOSObserver.observe(el);
+                });
+            }
+        },
+        refreshHard: function() { initAOSGlobal(); },
+        initCalled: true
+    };
 }
 
 document.addEventListener('DOMContentLoaded', function() {

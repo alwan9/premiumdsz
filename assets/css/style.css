@@ -490,3 +490,77 @@ font {
     opacity: 1;
 }
 
+/* ==========================================================================
+   VANILLA CSS ANIMATE ON SCROLL (NATIVE AOS REPLACEMENT)
+   Ultra-fast, zero-dependency, GPU-accelerated, lightweight
+   ========================================================================== */
+
+[data-aos] {
+    opacity: 0;
+    transition-property: opacity, transform;
+    transition-duration: 0.6s;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+[data-aos="fade-up"] {
+    transform: translate3d(0, 30px, 0);
+}
+
+[data-aos="fade-down"] {
+    transform: translate3d(0, -30px, 0);
+}
+
+[data-aos="fade-left"] {
+    transform: translate3d(32px, 0, 0);
+}
+
+[data-aos="fade-right"] {
+    transform: translate3d(-32px, 0, 0);
+}
+
+[data-aos="zoom-in"] {
+    transform: scale(0.92);
+}
+
+/* Animated active state when scrolled into view */
+[data-aos].aos-animate {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* Staggered Delay Utilities */
+[data-aos-delay="50"]  { transition-delay: 50ms; }
+[data-aos-delay="100"] { transition-delay: 100ms; }
+[data-aos-delay="150"] { transition-delay: 150ms; }
+[data-aos-delay="200"] { transition-delay: 200ms; }
+[data-aos-delay="250"] { transition-delay: 250ms; }
+[data-aos-delay="300"] { transition-delay: 300ms; }
+[data-aos-delay="400"] { transition-delay: 400ms; }
+[data-aos-delay="500"] { transition-delay: 500ms; }
+
+/* Duration Utilities */
+[data-aos-duration="400"]  { transition-duration: 400ms; }
+[data-aos-duration="500"]  { transition-duration: 500ms; }
+[data-aos-duration="600"]  { transition-duration: 600ms; }
+[data-aos-duration="700"]  { transition-duration: 700ms; }
+[data-aos-duration="800"]  { transition-duration: 800ms; }
+[data-aos-duration="1000"] { transition-duration: 1000ms; }
+
+/* Accessibility & Print Fallbacks */
+@media (prefers-reduced-motion: reduce) {
+    [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+@media print {
+    [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+

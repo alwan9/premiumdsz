@@ -148,9 +148,15 @@
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
     <link rel="dns-prefetch" href="https://api.iconify.design">
 
-    <!-- Preload Critical LCP Hero Artwork -->
-    <link rel="preload" as="image" href="assets/other/header-left.webp" fetchpriority="high">
-    <link rel="preload" as="image" href="assets/other/header-right.webp" fetchpriority="high">
+    <!-- Preload Critical Rendering Engine -->
+    <link rel="preload" as="script" href="https://cdn.tailwindcss.com" fetchpriority="high">
+
+    <!-- Critical Above-The-Fold CSS for Rapid First Contentful Paint (FCP < 1s) -->
+    <style id="critical-fcp-css">
+        body { margin: 0; background-color: #ffffff; color: #27272a; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; }
+        .hero-title-critical { font-family: 'Outfit', system-ui, -apple-system, sans-serif; opacity: 1 !important; visibility: visible !important; }
+        .bg-brand-gradient { background: linear-gradient(168deg, rgba(29, 49, 161, 1) 0%, rgba(45, 108, 235, 1) 55%, rgba(6, 30, 125, 1) 100%); }
+    </style>
 
     <!-- Google Fonts: Plus Jakarta Sans & Outfit with font-display swap -->
     <link
@@ -380,20 +386,20 @@
             <!-- Left Workspace UI Artwork (Pure CSS entrance animation, perfectly preserves -translate-y-1/2) -->
             <div class="hero-artwork-left absolute -left-20 sm:-left-12 md:-left-8 lg:left-0 top-1/2 -translate-y-1/2 pointer-events-none z-0 select-none">
                 <img src="assets/other/header-left.webp" alt="Design UI Left" width="410" height="350"
-                    fetchpriority="high" decoding="async"
+                    loading="eager" decoding="async"
                     class="w-44 sm:w-64 md:w-80 lg:w-92 xl:w-[410px] max-w-none drop-shadow-2xl opacity-75 sm:opacity-90 md:opacity-100 transition-transform duration-700 hover:scale-105">
             </div>
 
             <!-- Right Workspace UI Artwork (Pure CSS entrance animation, perfectly preserves -translate-y-1/2) -->
             <div class="hero-artwork-right absolute -right-20 sm:-right-12 md:-right-8 lg:right-0 top-1/2 -translate-y-1/2 pointer-events-none z-0 select-none">
                 <img src="assets/other/header-right.webp" alt="Design UI Right" width="410" height="350"
-                    fetchpriority="high" decoding="async"
+                    loading="eager" decoding="async"
                     class="w-44 sm:w-64 md:w-80 lg:w-92 xl:w-[410px] max-w-none drop-shadow-2xl opacity-75 sm:opacity-90 md:opacity-100 transition-transform duration-700 hover:scale-105">
             </div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto">
                 <!-- Relative Canvas with Orbiting Floating Icons (Desktop: absolute layout; Mobile: structured top/bottom clusters) -->
-                <div data-aos="fade-up" data-aos-duration="700" class="relative max-w-5xl mx-auto text-center py-2 sm:py-6 md:py-8">
+                <div class="relative max-w-5xl mx-auto text-center py-2 sm:py-6 md:py-8">
 
                     <!-- DESKTOP FLOATING ICONS (Hidden on Mobile, Visible on md+) -->
                     <div class="hidden md:block">
@@ -531,7 +537,7 @@
                     <div
                         class="relative z-10 max-w-2xl sm:max-w-3xl lg:max-w-4xl mx-auto space-y-3 sm:space-y-4 px-4 sm:px-12 pt-2 sm:pt-6 md:pt-14">
                         <h1 data-i18n="hero.title"
-                            class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-zinc-900 tracking-tight font-heading leading-tight sm:leading-[1.14]">
+                            class="hero-title-critical text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-zinc-900 tracking-tight font-heading leading-tight sm:leading-[1.14]">
                             Jasa Desain Premium &amp; Solusi Grafis Profesional untuk Kredibilitas Brand
                         </h1>
 

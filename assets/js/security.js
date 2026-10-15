@@ -25,19 +25,15 @@
     }
 
     // =========================================================================
-    // 2. ANTI-CLICKJACKING FRAME BUSTER
+    // 2. ANTI-CLICKJACKING FRAME BUSTER (SAFE & COMPATIBLE)
     // =========================================================================
     try {
-        if (window.top !== window.self) {
-            // Attempt to break out of iframe
-            window.top.location = window.self.location;
+        if (window.top && window.top !== window.self) {
+            // Attempt to break out of iframe safely without breaking audit tools or crawlers
+            window.top.location.href = window.self.location.href;
         }
-    } catch (e) {
-        // Sandboxed iframe prevention: hide content if framed by unknown host
-        try {
-            document.documentElement.style.display = 'none';
-            document.body.style.display = 'none';
-        } catch (_) {}
+    } catch (_) {
+        // Sandboxed iframe or cross-origin restriction - CSP headers protect server-side
     }
 
     // =========================================================================
@@ -536,9 +532,13 @@
         }
     };
 
-    // DevTools window resize detection
+    // DevTools window resize detection - strictly desktop non-touch only
     function checkDevToolsOpen() {
-        const threshold = 170;
+        // Never trigger on mobile viewports or touch devices (prevents false-positives in Lighthouse & mobile emulators)
+        if ('ontouchstart' in window || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0)) return;
+        if (window.innerWidth < 1024) return;
+
+        const threshold = 180;
         const isOpened = (window.outerWidth - window.innerWidth > threshold) || 
                          (window.outerHeight - window.innerHeight > threshold);
 

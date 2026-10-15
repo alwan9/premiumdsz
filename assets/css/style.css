@@ -130,6 +130,39 @@ input, textarea, select {
 .float-icon-6 { animation: heroIconFloat2 4.4s ease-in-out infinite 1.0s; }
 .float-icon-7 { animation: heroIconFloat3 5.2s ease-in-out infinite 0.2s; }
 
+/* Hero Artworks Entrance Animation (Pure CSS, maintains -translate-y-1/2 with zero jump) */
+@keyframes heroArtworkLeft {
+    0% {
+        opacity: 0;
+        transform: translateY(-50%) translateX(-40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+    }
+}
+
+@keyframes heroArtworkRight {
+    0% {
+        opacity: 0;
+        transform: translateY(-50%) translateX(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+    }
+}
+
+.hero-artwork-left {
+    animation: heroArtworkLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    will-change: transform, opacity;
+}
+
+.hero-artwork-right {
+    animation: heroArtworkRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    will-change: transform, opacity;
+}
+
 /* Global Image & Asset Protection */
 *, *::before, *::after {
     -webkit-user-drag: none !important;
@@ -527,6 +560,11 @@ font {
 [data-aos].aos-animate {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* Allow hover transforms (like Tailwind hover:scale or hover:translate) to work cleanly without being locked */
+[data-aos].aos-animate:hover {
+    transform: var(--tw-transform, translate3d(0, 0, 0) scale(1));
 }
 
 /* Staggered Delay Utilities */

@@ -389,29 +389,53 @@ function initHeroDraggableIcons() {
         let isDragging = false;
         let startX = 0;
         let startY = 0;
-        let currentX = 0;
-        let currentY = 0;
+        let targetX = 0;
+        let targetY = 0;
+        let curX = 0;
+        let curY = 0;
+        let curTilt = 0;
+        let curScale = 1.0;
         let activePointerId = null;
-        let rafId = null;
-        let returnTimer = null;
+
+        // Velocity tracking for flick physics
+        let lastClientX = 0;
+        let lastClientY = 0;
+        let lastMoveTime = 0;
+        let releaseVx = 0;
+        let releaseVy = 0;
+
+        let dragRafId = null;
+        let springRafId = null;
         const parentContainer = el.closest('.pointer-events-auto') || el.parentElement;
         const isMildTilt = el.dataset.draggableTilt === 'mild';
 
         function startDrag(clientX, clientY, pId, e) {
-            if (returnTimer) {
-                clearTimeout(returnTimer);
-                returnTimer = null;
+            // Cancel any ongoing spring return immediately
+            if (springRafId) {
+                cancelAnimationFrame(springRafId);
+                springRafId = null;
             }
 
             isDragging = true;
             activePointerId = pId;
-            startX = clientX;
-            startY = clientY;
-            currentX = 0;
-            currentY = 0;
+
+            // Seamless catch mid-air without jumping:
+            // Calculate starting offsets based on current element position
+            startX = clientX - curX;
+            startY = clientY - curY;
+            targetX = curX;
+            targetY = curY;
+
+            lastClientX = clientX;
+            lastClientY = clientY;
+            lastMoveTime = performance.now();
+            releaseVx = 0;
+            releaseVy = 0;
 
             if (parentContainer) {
-                parentContainer.dataset.originalZIndex = parentContainer.style.zIndex || '';
+                if (!parentContainer.dataset.originalZIndex) {
+                    parentContainer.dataset.originalZIndex = parentContainer.style.zIndex || '';
+                }
                 parentContainer.style.zIndex = '999';
             }
 
@@ -423,7 +447,6 @@ function initHeroDraggableIcons() {
             window.addEventListener('pointerup', onWindowPointerUp, { passive: false });
             window.addEventListener('pointercancel', onWindowPointerUp, { passive: false });
 
-            // Comprehensive fallbacks for environments without pointer capture
             window.addEventListener('mousemove', onWindowMouseMove, { passive: false });
             window.addEventListener('mouseup', onWindowMouseUp, { passive: false });
             window.addEventListener('touchmove', onWindowTouchMove, { passive: false });
@@ -432,22 +455,58 @@ function initHeroDraggableIcons() {
             if (e && e.cancelable) {
                 e.preventDefault();
             }
+
+            // Start smooth drag follow loop
+            if (dragRafId) cancelAnimationFrame(dragRafId);
+            runDragLoop();
         }
 
-        function updatePosition(clientX, clientY) {
+        function updatePointerCoords(clientX, clientY) {
+            targetX = clientX - startX;
+            targetY = clientY - startY;
+
+            const now = performance.now();
+            const dt = Math.max(1, now - lastMoveTime);
+            const instVx = ((clientX - lastClientX) / dt) * 16.67;
+            const instVy = ((clientY - lastClientY) / dt) * 16.67;
+
+            // Smooth moving average for release velocity
+            releaseVx = releaseVx * 0.35 + instVx * 0.65;
+            releaseVy = releaseVy * 0.35 + instVy * 0.65;
+
+            lastClientX = clientX;
+            lastClientY = clientY;
+            lastMoveTime = now;
+        }
+
+        function runDragLoop() {
             if (!isDragging) return;
-            currentX = clientX - startX;
-            currentY = clientY - startY;
 
-            if (rafId) cancelAnimationFrame(rafId);
-            rafId = requestAnimationFrame(function() {
-                const maxTilt = isMildTilt ? 10 : 22;
-                const tiltFactor = isMildTilt ? 0.025 : 0.075;
-                const tilt = Math.max(-maxTilt, Math.min(maxTilt, currentX * tiltFactor));
-                const scale = isMildTilt ? 1.04 : 1.14;
+            // Decay velocity if pointer is held still (> 50ms)
+            const now = performance.now();
+            if (now - lastMoveTime > 50) {
+                releaseVx *= 0.65;
+                releaseVy *= 0.65;
+            }
 
-                el.style.transform = 'translate3d(' + currentX + 'px, ' + currentY + 'px, 0) scale(' + scale + ') rotate(' + tilt + 'deg)';
-            });
+            // Responsive damped spring follow (88% direct follow + 12% inertia damping)
+            curX += (targetX - curX) * 0.88;
+            curY += (targetY - curY) * 0.88;
+
+            // Organic tilt: tilts towards movement velocity and lateral offset
+            const maxTilt = isMildTilt ? 8 : 22;
+            const targetTilt = isMildTilt 
+                ? Math.max(-maxTilt, Math.min(maxTilt, releaseVx * 0.15 + curX * 0.015))
+                : Math.max(-maxTilt, Math.min(maxTilt, releaseVx * 0.45 + curX * 0.04));
+            curTilt += (targetTilt - curTilt) * 0.18;
+
+            // Gentle physical elevation scale
+            const targetScale = isMildTilt ? 1.03 : 1.14;
+            curScale += (targetScale - curScale) * 0.22;
+
+            el.style.transform = 'translate3d(' + curX.toFixed(2) + 'px, ' + curY.toFixed(2) + 'px, 0) scale(' + curScale.toFixed(3) + ') rotate(' + curTilt.toFixed(2) + 'deg)';
+
+            dragRafId = requestAnimationFrame(runDragLoop);
         }
 
         function finishDrag() {
@@ -455,9 +514,9 @@ function initHeroDraggableIcons() {
             isDragging = false;
             activePointerId = null;
 
-            if (rafId) {
-                cancelAnimationFrame(rafId);
-                rafId = null;
+            if (dragRafId) {
+                cancelAnimationFrame(dragRafId);
+                dragRafId = null;
             }
 
             window.removeEventListener('pointermove', onWindowPointerMove);
@@ -475,30 +534,54 @@ function initHeroDraggableIcons() {
             } catch (_) {}
 
             el.classList.remove('is-dragging');
+            el.classList.add('is-returning');
             document.body.classList.remove('is-hero-icon-dragging');
 
-            // Spring bounce return animation to original position
-            el.classList.add('is-returning');
-            el.style.transform = 'translate3d(0px, 0px, 0px) scale(1) rotate(0deg)';
+            // --- SPRING PHYSICS ENGINE (Bouncy, Damped Snap-Back to 0,0) ---
+            // Clamp initial release velocity for realistic physical bounce
+            let vx = Math.max(-24, Math.min(24, releaseVx));
+            let vy = Math.max(-24, Math.min(24, releaseVy));
 
-            function cleanup() {
-                el.classList.remove('is-returning');
-                el.style.transform = '';
-                if (parentContainer) {
-                    parentContainer.style.zIndex = parentContainer.dataset.originalZIndex || '';
-                    delete parentContainer.dataset.originalZIndex;
+            // Spring constants (critically tuned for organic, bouncy feel)
+            const k = isMildTilt ? 0.12 : 0.088; // Stiffness
+            const d = isMildTilt ? 0.78 : 0.825; // Damping
+
+            function springStep() {
+                // Hooke's Law Spring Force: F = -k * displacement
+                const fx = -k * curX;
+                const fy = -k * curY;
+
+                vx = (vx + fx) * d;
+                vy = (vy + fy) * d;
+                curX += vx;
+                curY += vy;
+
+                // Smoothly restore tilt and scale
+                curTilt += (0 - curTilt) * 0.16;
+                curScale += (1.0 - curScale) * 0.16;
+
+                el.style.transform = 'translate3d(' + curX.toFixed(2) + 'px, ' + curY.toFixed(2) + 'px, 0) scale(' + curScale.toFixed(3) + ') rotate(' + curTilt.toFixed(2) + 'deg)';
+
+                // Rest condition: fully settled
+                if (Math.abs(curX) < 0.12 && Math.abs(curY) < 0.12 && Math.abs(vx) < 0.12 && Math.abs(vy) < 0.12 && Math.abs(curScale - 1) < 0.005) {
+                    springRafId = null;
+                    curX = 0;
+                    curY = 0;
+                    curTilt = 0;
+                    curScale = 1.0;
+                    el.style.transform = '';
+                    el.classList.remove('is-returning');
+                    if (parentContainer) {
+                        parentContainer.style.zIndex = parentContainer.dataset.originalZIndex || '';
+                        delete parentContainer.dataset.originalZIndex;
+                    }
+                    return; // Spring simulation complete!
                 }
-                el.removeEventListener('transitionend', onTransitionEnd);
+
+                springRafId = requestAnimationFrame(springStep);
             }
 
-            function onTransitionEnd(te) {
-                if (te.target === el && te.propertyName === 'transform') {
-                    cleanup();
-                }
-            }
-
-            el.addEventListener('transitionend', onTransitionEnd);
-            returnTimer = setTimeout(cleanup, 700);
+            springRafId = requestAnimationFrame(springStep);
         }
 
         function onPointerDown(e) {
@@ -513,7 +596,7 @@ function initHeroDraggableIcons() {
 
         function onWindowPointerMove(e) {
             if (activePointerId !== null && e.pointerId !== undefined && e.pointerId !== activePointerId) return;
-            updatePosition(e.clientX, e.clientY);
+            updatePointerCoords(e.clientX, e.clientY);
             if (e.cancelable) e.preventDefault();
         }
 
@@ -529,7 +612,7 @@ function initHeroDraggableIcons() {
 
         function onWindowMouseMove(e) {
             if (!isDragging) return;
-            updatePosition(e.clientX, e.clientY);
+            updatePointerCoords(e.clientX, e.clientY);
             if (e.cancelable) e.preventDefault();
         }
 
@@ -547,7 +630,7 @@ function initHeroDraggableIcons() {
         function onWindowTouchMove(e) {
             if (!isDragging || !e.touches || !e.touches[0]) return;
             const touch = e.touches[0];
-            updatePosition(touch.clientX, touch.clientY);
+            updatePointerCoords(touch.clientX, touch.clientY);
             if (e.cancelable) e.preventDefault();
         }
 

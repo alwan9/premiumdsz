@@ -140,7 +140,8 @@ input, textarea, select {
     -webkit-user-select: none;
     will-change: transform;
     transform: translate3d(0, 0, 0);
-    transition: transform 0.2s ease, filter 0.2s ease;
+    /* Filter transition only - transform is driven at 60+ FPS via JS physics engine */
+    transition: filter 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-draggable-icon * {
@@ -148,7 +149,7 @@ input, textarea, select {
 }
 
 .hero-draggable-icon:hover {
-    filter: drop-shadow(0 12px 20px rgba(45, 108, 235, 0.18));
+    filter: drop-shadow(0 14px 24px rgba(45, 108, 235, 0.22));
 }
 
 .hero-draggable-icon:active,
@@ -159,13 +160,20 @@ input, textarea, select {
 
 .hero-draggable-icon.is-dragging {
     will-change: transform, filter;
-    filter: drop-shadow(0 24px 32px rgba(0, 0, 0, 0.26)) drop-shadow(0 8px 16px rgba(45, 108, 235, 0.35)) !important;
-    transition: none !important;
+    filter: drop-shadow(0 26px 36px rgba(0, 0, 0, 0.28)) drop-shadow(0 10px 18px rgba(45, 108, 235, 0.38)) !important;
 }
 
-.hero-draggable-icon.is-returning {
-    transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.45s ease !important;
-    cursor: grab;
+/* While dragging or returning, pause internal bobbing keyframe so icon stays steady in hand */
+.hero-draggable-icon.is-dragging [class*="float-icon-"],
+.hero-draggable-icon.is-returning [class*="float-icon-"] {
+    animation-play-state: paused !important;
+}
+
+/* Prevent inner image hover transitions from fighting with drag transform */
+.hero-draggable-icon.is-dragging img,
+.hero-draggable-icon.is-returning img {
+    transform: none !important;
+    transition: none !important;
 }
 
 body.is-hero-icon-dragging,

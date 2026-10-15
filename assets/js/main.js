@@ -79,6 +79,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 7. Dynamic Glassmorphism Cursor Spotlight Engine
     initGlassSpotlightEngine();
+
+    // 8. Interactive Draggable Floating Software Icons (Header / Hero)
+    initHeroDraggableIcons();
 });
 
 window.addEventListener('load', function() {
@@ -369,5 +372,198 @@ function initGlassSpotlightEngine() {
             card.style.setProperty('--mouse-y', `${y}px`);
         });
     }, { passive: true });
+}
+
+// ==========================================================================
+// 8. INTERACTIVE DRAGGABLE FLOATING SOFTWARE ICONS (SPRING-BACK PHYSICS)
+// Follows cursor/touch when dragged, springs back smoothly on release
+// ==========================================================================
+function initHeroDraggableIcons() {
+    const draggableElements = document.querySelectorAll('[data-draggable="hero-icon"]');
+    if (!draggableElements.length) return;
+
+    draggableElements.forEach(function(el) {
+        if (el.dataset.draggableInit === 'true') return;
+        el.dataset.draggableInit = 'true';
+
+        let isDragging = false;
+        let startX = 0;
+        let startY = 0;
+        let currentX = 0;
+        let currentY = 0;
+        let activePointerId = null;
+        let rafId = null;
+        let returnTimer = null;
+        const parentContainer = el.closest('.pointer-events-auto') || el.parentElement;
+        const isMildTilt = el.dataset.draggableTilt === 'mild';
+
+        function startDrag(clientX, clientY, pId, e) {
+            if (returnTimer) {
+                clearTimeout(returnTimer);
+                returnTimer = null;
+            }
+
+            isDragging = true;
+            activePointerId = pId;
+            startX = clientX;
+            startY = clientY;
+            currentX = 0;
+            currentY = 0;
+
+            if (parentContainer) {
+                parentContainer.dataset.originalZIndex = parentContainer.style.zIndex || '';
+                parentContainer.style.zIndex = '999';
+            }
+
+            el.classList.remove('is-returning');
+            el.classList.add('is-dragging');
+            document.body.classList.add('is-hero-icon-dragging');
+
+            window.addEventListener('pointermove', onWindowPointerMove, { passive: false });
+            window.addEventListener('pointerup', onWindowPointerUp, { passive: false });
+            window.addEventListener('pointercancel', onWindowPointerUp, { passive: false });
+
+            // Comprehensive fallbacks for environments without pointer capture
+            window.addEventListener('mousemove', onWindowMouseMove, { passive: false });
+            window.addEventListener('mouseup', onWindowMouseUp, { passive: false });
+            window.addEventListener('touchmove', onWindowTouchMove, { passive: false });
+            window.addEventListener('touchend', onWindowTouchEnd, { passive: false });
+
+            if (e && e.cancelable) {
+                e.preventDefault();
+            }
+        }
+
+        function updatePosition(clientX, clientY) {
+            if (!isDragging) return;
+            currentX = clientX - startX;
+            currentY = clientY - startY;
+
+            if (rafId) cancelAnimationFrame(rafId);
+            rafId = requestAnimationFrame(function() {
+                const maxTilt = isMildTilt ? 10 : 22;
+                const tiltFactor = isMildTilt ? 0.025 : 0.075;
+                const tilt = Math.max(-maxTilt, Math.min(maxTilt, currentX * tiltFactor));
+                const scale = isMildTilt ? 1.04 : 1.14;
+
+                el.style.transform = 'translate3d(' + currentX + 'px, ' + currentY + 'px, 0) scale(' + scale + ') rotate(' + tilt + 'deg)';
+            });
+        }
+
+        function finishDrag() {
+            if (!isDragging) return;
+            isDragging = false;
+            activePointerId = null;
+
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+
+            window.removeEventListener('pointermove', onWindowPointerMove);
+            window.removeEventListener('pointerup', onWindowPointerUp);
+            window.removeEventListener('pointercancel', onWindowPointerUp);
+            window.removeEventListener('mousemove', onWindowMouseMove);
+            window.removeEventListener('mouseup', onWindowMouseUp);
+            window.removeEventListener('touchmove', onWindowTouchMove);
+            window.removeEventListener('touchend', onWindowTouchEnd);
+
+            try {
+                if (el.releasePointerCapture && activePointerId !== null && el.hasPointerCapture(activePointerId)) {
+                    el.releasePointerCapture(activePointerId);
+                }
+            } catch (_) {}
+
+            el.classList.remove('is-dragging');
+            document.body.classList.remove('is-hero-icon-dragging');
+
+            // Spring bounce return animation to original position
+            el.classList.add('is-returning');
+            el.style.transform = 'translate3d(0px, 0px, 0px) scale(1) rotate(0deg)';
+
+            function cleanup() {
+                el.classList.remove('is-returning');
+                el.style.transform = '';
+                if (parentContainer) {
+                    parentContainer.style.zIndex = parentContainer.dataset.originalZIndex || '';
+                    delete parentContainer.dataset.originalZIndex;
+                }
+                el.removeEventListener('transitionend', onTransitionEnd);
+            }
+
+            function onTransitionEnd(te) {
+                if (te.target === el && te.propertyName === 'transform') {
+                    cleanup();
+                }
+            }
+
+            el.addEventListener('transitionend', onTransitionEnd);
+            returnTimer = setTimeout(cleanup, 700);
+        }
+
+        function onPointerDown(e) {
+            if (e.button !== undefined && e.button !== 0) return;
+            try {
+                if (el.setPointerCapture && e.pointerId !== undefined) {
+                    el.setPointerCapture(e.pointerId);
+                }
+            } catch (_) {}
+            startDrag(e.clientX, e.clientY, e.pointerId, e);
+        }
+
+        function onWindowPointerMove(e) {
+            if (activePointerId !== null && e.pointerId !== undefined && e.pointerId !== activePointerId) return;
+            updatePosition(e.clientX, e.clientY);
+            if (e.cancelable) e.preventDefault();
+        }
+
+        function onWindowPointerUp(e) {
+            if (activePointerId !== null && e.pointerId !== undefined && e.pointerId !== activePointerId) return;
+            finishDrag();
+        }
+
+        function onMouseDown(e) {
+            if (isDragging || (e.button !== undefined && e.button !== 0)) return;
+            startDrag(e.clientX, e.clientY, 'mouse', e);
+        }
+
+        function onWindowMouseMove(e) {
+            if (!isDragging) return;
+            updatePosition(e.clientX, e.clientY);
+            if (e.cancelable) e.preventDefault();
+        }
+
+        function onWindowMouseUp(e) {
+            if (!isDragging) return;
+            finishDrag();
+        }
+
+        function onTouchStart(e) {
+            if (isDragging || !e.touches || !e.touches[0]) return;
+            const touch = e.touches[0];
+            startDrag(touch.clientX, touch.clientY, 'touch', e);
+        }
+
+        function onWindowTouchMove(e) {
+            if (!isDragging || !e.touches || !e.touches[0]) return;
+            const touch = e.touches[0];
+            updatePosition(touch.clientX, touch.clientY);
+            if (e.cancelable) e.preventDefault();
+        }
+
+        function onWindowTouchEnd(e) {
+            if (!isDragging) return;
+            finishDrag();
+        }
+
+        el.addEventListener('pointerdown', onPointerDown, { passive: false });
+        el.addEventListener('mousedown', onMouseDown, { passive: false });
+        el.addEventListener('touchstart', onTouchStart, { passive: false });
+    });
+}
+
+// Auto-run if script executes after DOM is already interactive
+if (document.readyState !== 'loading') {
+    initHeroDraggableIcons();
 }
 

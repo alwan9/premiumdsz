@@ -130,6 +130,51 @@ input, textarea, select {
 .float-icon-6 { animation: heroIconFloat2 4.4s ease-in-out infinite 1.0s; }
 .float-icon-7 { animation: heroIconFloat3 5.2s ease-in-out infinite 0.2s; }
 
+/* Interactive Draggable Floating Software Icons (Header / Hero) */
+.hero-draggable-icon {
+    display: inline-block;
+    cursor: grab;
+    cursor: -webkit-grab;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.hero-draggable-icon * {
+    pointer-events: none !important;
+}
+
+.hero-draggable-icon:hover {
+    filter: drop-shadow(0 12px 20px rgba(45, 108, 235, 0.18));
+}
+
+.hero-draggable-icon:active,
+.hero-draggable-icon.is-dragging {
+    cursor: grabbing !important;
+    cursor: -webkit-grabbing !important;
+}
+
+.hero-draggable-icon.is-dragging {
+    will-change: transform, filter;
+    filter: drop-shadow(0 24px 32px rgba(0, 0, 0, 0.26)) drop-shadow(0 8px 16px rgba(45, 108, 235, 0.35)) !important;
+    transition: none !important;
+}
+
+.hero-draggable-icon.is-returning {
+    transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.45s ease !important;
+    cursor: grab;
+}
+
+body.is-hero-icon-dragging,
+body.is-hero-icon-dragging * {
+    cursor: grabbing !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+}
+
 /* Hero Artworks Entrance Animation (Pure CSS, maintains -translate-y-1/2 with zero jump) */
 @keyframes heroArtworkLeft {
     0% {

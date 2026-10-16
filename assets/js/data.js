@@ -2035,6 +2035,30 @@ function getLatestProducts(currentId, limit = 12) {
     return diff.slice(0, limit);
 }
 
+/**
+ * Resolves the compressed thumbnail URL for lightweight card/grid previews.
+ * For detail views or full resolution lightboxes, use the original normal URL.
+ * 
+ * @param {string} url - Original image URL
+ * @returns {string} - Thumbnail image URL
+ */
+function getThumbnailUrl(url) {
+    if (!url || typeof url !== 'string') return '';
+    if (url.includes('/thumbs/')) return url;
+
+    if (url.includes('assets/portofolio/')) {
+        return url.replace('assets/portofolio/', 'assets/portofolio/thumbs/');
+    }
+    if (url.includes('assets/')) {
+        return url.replace('assets/', 'assets/thumbs/');
+    }
+    return url;
+}
+
+if (typeof window !== 'undefined') {
+    window.getThumbnailUrl = getThumbnailUrl;
+}
+
 // Data Sanitization Pipeline: Ensure all master data arrays are purified at runtime
 try {
     if (typeof PRODUCTS !== 'undefined' && Array.isArray(PRODUCTS)) {

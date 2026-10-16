@@ -169,7 +169,7 @@
     </noscript>
 
     <!-- Iconify Icon Web Component & Embedded Offline Bundle (Deferred) -->
-    <script src="assets/js/icons-bundle.js" defer></script>
+    <script src="assets/js/icons-bundle.min.js" defer></script>
     <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" defer></script>
 
     <!-- Tailwind CSS CDN -->
@@ -209,7 +209,7 @@
     </script>
 
     <!-- Custom CSS (Contains Vanilla CSS Animate-On-Scroll Engine) -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.min.css">
 </head>
 
 <body class="bg-white text-zinc-800 antialiased min-h-screen flex flex-col selection:bg-brand-600 selection:text-white">
@@ -226,32 +226,37 @@
                     Cetak</span>
             </div>
             <div class="flex items-center space-x-4 text-brand-100">
-                <a href="https://www.instagram.com/premiumdsz/" target="_blank"
+                <a href="https://www.instagram.com/premiumdsz/" target="_blank" rel="noopener noreferrer"
+                    aria-label="Instagram @premiumdsz"
                     class="hover:text-pink-300 transition-colors flex items-center space-x-1"
                     title="Instagram @premiumdsz">
                     <iconify-icon icon="simple-icons:instagram" class="text-xs"></iconify-icon>
                     <span class="hidden md:inline">@premiumdsz</span>
                 </a>
-                <a href="https://www.tiktok.com/@premium.designz" target="_blank"
+                <a href="https://www.tiktok.com/@premium.designz" target="_blank" rel="noopener noreferrer"
+                    aria-label="TikTok @premium.designz"
                     class="hover:text-cyan-300 transition-colors flex items-center space-x-1"
                     title="TikTok @premium.designz">
                     <iconify-icon icon="simple-icons:tiktok" class="text-xs"></iconify-icon>
                     <span class="hidden md:inline">TikTok</span>
                 </a>
-                <a href="https://shopee.co.id/premium_dz" target="_blank"
+                <a href="https://shopee.co.id/premium_dz" target="_blank" rel="noopener noreferrer"
+                    aria-label="Shopee Official Store"
                     class="hover:text-amber-300 transition-colors flex items-center space-x-1"
                     title="Shopee Official Store">
                     <iconify-icon icon="simple-icons:shopee" class="text-xs"></iconify-icon>
                     <span class="hidden md:inline">Shopee</span>
                 </a>
-                <a href="https://www.fiverr.com/premiumdz" target="_blank"
+                <a href="https://www.fiverr.com/premiumdz" target="_blank" rel="noopener noreferrer"
+                    aria-label="Fiverr Global Orders"
                     class="hover:text-emerald-300 transition-colors flex items-center space-x-1"
                     title="Fiverr Global Orders">
                     <iconify-icon icon="simple-icons:fiverr" class="text-sm"></iconify-icon>
                     <span class="hidden md:inline">Fiverr</span>
                 </a>
                 <a href="https://api.whatsapp.com/send/?phone=6285168174679&text=Halo%20Premium%20Design%2C%20saya%20ingin%20konsultasi%20proyek%20desain."
-                    target="_blank"
+                    target="_blank" rel="noopener noreferrer"
+                    aria-label="Konsultasi WhatsApp 0851-6817-4679"
                     class="hover:text-white transition-colors flex items-center space-x-1 font-semibold text-brand-100">
                     <iconify-icon icon="simple-icons:whatsapp" class="text-sm"></iconify-icon>
                     <span data-i18n="topbar.wa" class="hidden sm:inline">WhatsApp: 0851-6817-4679</span>
@@ -270,7 +275,7 @@
                     title="Premium Designz - Jasa Desain Grafis Profesional">
                     <img id="nav-brand-logo" src="assets/other/logo_warna.webp"
                         data-logo-light="assets/other/logo_warna.webp" data-logo-dark="assets/other/logo_white.webp"
-                        alt="Logo Premium Designz - Jasa Desain Grafis"
+                        alt="Logo Premium Designz - Jasa Desain Grafis" width="160" height="44"
                         class="h-10 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
                 </a>
 
@@ -862,8 +867,8 @@
                     </a>
 
                     <!-- Set 2 (for seamless loop) -->
-                    <a href="pages/marketplace.html?kategori=1"
-                        class="w-48 sm:w-56 shrink-0 p-3.5 sm:p-4 rounded-2xl bg-white border border-zinc-200/80 hover:border-brand-500 hover:shadow-md transition-all group flex items-center gap-3"
+                    <div onclick="window.location.href='pages/marketplace.html?kategori=1'"
+                        class="w-48 sm:w-56 shrink-0 p-3.5 sm:p-4 rounded-2xl bg-white border border-zinc-200/80 hover:border-brand-500 hover:shadow-md transition-all group flex items-center gap-3 cursor-pointer"
                         aria-hidden="true">
                         <div
                             class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center text-lg shrink-0 group-hover:bg-brand-600 group-hover:text-white transition-colors">
@@ -876,9 +881,9 @@
                         </div>
                         <iconify-icon icon="lucide:arrow-right"
                             class="text-xs text-zinc-300 group-hover:text-brand-600 group-hover:translate-x-1 transition-all shrink-0"></iconify-icon>
-                    </a>
-                    <a href="pages/marketplace.html?kategori=2"
-                        class="w-48 sm:w-56 shrink-0 p-3.5 sm:p-4 rounded-2xl bg-white border border-zinc-200/80 hover:border-brand-500 hover:shadow-md transition-all group flex items-center gap-3"
+                    </div>
+                    <div onclick="window.location.href='pages/marketplace.html?kategori=2'"
+                        class="w-48 sm:w-56 shrink-0 p-3.5 sm:p-4 rounded-2xl bg-white border border-zinc-200/80 hover:border-brand-500 hover:shadow-md transition-all group flex items-center gap-3 cursor-pointer"
                         aria-hidden="true">
                         <div
                             class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center text-lg shrink-0 group-hover:bg-brand-600 group-hover:text-white transition-colors">
@@ -891,7 +896,7 @@
                         </div>
                         <iconify-icon icon="lucide:arrow-right"
                             class="text-xs text-zinc-300 group-hover:text-brand-600 group-hover:translate-x-1 transition-all shrink-0"></iconify-icon>
-                    </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1089,8 +1094,10 @@
                         class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                         <div>
                             <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden">
-                                <img src="assets/coverbannerumkm2.webp"
-                                    alt="Jasa Desain Banner &amp; Spanduk UMKM Promosi Toko" loading="lazy"
+                                <img src="assets/thumbs/coverbannerumkm2.webp"
+                                    onerror="this.onerror=null; this.src='assets/coverbannerumkm2.webp';"
+                                    alt="Jasa Desain Banner &amp; Spanduk UMKM Promosi Toko" width="400" height="400"
+                                    loading="lazy" decoding="async"
                                     class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:brightness-90">
                                 <div
                                     class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-black/20">
@@ -1142,8 +1149,10 @@
                         class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                         <div>
                             <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden">
-                                <img src="assets/coverbooth2.webp"
-                                    alt="Jasa Desain Stand Booth Jualan &amp; Pameran UMKM" loading="lazy"
+                                <img src="assets/thumbs/coverbooth2.webp"
+                                    onerror="this.onerror=null; this.src='assets/coverbooth2.webp';"
+                                    alt="Jasa Desain Stand Booth Jualan &amp; Pameran UMKM" width="400" height="400"
+                                    loading="lazy" decoding="async"
                                     class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:brightness-90">
                                 <div
                                     class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-black/20">
@@ -1195,8 +1204,10 @@
                         class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                         <div>
                             <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden">
-                                <img src="assets/coverxbanner_(1).webp"
-                                    alt="Jasa Desain X-Banner &amp; Roll Banner Promosi Event" loading="lazy"
+                                <img src="assets/thumbs/coverxbanner_(1).webp"
+                                    onerror="this.onerror=null; this.src='assets/coverxbanner_(1).webp';"
+                                    alt="Jasa Desain X-Banner &amp; Roll Banner Promosi Event" width="400" height="400"
+                                    loading="lazy" decoding="async"
                                     class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:brightness-90">
                                 <div
                                     class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-black/20">
@@ -1248,8 +1259,10 @@
                         class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                         <div>
                             <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden">
-                                <img src="assets/coverjasapouch_(2).webp" alt="Jasa Desain Kemasan Standing Pouch Snack"
-                                    loading="lazy"
+                                <img src="assets/thumbs/coverjasapouch_(2).webp"
+                                    onerror="this.onerror=null; this.src='assets/coverjasapouch_(2).webp';"
+                                    alt="Jasa Desain Kemasan Standing Pouch Snack" width="400" height="400"
+                                    loading="lazy" decoding="async"
                                     class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:brightness-90">
                                 <div
                                     class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-black/20">
@@ -1301,8 +1314,10 @@
                         class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                         <div>
                             <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden">
-                                <img src="assets/jasalogo_(1).webp"
-                                    alt="Jasa Desain Logo &amp; Brand Identity Bisnis Profesional" loading="lazy"
+                                <img src="assets/thumbs/jasalogo_(1).webp"
+                                    onerror="this.onerror=null; this.src='assets/jasalogo_(1).webp';"
+                                    alt="Jasa Desain Logo &amp; Brand Identity Bisnis Profesional" width="400" height="400"
+                                    loading="lazy" decoding="async"
                                     class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:brightness-90">
                                 <div
                                     class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-black/20">
@@ -1354,8 +1369,10 @@
                         class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                         <div>
                             <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden">
-                                <img src="assets/coverjasajersey_(3).webp"
-                                    alt="Jasa Desain Jersey Custom Futsal, Esport &amp; Apparel" loading="lazy"
+                                <img src="assets/thumbs/coverjasajersey_(3).webp"
+                                    onerror="this.onerror=null; this.src='assets/coverjasajersey_(3).webp';"
+                                    alt="Jasa Desain Jersey Custom Futsal, Esport &amp; Apparel" width="400" height="400"
+                                    loading="lazy" decoding="async"
                                     class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:brightness-90">
                                 <div
                                     class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-black/20">
@@ -1407,8 +1424,10 @@
                         class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                         <div>
                             <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden">
-                                <img src="assets/covereditfotonormaltostudio1.webp"
-                                    alt="Jasa Editing Foto Produk Normal to Studio Marketplace" loading="lazy"
+                                <img src="assets/thumbs/covereditfotonormaltostudio1.webp"
+                                    onerror="this.onerror=null; this.src='assets/covereditfotonormaltostudio1.webp';"
+                                    alt="Jasa Editing Foto Produk Normal to Studio Marketplace" width="400" height="400"
+                                    loading="lazy" decoding="async"
                                     class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:brightness-90">
                                 <div
                                     class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-black/20">
@@ -1460,8 +1479,10 @@
                         class="relative rounded-2xl border border-zinc-200 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                         <div>
                             <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden">
-                                <img src="assets/coverwebuiux_(2).webp"
-                                    alt="Jasa Desain UI/UX Website Company Profile &amp; Landing Page" loading="lazy"
+                                <img src="assets/thumbs/coverwebuiux_(2).webp"
+                                    onerror="this.onerror=null; this.src='assets/coverwebuiux_(2).webp';"
+                                    alt="Jasa Desain UI/UX Website Company Profile &amp; Landing Page" width="400" height="400"
+                                    loading="lazy" decoding="async"
                                     class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:brightness-90">
                                 <div
                                     class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-black/20">
@@ -1540,7 +1561,7 @@
                                 <iconify-icon icon="material-symbols:star-rounded"
                                     class="text-amber-400 text-sm"></iconify-icon>
                             </div>
-                            <span data-i18n="testimonials.reviews_count" class="text-[11px] text-zinc-400 font-medium">(9 Review)</span>
+                            <span data-i18n="testimonials.reviews_count" class="text-[11px] text-zinc-600 font-semibold">(9 Review)</span>
                         </div>
 
                         <div class="flex items-center space-x-2">
@@ -1567,7 +1588,7 @@
                                 <div class="relative aspect-[9/14] sm:aspect-[9/15] bg-zinc-200 skeleton-loader overflow-hidden cursor-pointer"
                                     onclick="openTestiLightbox('assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0000_6cbaeec1-2b90-4301-bbf6-20f37fc48781artboard1.webp', 'Kemasan Standing Pouch Kopi')">
                                     <img src="assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0000_6cbaeec1-2b90-4301-bbf6-20f37fc48781artboard1.webp"
-                                        alt="Kemasan Standing Pouch Kopi" loading="lazy"
+                                        alt="Kemasan Standing Pouch Kopi" width="320" height="500" loading="lazy" decoding="async"
                                         class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                                     <div
                                         class="absolute inset-0 bg-zinc-950/25 group-hover:bg-zinc-950/45 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 backdrop-blur-[1px]">
@@ -1589,7 +1610,7 @@
                                 <div class="relative aspect-[9/14] sm:aspect-[9/15] bg-zinc-200 skeleton-loader overflow-hidden cursor-pointer"
                                     onclick="openTestiLightbox('assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0001_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0007_layer0.webp', 'Desain Box Kosmetik &amp; Serum')">
                                     <img src="assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0001_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0007_layer0.webp"
-                                        alt="Desain Box Kosmetik &amp; Serum" loading="lazy"
+                                        alt="Desain Box Kosmetik &amp; Serum" width="320" height="500" loading="lazy" decoding="async"
                                         class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                                     <div
                                         class="absolute inset-0 bg-zinc-950/25 group-hover:bg-zinc-950/45 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 backdrop-blur-[1px]">
@@ -1611,7 +1632,7 @@
                                 <div class="relative aspect-[9/14] sm:aspect-[9/15] bg-zinc-200 skeleton-loader overflow-hidden cursor-pointer"
                                     onclick="openTestiLightbox('assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0002_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0006_eadbf863-a0cf-4fa8-a300-.webp', 'Desain Banner &amp; Spanduk UMKM')">
                                     <img src="assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0002_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0006_eadbf863-a0cf-4fa8-a300-.webp"
-                                        alt="Desain Banner &amp; Spanduk UMKM" loading="lazy"
+                                        alt="Desain Banner &amp; Spanduk UMKM" width="320" height="500" loading="lazy" decoding="async"
                                         class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                                     <div
                                         class="absolute inset-0 bg-zinc-950/25 group-hover:bg-zinc-950/45 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 backdrop-blur-[1px]">
@@ -1633,7 +1654,7 @@
                                 <div class="relative aspect-[9/14] sm:aspect-[9/15] bg-zinc-200 skeleton-loader overflow-hidden cursor-pointer"
                                     onclick="openTestiLightbox('assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0003_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0005_92cb19d8-f7ee-4d3e-97c5-.webp', 'UI/UX Design &amp; Landing Page')">
                                     <img src="assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0003_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0005_92cb19d8-f7ee-4d3e-97c5-.webp"
-                                        alt="UI/UX Design &amp; Landing Page" loading="lazy"
+                                        alt="UI/UX Design &amp; Landing Page" width="320" height="500" loading="lazy" decoding="async"
                                         class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                                     <div
                                         class="absolute inset-0 bg-zinc-950/25 group-hover:bg-zinc-950/45 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 backdrop-blur-[1px]">
@@ -1655,7 +1676,7 @@
                                 <div class="relative aspect-[9/14] sm:aspect-[9/15] bg-zinc-200 skeleton-loader overflow-hidden cursor-pointer"
                                     onclick="openTestiLightbox('assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0004_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0004_d39d3d08-e900-4b71-aea4-.webp', 'Brand Identity &amp; Logo Monogram')">
                                     <img src="assets/testimoni/6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0004_6cbaeec1-2b90-4301-bbf6-20f37fc48781_0000s_0004_d39d3d08-e900-4b71-aea4-.webp"
-                                        alt="Brand Identity &amp; Logo Monogram" loading="lazy"
+                                        alt="Brand Identity &amp; Logo Monogram" width="320" height="500" loading="lazy" decoding="async"
                                         class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                                     <div
                                         class="absolute inset-0 bg-zinc-950/25 group-hover:bg-zinc-950/45 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 backdrop-blur-[1px]">
@@ -1748,7 +1769,7 @@
                                     class="w-7 h-7 rounded-xl bg-brand-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-sm">
                                     1</div>
                                 <div>
-                                    <h4 data-i18n="steps.s1_title" class="text-xs sm:text-sm font-bold text-zinc-900">Pilih Jenis Desain</h4>
+                                    <h3 data-i18n="steps.s1_title" class="text-xs sm:text-sm font-bold text-zinc-900">Pilih Jenis Desain</h3>
                                     <p data-i18n="steps.s1_desc" class="text-[11px] text-zinc-500 mt-0.5">Pilih desain yang Anda butuhkan dari
                                         katalog produk kami.</p>
                                 </div>
@@ -1758,7 +1779,7 @@
                                     class="w-7 h-7 rounded-xl bg-brand-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-sm">
                                     2</div>
                                 <div>
-                                    <h4 data-i18n="steps.s2_title" class="text-xs sm:text-sm font-bold text-zinc-900">Konsultasi via WhatsApp</h4>
+                                    <h3 data-i18n="steps.s2_title" class="text-xs sm:text-sm font-bold text-zinc-900">Konsultasi via WhatsApp</h3>
                                     <p data-i18n="steps.s2_desc" class="text-[11px] text-zinc-500 mt-0.5">Kirimkan konsep, referensi gambar, atau
                                         teks yang ingin dibuat.</p>
                                 </div>
@@ -1768,7 +1789,7 @@
                                     class="w-7 h-7 rounded-xl bg-brand-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-sm">
                                     3</div>
                                 <div>
-                                    <h4 data-i18n="steps.s3_title" class="text-xs sm:text-sm font-bold text-zinc-900">Bayar DP Awal</h4>
+                                    <h3 data-i18n="steps.s3_title" class="text-xs sm:text-sm font-bold text-zinc-900">Bayar DP Awal</h3>
                                     <p data-i18n="steps.s3_desc" class="text-[11px] text-zinc-500 mt-0.5">Lakukan pembayaran DP untuk langsung
                                         memulai antrean pengerjaan.</p>
                                 </div>
@@ -1778,7 +1799,7 @@
                                     class="w-7 h-7 rounded-xl bg-brand-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-sm">
                                     4</div>
                                 <div>
-                                    <h4 data-i18n="steps.s4_title" class="text-xs sm:text-sm font-bold text-zinc-900">Pengerjaan &amp; Revisi</h4>
+                                    <h3 data-i18n="steps.s4_title" class="text-xs sm:text-sm font-bold text-zinc-900">Pengerjaan &amp; Revisi</h3>
                                     <p data-i18n="steps.s4_desc" class="text-[11px] text-zinc-500 mt-0.5">Desain kami buat dan sesuaikan sampai
                                         hasilnya pas dengan keinginan Anda.</p>
                                 </div>
@@ -1788,8 +1809,8 @@
                                     class="w-7 h-7 rounded-xl bg-brand-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-sm">
                                     5</div>
                                 <div>
-                                    <h4 data-i18n="steps.s5_title" class="text-xs sm:text-sm font-bold text-zinc-900">Pelunasan &amp; Terima File
-                                    </h4>
+                                    <h3 data-i18n="steps.s5_title" class="text-xs sm:text-sm font-bold text-zinc-900">Pelunasan &amp; Terima File
+                                    </h3>
                                     <p data-i18n="steps.s5_desc" class="text-[11px] text-zinc-500 mt-0.5">Lakukan pelunasan dan terima seluruh
                                         file master siap pakai (AI, PDF, PNG, dll).</p>
                                 </div>
@@ -1813,7 +1834,7 @@
 
                     <div data-aos="fade-left" data-aos-duration="600"
                         class="lg:col-span-5 flex items-center justify-center">
-                        <img src="assets/other/asset2.webp" alt="Langkah Pemesanan Desain di Premium Design"
+                        <img src="assets/other/asset2.webp" alt="Langkah Pemesanan Desain di Premium Design" width="500" height="380" loading="lazy" decoding="async"
                             class="w-full max-w-[500px] lg:max-w-full h-auto object-contain rounded-2xl border border-zinc-200/80 shadow-sm">
                     </div>
                 </div>
@@ -1830,9 +1851,9 @@
                         <iconify-icon icon="lucide:credit-card" class="text-brand-600 text-sm"></iconify-icon>
                         <span data-i18n="payment.badge">Metode Pembayaran</span>
                     </span>
-                    <h3 data-i18n="payment.title" class="text-xl sm:text-3xl font-extrabold text-zinc-900 font-heading mt-2.5">
+                    <h2 data-i18n="payment.title" class="text-xl sm:text-3xl font-extrabold text-zinc-900 font-heading mt-2.5">
                         Menerima Pembayaran Seluruh Bank, E-Wallet, QRIS &amp; PayPal
-                    </h3>
+                    </h2>
                     <p data-i18n="payment.subtitle" class="text-xs sm:text-sm text-zinc-500 mt-1.5">
                         Transaksi cepat, aman, dan terpercaya untuk pemesanan lokal maupun internasional.
                     </p>
@@ -1841,19 +1862,19 @@
                 <div class="space-y-6 sm:space-y-8 max-w-5xl mx-auto">
                     <!-- Baris 1: QRIS, Bank Utama & PayPal -->
                     <div data-aos="fade-up" data-aos-delay="50" class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 md:gap-12">
-                        <img src="assets/payment/qris.webp" alt="QRIS"
+                        <img src="assets/payment/qris.webp" alt="QRIS" width="125" height="38" decoding="async"
                             class="h-8 sm:h-10 md:h-11 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/Asset 6.webp" alt="Bank BCA"
+                        <img src="assets/payment/Asset 6.webp" alt="Bank BCA" width="120" height="38" decoding="async"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/mandiri.webp" alt="Bank Mandiri"
+                        <img src="assets/payment/mandiri.webp" alt="Bank Mandiri" width="130" height="38" decoding="async"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[130px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/bri.webp" alt="Bank BRI"
+                        <img src="assets/payment/bri.webp" alt="Bank BRI" width="106" height="40" decoding="async"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/bni.webp" alt="Bank BNI"
+                        <img src="assets/payment/bni.webp" alt="Bank BNI" width="132" height="40" decoding="async"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
                         <div
@@ -1866,63 +1887,63 @@
 
                     <!-- Baris 2: Bank Syariah & Bank Nasional -->
                     <div data-aos="fade-up" data-aos-delay="100" class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 md:gap-12">
-                        <img src="assets/payment/Asset 14.webp" alt="Bank BSI"
+                        <img src="assets/payment/Asset 14.webp" alt="Bank BSI" width="120" height="34" decoding="async"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/cimbniaga.webp" alt="CIMB Niaga"
+                        <img src="assets/payment/cimbniaga.webp" alt="CIMB Niaga" width="140" height="24" decoding="async"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[130px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/danamon.webp" alt="Bank Danamon"
+                        <img src="assets/payment/danamon.webp" alt="Bank Danamon" width="106" height="40" decoding="async"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[130px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/bank_mega.webp" alt="Bank Mega"
+                        <img src="assets/payment/bank_mega.webp" alt="Bank Mega" width="68" height="40" decoding="async"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/Asset 11.webp" alt="Bank BTN"
+                        <img src="assets/payment/Asset 11.webp" alt="Bank BTN" width="120" height="28" decoding="async"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/Asset 10.webp" alt="Bank BJB"
+                        <img src="assets/payment/Asset 10.webp" alt="Bank BJB" width="90" height="40" decoding="async"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
                     </div>
 
                     <!-- Baris 3: Bank Digital & E-Wallets -->
                     <div data-aos="fade-up" data-aos-delay="150" class="flex flex-wrap items-center justify-center gap-6 sm:gap-9 md:gap-11">
-                        <img src="assets/payment/Asset 9.webp" alt="Bank Jago"
+                        <img src="assets/payment/Asset 9.webp" alt="Bank Jago" width="105" height="33" decoding="async"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[105px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/bank_transfer_network_atm_bersama.webp" alt="ATM Bersama"
+                        <img src="assets/payment/bank_transfer_network_atm_bersama.webp" alt="ATM Bersama" width="60" height="40" decoding="async"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[115px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/gopay_landscape.webp" alt="GoPay"
+                        <img src="assets/payment/gopay_landscape.webp" alt="GoPay" width="78" height="40" decoding="async"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/Asset 15.webp" alt="DANA"
+                        <img src="assets/payment/Asset 15.webp" alt="DANA" width="115" height="33" decoding="async"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[115px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/Asset 16.webp" alt="OVO"
+                        <img src="assets/payment/Asset 16.webp" alt="OVO" width="95" height="39" decoding="async"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[95px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/shopeepay.webp" alt="ShopeePay"
+                        <img src="assets/payment/shopeepay.webp" alt="ShopeePay" width="120" height="24" decoding="async"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/Asset 17.webp" alt="LinkAja"
+                        <img src="assets/payment/Asset 17.webp" alt="LinkAja" width="115" height="32" decoding="async"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[115px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
                     </div>
 
                     <!-- Baris 4: Kartu Kredit & Gerai Ritel -->
                     <div data-aos="fade-up" data-aos-delay="200" class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 md:gap-14">
-                        <img src="assets/payment/visa.webp" alt="VISA"
+                        <img src="assets/payment/visa.webp" alt="VISA" width="95" height="30" decoding="async"
                             class="h-6 sm:h-8 md:h-9 w-auto max-w-[95px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/mastercard.webp" alt="MasterCard"
+                        <img src="assets/payment/mastercard.webp" alt="MasterCard" width="53" height="40" decoding="async"
                             class="h-7 sm:h-9 md:h-10 w-auto max-w-[90px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/indomaret.webp" alt="Indomaret"
+                        <img src="assets/payment/indomaret.webp" alt="Indomaret" width="107" height="40" decoding="async"
                             class="h-6 sm:h-8 md:h-9 w-auto max-w-[110px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
-                        <img src="assets/payment/alfamart.webp" alt="Alfamart"
+                        <img src="assets/payment/alfamart.webp" alt="Alfamart" width="40" height="40" decoding="async"
                             class="h-6 sm:h-8 md:h-9 w-auto max-w-[110px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-300 select-none cursor-pointer"
                             loading="lazy">
                     </div>
@@ -1936,49 +1957,48 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div data-aos="fade-up" data-aos-delay="50" class="lg:col-span-2 space-y-4">
-                    <img src="assets/other/logo_white.webp" alt="Logo Footer" class="h-10 w-auto object-contain">
+                    <img src="assets/other/logo_white.webp" alt="Logo Footer" width="160" height="69" decoding="async" class="h-10 w-auto object-contain">
                     <p data-i18n="footer.desc" class="text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-sm">
                         Studio desain grafis &amp; marketplace penyedia identitas visual profesional, logo, kemasan,
                         banner, dan UI/UX modern dengan standar tinggi.
                     </p>
                     <div class="flex items-center space-x-3 pt-2">
-                        <a href="https://www.instagram.com/premiumdsz/" target="_blank"
+                        <a href="https://www.instagram.com/premiumdsz/" target="_blank" rel="noopener noreferrer"
                             class="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-brand-600 transition-colors"
-                            title="Instagram @premiumdsz" data-i18n-title="footer.instagram">
+                            aria-label="Instagram @premiumdsz" title="Instagram @premiumdsz" data-i18n-title="footer.instagram">
                             <iconify-icon icon="simple-icons:instagram" class="text-sm"></iconify-icon>
                         </a>
-                        <a href="https://www.tiktok.com/@premium.designz" target="_blank"
+                        <a href="https://www.tiktok.com/@premium.designz" target="_blank" rel="noopener noreferrer"
                             class="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-brand-600 transition-colors"
-                            title="TikTok @premium.designz" data-i18n-title="footer.tiktok">
+                            aria-label="TikTok @premium.designz" title="TikTok @premium.designz" data-i18n-title="footer.tiktok">
                             <iconify-icon icon="simple-icons:tiktok" class="text-sm"></iconify-icon>
                         </a>
-                        <a href="https://shopee.co.id/premium_dz" target="_blank"
+                        <a href="https://shopee.co.id/premium_dz" target="_blank" rel="noopener noreferrer"
                             class="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-amber-400 hover:bg-zinc-800 transition-colors"
-                            title="Shopee Official Store" data-i18n-title="footer.shopee">
+                            aria-label="Shopee Official Store" title="Shopee Official Store" data-i18n-title="footer.shopee">
                             <iconify-icon icon="simple-icons:shopee" class="text-sm"></iconify-icon>
                         </a>
-                        <a href="https://www.fiverr.com/premiumdz" target="_blank"
+                        <a href="https://www.fiverr.com/premiumdz" target="_blank" rel="noopener noreferrer"
                             class="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-emerald-400 hover:bg-zinc-800 transition-colors"
-                            title="Fiverr Global Orders" data-i18n-title="footer.fiverr">
+                            aria-label="Fiverr Global Orders" title="Fiverr Global Orders" data-i18n-title="footer.fiverr">
                             <iconify-icon icon="simple-icons:fiverr" class="text-sm"></iconify-icon>
                         </a>
                     </div>
                 </div>
 
                 <div data-aos="fade-up" data-aos-delay="100">
-                    <h4 data-i18n="footer.quick_nav" class="text-xs font-bold uppercase tracking-wider text-white mb-4">Navigasi Cepat</h4>
+                    <h3 data-i18n="footer.quick_nav" class="text-xs font-bold uppercase tracking-wider text-white mb-4">Navigasi Cepat</h3>
                     <ul class="space-y-2.5 text-xs">
-                        <li><a href="index.html" data-i18n="nav.home" class="hover:text-white transition-colors">Home Utama</a></li>
-                        <li><a href="pages/portofolio.html" data-i18n="nav.portfolio" class="hover:text-white transition-colors">Katalog Portofolio</a></li>
-                        <li><a href="pages/marketplace.html" data-i18n="nav.marketplace" class="hover:text-white transition-colors">Marketplace Desain</a></li>
-                        <li><a href="#langkah-pemesanan" data-i18n="nav.how_to_order" class="hover:text-white transition-colors">Cara Pemesanan</a></li>
-                        <li><a href="pages/about.html" data-i18n="nav.about" class="hover:text-white transition-colors">Tentang &amp; Kontak</a></li>
+                        <li><a href="index.html" data-i18n="nav.home" class="text-zinc-300 hover:text-white transition-colors">Home Utama</a></li>
+                        <li><a href="pages/portofolio.html" data-i18n="nav.portfolio" class="text-zinc-300 hover:text-white transition-colors">Katalog Portofolio</a></li>
+                        <li><a href="pages/marketplace.html" data-i18n="nav.marketplace" class="text-zinc-300 hover:text-white transition-colors">Marketplace Desain</a></li>
+                        <li><a href="#langkah-pemesanan" data-i18n="nav.how_to_order" class="text-zinc-300 hover:text-white transition-colors">Cara Pemesanan</a></li>
+                        <li><a href="pages/about.html" data-i18n="nav.about" class="text-zinc-300 hover:text-white transition-colors">Tentang &amp; Kontak</a></li>
                     </ul>
                 </div>
 
-
                 <div data-aos="fade-up" data-aos-delay="150">
-                    <h4 data-i18n="footer.contact_studio" class="text-xs font-bold uppercase tracking-wider text-white mb-4">Kontak Studio</h4>
+                    <h3 data-i18n="footer.contact_studio" class="text-xs font-bold uppercase tracking-wider text-white mb-4">Kontak Studio</h3>
                     <div class="space-y-3 text-xs">
                         <p class="flex items-center space-x-2">
                             <iconify-icon icon="simple-icons:whatsapp"
@@ -1998,8 +2018,8 @@
             </div>
 
             <div
-                class="pt-8 border-t border-zinc-900 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
-                <p data-i18n="footer.rights">&copy; 2026 Premium Design Studio. All rights reserved.</p>
+                class="pt-8 border-t border-zinc-900 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-300 gap-4">
+                <p data-i18n="footer.rights" class="text-zinc-300">&copy; 2026 Premium Design Studio. All rights reserved.</p>
 
             </div>
         </div>
@@ -2014,21 +2034,8 @@
     </button>
 
     <!-- ASSET PROTECTION WATERMARK & MODAL -->
-    <div class="fixed inset-0 z-[10] pointer-events-none select-none opacity-[0.025] overflow-hidden flex flex-wrap gap-16 p-6 items-center justify-around"
-        aria-hidden="true">
-        <div
-            class="transform -rotate-12 text-zinc-900 font-extrabold text-xs tracking-widest uppercase whitespace-nowrap">
-            PREMIUM DESIGNZ &bull; PROTECTED CONTENT</div>
-        <div
-            class="transform -rotate-12 text-zinc-900 font-extrabold text-xs tracking-widest uppercase whitespace-nowrap">
-            PREMIUM DESIGNZ &bull; PROTECTED CONTENT</div>
-        <div
-            class="transform -rotate-12 text-zinc-900 font-extrabold text-xs tracking-widest uppercase whitespace-nowrap">
-            PREMIUM DESIGNZ &bull; PROTECTED CONTENT</div>
-        <div
-            class="transform -rotate-12 text-zinc-900 font-extrabold text-xs tracking-widest uppercase whitespace-nowrap">
-            PREMIUM DESIGNZ &bull; PROTECTED CONTENT</div>
-    </div>
+    <div class="fixed inset-0 z-[10] pointer-events-none select-none opacity-[0.03] overflow-hidden watermark-pattern"
+        aria-hidden="true"></div>
 
     <!-- DevTools Warning Modal -->
     <div id="asset-protection-modal"
@@ -2080,11 +2087,11 @@
     </div>
 
     <!-- Scripts -->
-    <script src="assets/js/data.js" defer></script>
-    <script src="assets/js/main.js" defer></script>
-    <script src="assets/js/security.js" defer></script>
-    <script src="assets/js/translate.js" defer></script>
-    <script src="assets/js/app-pages.js" defer></script>
+    <script src="assets/js/data.min.js" defer></script>
+    <script src="assets/js/main.min.js" defer></script>
+    <script src="assets/js/security.min.js" defer></script>
+    <script src="assets/js/translate.min.js" defer></script>
+    <script src="assets/js/app-pages.min.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             initHomeSliders();

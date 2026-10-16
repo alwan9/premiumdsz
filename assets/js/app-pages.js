@@ -455,7 +455,7 @@ function appendPortfolioBatch(baseAssetPrefix = '') {
     batchItems.forEach((item, localIdx) => {
         const globalIndex = startIndex + localIdx;
         const fullHdUrl = _safeUrl(baseAssetPrefix + item.url);
-        const thumbUrl = _safeUrl(baseAssetPrefix + item.url.replace('assets/portofolio/', 'assets/portofolio/thumbs/'));
+        const thumbUrl = _safeUrl(typeof getThumbnailUrl === 'function' ? getThumbnailUrl(baseAssetPrefix + item.url) : (baseAssetPrefix + item.url.replace('assets/portofolio/', 'assets/portofolio/thumbs/')));
         const safeNama = _escape(item.nama);
         const safeKategori = _escape(item.kategori);
         const delayMs = (localIdx % 10) * 45;
@@ -560,7 +560,7 @@ function openPortfolioZoom(index, baseAssetPrefix = '') {
     const item = filteredPortfolios[index];
     if (modal && modalImg) {
         const fullHdUrl = _safeUrl(baseAssetPrefix + item.url);
-        const thumbUrl = _safeUrl(baseAssetPrefix + item.url.replace('assets/portofolio/', 'assets/portofolio/thumbs/'));
+        const thumbUrl = _safeUrl(typeof getThumbnailUrl === 'function' ? getThumbnailUrl(baseAssetPrefix + item.url) : (baseAssetPrefix + item.url.replace('assets/portofolio/', 'assets/portofolio/thumbs/')));
         const safeTitle = _sanitizeTitle(item.nama);
 
         // Display thumbnail instantly with smooth loading transition
@@ -893,7 +893,8 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
     items.forEach((prod, index) => {
         const rawDetailUrl = (baseAssetPrefix === '../') ? `product-detail.html?id=${encodeURIComponent(prod.Id_produk)}` : `pages/product-detail.html?id=${encodeURIComponent(prod.Id_produk)}`;
         const detailUrl = _safeUrl(rawDetailUrl);
-        const imgUrl = _safeUrl((baseAssetPrefix || '') + (prod.image_url || ''));
+        const fullHdUrl = _safeUrl((baseAssetPrefix || '') + (prod.image_url || ''));
+        const thumbUrl = _safeUrl(typeof getThumbnailUrl === 'function' ? getThumbnailUrl((baseAssetPrefix || '') + (prod.image_url || '')) : fullHdUrl);
         const delay = Math.min((index % 8) * 40, 300);
         const catName = _escape(prod.kategori ? prod.kategori.Nama_kategori : 'Desain');
         const waLink = _safeUrl(prod.whatsapp_link || 'https://api.whatsapp.com/send/?phone=6285168174679');
@@ -905,9 +906,9 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
                 <div>
                     <a href="${detailUrl}" class="block">
                         <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden cursor-pointer">
-                            <img src="${imgUrl}" alt="${prodTitle}" loading="lazy"
+                            <img src="${thumbUrl}" alt="${prodTitle}" loading="lazy"
                                 onload="this.classList.add('img-loaded'); this.closest('.skeleton-loader')?.classList.add('skeleton-loaded');"
-                                onerror="this.classList.add('img-loaded'); this.closest('.skeleton-loader')?.classList.add('skeleton-loaded');"
+                                onerror="this.onerror=null; this.src='${fullHdUrl}'; this.classList.add('img-loaded'); this.closest('.skeleton-loader')?.classList.add('skeleton-loaded');"
                                 class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:scale-105 group-hover:brightness-95">
                             <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-black/20"></div>
                             <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 ease-in-out pointer-events-none"></div>
@@ -1096,13 +1097,17 @@ function renderProductGalleryThumbnails(baseAssetPrefix = '') {
     }
 
     if (thumbsContainer) {
-        thumbsContainer.innerHTML = currentProductGallery.map((gUrl, i) => `
+        thumbsContainer.innerHTML = currentProductGallery.map((gUrl, i) => {
+            const fullUrl = _safeUrl(gUrl);
+            const thumbUrl = _safeUrl(typeof getThumbnailUrl === 'function' ? getThumbnailUrl(gUrl) : gUrl);
+            return `
             <button type="button" onclick="setProductSlide(${i})"
                 class="gallery-thumb-btn aspect-square rounded-xl overflow-hidden border-2 transition-all group ${i === 0 ? 'border-brand-600 ring-2 ring-brand-500/20 shadow-sm' : 'border-zinc-200 hover:border-brand-400 opacity-70 hover:opacity-100'}"
                 data-index="${i}">
-                <img src="${_safeUrl(gUrl)}" alt="Preview ${i + 1}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                <img src="${thumbUrl}" onerror="this.onerror=null; this.src='${fullUrl}';" alt="Preview ${i + 1}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             </button>
-        `).join('');
+        `;
+        }).join('');
     }
 }
 
@@ -1198,7 +1203,8 @@ function renderRelatedProducts(prodId, catId, baseAssetPrefix = '') {
             const relTitle = _escape(rel.Nama_produk || 'Desain Grafis');
             const relDesc = _escape(rel.Des_produk || '');
             const relCat = _escape(rel.kategori ? rel.kategori.Nama_kategori : 'Desain');
-            const relImg = _safeUrl(baseAssetPrefix + (rel.image_url || ''));
+            const relFullImg = _safeUrl(baseAssetPrefix + (rel.image_url || ''));
+            const relThumbImg = _safeUrl(typeof getThumbnailUrl === 'function' ? getThumbnailUrl(baseAssetPrefix + (rel.image_url || '')) : relFullImg);
             const relWa = _safeUrl(rel.whatsapp_link || 'https://api.whatsapp.com/send/?phone=6285168174679');
             const relId = encodeURIComponent(rel.Id_produk);
 
@@ -1206,7 +1212,7 @@ function renderRelatedProducts(prodId, catId, baseAssetPrefix = '') {
             <div class="flex-none w-[160px] sm:w-[180px] md:w-[200px] lg:w-[calc((100%-5*16px)/6)] min-w-[150px] rounded-2xl border border-zinc-200/80 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
                 <a href="product-detail.html?id=${relId}" class="block group">
                     <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden cursor-pointer">
-                        <img src="${relImg}" alt="${relTitle}" loading="lazy"
+                        <img src="${relThumbImg}" onerror="this.onerror=null; this.src='${relFullImg}';" alt="${relTitle}" loading="lazy"
                             class="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:brightness-90">
                         <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent"></div>
                         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 ease-in-out pointer-events-none"></div>

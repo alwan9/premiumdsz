@@ -23,55 +23,73 @@ const CATEGORIES = [
     {
         Id_kategori: 1,
         Nama_kategori: "Banner & Spanduk",
+        Nama_kategori_en: "Banners & Signage",
         Des_kategori: "Media promosi luar ruang, banner wisuda, banner UMKM, stand booth event, dan materi visual promosi.",
+        Des_kategori_en: "Outdoor advertising media, graduation banners, MSME storefront banners, exhibition booths, and promotional visuals.",
         icon_name: "lucide:flag"
     },
     {
         Id_kategori: 2,
         Nama_kategori: "Packaging & Kemasan",
+        Nama_kategori_en: "Packaging & Box",
         Des_kategori: "Desain standing pouch snack, boks kemasan produk, hampers, dan packaging retail siap cetak.",
+        Des_kategori_en: "Standing snack pouches, product packaging boxes, hampers, and retail packaging ready for print.",
         icon_name: "lucide:box"
     },
     {
         Id_kategori: 3,
         Nama_kategori: "Logo & Branding",
+        Nama_kategori_en: "Logo & Branding",
         Des_kategori: "Identitas visual, logo custom bisnis, logo racing, filosofi warna, dan typography branding.",
+        Des_kategori_en: "Visual identity, custom business logos, racing team emblems, color philosophy, and brand typography.",
         icon_name: "lucide:sparkles"
     },
     {
         Id_kategori: 4,
         Nama_kategori: "UI/UX & Web",
+        Nama_kategori_en: "UI/UX & Web",
         Des_kategori: "Desain interface mobile app Android & iOS, website company profile, landing page, dan Figma mockup.",
+        Des_kategori_en: "Mobile app interfaces for Android & iOS, company profile websites, landing pages, and Figma prototypes.",
         icon_name: "lucide:layout"
     },
     {
         Id_kategori: 5,
         Nama_kategori: "Label & Stiker",
+        Nama_kategori_en: "Labels & Stickers",
         Des_kategori: "Desain label botol, stiker toples makanan, tag produk UMKM, dan packaging jar siap cetak.",
+        Des_kategori_en: "Bottle labels, food jar stickers, MSME product tags, and packaging labels ready for print.",
         icon_name: "lucide:tag"
     },
     {
         Id_kategori: 6,
         Nama_kategori: "Jersey & Apparel",
+        Nama_kategori_en: "Jersey & Apparel",
         Des_kategori: "Desain jersey olahraga custom, esport gaming, seragam tim, komunitas, dan apparel merchandise.",
+        Des_kategori_en: "Custom sports jerseys, esports gaming shirts, team uniforms, communities, and apparel merchandise.",
         icon_name: "lucide:shirt"
     },
     {
         Id_kategori: 7,
         Nama_kategori: "Foto & Redesain AI",
+        Nama_kategori_en: "AI Photo & Redesign",
         Des_kategori: "Penyempurnaan gambar AI, redesain artwork, editing foto studio produk, dan koreksi detail visual.",
+        Des_kategori_en: "AI artwork refinement, detail correction, photo restoration, and marketplace studio photo editing.",
         icon_name: "lucide:image"
     },
     {
         Id_kategori: 8,
         Nama_kategori: "Poster & Flyer",
+        Nama_kategori_en: "Posters & Flyers",
         Des_kategori: "Materi promosi poster infografis digital, flyer acara, dan grafis informasi terstruktur.",
+        Des_kategori_en: "Digital infographic posters, event flyers, brochures, and structured promotional marketing graphics.",
         icon_name: "lucide:file-text"
     },
     {
         Id_kategori: 9,
         Nama_kategori: "Dokumen & PPT",
+        Nama_kategori_en: "Documents & PPT",
         Des_kategori: "Desain PowerPoint presentasi profesional, slide seminar/kuliah, dan desain Curriculum Vitae (CV) menarik.",
+        Des_kategori_en: "Professional PowerPoint presentation decks, pitch slides, seminar templates, and modern CV/resumes.",
         icon_name: "lucide:presentation"
     }
 ];
@@ -125,64 +143,91 @@ const SERVICES = [
     {
         Id_Layanan: 1,
         Nama_layanan: "Layanan Desain Banner & Media Promosi",
+        Nama_layanan_en: "Banner & Promotional Media Design Service",
         Des_layanan: "Jasa pembuatan banner wisuda, banner promosi UMKM, event toko, hingga media iklan outdoor.",
+        Des_layanan_en: "Custom banner design for store promotions, MSME events, graduations, and outdoor advertising displays.",
         Benefit: "• Desain original dan custom sesuai kebutuhan\n• Layout rapi dan mudah dibaca\n• File siap cetak (PDF, JPG, PNG) & Mentahan HD\n• Revisi sesuai kesepakatan",
+        Benefit_en: "• 100% Original and custom design tailored to your needs\n• Clean, structured layout with high readability\n• Print-ready files (PDF, JPG, PNG) & HD master source files\n• Flexible revisions per agreement",
         sample_product_id: 1
     },
     {
         Id_Layanan: 2,
         Nama_layanan: "Layanan Desain Kemasan Box & Pouch",
+        Nama_layanan_en: "Box & Pouch Packaging Design Service",
         Des_layanan: "Perancangan desain kemasan pouch makanan ringan, boks hampers, skincare, dan produk UMKM.",
+        Des_layanan_en: "Custom pouch design for snacks, box packaging, cosmetics, hampers, and retail products.",
         Benefit: "• Pola dieline presisi sesuai ukuran boks/pouch\n• 3D Mockup realistis untuk presentasi produk\n• Format warna siap cetak percetakan\n• Revisi sesuai kesepakatan",
+        Benefit_en: "• Accurate dieline patterns tailored to box/pouch dimensions\n• Photorealistic 3D mockups for product presentation\n• Print-ready CMYK color format for production\n• Flexible revisions per agreement",
         sample_product_id: 4
     },
     {
         Id_Layanan: 3,
         Nama_layanan: "Layanan Desain Logo & Brand Identity",
+        Nama_layanan_en: "Logo & Brand Identity Design Service",
         Des_layanan: "Perancangan logo bisnis, logo racing, online shop, UMKM, dan identitas visual perusahaan.",
+        Des_layanan_en: "Custom business logos, racing logos, online shops, startups, and corporate visual identities.",
         Benefit: "• Desain logo custom original dari awal (no template)\n• Mockup aplikasi logo & konsep warna/tipografi\n• File resolusi tinggi siap digital dan cetak\n• Konsultasi desain sebelum order",
+        Benefit_en: "• 100% Original custom logo from scratch (no templates)\n• Logo mockups, color philosophy & typography guide\n• Ultra high-resolution files ready for digital and print\n• Free pre-order design consultation",
         sample_product_id: 5
     },
     {
         Id_Layanan: 4,
         Nama_layanan: "Layanan UI/UX App & Website Figma",
+        Nama_layanan_en: "UI/UX App & Website Figma Design Service",
         Des_layanan: "Perancangan antarmuka digital mobile app Android/iOS, website landing page, dan sistem dashboard.",
+        Des_layanan_en: "User interface design for mobile apps (Android/iOS), company profile websites, landing pages, and web apps.",
         Benefit: "• Tampilan modern, clean, dan user-friendly\n• File design Figma editable & auto-layout\n• Interactive clickable prototype\n• User flow & struktur halaman terorganisir",
+        Benefit_en: "• Modern, clean, and intuitive user-friendly interface\n• Editable Figma files with Auto-Layout and components\n• Clickable interactive prototype\n• Organized user flow and screen hierarchy",
         sample_product_id: 8
     },
     {
         Id_Layanan: 5,
         Nama_layanan: "Layanan Desain Jersey & Custom Apparel",
+        Nama_layanan_en: "Custom Jersey & Apparel Design Service",
         Des_layanan: "Desain jersey futsal, esport, komunitas motor/gowes, dan seragam apparel custom.",
+        Des_layanan_en: "Custom sublimation jersey design for futsal, esports, cycling clubs, communities, and custom merchandise.",
         Benefit: "• Desain original menyesuaikan karakter tim / komunitas\n• File siap cetak sublimasi / konveksi (CDR/EPS/PSD/PDF)\n• Mockup apparel depan & belakang\n• Revisi sesuai kesepakatan",
+        Benefit_en: "• Sublimation pattern tailored to jersey cuts\n• High-definition mockup front and back\n• Master vector files ready for sublimation print\n• Flexible revisions per agreement",
         sample_product_id: 10
     },
     {
         Id_Layanan: 6,
         Nama_layanan: "Layanan Redesain AI & Foto Produk Studio",
+        Nama_layanan_en: "Product Studio Photography & AI Redesign Service",
         Des_layanan: "Penyempurnaan artwork AI generator dan sentuhan editing foto produk untuk meningkatkan konversi penjualan.",
+        Des_layanan_en: "AI artwork refinement and commercial product photo editing to elevate sales conversion on marketplaces.",
         Benefit: "• Penyempurnaan detail gambar AI & komposisi warna\n• Editing foto studio produk agar siap marketplace & promosi\n• File resolusi tinggi digital & cetak\n• Pengerjaan rapi dan cepat",
+        Benefit_en: "• Professional lighting adjustment and background replacement\n• AI visual enhancement and artwork upscaling\n• High-resolution output optimized for e-commerce\n• Flexible revisions per agreement",
         sample_product_id: 11
     },
     {
         Id_Layanan: 7,
         Nama_layanan: "Layanan Desain Label & Stiker Produk",
+        Nama_layanan_en: "Bottle Label & Packaging Design Service",
         Des_layanan: "Pembuatan label stiker produk makanan ringan, toples kue, botol minuman, dan kemasan homemade.",
+        Des_layanan_en: "Custom label and sticker design for food jars, snack packs, drink bottles, and homemade products.",
         Benefit: "• Penyesuaian ukuran & bentuk label toples/botol/kemasan\n• Tata letak informasi produk & logo yang proporsional\n• Mockup label realistis & file siap cetak\n• Revisi sesuai kesepakatan",
+        Benefit_en: "• Custom dimensions for bottles, jars, and containers\n• Realistic jar mockup preview\n• Print-ready files with crop marks\n• Flexible revisions per agreement",
         sample_product_id: 9
     },
     {
         Id_Layanan: 8,
         Nama_layanan: "Layanan Desain Dokumen, CV & PowerPoint PPT",
+        Nama_layanan_en: "PPT Presentation & Resume Design Service",
         Des_layanan: "Layanan desain slide presentasi bisnis/seminar dan pembuatan curriculum vitae profesional.",
+        Des_layanan_en: "Professional PowerPoint slide design for business pitch decks and modern ATS-friendly resume formatting.",
         Benefit: "• Desain slide PPT presentasi interaktif & terstruktur\n• Format CV ATS-friendly & visual profesional\n• File master editable siap digunakan\n• Pengerjaan cepat & rapi",
+        Benefit_en: "• Professional slide deck and ATS-compatible CV formatting\n• Editable PowerPoint (.pptx) or PDF formats\n• Visual data charts and modern iconography\n• Flexible revisions per agreement",
         sample_product_id: 14
     },
     {
         Id_Layanan: 9,
         Nama_layanan: "Layanan Desain Flyer Promosi, Pamflet & Brosur Bisnis",
+        Nama_layanan_en: "Poster, Flyer & Brochure Design Service",
         Des_layanan: "Pembuatan flyer promo, pamflet bisnis, brosur event, dan publikasi media promosi cetak/digital.",
+        Des_layanan_en: "Eye-catching promotional flyers, event pamphlets, brochures, and digital infographic marketing materials.",
         Benefit: "• Visualisasi materi promosi informatif & estetik\n• Tampilan flyer atraktif untuk event atau kampanye bisnis\n• File siap dipublikasikan ke media sosial & cetak\n• Revisi sesuai kesepakatan",
+        Benefit_en: "• Strategic visual hierarchy for marketing conversion\n• Digital formats (1:1, 9:16, 4:5) and print-ready CMYK\n• Complete high-res files (PDF, PNG, JPG, source files)\n• Flexible revisions per agreement",
         sample_product_id: 13
     }
 ];
@@ -277,10 +322,13 @@ const PRODUCTS = [
         "Id_kategori": 1,
         "Id_layanan": 1,
         "Nama_produk": "Jasa Desain Banner & Spanduk UMKM Promosi Toko",
+        "Nama_produk_en": "MSME Store Promotion Banner & Spanduk Design Service",
         "No_wa": "085168174679",
         "Stok_produk": 25,
         "Estimasi": "1 Hari",
+        "Estimasi_en": "1 Day",
         "Des_produk": "Jasa Desain Banner UMKM Custom – Premium Designz\n\nIngin banner usaha kamu terlihat lebih menarik, profesional, dan mudah menarik perhatian pelanggan?\nBanner menjadi salah satu media penting untuk memperkenalkan usaha, produk, maupun promo kepada pelanggan. Dengan desain yang tepat, informasi dapat disampaikan dengan lebih jelas sekaligus membuat tampilan usaha terlihat lebih profesional.\nPremium Designz menyediakan jasa desain banner UMKM custom yang dibuat sesuai dengan konsep, karakter usaha, dan kebutuhan kamu. Setiap desain dibuat secara custom, bukan sekadar menggunakan template, sehingga hasilnya dapat disesuaikan dengan identitas visual usaha.\n\nLayanan yang tersedia:\n• Desain banner UMKM custom\n• Banner promosi produk & jasa\n• Banner toko & usaha\n• Penyesuaian ukuran banner\n• Penempatan logo dan informasi usaha\n• Penyesuaian warna, ilustrasi, dan tipografi\n• Preview desain sebelum final\n• File siap cetak dalam format PDF, JPG, dan PNG\n• Desain disesuaikan dengan konsep dan identitas usaha\n\nKeunggulan layanan:\n• Desain original dan custom\n• Tampilan menarik & profesional\n• Layout rapi dan proporsional\n• Informasi mudah dibaca\n• Bisa request konsep, warna, dan tema\n• Revisi sesuai kesepakatan\n• File berkualitas tinggi\n• Siap digunakan untuk kebutuhan digital maupun cetak\n\nCocok untuk:\n• UMKM & Online Shop\n• Toko & Usaha Lokal\n• Produk Makanan & Minuman\n• Jasa & Layanan\n• Promo Produk\n• Event & Bazaar\n• Stand Usaha\n• Kebutuhan Promosi Lainnya",
+        "Des_produk_en": "Custom MSME Banner Design Service – Premium Designz\n\nWant your business banner to look more attractive, professional, and easily capture customers' attention?\nBanners are one of the most vital media for introducing your business, products, or promotional campaigns. With the right visual design, your key messages are delivered clearly while elevating your brand credibility.\nPremium Designz provides custom MSME banner designs tailored specifically to your concept, business character, and marketing goals. Every design is crafted from scratch—never generic templates—ensuring it perfectly aligns with your brand identity.\n\nIncluded Services:\n• Custom MSME banner & spanduk design\n• Promotional banners for products & services\n• Storefront and retail business banners\n• Custom banner sizing and aspect ratios\n• Seamless placement of logo, contact info, and copy\n• Color palette, illustration, and typography refinement\n• Design previews before final approval\n• High-resolution print-ready files in PDF, JPG, and PNG\n• 100% tailored to your business identity\n\nService Advantages:\n• 100% original and custom designs\n• Eye-catching, professional visual appeal\n• Clean, proportional, and balanced layout\n• High readability from a distance\n• Flexible concept, color, and theme requests\n• Revisions according to agreement\n• High-resolution source files (CDR, EPS, PSD)\n• Ready for both digital campaigns and high-dpi printing\n\nPerfect For:\n• MSMEs & Online Shops\n• Retail Stores & Local Businesses\n• Food & Beverage Outlets\n• Services & Consultancies\n• Product Launches & Flash Sales\n• Events, Bazaars & Pop-up Booths\n• All Promotional Needs",
         "image_url": "assets/coverbannerumkm2.webp",
         "gallery_urls": [
             "assets/coverbannerumkm2.webp",
@@ -298,10 +346,13 @@ const PRODUCTS = [
         "Id_kategori": 1,
         "Id_layanan": 1,
         "Nama_produk": "Jasa Desain Stand Booth Jualan & Pameran UMKM",
+        "Nama_produk_en": "MSME Sales Booth & Exhibition Stand Visual Design",
         "No_wa": "085168174679",
         "Stok_produk": 15,
         "Estimasi": "2-3 Hari",
+        "Estimasi_en": "2-3 Days",
         "Des_produk": "Jasa Desain Booth Jualan Custom – Premium Designz\n\nIngin booth jualan kamu terlihat lebih menarik, profesional, dan punya tampilan yang lebih menonjol?\nTampilan booth menjadi salah satu hal yang dapat menarik perhatian pelanggan. Desain yang terstruktur dan sesuai dengan karakter usaha dapat membantu membuat booth terlihat lebih rapi, informatif, dan menarik.\nPremium Designz menyediakan jasa desain booth jualan custom yang dibuat sesuai dengan konsep, ukuran, karakter usaha, dan kebutuhan kamu. Desain dibuat secara custom agar tampilan booth dapat disesuaikan dengan identitas usaha yang diinginkan.\n\nLayanan yang tersedia:\n• Desain booth jualan custom\n• Desain tampilan depan dan area booth\n• Desain banner booth\n• Penyesuaian warna, ilustrasi, dan tipografi\n• Penempatan logo dan informasi usaha\n• Penyesuaian desain dengan ukuran booth\n• Preview desain sebelum final\n• Mockup booth\n• File siap digunakan untuk kebutuhan produksi\n\nKeunggulan layanan:\n• Desain original dan custom\n• Tampilan booth menarik & profesional\n• Layout rapi dan proporsional\n• Konsep disesuaikan dengan karakter usaha\n• Bisa request konsep, warna, dan tema\n• Revisi sesuai kesepakatan\n• Preview dan mockup desain\n• Konsultasi konsep desain\n\nCocok untuk:\n• Booth Makanan & Minuman\n• UMKM & Usaha Lokal\n• Bazaar & Event\n• Stand Sekolah & Kampus\n• Pameran\n• Jajanan & Snack\n• Usaha Rumahan\n• Kebutuhan Booth Lainnya",
+        "Des_produk_en": "Custom Sales Booth Design Service – Premium Designz\n\nWant your sales booth or bazaar stand to stand out, attract foot traffic, and look modern?\nAn eye-catching booth design is essential to draw in passing customers. A well-structured layout that reflects your brand identity makes your booth look neat, welcoming, and trustworthy.\nPremium Designz provides custom sales booth designs created according to your physical dimensions, business theme, and promotional goals. Every layout is crafted custom to ensure your brand stands out in any crowd.\n\nIncluded Services:\n• Custom sales booth & counter visual design\n• Front banner, header board, and side panel layouts\n• Color tuning, custom illustrations, and bold typography\n• Logo and menu/product placement\n• Precision sizing matching your booth frame\n• 3D booth mockup preview before final delivery\n• Production-ready print files\n\nService Advantages:\n• Original and custom design\n• High-impact, professional aesthetic\n• Proportional and clean layout\n• Aligned with brand personality\n• Flexible concept & theme consultation\n• Revisions per agreement\n\nPerfect For:\n• Food & Drink Stalls\n• MSMEs & Street Food Vendors\n• Bazaars, Expos & Festivals\n• School & Campus Events\n• Exhibition Booths & Kiosks",
         "image_url": "assets/coverbooth2.webp",
         "gallery_urls": [
             "assets/coverbooth2.webp",
@@ -319,10 +370,13 @@ const PRODUCTS = [
         "Id_kategori": 1,
         "Id_layanan": 1,
         "Nama_produk": "Jasa Desain X-Banner & Roll Banner Promosi Event",
+        "Nama_produk_en": "Promotional Event X-Banner & Roll-Up Banner Design",
         "No_wa": "085168174679",
         "Stok_produk": 20,
         "Estimasi": "1 Hari",
+        "Estimasi_en": "1 Day",
         "Des_produk": "Premium Designz menyediakan jasa desain banner media iklan custom yang dibuat sesuai kebutuhan bisnis, konsep promosi, dan identitas brand kamu. Setiap desain dibuat secara original dan disesuaikan dengan tujuan penggunaan, bukan sekadar menggunakan template, sehingga hasil akhir memiliki tampilan yang unik dan profesional.\n\nKeunggulan Layanan:\n• Desain original dan custom sesuai kebutuhan\n• Tampilan modern, menarik, dan profesional\n• Layout informasi rapi dan mudah dipahami\n• Desain menyesuaikan konsep brand dan target pasar\n• Revisi sesuai kesepakatan\n• File berkualitas tinggi / Mentahan (CDR, EPS, PSD)\n• File siap digunakan untuk digital maupun cetak (PDF, JPG, dan PNG)\n\nCocok Untuk:\n• Banner Promosi Produk\n• Banner Event & Acara\n• Banner Diskon & Promo Toko\n• Banner Marketplace & Online Shop\n• Banner Sosial Media\n• Banner Bisnis UMKM\n• Banner Seminar & Pendidikan\n• Banner Campaign Marketing\n\nCara Pemesanan:\n1. Chat Premium Designz - Sampaikan kebutuhan desain banner dan konsep yang ingin dibuat.\n2. Kirim Brief & Referensi - Berikan informasi ukuran banner, isi teks, logo, foto produk, warna brand, serta referensi desain jika tersedia.\n3. Diskusi & Order - Tentukan konsep desain dan harga sesuai kebutuhan, lalu lakukan pemesanan melalui Shopee.\n4. Proses & Revisi - Desain akan dikerjakan, preview diberikan untuk proses revisi, kemudian file final dikirim setelah desain disetujui.\n\nPENTING!!\n- Desain yang dipesan merupakan PRODUK DIGITAL. Harga tidak termasuk biaya cetak atau produk fisik.\n- Harga produk di Shopee digunakan untuk memudahkan proses checkout.\n- Harga akhir dapat disesuaikan berdasarkan tingkat kerumitan desain, ukuran banner, jumlah desain, serta kebutuhan tambahan pelanggan.\n- Setiap desain dibuat secara custom berdasarkan brief yang disepakati. Silakan konsultasikan kebutuhan Anda untuk mendapatkan estimasi harga yang tepat.",
+        "Des_produk_en": "Premium Designz provides custom advertising banner designs crafted to fit your business goals, promotional concepts, and brand identity. Each design is created from scratch—not from templates—giving your displays a unique, polished, and professional edge.\n\nService Advantages:\n• 100% original and custom design\n• Modern, clean, and engaging visuals\n• Clear information hierarchy for rapid reading\n• Aligned with your target audience and branding\n• Revisions per agreement\n• High-resolution master files (CDR, EPS, PSD)\n• Ready for digital use and commercial printing (PDF, JPG, PNG)\n\nPerfect For:\n• Product Promo Banners\n• Corporate Events & Conferences\n• In-Store Discounts & Flash Sales\n• Marketplace & E-Commerce Promos\n• Social Media Displays\n• MSME Storefronts\n• Seminars & Educational Fairs\n• Marketing Campaigns",
         "image_url": "assets/coverxbanner_(1).webp",
         "gallery_urls": [
             "assets/coverxbanner_(1).webp",
@@ -341,10 +395,13 @@ const PRODUCTS = [
         "Id_kategori": 2,
         "Id_layanan": 2,
         "Nama_produk": "Jasa Desain Kemasan Standing Pouch Snack & Makanan Ringan",
+        "Nama_produk_en": "Custom Standing Pouch Packaging Design for Snacks & Food",
         "No_wa": "085168174679",
         "Stok_produk": 20,
         "Estimasi": "2 Hari",
+        "Estimasi_en": "2 Days",
         "Des_produk": "Desain Pouch Snack Custom – Premium Designz\n\nIngin kemasan snack usaha kamu terlihat lebih menarik, profesional, dan bikin produk lebih standout?\nKemasan menjadi salah satu hal pertama yang dilihat pelanggan. Dengan desain pouch yang menarik dan sesuai karakter produk, snack kamu bisa terlihat lebih profesional serta memiliki identitas brand yang lebih kuat.\nPremium Designz menyediakan jasa desain pouch snack custom yang dibuat sesuai dengan konsep, karakter produk, dan kebutuhan usaha kamu. Setiap desain dibuat secara custom, bukan sekadar menggunakan template, sehingga hasilnya dapat disesuaikan dengan identitas brand yang kamu inginkan.\n\nKeunggulan layanan:\n• Desain original dan custom\n• Informasi produk mudah dibaca\n• Revisi sesuai kesepakatan\n• File berkualitas tinggi / Mentahan (CDR, EPS, PSD)\n• Siap digunakan untuk kebutuhan cetak (PDF, JPG, dan PNG)\n\nCocok untuk:\n• Keripik & Kerupuk\n• Snack & Makanan Ringan\n• Cookies & Kue Kering\n• Permen & Camilan\n• Produk Homemade\n• UMKM Kuliner\n• Brand Makanan Lokal\n• Produk Snack Custom\n\nCara Pemesanan:\n1. Chat Premium Designz — Sampaikan kebutuhan dan jenis desain yang diinginkan.\n2. Kirim Brief & Referensi — Sertakan detail, ukuran, materi, dan referensi jika ada.\n3. Diskusi & Order — Tentukan konsep dan harga, lalu lakukan pemesanan melalui Shopee.\n4. Proses & Revisi — Desain dikerjakan, preview diberikan untuk revisi, lalu file final dikirim setelah disetujui.\n\nPENTING!!\n- Desain yang dipesan merupakan PRODUK DIGITAL. Harga tidak termasuk biaya cetak atau produk fisik.\n- Harga produk di Shopee digunakan untuk memudahkan proses checkout.\n- Harga akhir dapat disesuaikan dengan tingkat kerumitan desain, jumlah halaman/item, serta kebutuhan tambahan pelanggan.\n- Setiap desain dibuat secara custom sesuai brief yang disepakati. Silakan konsultasikan kebutuhan Anda untuk mendapatkan estimasi harga yang tepat.",
+        "Des_produk_en": "Custom Snack Pouch Design – Premium Designz\n\nWant your food or snack packaging to look delicious, premium, and jump off the retail shelf?\nPackaging is the very first impression customers have of your product. An attractive, well-branded standing pouch builds consumer trust, validates product quality, and drives sales.\nPremium Designz offers custom snack pouch designs tailored to your snack type, target market, and brand vision.\n\nService Advantages:\n• 100% original and custom artwork\n• Easy-to-read nutritional info, ingredients & branding\n• Precision dieline patterns for production\n• Revisions per agreement\n• High-resolution master files (CDR, EPS, PSD)\n• Print-ready CMYK files (PDF, JPG, PNG)\n\nPerfect For:\n• Chips & Crackers\n• Cookies & Baked Goods\n• Coffee Beans & Grounds\n• Candies, Spices & Dry Food\n• Homemade Culinary Products\n• Local Food Brands & MSMEs",
         "image_url": "assets/coverjasapouch_(2).webp",
         "gallery_urls": [
             "assets/coverjasapouch_(2).webp",
@@ -361,10 +418,13 @@ const PRODUCTS = [
         "Id_kategori": 3,
         "Id_layanan": 3,
         "Nama_produk": "Jasa Desain Logo & Brand Identity Bisnis Profesional",
+        "Nama_produk_en": "Professional Business Logo & Brand Identity Design",
         "No_wa": "085168174679",
         "Stok_produk": 25,
         "Estimasi": "2-3 Hari",
+        "Estimasi_en": "2-3 Days",
         "Des_produk": "Jasa Desain Logo Custom Profesional – Premium Designz\n\nLogo bukan sekadar gambar, tetapi bagian penting dari identitas visual yang membuat sebuah brand lebih mudah dikenali.\nPremium Designz menyediakan jasa desain logo custom yang dibuat sesuai konsep, karakter, dan kebutuhan kamu. Setiap logo dirancang dari awal berdasarkan brief dan referensi yang diberikan, bukan sekadar menggunakan template.\n\nYang Kamu Dapatkan:\n• Desain logo custom sesuai kebutuhan\n• Konsep warna, bentuk, dan tipografi yang disesuaikan\n• Preview desain sebelum final\n• Mockup logo untuk melihat gambaran penggunaan\n• File final berkualitas tinggi\n• Cocok untuk kebutuhan digital maupun cetak\n• Revisi sesuai ketentuan layanan\n• Konsultasi desain sebelum order\n\nCocok Untuk:\n• Brand & Bisnis\n• UMKM\n• Produk & Jasa\n• Online Shop\n• Personal Branding\n• Komunitas & Organisasi\n• Event & Project\n• Dan kebutuhan lainnya",
+        "Des_produk_en": "Custom Professional Logo Design – Premium Designz\n\nA logo is not merely an image—it is the cornerstone of your visual identity, making your business instantly recognizable and memorable.\nPremium Designz provides custom logo designs crafted from scratch based on your brief, values, and brand personality. No templates, guaranteed originality.\n\nWhat You Receive:\n• 100% custom original logo design\n• Tailored color palette, shape symbolism & typography\n• Preview iterations before finalization\n• Realistic 3D logo mockups (stationery, signage, digital)\n• High-resolution final files (AI, EPS, SVG, PNG, PDF)\n• Optimized for digital and print\n• Revisions per service tier\n• Free consultation prior to ordering\n\nPerfect For:\n• Brands & Enterprises\n• MSMEs & Startups\n• Online Shops & E-Commerce\n• Personal Branding & Creators\n• Communities & Non-Profits",
         "image_url": "assets/jasalogo_(1).webp",
         "gallery_urls": [
             "assets/jasalogo_(1).webp",
@@ -380,10 +440,13 @@ const PRODUCTS = [
         "Id_kategori": 3,
         "Id_layanan": 3,
         "Nama_produk": "Jasa Redesain Logo Vektor & Racing Team Custom",
+        "Nama_produk_en": "Custom Racing Team Logo Design & Vector Tracing",
         "No_wa": "085168174679",
         "Stok_produk": 15,
         "Estimasi": "1-2 Hari",
+        "Estimasi_en": "1-2 Days",
         "Des_produk": "Premium Designz menyediakan jasa desain logo racing custom yang dibuat sesuai karakter, konsep, dan identitas tim atau brand kamu. Setiap desain dibuat secara original dan custom, sehingga dapat menampilkan karakter racing yang kuat serta menyesuaikan kebutuhan penggunaan pada kendaraan, merchandise, maupun media lainnya.\n\nKeunggulan Layanan:\n• Desain original dan custom sesuai konsep\n• Konsep visual sporty dan racing\n• Penyesuaian warna, tipografi, dan elemen visual\n• Desain dapat disesuaikan dengan karakter tim atau brand\n• Preview desain dan mockup\n• Revisi sesuai kesepakatan\n• File berkualitas tinggi\n• File siap digunakan untuk digital maupun cetak\n\nCocok Untuk:\n• Racing Team\n• Komunitas Otomotif\n• Bengkel\n• Motor & Mobil\n• Jersey Racing\n• Sticker & Livery\n• Merchandise\n• Brand Otomotif\n\nCara Pemesanan:\n1. Chat Premium Designz - Sampaikan nama tim/brand dan konsep logo yang diinginkan.\n2. Kirim Brief & Referensi - Berikan nama, warna, karakter, konsep, serta referensi desain jika tersedia.\n3. Diskusi & Order - Tentukan konsep desain dan harga, kemudian lakukan pemesanan melalui Shopee.\n4. Proses Desain & Revisi - Desain dibuat sesuai brief, preview diberikan untuk revisi, lalu file final dikirim setelah disetujui.",
+        "Des_produk_en": "Premium Designz provides custom racing logo and vector redesign services created to capture speed, power, and distinct team identity. Every design is built from the ground up, delivering fierce racing aesthetics ready for vehicles, merchandise, race suits, and digital media.\n\nService Advantages:\n• Original racing artwork tailored to your concept\n• Aggressive, sporty, and aerodynamic visual themes\n• Custom typography, sharp shading, and bold mascots\n• Design previews and 3D mockups\n• Revisions per agreement\n• Ultra-high-resolution vector files (CDR, EPS, AI)\n• Ready for decal plotting, sublimation jersey, and stickers\n\nPerfect For:\n• Racing Teams (Motorcycle & Car)\n• Automotive Clubs & Communities\n• Tuning Workshops & Garages\n• Racing Apparel & Livery\n• Helmet & Vehicle Decals",
         "image_url": "assets/coverrepairlogo_(2).webp",
         "gallery_urls": [
             "assets/coverrepairlogo_(2).webp",
@@ -399,10 +462,13 @@ const PRODUCTS = [
         "Id_kategori": 4,
         "Id_layanan": 4,
         "Nama_produk": "Jasa Desain UI/UX Mobile App Android & iOS Figma",
+        "Nama_produk_en": "Figma UI/UX Mobile App Design for Android & iOS",
         "No_wa": "085168174679",
         "Stok_produk": 10,
         "Estimasi": "3-5 Hari",
+        "Estimasi_en": "3-5 Days",
         "Des_produk": "Premium Designz menyediakan jasa desain UI/UX Mobile App dan Website custom yang dibuat berdasarkan kebutuhan bisnis, karakter brand, dan tujuan pengguna. Setiap desain dibuat secara original, bukan sekadar menggunakan template, sehingga hasil akhir dapat disesuaikan dengan konsep produk digital yang kamu inginkan.\n\nKeunggulan Layanan:\n• Desain UI/UX original dan custom sesuai kebutuhan\n• Tampilan modern, clean, dan user-friendly\n• User flow dan struktur halaman yang terorganisir\n• Desain menggunakan Figma dengan kualitas profesional\n• Revisi sesuai kesepakatan\n• File design lengkap dan editable (Figma)\n• Prototype interaktif untuk presentasi dan pengembangan\n\nCocok Untuk:\n• Aplikasi Mobile Android & iOS\n• Website Company Profile\n• Landing Page Produk\n• E-Commerce & Marketplace\n• Dashboard Admin / SaaS\n• Sistem Informasi & Aplikasi Bisnis\n• Startup dan Produk Digital\n\nCara Pemesanan:\n1. Chat Premium Designz - Sampaikan kebutuhan aplikasi atau website yang ingin dibuat.\n2. Kirim Brief & Referensi - Berikan informasi tujuan produk, jumlah halaman, fitur, konsep desain, logo, dan referensi jika tersedia.\n3. Diskusi & Order - Tentukan konsep desain, jumlah halaman, dan harga, kemudian lakukan pemesanan melalui Shopee.\n4. Proses Desain & Revisi - Desain dibuat sesuai brief, prototype diberikan untuk evaluasi, lalu file final dikirim setelah disetujui.\n\nPENTING!!\n- Desain yang dipesan merupakan PRODUK DIGITAL, harga tidak termasuk biaya coding, pengembangan aplikasi, atau pembuatan website.\n- Harga di Shopee digunakan untuk memudahkan proses checkout.\n- Harga akhir dapat menyesuaikan jumlah halaman, kompleksitas fitur, kebutuhan prototype, serta permintaan tambahan pelanggan.\n- Setiap desain dibuat secara custom sesuai brief yang telah disepakati.\n- Silakan konsultasikan kebutuhan desain terlebih dahulu untuk mendapatkan estimasi harga dan layanan yang sesuai.",
+        "Des_produk_en": "Premium Designz provides custom Mobile App and Web UI/UX design tailored to user behavior, business workflows, and brand aesthetics. Designed in Figma with structured design systems, components, and interactive prototypes.\n\nService Advantages:\n• 100% original custom UI/UX design\n• Clean, modern, intuitive user interface\n• Logical user flow, wireframes, and organized artboards\n• Built with Figma Auto-Layout & Design Tokens\n• Interactive clickable prototype\n• Developer-ready handoff files\n• Revisions per agreement\n\nPerfect For:\n• Android & iOS Mobile Apps\n• E-Commerce & Marketplace Apps\n• SaaS & FinTech Applications\n• On-Demand Delivery & Booking Apps\n• Startup MVPs & Tech Products",
         "image_url": "assets/covermobileuiux_(2).webp",
         "gallery_urls": [
             "assets/covermobileuiux_(2).webp",
@@ -417,10 +483,13 @@ const PRODUCTS = [
         "Id_kategori": 4,
         "Id_layanan": 4,
         "Nama_produk": "Jasa Desain UI/UX Website Company Profile & Landing Page",
+        "Nama_produk_en": "Company Profile Website & Landing Page UI/UX Design",
         "No_wa": "085168174679",
         "Stok_produk": 10,
         "Estimasi": "3-5 Hari",
+        "Estimasi_en": "3-5 Days",
         "Des_produk": "Premium Designz menyediakan jasa desain UI/UX Mobile App dan Website custom yang dibuat berdasarkan kebutuhan bisnis, karakter brand, dan tujuan pengguna. Setiap desain dibuat secara original, bukan sekadar menggunakan template, sehingga hasil akhir dapat disesuaikan dengan konsep produk digital yang kamu inginkan.\n\nKeunggulan Layanan:\n• Desain UI/UX original dan custom sesuai kebutuhan\n• Tampilan modern, clean, dan user-friendly\n• User flow dan struktur halaman yang terorganisir\n• Desain menggunakan Figma dengan kualitas profesional\n• Revisi sesuai kesepakatan\n• File design lengkap dan editable (Figma)\n• Prototype interaktif untuk presentasi dan pengembangan\n\nCocok Untuk:\n• Website Company Profile\n• Landing Page Produk\n• E-Commerce & Marketplace\n• Dashboard Admin / SaaS\n• Sistem Informasi & Aplikasi Bisnis\n• Startup dan Produk Digital\n\nCara Pemesanan:\n1. Chat Premium Designz - Sampaikan kebutuhan aplikasi atau website yang ingin dibuat.\n2. Kirim Brief & Referensi - Berikan informasi tujuan produk, jumlah halaman, fitur, konsep desain, logo, dan referensi jika tersedia.\n3. Diskusi & Order - Tentukan konsep desain, jumlah halaman, dan harga, kemudian lakukan pemesanan melalui Shopee.\n4. Proses Desain & Revisi - Desain dibuat sesuai brief, prototype diberikan untuk evaluasi, lalu file final dikirim setelah disetujui.\n\nPENTING!!\n- Desain yang dipesan merupakan PRODUK DIGITAL, harga tidak termasuk biaya coding, pengembangan aplikasi, atau pembuatan website.\n- Harga di Shopee digunakan untuk memudahkan proses checkout.\n- Harga akhir dapat menyesuaikan jumlah halaman, kompleksitas fitur, kebutuhan prototype, serta permintaan tambahan pelanggan.\n- Setiap desain dibuat secara custom sesuai brief yang telah disepakati.\n- Silakan konsultasikan kebutuhan desain terlebih dahulu untuk mendapatkan estimasi harga dan layanan yang sesuai.",
+        "Des_produk_en": "Premium Designz delivers high-converting company profile website and landing page UI/UX designs. Tailored to highlight your core services, build trust with potential clients, and maximize lead generation.\n\nService Advantages:\n• Original UI/UX design matching modern web standards\n• Clean visual hierarchy and responsive desktop/tablet/mobile layouts\n• Structured sections: Hero, Features, Services, Testimonials, CTA\n• Editable Figma files with modular components\n• Interactive prototype for client presentation\n• Revisions per agreement\n\nPerfect For:\n• Corporate & Company Profile Websites\n• Product Launch Landing Pages\n• SaaS & Startup Web Portals\n• Digital Agencies & Consultancies\n• Lead Generation & Marketing Campaigns",
         "image_url": "assets/coverwebuiux_(2).webp",
         "gallery_urls": [
             "assets/coverwebuiux_(2).webp",
@@ -437,10 +506,13 @@ const PRODUCTS = [
         "Id_kategori": 5,
         "Id_layanan": 7,
         "Nama_produk": "Jasa Desain Label Botol & Stiker Toples Produk UMKM",
+        "Nama_produk_en": "Custom Bottle Label & Food Jar Sticker Design",
         "No_wa": "085168174679",
         "Stok_produk": 30,
         "Estimasi": "1 Hari",
+        "Estimasi_en": "1 Day",
         "Des_produk": "Jasa Desain Label UMKM & Produk Custom – Premium Designz\n\nIngin label produk kamu terlihat lebih menarik, rapi, dan profesional?\nLabel menjadi salah satu elemen penting pada kemasan yang membantu pelanggan mengenali produk sekaligus memberikan informasi yang dibutuhkan. Dengan desain label yang sesuai, tampilan produk dapat terlihat lebih menarik dan memiliki karakter visual yang lebih kuat.\nPremium Designz menyediakan jasa desain label UMKM dan produk custom yang dibuat sesuai dengan konsep, karakter produk, dan kebutuhan usaha kamu. Setiap desain dibuat secara custom, sehingga dapat disesuaikan dengan ukuran, bentuk, serta identitas visual produk.\n\nLayanan yang tersedia:\n• Desain label produk custom\n• Desain label makanan & snack\n• Desain label toples & kemasan\n• Penyesuaian ukuran dan bentuk label\n• Penempatan logo dan informasi produk\n• Penyesuaian warna, ilustrasi, dan tipografi\n• Preview desain sebelum final\n• Mockup label pada kemasan\n• File siap cetak dalam format PDF, JPG, dan PNG\n• Desain disesuaikan dengan konsep dan identitas produk\n\nKeunggulan layanan:\n• Desain original dan custom\n• Tampilan label menarik & profesional\n• Layout rapi dan proporsional\n• Informasi produk mudah dibaca\n• Bisa request konsep, warna, dan tema\n• Revisi sesuai kesepakatan\n• File berkualitas tinggi\n• Siap digunakan untuk kebutuhan cetak\n\nCocok untuk:\n• UMKM & Produk Lokal\n• Makanan & Minuman\n• Snack & Camilan\n• Cookies & Kue\n• Produk Homemade\n• Produk dalam Toples\n• Online Shop\n• Berbagai Produk UMKM",
+        "Des_produk_en": "Custom Product Label Design – Premium Designz\n\nWant your jars, bottles, or packaging containers to look neat, professional, and eye-catching?\nA premium product label establishes customer trust and communicates product benefits at a glance. We design custom labels formatted to your exact jar, bottle, or pouch dimensions.\n\nIncluded Services:\n• Custom food, beverage, and cosmetic label design\n• Custom die-cut shapes (round, oval, rectangular, wraparound)\n• Clear ingredient, nutrition, and barcode placement\n• 3D product mockup preview on bottle/jar\n• High-resolution print-ready files (PDF, JPG, PNG with bleed)\n\nService Advantages:\n• 100% original custom layout\n• Crisp typography and clean branding\n• Revisions per agreement\n• Suitable for vinyl, waterproof, and clear transparent stickers\n\nPerfect For:\n• Drinks, Syrups & Cold Brew Bottles\n• Cookie, Jam & Honey Jars\n• Snack Packs & Condiments\n• Cosmetic Jars & Skincare Bottles",
         "image_url": "assets/coverlabelumkm1.webp",
         "gallery_urls": [
             "assets/coverlabelumkm1.webp",
@@ -458,10 +530,13 @@ const PRODUCTS = [
         "Id_kategori": 6,
         "Id_layanan": 5,
         "Nama_produk": "Jasa Desain Jersey Custom Futsal, Esport & Apparel",
+        "Nama_produk_en": "Custom Sublimation Jersey Design for Futsal & Esports",
         "No_wa": "085168174679",
         "Stok_produk": 15,
         "Estimasi": "2 Hari",
+        "Estimasi_en": "2 Days",
         "Des_produk": "Desain Jersey Custom – Premium Designz\n\nPremium Designz menyediakan jasa desain jersey custom yang dibuat khusus sesuai kebutuhan kamu. Setiap desain dibuat secara original dan menyesuaikan konsep, warna, karakter, serta identitas yang ingin ditampilkan. Bukan sekadar menggunakan template, sehingga hasil desain dapat memiliki ciri khas tersendiri.\n\nKeunggulan layanan:\n• Desain original dan custom sesuai kebutuhan\n• Konsep desain menyesuaikan karakter tim atau brand\n• Tampilan jersey lebih profesional dan modern\n• Revisi sesuai kesepakatan\n• File berkualitas tinggi / Mentahan (CDR, EPS, PSD)\n• Siap digunakan untuk kebutuhan produksi (PDF, JPG, dan PNG)\n\nCocok untuk:\n• Jersey Futsal & Sepak Bola\n• Jersey Esports & Gaming\n• Jersey Komunitas\n• Jersey Gowes & Cycling\n• Jersey Event & Turnamen\n• Jersey Keluarga / Gathering\n• Jersey Brand & Merchandise\n• Seragam Tim Custom\n• UMKM dan Bisnis Apparel\n\nCara Pemesanan:\n1. Chat Premium Designz - Sampaikan kebutuhan, jenis jersey, dan konsep desain yang ingin dibuat.\n2. Kirim Brief & Referensi - Berikan informasi seperti logo, warna, nama tim, nomor punggung, model jersey, ukuran, serta referensi desain jika ada.\n3. Diskusi & Order - Tentukan konsep desain dan harga, kemudian lakukan pemesanan melalui Shopee.\n4. Proses & Revisi - Desain akan dikerjakan, preview diberikan untuk proses revisi, lalu file final dikirim setelah desain disetujui.\n\nPENTING!!\nDesain yang dipesan merupakan PRODUK DIGITAL. Harga tidak termasuk biaya produksi atau jersey fisik.\nHarga produk di Shopee digunakan untuk memudahkan proses checkout.\nHarga akhir dapat menyesuaikan tingkat kerumitan desain, jumlah item, serta kebutuhan tambahan pelanggan.\nSetiap desain dibuat secara custom berdasarkan brief yang disepakati.\nSilakan konsultasikan kebutuhan kamu terlebih dahulu untuk mendapatkan estimasi harga yang sesuai.",
+        "Des_produk_en": "Custom Jersey Design – Premium Designz\n\nPremium Designz creates custom sports and apparel jersey designs crafted specifically for your team. Each design incorporates your team colors, mascot, badges, and sponsors into an original layout with full sublimation print patterns.\n\nService Advantages:\n• 100% original custom design (no generic templates)\n• Distinct team aesthetics and modern styling\n• Front, back, collar, and sleeve layout patterns\n• Revisions per agreement\n• High-resolution vector files (CDR, EPS, PSD, AI)\n• Ready for production and sublimation printing (PDF, PNG, JPG)\n\nPerfect For:\n• Futsal & Soccer Teams\n• Esports & Gaming Clans\n• Cycling & Running Clubs\n• Community & Gathering Jerseys\n• Brand Merchandising & Streetwear",
         "image_url": "assets/coverjasajersey_(3).webp",
         "gallery_urls": [
             "assets/coverjasajersey_(3).webp",
@@ -479,10 +554,13 @@ const PRODUCTS = [
         "Id_kategori": 7,
         "Id_layanan": 6,
         "Nama_produk": "Jasa Editing Foto Produk Normal to Studio Marketplace",
+        "Nama_produk_en": "Phone-to-Studio Product Photo Editing for Marketplace",
         "No_wa": "085168174679",
         "Stok_produk": 25,
         "Estimasi": "1 Hari",
+        "Estimasi_en": "1 Day",
         "Des_produk": "Premium Designz menyediakan jasa desain dan editing foto produk yang dibuat agar produk kamu terlihat lebih menarik, profesional, dan siap digunakan untuk kebutuhan promosi. Foto dapat disesuaikan dengan background, komposisi, pencahayaan, serta konsep visual yang sesuai dengan karakter produk dan kebutuhan bisnis kamu.\nSetiap desain dibuat secara custom berdasarkan foto produk, konsep, dan referensi yang diberikan, sehingga hasil akhir dapat disesuaikan dengan identitas brand serta media yang digunakan.\n\nKeunggulan Layanan:\n• Editing foto produk custom sesuai kebutuhan\n• Penyesuaian background dan komposisi\n• Penyesuaian warna, pencahayaan, dan detail produk\n• Konsep foto disesuaikan dengan karakter produk\n• Tampilan profesional untuk kebutuhan promosi\n• Revisi sesuai ketentuan\n• File berkualitas tinggi\n• File siap digunakan untuk digital maupun marketplace\n\nCocok Untuk:\n• Foto Produk Marketplace\n• Foto Produk Media Sosial\n• Produk Makanan & Minuman\n• Produk Skincare & Kosmetik\n• Produk Fashion & Aksesoris\n• Produk UMKM\n• Katalog Produk\n\nCara Pemesanan:\n1. Pilih layanan dan lakukan pemesanan melalui Shopee.\n2. Sampaikan Brief - Setelah melakukan pemesanan, kirim foto produk, konsep, ukuran, dan referensi yang dibutuhkan melalui fitur chat Shopee.\n3. Proses Editing - Foto produk akan dikerjakan sesuai brief dan kebutuhan yang telah disampaikan.\n4. Preview & Revisi - Preview hasil akan diberikan untuk proses revisi sesuai ketentuan layanan.\n5. File Final - File final akan dikirim setelah desain selesai dan disetujui.",
+        "Des_produk_en": "Premium Designz provides commercial product photo editing that transforms standard phone photos into high-end studio catalog visuals. Perfect for elevating marketplace conversion rates on Shopee, Tokopedia, Lazada, and Amazon.\n\nService Advantages:\n• Custom background replacement & clean isolation\n• Studio lighting simulation, shadows, and reflection rendering\n• Color correction, sharpness enhancement, and blemish removal\n• Professional product catalog aesthetics\n• High-resolution exports optimized for web marketplaces\n• Revisions per agreement\n\nPerfect For:\n• Marketplace Catalog Images (Shopee, Tokopedia, etc.)\n• Social Media Product Posts\n• Food & Beverage Menus\n• Skincare & Cosmetic Products\n• Fashion & Accessories\n• Promotional Ads & Banners",
         "image_url": "assets/covereditfotonormaltostudio1.webp",
         "gallery_urls": [
             "assets/covereditfotonormaltostudio1.webp",
@@ -500,10 +578,13 @@ const PRODUCTS = [
         "Id_kategori": 7,
         "Id_layanan": 6,
         "Nama_produk": "Jasa Redesain Gambar AI & Repair Restorasi Foto",
+        "Nama_produk_en": "AI Artwork Redesign & Photo Restoration Service",
         "No_wa": "085168174679",
         "Stok_produk": 20,
         "Estimasi": "1-2 Hari",
+        "Estimasi_en": "1-2 Days",
         "Des_produk": "Premium Designz menyediakan jasa redesain dan penyempurnaan gambar AI yang dibuat sesuai konsep, kebutuhan, dan referensi yang kamu inginkan. Hasil gambar AI dapat dikembangkan kembali agar tampil lebih sesuai dengan kebutuhan desain, baik dari segi komposisi, warna, elemen, maupun detail visual.\n\nKeunggulan Layanan:\n• Redesain custom sesuai kebutuhan\n• Penyempurnaan hasil gambar AI\n• Penyesuaian komposisi dan elemen visual\n• Penyesuaian warna dan detail desain\n• Penambahan atau pengurangan elemen\n• Revisi sesuai kesepakatan\n• File berkualitas tinggi\n• File siap digunakan untuk digital maupun cetak\n\nCocok Untuk:\n• Redesain Gambar AI\n• Penyempurnaan Artwork AI\n• Poster\n• Ilustrasi\n• Konten Sosial Media\n• Artwork & Visual\n• Kebutuhan Branding\n• Kebutuhan Digital & Cetak\n\nCara Pemesanan:\n1. Chat Premium Designz - Sampaikan gambar AI dan perubahan yang diinginkan.\n2. Kirim Gambar, Brief & Referensi - Berikan gambar AI, detail perubahan, konsep, serta referensi jika tersedia.\n3. Diskusi & Order - Tentukan konsep redesain dan harga, kemudian lakukan pemesanan melalui Shopee.\n4. Proses Redesain & Revisi - Desain dikembangkan sesuai brief, preview diberikan untuk revisi, lalu file final dikirim setelah disetujui.",
+        "Des_produk_en": "Premium Designz provides AI artwork refinement, redesign, and photo restoration services. We take raw AI-generated concepts or degraded photos and enhance them into clean, high-resolution artwork with corrected anatomy, typography, and visual balance.\n\nService Advantages:\n• Custom redesign of AI image generations\n• Detail fixing, texture cleanup, and distortion correction\n• Visual element additions and removals\n• Color balancing and high-dpi upscaling\n• High-resolution vector/raster outputs\n• Print-ready and digital formats\n\nPerfect For:\n• AI Image Refinements & Fixes\n• Posters & Digital Artworks\n• Old Photo Restoration\n• Branding & Concept Art",
         "image_url": "assets/coverrepairfoto1.webp",
         "gallery_urls": [
             "assets/coverrepairfoto1.webp",
@@ -518,10 +599,13 @@ const PRODUCTS = [
         "Id_kategori": 8,
         "Id_layanan": 9,
         "Nama_produk": "Jasa Desain Flyer Promosi, Pamflet & Brosur Bisnis",
+        "Nama_produk_en": "Promotional Flyer, Pamphlet & Business Brochure Design",
         "No_wa": "085168174679",
         "Stok_produk": 25,
         "Estimasi": "1 Hari",
+        "Estimasi_en": "1 Day",
         "Des_produk": "Jasa Desain Poster & Flyer Promosi – Premium Designz\n\nPremium Designz menyediakan jasa desain flyer promosi, pamflet, poster, dan infografis digital yang dibuat sesuai konsep bisnis dan kebutuhan promosi kamu. Setiap desain dibuat secara custom dan menarik agar pesan promosi tersampaikan dengan efektif kepada target pelanggan.\n\nKeunggulan Layanan:\n• Desain flyer, pamflet & poster custom sesuai kebutuhan\n• Layout informasi rapi, jelas, dan mudah dipahami\n• Pemilihan warna dan tipografi menarik serta profesional\n• Desain disesuaikan untuk media digital (Instagram/WhatsApp) maupun siap cetak\n• Revisi sesuai kesepakatan\n• File berkualitas tinggi (PDF, JPG, PNG & mentahan)\n\nCocok Untuk:\n• Flyer Promo Diskon & Penawaran Toko\n• Pamflet Event & Seminar Bisnis\n• Poster Infografis Digital & Edukasi\n• Brosur Usaha & Menu Produk\n• Konten Promosi Sosial Media & Marketplace\n\nCara Pemesanan:\n1. Chat Premium Designz - Sampaikan materi dan konsep flyer/poster yang diinginkan.\n2. Kirim Brief & Referensi - Berikan teks, logo, foto produk, serta ukuran yang dibutuhkan.\n3. Diskusi & Order - Tentukan konsep desain dan harga, lalu lakukan pemesanan melalui Shopee/WhatsApp.\n4. Proses Desain & Revisi - Desain dikerjakan, preview diberikan untuk revisi, file final dikirim setelah disetujui.",
+        "Des_produk_en": "Custom Poster & Flyer Design – Premium Designz\n\nPremium Designz provides custom flyer, pamphlet, poster, and digital infographic design tailored to promote your business offerings effectively. Designed with clean hierarchy to ensure your call-to-action converts readers into buyers.\n\nService Advantages:\n• Custom flyers, pamphlets, and posters\n• Clear, scannable layout and professional typography\n• Formatted for both digital channels (Instagram/WhatsApp) and print\n• Revisions per agreement\n• High-resolution files (PDF, JPG, PNG & master source files)\n\nPerfect For:\n• Store Promotions & Discount Deals\n• Corporate Seminars & Events\n• Educational & Infographic Posters\n• Business Menus & Brochures\n• Social Media Ad Creatives",
         "image_url": "assets/coverjasaflyer_(2).webp",
         "gallery_urls": [
             "assets/coverjasaflyer_(2).webp",
@@ -539,10 +623,13 @@ const PRODUCTS = [
         "Id_kategori": 9,
         "Id_layanan": 8,
         "Nama_produk": "Jasa Desain CV & Resume Lamaran Kerja ATS-Friendly",
+        "Nama_produk_en": "ATS-Friendly Professional CV & Resume Design",
         "No_wa": "085168174679",
         "Stok_produk": 35,
         "Estimasi": "1 Hari",
+        "Estimasi_en": "1 Day",
         "Des_produk": "Premium Designz menyediakan jasa desain CV custom yang dibuat sesuai kebutuhan, bidang pekerjaan, dan karakter profesional kamu. Setiap desain dibuat secara original dan custom, bukan sekadar menggunakan template, sehingga tampilan CV dapat disesuaikan dengan informasi, gaya visual, serta kebutuhan penggunaannya.\n\nKeunggulan Layanan:\n• Desain original dan custom sesuai kebutuhan\n• Layout CV rapi, terstruktur, dan mudah dibaca\n• Penyesuaian warna, tipografi, dan elemen visual\n• Desain disesuaikan dengan bidang dan kebutuhan CV\n• Revisi sesuai kesepakatan\n• File berkualitas tinggi\n• File siap digunakan untuk digital maupun cetak\n\nCocok Untuk:\n• CV Lamaran Kerja\n• CV Fresh Graduate\n• CV Mahasiswa\n• CV Magang\n• CV Organisasi\n• CV Profesional\n• CV Freelance\n• CV Portofolio\n\nCara Pemesanan:\n1. Chat Premium Designz - Sampaikan kebutuhan dan jenis CV yang diinginkan.\n2. Kirim Data & Referensi - Berikan data diri, pengalaman, pendidikan, foto, serta referensi desain jika tersedia.\n3. Diskusi & Order - Tentukan konsep desain dan harga, kemudian lakukan pemesanan melalui Shopee.\n4. Proses Desain & Revisi - Desain dibuat sesuai brief, preview diberikan untuk revisi, lalu file final dikirim setelah disetujui.",
+        "Des_produk_en": "Premium Designz provides custom CV and resume design crafted to present your professional experience clearly, elegantly, and compatibly with Applicant Tracking Systems (ATS).\n\nService Advantages:\n• Clean, structured, and modern layout\n• High readability and professional visual hierarchy\n• Tailored to your industry and career level\n• Revisions per agreement\n• High-resolution digital PDF and print-ready files\n\nPerfect For:\n• Job Applications & Career Changes\n• Fresh Graduates & University Students\n• Internships & Academic Portfolios\n• Corporate Executives & Freelancers",
         "image_url": "assets/coverjasacv2.webp",
         "gallery_urls": [
             "assets/coverjasacv2.webp",
@@ -562,10 +649,13 @@ const PRODUCTS = [
         "Id_kategori": 9,
         "Id_layanan": 8,
         "Nama_produk": "Jasa Desain Slide Presentasi PowerPoint (PPT) Profesional",
+        "Nama_produk_en": "Professional PowerPoint (PPT) Presentation Slide Design",
         "No_wa": "085168174679",
         "Stok_produk": 20,
         "Estimasi": "1-2 Hari",
+        "Estimasi_en": "1-2 Days",
         "Des_produk": "Premium Designz menyediakan jasa desain PowerPoint custom yang dibuat sesuai materi, tema, dan kebutuhan presentasi kamu. Setiap desain dibuat dengan memperhatikan layout, warna, tipografi, serta elemen visual agar materi presentasi terlihat lebih rapi, menarik, dan mudah dipahami.\n\nKeunggulan Layanan:\n• Desain slide custom sesuai kebutuhan\n• Layout rapi dan terstruktur\n• Penyesuaian warna, tipografi, dan elemen visual\n• Desain disesuaikan dengan tema presentasi\n• Visualisasi informasi agar lebih menarik\n• Revisi sesuai kesepakatan\n• File berkualitas tinggi\n• File PPT siap digunakan\n\nCocok Untuk:\n• Presentasi Kuliah\n• Presentasi Sekolah\n• Tugas\n• Seminar\n• Proposal\n• Presentasi Bisnis\n• Company Profile\n• Presentasi Organisasi\n\nCara Pemesanan:\n1. Chat Premium Designz - Sampaikan jumlah slide dan kebutuhan desain presentasi.\n2. Kirim Materi & Referensi - Berikan materi PPT, tema, identitas visual, dan referensi desain jika tersedia.\n3. Diskusi & Order - Tentukan konsep desain dan harga, kemudian lakukan pemesanan melalui Shopee.\n4. Proses Desain & Revisi - Desain dibuat sesuai brief, preview diberikan untuk revisi, lalu file final dikirim setelah disetujui.",
+        "Des_produk_en": "Premium Designz provides custom PowerPoint presentation slide design crafted to convey your pitch, corporate deck, or academic presentation with commanding visual authority.\n\nService Advantages:\n• Custom slide designs tailored to your content\n• Clean layout, infographics, charts, and icons\n• Consistent color branding and modern typography\n• Revisions per agreement\n• Fully editable .PPTX master files\n\nPerfect For:\n• Investor Pitch Decks\n• Corporate & Company Profiles\n• Business Proposals & Reports\n• Webinars, Seminars & Workshops\n• Academic & Thesis Presentations",
         "image_url": "assets/coverjasapowerpoint_(2).webp",
         "gallery_urls": [
             "assets/coverjasapowerpoint_(2).webp",
@@ -584,10 +674,13 @@ const PRODUCTS = [
         "Id_kategori": 2,
         "Id_layanan": 2,
         "Nama_produk": "Jasa Desain Kemasan Box & Packaging Produk Profesional",
+        "Nama_produk_en": "Custom Box Packaging & Product Retail Box Design",
         "No_wa": "085168174679",
         "Stok_produk": 20,
         "Estimasi": "2-3 Hari",
+        "Estimasi_en": "2-3 Days",
         "Des_produk": "Premium Designz menyediakan jasa desain custom box packaging yang dibuat sesuai konsep, karakter produk, dan kebutuhan bisnis kamu. Setiap desain dibuat secara original dan custom, bukan sekadar menggunakan template, sehingga hasil akhir dapat menyesuaikan branding serta kebutuhan produksi.\n\nKeunggulan Layanan:\n• Desain original dan custom sesuai kebutuhan\n• Layout desain disesuaikan dengan ukuran dan bentuk box\n• Tampilan profesional dan mendukung branding produk\n• Revisi sesuai kesepakatan\n• File berkualitas tinggi (CDR, EPS, PSD)\n• File siap cetak (PDF, JPG, PNG)\n\nCocok Untuk:\n• Box makanan & minuman\n• Packaging snack & cookies\n• Box hampers & gift\n• Box kosmetik & skincare\n• Box produk UMKM\n• Packaging elektronik & merchandise\n• Produk custom brand\n\nCara Pemesanan:\n1. Chat Premium Designz - Sampaikan jenis produk dan kebutuhan desain yang diinginkan.\n2. Kirim Brief & Referensi - Berikan informasi ukuran box, bahan, konsep desain, logo, dan referensi jika tersedia.\n3. Diskusi & Order - Tentukan konsep desain dan harga, kemudian lakukan pemesanan melalui Shopee.\n4. Proses Desain & Revisi - Desain dibuat sesuai brief, preview diberikan untuk revisi, lalu file final dikirim setelah disetujui.\n\nPENTING!!\n- Desain yang dipesan merupakan PRODUK DIGITAL, harga tidak termasuk biaya cetak atau produk fisik.\n- Harga di Shopee digunakan untuk memudahkan proses checkout.\n- Harga akhir dapat menyesuaikan tingkat kerumitan desain, ukuran box, jumlah sisi desain, serta kebutuhan tambahan pelanggan.\n- Setiap desain dibuat secara custom sesuai brief yang telah disepakati.\n- Silakan konsultasikan kebutuhan desain terlebih dahulu untuk mendapatkan estimasi harga dan layanan yang sesuai.",
+        "Des_produk_en": "Premium Designz provides custom box packaging design tailored to your product dimensions, brand personality, and retail production requirements. Includes precision dielines, 3D mockups, and CMYK color profiles.\n\nService Advantages:\n• 100% original custom box design\n• Exact dieline structure for carton, corrugated, or rigid boxes\n• Realistic 3D mockups for marketing and stakeholder approval\n• Revisions per agreement\n• Master vector files (CDR, EPS, PSD, AI)\n• Print-ready production files (PDF, JPG, PNG)\n\nPerfect For:\n• Food, Cookies & Cake Boxes\n• Gift Hampers & Special Editions\n• Cosmetic & Skincare Packaging\n• Electronics & Retail Merchandise\n• MSME Local Brands",
         "image_url": "assets/coverbox2.webp",
         "gallery_urls": [
             "assets/coverbox2.webp",
@@ -1977,39 +2070,93 @@ function cleanStoredText(text, max = 3000) {
 
 // Master Data Helper Functions
 function getCategoryById(id) {
-    return CATEGORIES.find(c => c.Id_kategori == id) || null;
+    const cat = CATEGORIES.find(c => c.Id_kategori == id);
+    if (!cat) return null;
+    const currentLang = (typeof window !== 'undefined' && window.getSavedLanguage) ? window.getSavedLanguage() : 'id';
+    if (currentLang === 'en') {
+        return {
+            ...cat,
+            Nama_kategori: cat.Nama_kategori_en || cat.Nama_kategori,
+            Des_kategori: cat.Des_kategori_en || cat.Des_kategori
+        };
+    }
+    return cat;
 }
 
 function getCategoryByName(name) {
     if (!name) return null;
     const lower = name.toLowerCase().trim();
-    return CATEGORIES.find(c => c.Nama_kategori.toLowerCase() === lower || c.Nama_kategori.toLowerCase().includes(lower)) || null;
+    const currentLang = (typeof window !== 'undefined' && window.getSavedLanguage) ? window.getSavedLanguage() : 'id';
+    const found = CATEGORIES.find(c => 
+        c.Nama_kategori.toLowerCase() === lower || 
+        c.Nama_kategori.toLowerCase().includes(lower) ||
+        (c.Nama_kategori_en && (c.Nama_kategori_en.toLowerCase() === lower || c.Nama_kategori_en.toLowerCase().includes(lower)))
+    );
+    if (!found) return null;
+    if (currentLang === 'en') {
+        return {
+            ...found,
+            Nama_kategori: found.Nama_kategori_en || found.Nama_kategori,
+            Des_kategori: found.Des_kategori_en || found.Des_kategori
+        };
+    }
+    return found;
 }
 
 function getServiceById(id) {
-    return SERVICES.find(s => s.Id_Layanan == id) || null;
+    const s = SERVICES.find(srv => srv.Id_Layanan == id);
+    if (!s) return null;
+    const currentLang = (typeof window !== 'undefined' && window.getSavedLanguage) ? window.getSavedLanguage() : 'id';
+    if (currentLang === 'en') {
+        return {
+            ...s,
+            Nama_layanan: s.Nama_layanan_en || s.Nama_layanan,
+            Des_layanan: s.Des_layanan_en || s.Des_layanan,
+            Benefit: s.Benefit_en || s.Benefit
+        };
+    }
+    return s;
 }
 
 function getProductById(id) {
     const p = PRODUCTS.find(prod => prod.Id_produk == id);
     if (!p) return null;
 
+    let currentLang = 'id';
+    try {
+        if (typeof window !== 'undefined' && typeof window.getSavedLanguage === 'function') {
+            currentLang = window.getSavedLanguage();
+        } else if (typeof localStorage !== 'undefined' && (localStorage.getItem('site_lang') === 'en' || localStorage.getItem('site_lang') === 'id')) {
+            currentLang = localStorage.getItem('site_lang');
+        } else if (typeof window !== 'undefined' && window.location && window.location.search) {
+            const sp = new URLSearchParams(window.location.search);
+            if (sp.get('lang') === 'en' || sp.get('lang') === 'id') currentLang = sp.get('lang');
+        }
+    } catch (_) {}
+    const isEn = (currentLang === 'en');
+
     // Attach related objects
     const cat = getCategoryById(p.Id_kategori);
     const srv = getServiceById(p.Id_layanan);
     const softs = (p.software_ids || []).map(sid => SOFTWARE_TOOLS.find(s => s.Id_software == sid)).filter(Boolean);
-    const currentLang = (typeof window !== 'undefined' && window.getSavedLanguage) ? window.getSavedLanguage() : 'id';
-    const waPrefix = currentLang === 'en' 
+
+    const waPrefix = isEn 
         ? "Hello Premium Design, I would like to order design service for: " 
         : "Halo Premium Design, saya ingin memesan jasa/produk desain: ";
 
-    const safeTitle = cleanStoredTitle(p.Nama_produk);
-    const safeDesc = cleanStoredText(p.Des_produk);
+    const rawTitle = (isEn && p.Nama_produk_en) ? p.Nama_produk_en : p.Nama_produk;
+    const rawDesc = (isEn && p.Des_produk_en) ? p.Des_produk_en : p.Des_produk;
+    const rawEstimasi = (isEn && p.Estimasi_en) ? p.Estimasi_en : p.Estimasi;
+
+    const safeTitle = cleanStoredTitle(rawTitle);
+    const safeDesc = cleanStoredText(rawDesc);
+    const safeEstimasi = cleanStoredTitle(rawEstimasi, 40);
 
     return {
         ...p,
         Nama_produk: safeTitle,
         Des_produk: safeDesc,
+        Estimasi: safeEstimasi,
         custom_id: 'JS-' + String(p.Id_produk).padStart(4, '0'),
         average_rating: 5.0,
         kategori: cat,
@@ -2056,7 +2203,36 @@ function getThumbnailUrl(url) {
 }
 
 if (typeof window !== 'undefined') {
+    window.PRODUCTS = PRODUCTS;
+    window.CATEGORIES = CATEGORIES;
+    window.SERVICES = SERVICES;
+    window.PORTFOLIOS = PORTFOLIOS;
+    window.PROMOS = PROMOS;
+    window.TESTIMONIALS = TESTIMONIALS;
+    window.getProductById = getProductById;
+    window.getAllProductsWithRelations = getAllProductsWithRelations;
+    window.getRelevantProducts = getRelevantProducts;
+    window.getLatestProducts = getLatestProducts;
+    window.getCategoryById = getCategoryById;
+    window.getCategoryByName = getCategoryByName;
+    window.getServiceById = getServiceById;
     window.getThumbnailUrl = getThumbnailUrl;
+    window.PRODUCTS_DATA = {
+        PRODUCTS,
+        CATEGORIES,
+        SERVICES,
+        PORTFOLIOS,
+        PROMOS,
+        TESTIMONIALS,
+        getProductById,
+        getAllProductsWithRelations,
+        getRelevantProducts,
+        getLatestProducts,
+        getCategoryById,
+        getCategoryByName,
+        getServiceById,
+        getThumbnailUrl
+    };
 }
 
 // Data Sanitization Pipeline: Ensure all master data arrays are purified at runtime
@@ -2064,7 +2240,9 @@ try {
     if (typeof PRODUCTS !== 'undefined' && Array.isArray(PRODUCTS)) {
         PRODUCTS.forEach(p => {
             if (p.Nama_produk) p.Nama_produk = cleanStoredTitle(p.Nama_produk);
+            if (p.Nama_produk_en) p.Nama_produk_en = cleanStoredTitle(p.Nama_produk_en);
             if (p.Des_produk) p.Des_produk = cleanStoredText(p.Des_produk);
+            if (p.Des_produk_en) p.Des_produk_en = cleanStoredText(p.Des_produk_en);
         });
     }
     if (typeof PORTFOLIOS !== 'undefined' && Array.isArray(PORTFOLIOS)) {

@@ -35,7 +35,11 @@
         content="Detail spesifikasi karya dan pemesanan langsung jasa desain premium custom.">
     <meta property="og:type" content="product">
     <meta property="og:url" content="https://premiumdsz.my.id/pages/product-detail.html">
-    <meta property="og:image" id="ogImage" content="https://premiumdsz.my.id/assets/other/logo_warna.webp">
+    <meta property="og:image" id="ogImage" content="https://premiumdsz.my.id/assets/other/web-thumbnail.jpg">
+    <meta property="og:image:secure_url" content="https://premiumdsz.my.id/assets/other/web-thumbnail.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Detail Layanan Jasa Desain Premium - Premium Designz">
     <meta property="og:locale" content="id_ID">
 
@@ -44,7 +48,8 @@
     <meta name="twitter:title" id="twitterTitle" content="Detail Layanan - Jasa Desain Premium | Premium Designz">
     <meta name="twitter:description" id="twitterDesc"
         content="Detail spesifikasi karya dan pemesanan langsung jasa desain premium custom.">
-    <meta name="twitter:image" id="twitterImage" content="https://premiumdsz.my.id/assets/other/logo_warna.webp">
+    <meta name="twitter:image" id="twitterImage" content="https://premiumdsz.my.id/assets/other/web-thumbnail.jpg">
+    <meta name="twitter:image:alt" content="Detail Layanan Jasa Desain Premium - Premium Designz">
 
     <!-- Geo & Language Meta Tags -->
     <meta name="geo.region" content="ID">
@@ -58,10 +63,11 @@
     <meta name="apple-mobile-web-app-title" content="Premium Designz">
 
     <!-- Favicon & Apple Touch Icons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/other/fav-icon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/other/fav-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/other/fav-icon.png">
-    <link rel="shortcut icon" href="../assets/other/fav-icon.png">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/other/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/other/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/other/apple-touch-icon.png">
+    <link rel="shortcut icon" href="../favicon.ico">
 
     <!-- Preconnect & DNS-Prefetch Resource Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -289,10 +295,10 @@
                     <span class="text-zinc-300">/</span>
                     <a href="marketplace.html" data-i18n="nav.marketplace" class="hover:text-brand-600 transition-colors">Marketplace</a>
                     <span class="text-zinc-300">/</span>
-                    <a id="breadcrumbCategory" href="marketplace.html"
+                    <a id="breadcrumbCategory" href="marketplace.html" data-i18n="product_detail.breadcrumb_cat"
                         class="hover:text-brand-600 transition-colors">Kategori</a>
                     <span class="text-zinc-300">/</span>
-                    <span id="breadcrumbProduct" class="text-zinc-900 font-semibold truncate max-w-xs">Produk</span>
+                    <span id="breadcrumbTitle" class="text-zinc-900 font-semibold truncate max-w-xs" data-i18n="product_detail.breadcrumb_product">Produk</span>
                 </nav>
             </div>
         </div>
@@ -430,7 +436,7 @@
                                         <span data-i18n="product_detail.choose_software" class="text-xs font-bold uppercase tracking-wider">Bisa Pilih
                                             Software</span>
                                     </div>
-                                    <span id="productSoftwareCount" data-i18n="product_detail.software_option"
+                                    <span id="productSoftwareCount" data-i18n="product_detail.software_options"
                                         class="text-[10px] font-semibold text-zinc-400">Pilihan</span>
                                 </div>
                                 <div id="productSoftwareList" class="flex flex-wrap gap-2 pt-0.5"></div>
@@ -446,7 +452,7 @@
                                     <span data-i18n="product_detail.spec_estimation" class="text-zinc-400">Estimasi Pengerjaan</span>
                                     <span class="font-semibold text-brand-700 flex items-center space-x-1">
                                         <iconify-icon icon="lucide:clock" class="text-xs text-brand-600"></iconify-icon>
-                                        <span id="specEstimasi" data-i18n="product_detail.spec_days">1-2 Hari</span>
+                                        <span id="specEstimasi">1-2 Hari</span>
                                     </span>
                                 </div>
                                 <div class="flex items-center justify-between py-1.5 border-b border-zinc-200/60">
@@ -543,12 +549,12 @@
 
                     <!-- Horizontal Scrolling Track: Paling Relevan -->
                     <div id="relatedTrackRelevant"
-                        class="related-track flex space-x-3 sm:space-x-4 overflow-x-auto scroll-smooth scrollbar-none py-3 px-2 select-none"
+                        class="related-track flex space-x-3 sm:space-x-4 overflow-x-auto scroll-smooth scrollbar-none pt-4 pb-6 px-3 -my-2 select-none"
                         style="scrollbar-width: none; -ms-overflow-style: none;"></div>
 
                     <!-- Horizontal Scrolling Track: Terbaru -->
                     <div id="relatedTrackLatest"
-                        class="related-track hidden flex space-x-3 sm:space-x-4 overflow-x-auto scroll-smooth scrollbar-none py-3 px-2 select-none"
+                        class="related-track hidden flex space-x-3 sm:space-x-4 overflow-x-auto scroll-smooth scrollbar-none pt-4 pb-6 px-3 -my-2 select-none"
                         style="scrollbar-width: none; -ms-overflow-style: none;"></div>
                 </div>
             </div>

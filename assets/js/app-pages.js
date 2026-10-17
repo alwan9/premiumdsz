@@ -942,11 +942,11 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
 
                 <div class="p-3 sm:p-4 pt-0 flex items-center space-x-1.5 sm:space-x-2 group-hover:bg-zinc-50 transition-colors duration-300 ease-in-out">
                     <a href="${detailUrl}"
-                        class="flex-1 py-1.5 sm:py-2 text-center text-[11px] sm:text-xs font-bold text-zinc-700 bg-zinc-100 hover:bg-zinc-200 rounded-lg sm:rounded-xl transition-colors">
+                        class="w-full sm:flex-1 py-1.5 sm:py-2 text-center text-[11px] sm:text-xs font-bold text-zinc-700 bg-zinc-100 hover:bg-zinc-200 rounded-lg sm:rounded-xl transition-colors">
                         ${_t('marketplace.btn_detail')}
                     </a>
                     <a href="${waLink}" target="_blank"
-                        class="flex-1 inline-flex items-center justify-center space-x-1 py-1.5 sm:py-2 text-center text-[11px] sm:text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg sm:rounded-xl shadow-sm transition-all">
+                        class="hidden sm:inline-flex flex-1 items-center justify-center space-x-1 py-1.5 sm:py-2 text-center text-[11px] sm:text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg sm:rounded-xl shadow-sm transition-all">
                         <iconify-icon icon="simple-icons:whatsapp" class="text-xs"></iconify-icon>
                         <span>${_t('marketplace.btn_order')}</span>
                     </a>
@@ -977,6 +977,7 @@ function initProductDetailPage(baseAssetPrefix = '') {
 
     if (!prod) return;
 
+    const isEn = (typeof window.getSavedLanguage === 'function' && window.getSavedLanguage() === 'en');
     currentProductGallery = prod.gallery_urls.map(u => baseAssetPrefix + u);
 
     // Breadcrumb
@@ -985,23 +986,35 @@ function initProductDetailPage(baseAssetPrefix = '') {
         bcCat.textContent = _sanitizeTitle(prod.kategori.Nama_kategori);
         bcCat.href = `marketplace.html?kategori=${encodeURIComponent(prod.Id_kategori)}`;
     }
-    const bcTitle = document.getElementById('breadcrumbTitle');
+    const bcTitle = document.getElementById('breadcrumbTitle') || document.getElementById('breadcrumbProduct');
     if (bcTitle) bcTitle.textContent = _sanitizeTitle(prod.Nama_produk);
 
     // Dynamic SEO Title & Meta for Product Detail
     const productName = _sanitizeTitle(prod.Nama_produk);
-    document.title = `${productName} - Jasa Desain Premium | Premium Designz`;
-    const metaDesc = document.getElementById('metaDescription');
-    if (metaDesc) {
-        metaDesc.setAttribute('content', `Pesan ${productName} di studio jasa desain premium Premium Designz. Kategori: ${_sanitizeTitle(prod.kategori ? prod.kategori.Nama_kategori : 'Desain')}, estimasi pengerjaan ${_sanitizeTitle(prod.Estimasi || '1-3 Hari')} dengan file master siap cetak.`);
+    if (isEn) {
+        document.title = `${productName} - Premium Design Services | Premium Designz`;
+        const metaDesc = document.getElementById('metaDescription');
+        if (metaDesc) {
+            metaDesc.setAttribute('content', `Order ${productName} at Premium Designz studio. Category: ${_sanitizeTitle(prod.kategori ? prod.kategori.Nama_kategori : 'Design')}, estimated delivery: ${_sanitizeTitle(prod.Estimasi || '1-3 Business Days')} with complete master files ready to print.`);
+        }
+        const ogTitle = document.getElementById('ogTitle');
+        if (ogTitle) ogTitle.setAttribute('content', `${productName} - Premium Design Services | Premium Designz`);
+        const twitterTitle = document.getElementById('twitterTitle');
+        if (twitterTitle) twitterTitle.setAttribute('content', `${productName} - Premium Design Services | Premium Designz`);
+    } else {
+        document.title = `${productName} - Jasa Desain Premium | Premium Designz`;
+        const metaDesc = document.getElementById('metaDescription');
+        if (metaDesc) {
+            metaDesc.setAttribute('content', `Pesan ${productName} di studio jasa desain premium Premium Designz. Kategori: ${_sanitizeTitle(prod.kategori ? prod.kategori.Nama_kategori : 'Desain')}, estimasi pengerjaan ${_sanitizeTitle(prod.Estimasi || '1-3 Hari')} dengan file master siap cetak.`);
+        }
+        const ogTitle = document.getElementById('ogTitle');
+        if (ogTitle) ogTitle.setAttribute('content', `${productName} - Jasa Desain Premium | Premium Designz`);
+        const twitterTitle = document.getElementById('twitterTitle');
+        if (twitterTitle) twitterTitle.setAttribute('content', `${productName} - Jasa Desain Premium | Premium Designz`);
     }
-    const ogTitle = document.getElementById('ogTitle');
-    if (ogTitle) ogTitle.setAttribute('content', `${productName} - Jasa Desain Premium | Premium Designz`);
-    const twitterTitle = document.getElementById('twitterTitle');
-    if (twitterTitle) twitterTitle.setAttribute('content', `${productName} - Jasa Desain Premium | Premium Designz`);
 
     // Title & Category Badge
-    const titleEl = document.getElementById('productDetailTitle');
+    const titleEl = document.getElementById('productTitle') || document.getElementById('productDetailTitle');
     if (titleEl) titleEl.textContent = productName;
     const catBadge = document.getElementById('productCategoryBadge');
     if (catBadge && prod.kategori) catBadge.textContent = _sanitizeTitle(prod.kategori.Nama_kategori);
@@ -1011,64 +1024,65 @@ function initProductDetailPage(baseAssetPrefix = '') {
     if (mainImg) mainImg.src = _safeUrl(currentProductGallery[0] || (baseAssetPrefix + prod.image_url));
 
     // Description
+    const descText = document.getElementById('productDescriptionText');
+    if (descText) descText.textContent = prod.Des_produk;
     const descEl = document.getElementById('productDescriptionContent');
-    if (descEl) descEl.innerHTML = `<p class="text-xs sm:text-sm text-zinc-700 leading-relaxed whitespace-pre-line">${_escape(prod.Des_produk)}</p>`;
+    if (descEl && !descText) descEl.innerHTML = `<p class="text-xs sm:text-sm text-zinc-700 leading-relaxed whitespace-pre-line">${_escape(prod.Des_produk)}</p>`;
 
     // Linked Service Package
-    const serviceBox = document.getElementById('productServicePackageBox');
+    const serviceBox = document.getElementById('productLayananBox') || document.getElementById('productServicePackageBox');
     if (serviceBox && prod.layanan) {
-        serviceBox.innerHTML = `
-            <div class="p-4 rounded-xl bg-white border border-zinc-200 space-y-2.5">
-                <div class="flex items-center space-x-2 text-brand-700">
-                    <iconify-icon icon="lucide:gem" class="text-xs"></iconify-icon>
-                    <span class="text-xs font-bold uppercase tracking-wider">${_t('product_detail.package_label')} ${_escape(prod.layanan.Nama_layanan)}</span>
+        serviceBox.classList.remove('hidden');
+        const sName = document.getElementById('productLayananName');
+        if (sName) sName.textContent = prod.layanan.Nama_layanan;
+        const sBenefit = document.getElementById('productLayananBenefit');
+        if (sBenefit) sBenefit.textContent = prod.layanan.Benefit;
+        if (!sName && !sBenefit) {
+            serviceBox.innerHTML = `
+                <div class="p-4 rounded-xl bg-white border border-zinc-200 space-y-2.5">
+                    <div class="flex items-center space-x-2 text-brand-700">
+                        <iconify-icon icon="lucide:gem" class="text-xs"></iconify-icon>
+                        <span class="text-xs font-bold uppercase tracking-wider">${_t('product_detail.package_label')} ${_escape(prod.layanan.Nama_layanan)}</span>
+                    </div>
+                    <div class="text-xs text-zinc-700 whitespace-pre-line leading-relaxed">
+                        ${_escape(prod.layanan.Benefit)}
+                    </div>
                 </div>
-                <div class="text-xs text-zinc-700 whitespace-pre-line leading-relaxed">
-                    ${_escape(prod.layanan.Benefit)}
-                </div>
-            </div>
-        `;
+            `;
+        }
     }
 
     // Software Tools
     const softwareBox = document.getElementById('productSoftwareBox');
     if (softwareBox && prod.software && prod.software.length > 0) {
-        let softsHtml = `
-            <div class="p-4 rounded-xl bg-white border border-zinc-200 space-y-2.5">
-                <div class="flex items-center justify-between text-zinc-700">
-                    <div class="flex items-center space-x-1.5 text-brand-700">
-                        <iconify-icon icon="lucide:monitor" class="text-xs"></iconify-icon>
-                        <span class="text-xs font-bold uppercase tracking-wider">${_t('product_detail.can_select_software')}</span>
+        softwareBox.classList.remove('hidden');
+        const softCount = document.getElementById('productSoftwareCount');
+        if (softCount) softCount.textContent = `${prod.software.length} ${_t('product_detail.software_options')}`;
+        const softList = document.getElementById('productSoftwareList');
+        if (softList) {
+            softList.innerHTML = prod.software.map(soft => {
+                const softName = _escape(soft.Nama_software);
+                const softLogo = _safeUrl(baseAssetPrefix + soft.Logo_url);
+                return `
+                    <div class="inline-flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-zinc-50 border border-zinc-200/80 shadow-2xs hover:border-brand-400 hover:bg-brand-50/50 transition-colors" title="${softName}">
+                        <div class="w-4 h-4 rounded bg-white p-0.5 flex items-center justify-center shrink-0 overflow-hidden">
+                            <img src="${softLogo}" alt="${softName}" class="max-w-full max-h-full object-contain">
+                        </div>
+                        <span class="text-[11px] font-bold text-zinc-800">${softName}</span>
                     </div>
-                    <span class="text-[10px] font-semibold text-zinc-400">${prod.software.length} ${_t('product_detail.software_options')}</span>
-                </div>
-                <div class="flex flex-wrap gap-2 pt-0.5">
-        `;
-        prod.software.forEach(soft => {
-            const softName = _escape(soft.Nama_software);
-            const softLogo = _safeUrl(baseAssetPrefix + soft.Logo_url);
-            softsHtml += `
-                <div class="inline-flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-zinc-50 border border-zinc-200/80 shadow-2xs hover:border-brand-400 hover:bg-brand-50/50 transition-colors"
-                    title="${softName}">
-                    <div class="w-4 h-4 rounded bg-white p-0.5 flex items-center justify-center shrink-0 overflow-hidden">
-                        <img src="${softLogo}" alt="${softName}" class="max-w-full max-h-full object-contain">
-                    </div>
-                    <span class="text-[11px] font-bold text-zinc-800">${softName}</span>
-                </div>
-            `;
-        });
-        softsHtml += `</div></div>`;
-        softwareBox.innerHTML = softsHtml;
+                `;
+            }).join('');
+        }
     }
 
     // Specifications
     const specCat = document.getElementById('specCategory');
     if (specCat && prod.kategori) specCat.textContent = _sanitizeTitle(prod.kategori.Nama_kategori);
-    const specEst = document.getElementById('specEstimation');
-    if (specEst) specEst.textContent = _sanitizeTitle(prod.Estimasi || '1-2 Hari');
+    const specEst = document.getElementById('specEstimasi') || document.getElementById('specEstimation');
+    if (specEst) specEst.textContent = _sanitizeTitle(prod.Estimasi || (isEn ? '1-2 Days' : '1-2 Hari'));
 
     // WhatsApp Order Button
-    const waBtn = document.getElementById('productWhatsAppOrderBtn');
+    const waBtn = document.getElementById('productWaBtn') || document.getElementById('productWhatsAppOrderBtn');
     if (waBtn) waBtn.href = _safeUrl(prod.whatsapp_link);
 
     // Gallery Thumbnails
@@ -1082,7 +1096,15 @@ function initProductDetailPage(baseAssetPrefix = '') {
 }
 
 function renderProductGalleryThumbnails(baseAssetPrefix = '') {
-    const thumbsContainer = document.getElementById('productThumbnailsContainer');
+    const thumbsWrapper = document.getElementById('productThumbnailsWrapper');
+    if (thumbsWrapper) {
+        if (currentProductGallery.length > 1) {
+            thumbsWrapper.classList.remove('hidden');
+        } else {
+            thumbsWrapper.classList.add('hidden');
+        }
+    }
+    const thumbsContainer = document.getElementById('galleryThumbnailsGrid') || document.getElementById('productThumbnailsContainer');
     const dotsContainer = document.getElementById('sliderDotsContainer');
     const countBadge = document.getElementById('slideCounterBadge');
 
@@ -1209,7 +1231,7 @@ function renderRelatedProducts(prodId, catId, baseAssetPrefix = '') {
             const relId = encodeURIComponent(rel.Id_produk);
 
             return `
-            <div class="flex-none w-[160px] sm:w-[180px] md:w-[200px] lg:w-[calc((100%-5*16px)/6)] min-w-[150px] rounded-2xl border border-zinc-200/80 bg-white overflow-hidden hover:border-brand-400 hover:shadow-2xl transform hover:scale-[1.15] hover:z-20 transition-all duration-300 ease-in-out flex flex-col justify-between group">
+            <div class="flex-none w-[160px] sm:w-[180px] md:w-[200px] lg:w-[calc((100%-5*16px)/6)] min-w-[150px] rounded-2xl border border-zinc-200/80 bg-white overflow-hidden hover:border-brand-500 hover:shadow-2xl transform hover:-translate-y-2 hover:scale-[1.04] hover:z-20 transition-all duration-300 ease-out flex flex-col justify-between group">
                 <a href="product-detail.html?id=${relId}" class="block group">
                     <div class="aspect-square bg-zinc-200 skeleton-loader relative overflow-hidden cursor-pointer">
                         <img src="${relThumbImg}" onerror="this.onerror=null; this.src='${relFullImg}';" alt="${relTitle}" loading="lazy"
@@ -1243,11 +1265,11 @@ function renderRelatedProducts(prodId, catId, baseAssetPrefix = '') {
 
                 <div class="p-3 pt-0 flex items-center space-x-1.5 group-hover:bg-zinc-50 transition-colors duration-200">
                     <a href="product-detail.html?id=${relId}"
-                        class="flex-1 py-1.5 text-center text-xs font-bold text-zinc-700 bg-zinc-100 hover:bg-zinc-200 rounded-xl transition-colors">
+                        class="w-full sm:flex-1 py-1.5 text-center text-xs font-bold text-zinc-700 bg-zinc-100 hover:bg-zinc-200 rounded-xl transition-colors">
                         ${_t('marketplace.btn_detail')}
                     </a>
                     <a href="${relWa}" target="_blank"
-                        class="flex-1 inline-flex items-center justify-center space-x-1 py-1.5 text-center text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-xl shadow-sm transition-all">
+                        class="hidden sm:inline-flex flex-1 items-center justify-center space-x-1 py-1.5 text-center text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-xl shadow-sm transition-all">
                         <iconify-icon icon="simple-icons:whatsapp" class="text-xs"></iconify-icon>
                         <span>${_t('marketplace.btn_order')}</span>
                     </a>
@@ -1300,7 +1322,7 @@ function scrollRelated(direction) {
 window.addEventListener('languageChanged', function() {
     const isPortfolio = document.getElementById('portfolioGridContainer');
     const isMarketplace = document.getElementById('marketplaceGridContainer');
-    const isProductDetail = document.getElementById('productDetailTitle');
+    const isProductDetail = document.getElementById('productTitle') || document.getElementById('productDetailTitle');
 
     if (isPortfolio) {
         const prefix = window.location.pathname.includes('/pages/') ? '../' : '';

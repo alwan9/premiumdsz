@@ -65,6 +65,40 @@
             "categories.modal_search_placeholder": "Cari kategori desain...",
             "categories.modal_empty": "Kategori yang Anda cari tidak ditemukan.",
 
+            // Product Titles & Descriptions (Bilingual)
+            "prod.1.name": "Jasa Desain Banner & Spanduk UMKM Promosi Toko",
+            "prod.1.desc": "Desain spanduk dan banner outdoor untuk toko fisik, gerai kuliner, banner wisuda, dan event promo UMKM.",
+            "prod.2.name": "Jasa Desain Stand Booth Jualan & Pameran UMKM",
+            "prod.2.desc": "Desain visual gerobak jualan portable, booth pameran mall/event, dan stand branding usaha.",
+            "prod.3.name": "Jasa Desain X-Banner & Roll Banner Promosi Event",
+            "prod.3.desc": "Desain standing X-Banner vertikal dan Roll-Up Banner untuk media promosi di depan toko atau expo.",
+            "prod.4.name": "Jasa Desain Kemasan Standing Pouch Snack",
+            "prod.4.desc": "Desain pouch snack makanan ringan, keripik, biji kopi, bumbu masak, dan produk olahan UMKM.",
+            "prod.5.name": "Jasa Desain Logo & Brand Identity Bisnis Profesional",
+            "prod.5.desc": "Perancangan logo custom original (no template), filosofi warna, tipografi, dan buku brand guideline.",
+            "prod.6.name": "Jasa Redesain Logo Vektor & Racing Team Custom",
+            "prod.6.desc": "Desain logo racing custom, emblem komunitas motor, bengkel, dan vektorisasi logo lama resolusi tinggi.",
+            "prod.7.name": "Jasa Desain UI/UX Mobile App Android & iOS Figma",
+            "prod.7.desc": "Desain antarmuka aplikasi Android & iOS berbasis Figma dengan user flow rapi dan prototipe interaktif.",
+            "prod.8.name": "Jasa Desain UI/UX Website Company Profile & Landing Page",
+            "prod.8.desc": "Desain UI/UX website company profile responsif desktop, tablet, dan mobile berbasis Figma.",
+            "prod.9.name": "Jasa Desain Label Botol & Stiker Toples Produk UMKM",
+            "prod.9.desc": "Desain label botol minuman, stiker toples kue kering, sambal, dan kemasan jar produk homemade.",
+            "prod.10.name": "Jasa Desain Jersey Custom Futsal, Esport & Apparel",
+            "prod.10.desc": "Desain pola baju jersey printing sublimasi untuk tim futsal, esport, komunitas, dan merchandise distro.",
+            "prod.11.name": "Jasa Editing Foto Produk Normal to Studio Marketplace",
+            "prod.11.desc": "Transformasi foto ponsel menjadi foto katalog studio mewah berkelas siap marketplace.",
+            "prod.12.name": "Jasa Redesain Gambar AI & Repair Restorasi Foto",
+            "prod.12.desc": "Penyempurnaan gambar hasil generate AI, perbaikan detail anatomi, dan restorasi foto resolusi tinggi.",
+            "prod.13.name": "Jasa Desain Flyer Promosi, Pamflet & Brosur Bisnis",
+            "prod.13.desc": "Desain flyer promosi cetak, pamflet event, brosur lipat, dan infografis digital media sosial.",
+            "prod.14.name": "Jasa Desain CV & Resume Lamaran Kerja ATS-Friendly",
+            "prod.14.desc": "Desain resume dan CV profesional ATS-friendly dengan layout terstruktur dan visual elegan.",
+            "prod.15.name": "Jasa Desain Slide Presentasi PowerPoint (PPT) Profesional",
+            "prod.15.desc": "Desain slide deck bisnis, proposal pitching investor, materi seminar, dan infografis PPT interaktif.",
+            "prod.16.name": "Jasa Desain Kemasan Box & Packaging Produk Profesional",
+            "prod.16.desc": "Desain kemasan boks karton, hampers, skincare, boks makanan, dan packaging retail siap cetak.",
+
             // Category Names
             "cat.1": "Banner & Spanduk",
             "cat.2": "Packaging & Kemasan",
@@ -137,6 +171,8 @@
             // Product Detail Page
             "product_detail.breadcrumb_home": "Home",
             "product_detail.breadcrumb_market": "Marketplace",
+            "product_detail.breadcrumb_cat": "Kategori",
+            "product_detail.breadcrumb_product": "Produk",
             "product_detail.zoom_hint": "Klik untuk memperbesar tampilan desain",
             "product_detail.high_res_badge": "Master Siap Cetak",
             "product_detail.preview_variations": "Pratinjau Variasi & Karya (Auto Slide)",
@@ -459,6 +495,40 @@
             "categories.modal_search_placeholder": "Search design category...",
             "categories.modal_empty": "No matching categories found.",
 
+            // Product Titles & Descriptions (Bilingual)
+            "prod.1.name": "MSME Store Promotion Banner & Spanduk Design Service",
+            "prod.1.desc": "Custom outdoor banner and spanduk design for retail shops, culinary outlets, graduations, and MSME promo events.",
+            "prod.2.name": "MSME Sales Booth & Exhibition Stand Visual Design",
+            "prod.2.desc": "Visual design for portable sales carts, mall exhibition booths, event kiosks, and retail stand branding.",
+            "prod.3.name": "Promotional Event X-Banner & Roll-Up Banner Design",
+            "prod.3.desc": "Vertical standing X-Banner and Roll-Up Banner design for storefronts, event promotions, and expos.",
+            "prod.4.name": "Custom Standing Pouch Packaging Design for Snacks & Food",
+            "prod.4.desc": "Custom pouch packaging design for snacks, chips, coffee beans, spices, and processed food products.",
+            "prod.5.name": "Professional Business Logo & Brand Identity Design",
+            "prod.5.desc": "100% original custom logo design (no templates), color philosophy, typography, and brand guideline books.",
+            "prod.6.name": "Custom Racing Team Logo Design & Vector Tracing",
+            "prod.6.desc": "Dynamic racing logo design, motorsport club emblems, workshop logos, and high-res vector tracing.",
+            "prod.7.name": "Figma UI/UX Mobile App Design for Android & iOS",
+            "prod.7.desc": "Figma-based Android & iOS mobile app UI/UX design with structured user flows and interactive prototypes.",
+            "prod.8.name": "Company Profile Website & Landing Page UI/UX Design",
+            "prod.8.desc": "Responsive company profile and high-converting landing page UI/UX design built in Figma.",
+            "prod.9.name": "Custom Bottle Label & Food Jar Sticker Design",
+            "prod.9.desc": "Product bottle labels, food jar stickers, cookie containers, and homemade food packaging labels.",
+            "prod.10.name": "Custom Sublimation Jersey Design for Futsal & Esports",
+            "prod.10.desc": "Full-print sublimation jersey design for futsal teams, esports gaming, communities, and merchandise.",
+            "prod.11.name": "Phone-to-Studio Product Photo Editing for Marketplace",
+            "prod.11.desc": "Transform regular phone photos into luxurious commercial studio product shots ready for marketplaces.",
+            "prod.12.name": "AI Artwork Redesign & Photo Restoration Service",
+            "prod.12.desc": "AI image refinement, anatomy detail fixes, artwork upscaling, and high-resolution photo restoration.",
+            "prod.13.name": "Promotional Flyer, Pamphlet & Business Brochure Design",
+            "prod.13.desc": "Custom business flyers, event pamphlets, folded brochures, and structured digital social media graphics.",
+            "prod.14.name": "ATS-Friendly Professional CV & Resume Design",
+            "prod.14.desc": "Clean, elegant, and ATS-friendly professional CV/resume designs with clear typography.",
+            "prod.15.name": "Professional PowerPoint (PPT) Presentation Slide Design",
+            "prod.15.desc": "High-impact corporate pitch decks, business proposals, seminar slides, and interactive PPT templates.",
+            "prod.16.name": "Custom Box Packaging & Product Retail Box Design",
+            "prod.16.desc": "Custom box packaging design for food, hampers, skincare, cosmetics, and retail merchandise.",
+
             // Category Names
             "cat.1": "Banners & Signage",
             "cat.2": "Packaging & Box Design",
@@ -531,6 +601,8 @@
             // Product Detail Page
             "product_detail.breadcrumb_home": "Home",
             "product_detail.breadcrumb_market": "Marketplace",
+            "product_detail.breadcrumb_cat": "Category",
+            "product_detail.breadcrumb_product": "Product",
             "product_detail.zoom_hint": "Click to expand image preview",
             "product_detail.high_res_badge": "Print-Ready Master",
             "product_detail.preview_variations": "Work Variations & Gallery (Auto Slide)",
@@ -800,19 +872,100 @@
         }
     };
 
+        // =========================================================================
+    // 2. TRANSLATION & GEO-LOCATION HELPER FUNCTIONS
     // =========================================================================
-    // 2. TRANSLATION HELPER FUNCTIONS
-    // =========================================================================
-    function getSavedLanguage() {
-        let lang = localStorage.getItem('site_lang');
-        if (!lang) {
-            const match = document.cookie.match(/(^|;\s*)googtrans=([^;]+)/);
-            if (match) {
-                const parts = decodeURIComponent(match[2]).split('/');
-                lang = parts[parts.length - 1];
+    function isIndonesiaUser() {
+        try {
+            // 1. Timezone detection (Synchronous, ultra-reliable client check)
+            const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || '').toLowerCase();
+            const idTimezones = [
+                'asia/jakarta',
+                'asia/pontianak',
+                'asia/makassar',
+                'asia/jayapura',
+                'asia/ujung_pandang'
+            ];
+            if (idTimezones.some(idTz => tz === idTz) || 
+                tz.includes('jakarta') || 
+                tz.includes('makassar') || 
+                tz.includes('jayapura') || 
+                tz.includes('pontianak')) {
+                return true;
             }
+
+            // 2. Browser languages check
+            const navLangs = navigator.languages || [navigator.language || navigator.userLanguage || ''];
+            for (let l of navLangs) {
+                if (l) {
+                    const lower = l.toLowerCase();
+                    if (lower.startsWith('id') || lower === 'in' || lower.startsWith('in-')) {
+                        return true;
+                    }
+                }
+            }
+        } catch (e) {
+            console.warn('Location detection fallback:', e);
         }
-        return (lang === 'en') ? 'en' : 'id';
+        return false;
+    }
+
+    function getSavedLanguage() {
+        try {
+            if (typeof window !== 'undefined' && window.location && window.location.search) {
+                const urlParams = new URLSearchParams(window.location.search);
+                const paramLang = (urlParams.get('lang') || '').toLowerCase();
+                if (paramLang === 'en' || paramLang === 'id') {
+                    localStorage.setItem('site_lang', paramLang);
+                    localStorage.setItem('site_lang_user_set', 'true');
+                    return paramLang;
+                }
+            }
+        } catch (_) {}
+
+        // If user explicitly changed language, honor their choice
+        const explicit = localStorage.getItem('site_lang_user_set');
+        const saved = localStorage.getItem('site_lang');
+        if (explicit === 'true' && (saved === 'en' || saved === 'id')) {
+            return saved;
+        }
+
+        // Check if there is an explicit googtrans cookie
+        const match = document.cookie.match(/(^|;\s*)googtrans=([^;]+)/);
+        if (match && explicit === 'true') {
+            const parts = decodeURIComponent(match[2]).split('/');
+            const cLang = parts[parts.length - 1];
+            if (cLang === 'en' || cLang === 'id') return cLang;
+        }
+
+        // Default is English ('en'), automatically switches to 'id' if user/server is in Indonesia
+        return isIndonesiaUser() ? 'id' : 'en';
+    }
+
+    function detectServerOrIpLocation() {
+        if (localStorage.getItem('site_lang_user_set') === 'true') return;
+
+        const controller = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+        const timeoutId = controller ? setTimeout(() => controller.abort(), 2500) : null;
+
+        fetch('https://ipwho.is/', { signal: controller ? controller.signal : undefined })
+            .then(res => res.json())
+            .then(data => {
+                if (timeoutId) clearTimeout(timeoutId);
+                if (data && data.success && data.country_code) {
+                    const isIdCountry = (data.country_code.toUpperCase() === 'ID');
+                    const targetLang = isIdCountry ? 'id' : 'en';
+                    const current = localStorage.getItem('site_lang') || getSavedLanguage();
+                    if (current !== targetLang && localStorage.getItem('site_lang_user_set') !== 'true') {
+                        localStorage.setItem('site_lang', targetLang);
+                        setTranslateCookie(targetLang);
+                        applyLanguageUI(targetLang);
+                    }
+                }
+            })
+            .catch(() => {
+                // Silently fallback to already evaluated timezone/locale default
+            });
     }
 
     function setTranslateCookie(lang) {
@@ -843,7 +996,7 @@
         if (params && typeof params === 'object') {
             Object.keys(params).forEach(p => {
                 const val = (params[p] !== null && params[p] !== undefined) ? String(params[p]) : '';
-                const safeKey = p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                const safeKey = p.replace(/[.*+?^$\{\}()|[\]\\]/g, '\\$&');
                 text = text.replace(new RegExp('\\{' + safeKey + '\\}', 'g'), () => val);
             });
         }
@@ -854,6 +1007,8 @@
     window._t = t;
     window.__t = t;
     window.getSavedLanguage = getSavedLanguage;
+    window.isIndonesiaUser = isIndonesiaUser;
+    window.DICTIONARY = DICTIONARY;
 
     // =========================================================================
     // 3. FULL DOM TRANSLATOR
@@ -949,6 +1104,19 @@
     // =========================================================================
     // 4. LANGUAGE SWITCHER UI CONTROLLER
     // =========================================================================
+    
+    function updateHomeCardsWhatsApp(targetLang) {
+        document.querySelectorAll('[data-home-order-id]').forEach(btn => {
+            const pId = btn.getAttribute('data-home-order-id');
+            const titleKey = 'prod.' + pId + '.name';
+            const prodTitle = (DICTIONARY[targetLang] && DICTIONARY[targetLang][titleKey]) || (DICTIONARY['id'] && DICTIONARY['id'][titleKey]) || 'Desain';
+            const prefix = (targetLang === 'en')
+                ? "Hello Premium Design, I would like to order design service for: "
+                : "Halo Premium Design, saya ingin memesan jasa/produk desain: ";
+            btn.href = "https://api.whatsapp.com/send/?phone=6285168174679&text=" + encodeURIComponent(prefix + prodTitle);
+        });
+    }
+
     function applyLanguageUI(lang) {
         const activeLang = lang || getSavedLanguage();
 
@@ -990,6 +1158,8 @@
         // Translate DOM Elements
         translateDOM(activeLang);
 
+        updateHomeCardsWhatsApp(activeLang);
+
         // Notify app-pages.js & other dynamic modules to re-render in active language
         window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang: activeLang } }));
     }
@@ -1024,9 +1194,10 @@
         }, 200);
     };
 
-    window.changeSiteLanguage = function(lang) {
+        window.changeSiteLanguage = function(lang) {
         const targetLang = (lang === 'en') ? 'en' : 'id';
         localStorage.setItem('site_lang', targetLang);
+        localStorage.setItem('site_lang_user_set', 'true');
         setTranslateCookie(targetLang);
         applyLanguageUI(targetLang);
 
@@ -1044,11 +1215,16 @@
     // 6. AUTO-INIT ON LOAD
     // =========================================================================
     document.addEventListener('DOMContentLoaded', function() {
-        const savedLang = getSavedLanguage();
-        applyLanguageUI(savedLang);
+        const activeLang = getSavedLanguage();
+        localStorage.setItem('site_lang', activeLang);
+        setTranslateCookie(activeLang);
+        applyLanguageUI(activeLang);
 
-        if (savedLang === 'en') {
-            setTranslateCookie('en');
+        if (localStorage.getItem('site_lang_user_set') !== 'true') {
+            detectServerOrIpLocation();
+        }
+
+        if (activeLang === 'en') {
             if ('requestIdleCallback' in window) {
                 requestIdleCallback(loadGoogleTranslateScript, { timeout: 2000 });
             } else {

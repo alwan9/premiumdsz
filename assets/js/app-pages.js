@@ -913,12 +913,6 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
                             <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-black/20"></div>
                             <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 ease-in-out pointer-events-none"></div>
 
-                            <div class="absolute top-2.5 left-2.5 z-10">
-                                <span class="px-2 py-0.5 rounded-lg bg-zinc-900/80 backdrop-blur-md text-white text-[9px] font-bold uppercase tracking-wider border border-white/10">
-                                    ${catName}
-                                </span>
-                            </div>
-
                             <div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-[10px] text-white/90 z-10">
                                 <span class="text-amber-400 font-bold flex items-center space-x-1 drop-shadow">
                                     <iconify-icon icon="material-symbols:star-rounded" class="text-amber-400 text-sm"></iconify-icon>
@@ -928,9 +922,9 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
                         </div>
                     </a>
 
-                    <div class="p-3 sm:p-4 group-hover:bg-zinc-50 transition-colors duration-300 ease-in-out">
-                        <h3 class="text-xs sm:text-sm font-bold text-zinc-900 line-clamp-1 group-hover:text-brand-600 transition-colors duration-300 ease-in-out">
-                            <a href="${detailUrl}">
+                    <div class="p-3 sm:p-4 group-hover:bg-zinc-50 transition-colors duration-200 ease-in-out">
+                        <h3 class="text-xs sm:text-sm font-bold text-zinc-900 line-clamp-1 group-hover:text-brand-600 transition-colors duration-200 ease-in-out">
+                            <a href="${detailUrl}" class="transition-colors duration-200 ease-in-out">
                                 ${prodTitle}
                             </a>
                         </h3>
@@ -940,13 +934,13 @@ function renderMarketplaceGrid(baseAssetPrefix = '') {
                     </div>
                 </div>
 
-                <div class="p-3 sm:p-4 pt-0 flex items-center space-x-1.5 sm:space-x-2 group-hover:bg-zinc-50 transition-colors duration-300 ease-in-out">
+                <div class="p-3 sm:p-4 pt-0 flex items-center space-x-1.5 sm:space-x-2 group-hover:bg-zinc-50 transition-colors duration-200 ease-in-out">
                     <a href="${detailUrl}"
-                        class="w-full sm:flex-1 py-1.5 sm:py-2 text-center text-[11px] sm:text-xs font-bold text-zinc-700 bg-zinc-100 hover:bg-zinc-200 rounded-lg sm:rounded-xl transition-colors">
+                        class="w-full sm:flex-1 py-1.5 sm:py-2 text-center text-[11px] sm:text-xs font-bold text-zinc-700 bg-zinc-100 hover:bg-zinc-200 rounded-lg sm:rounded-xl transition-all duration-200 ease-in-out">
                         ${_t('marketplace.btn_detail')}
                     </a>
                     <a href="${waLink}" target="_blank"
-                        class="hidden sm:inline-flex flex-1 items-center justify-center space-x-1 py-1.5 sm:py-2 text-center text-[11px] sm:text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg sm:rounded-xl shadow-sm transition-all">
+                        class="hidden sm:inline-flex flex-1 items-center justify-center space-x-1 py-1.5 sm:py-2 text-center text-[11px] sm:text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg sm:rounded-xl shadow-sm transition-all duration-200 ease-in-out">
                         <iconify-icon icon="simple-icons:whatsapp" class="text-xs"></iconify-icon>
                         <span>${_t('marketplace.btn_order')}</span>
                     </a>
